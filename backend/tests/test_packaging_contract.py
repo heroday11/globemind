@@ -87,3 +87,15 @@ def test_story_image_helpers_do_not_import_optional_image_runtime_eagerly() -> N
     assert "PIL" not in top_level_imports
     assert "ImageFile" not in top_level_imports
     assert "192.168.207.171" not in text
+
+
+def test_fastapi_development_requirements_match_the_locked_web_runtime() -> None:
+    expected = "fastapi==0.136.0"
+
+    assert expected in (ROOT / "backend" / "api" / "requirements.txt").read_text(
+        encoding="utf-8"
+    ).splitlines()
+    assert expected in (ROOT / "requirements.txt").read_text(encoding="utf-8").splitlines()
+    assert expected in (ROOT / "requirements" / "roles" / "web.in").read_text(
+        encoding="utf-8"
+    ).splitlines()

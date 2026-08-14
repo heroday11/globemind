@@ -1,5 +1,5 @@
 # GlobeMind V2 core web stack
-fastapi>=0.115.0
+fastapi==0.136.0
 uvicorn[standard]>=0.30.0
 httpx>=0.27.0
 aiohttp>=3.9.0
