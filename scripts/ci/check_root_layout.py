@@ -22,6 +22,7 @@ ALLOWED_ROOT_FILES = frozenset(
         "SECURITY.md",
         "VERSION",
         "docker-compose.yml",
+        "package-lock.json",
         "package.json",
         "pyproject.toml",
         "requirements-dev.txt",
