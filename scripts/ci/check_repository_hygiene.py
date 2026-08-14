@@ -32,7 +32,7 @@ CURRENT_DOC_GLOBS = (
     "docs/REPOSITORY_GOVERNANCE.md",
     "docs/word/README.md",
     "docs/architecture/*.md",
-    ".github/README.md",
+    ".github/GOVERNANCE.md",
     "config/README.md",
     "config/runtime/README.md",
     "logs/README.md",

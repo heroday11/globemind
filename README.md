@@ -239,7 +239,7 @@ npm run build
 - [自动化与生产安全规则](AGENTS.md)
 - [安全政策](SECURITY.md)
 - [开发整理与模块化路线](docs/DEVELOPMENT_PLAN.md)
-- [GitHub 协作配置](.github/README.md)
+- [GitHub 协作配置](.github/GOVERNANCE.md)
 
 ### 架构与契约
 
