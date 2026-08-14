@@ -17,7 +17,11 @@
   [参与开发](CONTRIBUTING.md)
 </div>
 
-![GlobeMind 产品首页](docs/screenshots/homepage_screenshot.png)
+<p align="center">
+  <a href="docs/word/assets_current/globemind_home_full.png">
+    <img src="docs/word/assets_current/globemind_home_full.png" alt="GlobeMind 产品首页" width="820">
+  </a>
+</p>
 
 > [!IMPORTANT]
 > GlobeMind 是包含 Web 应用、研究算法、数据治理和受控部署工具的 monorepo。
@@ -52,15 +56,27 @@
 
 ### 新闻与事件检索
 
-![新闻与事件检索](docs/word/assets_current/globemind_data_search.png)
+<p align="center">
+  <a href="docs/word/assets_current/globemind_data_search.png">
+    <img src="docs/word/assets_current/globemind_data_search.png" alt="新闻与事件检索" width="780">
+  </a>
+</p>
 
 ### L3 大事件脉络图谱
 
-![L3 大事件脉络图谱](docs/word/assets_current/globemind_story_graph.png)
+<p align="center">
+  <a href="docs/word/assets_current/globemind_story_graph.png">
+    <img src="docs/word/assets_current/globemind_story_graph.png" alt="L3 大事件脉络图谱" width="780">
+  </a>
+</p>
 
 ### 数据助手
 
-![数据助手](docs/word/assets_current/globemind_data_assistant.png)
+<p align="center">
+  <a href="docs/word/assets_current/globemind_data_assistant.png">
+    <img src="docs/word/assets_current/globemind_data_assistant.png" alt="数据助手" width="780">
+  </a>
+</p>
 
 截图用于展示产品交互和研究工作流，不代表截图中的数据量、实时性或模型结果已经在当前环境完成生产验收。
 
