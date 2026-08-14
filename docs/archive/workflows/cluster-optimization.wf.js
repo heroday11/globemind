@@ -1,5 +1,8 @@
 /**
  * Cluster Optimization Dynamic Workflow
+ *
+ * ARCHIVED: retained as historical design evidence. It is not a supported
+ * executable workflow; use the current controlled tooling and runbooks.
  * 
  * Multi-agent pipeline for L1/L2 clustering system optimization.
  * Agents work in parallel where possible, with quality gates between steps.
@@ -21,9 +24,9 @@ const workflow = {
     "topic-engineer": {
       model: "default",
       system: `你是一个NLP算法工程师。你的任务是对全局28K地缘文章运行话题先验聚类。
-        使用 /root/data/globemind/core_pipeline/topic_clustering.py 模块。
+        使用 <repository-root>/core_pipeline/topic_clustering.py 模块。
         步骤:
-        1. 从 /root/data/globemind/data/checkpoint_v11_240k.jsonl 加载28K文章
+        1. 从 <repository-root>/data/checkpoint_v11_240k.jsonl 加载28K文章
         2. 从数据库加载BGE-M3 embeddings
         3. 运行 cluster_topics() 得到话题分配
         4. 对每个话题，运行 build_event_coreference_with_embeddings(use_classifier=True)
@@ -33,7 +36,7 @@ const workflow = {
     "classifier-engineer": {
       model: "default",
       system: `你是一个机器学习工程师。训练并验证文档对分类器。
-        使用 /root/data/globemind/core_pipeline/document_classifier.py。
+        使用 <repository-root>/core_pipeline/document_classifier.py。
         步骤:
         1. 从现有 L1 聚类结果生成正例/负例对
         2. 用 BGE-M3 embeddings 训练逻辑回归分类器
@@ -44,7 +47,7 @@ const workflow = {
     "eval-engineer": {
       model: "default",
       system: `你是一个评测工程师。运行 ECB+ 标准评测。
-        使用 /root/data/globemind/scripts/eval_ecb_plus.py。
+        使用 <repository-root>/scripts/eval_ecb_plus.py。
         步骤:
         1. 确保 ECB+ 数据已加载
         2. 运行 L1 聚类生成 pred_layer1.jsonl
@@ -75,7 +78,7 @@ const workflow = {
         2. ECB+评测对比表
         3. 各模块耗时
         4. 剩余待优化项
-        保存到 docs/workflow_final_report.md`
+        保存到 docs/archive/workflows/CLUSTER_OPTIMIZATION_FINAL_REPORT_20260602.md`
     }
   },
 
@@ -124,7 +127,7 @@ const workflow = {
       name: "final-report",
       agent: "reporter",
       dependsOn: ["testing", "ecb-evaluation"],
-      input: `汇总所有结果到 docs/workflow_final_report.md`
+      input: `汇总所有结果到 docs/archive/workflows/CLUSTER_OPTIMIZATION_FINAL_REPORT_20260602.md`
     }
   ]
 };

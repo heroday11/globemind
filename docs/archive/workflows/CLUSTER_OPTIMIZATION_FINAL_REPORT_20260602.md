@@ -1,5 +1,7 @@
 # Globemind Cluster Optimization Workflow -- Final Report
 
+> Archived evidence: this report describes the 2026-06-02 experiment. Its database counts, model metrics and workflow status are not current operational claims.
+
 **Generated:** 2026-06-02
 **Pipeline:** Cluster Optimization Pipeline (v13-based, with post-v13 enhancements)
 
@@ -233,7 +235,7 @@ The core pipeline has been substantially modified since the v13 baseline:
 
 5. **Full Pipeline Re-run**: The L1/L2 clustering should be re-run with the latest committed + uncommitted changes to validate improvement deltas.
 
-6. **Dynamic Workflow Integration**: The workflow orchestration (workflow-cluster-optimization.wf.js) is defined but the subagent spawning mechanism has a serialization issue (input objects passing as "[object Object]" instead of serialized JSON).
+6. **Dynamic Workflow Integration**: The historical workflow definition is archived beside this report as `cluster-optimization.wf.js`; it is not a supported executable entry. The recorded implementation had a serialization issue (input objects passed as `"[object Object]"` instead of serialized JSON).
 
 ---
 

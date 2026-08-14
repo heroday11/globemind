@@ -1,10 +1,11 @@
 # Data Assistant Design QA
 
+> 归档状态：这是 2026-08-08 的桌面 QA 证据摘要，不代表当前部署状态。原始浏览器报告位于当时的临时工作目录，未作为源码提交。
+
 ## Comparison Target
 
-- Source visual truth: `/root/data/globemind/analysis_output/assistant-redesign-20260731/current-assistant.png`
-- Browser-rendered implementation: `/tmp/globemind-dev-surface-online.QmX5m9/screenshots/dev-unified-chat-surface.png`
-- Interaction evidence: `/tmp/globemind-assistant-desktop-interactions.YvDdPB/screenshots/desktop-after-quick-action.png` and `/tmp/globemind-assistant-surface-conversation.II7r83/screenshots/desktop-conversation-bottom.png`
+- Source visual truth: historical local artifact `analysis_output/assistant-redesign-20260731/current-assistant.png`.
+- Browser-rendered implementation and interaction captures: temporary evidence retained outside the repository during the recorded review.
 - Route: `/data-assistant` on the isolated production preview.
 - Viewport: 1440 × 1024 CSS pixels.
 - Source pixels: 1440 × 1024.
@@ -40,8 +41,7 @@ No actionable P0, P1, or P2 differences remain in the requested desktop scope.
 - `全球要闻` opens a conversation, sends `最近全球发生了什么大事`, and renders the deterministic assistant reply.
 - Browser metrics: 1440px document width at a 1440px viewport, 0px horizontal overflow, and no obvious root overlaps.
 - Browser activity: no console errors, page errors, critical resource errors, unexpected API requests, or external requests.
-- Interaction report: `/tmp/globemind-assistant-desktop-interactions.YvDdPB/interaction-qa.json`.
-- Desktop smoke report: `/tmp/globemind-assistant-desktop-qa.T8QTdF/browser-smoke.json` (1/1 page checks passed).
+- Interaction and desktop smoke reports were temporary evidence; the recorded desktop check passed 1/1 page checks.
 
 ## Comparison History
 
@@ -65,14 +65,12 @@ No actionable P0, P1, or P2 differences remain in the requested desktop scope.
 
 ## Dev Deployment Verification
 
-- Public route: `https://dev.globemind.top/data-assistant`.
-- Public desktop screenshot: `/tmp/globemind-dev-surface-online.QmX5m9/screenshots/dev-unified-chat-surface.png`.
-- Public Playwright report: `/tmp/globemind-dev-surface-online.QmX5m9/online-surface-qa.json`.
-- Long-conversation candidate report: `/tmp/globemind-assistant-surface-conversation.II7r83/conversation-surface-qa.json`.
+- Historical route checked at the time: `https://dev.globemind.top/data-assistant`; current availability must be verified separately.
+- Public screenshot, Playwright report and long-conversation report were temporary evidence outside this repository.
 - Verified at 1440 × 1024: new headline visible, old headline absent, four compact actions rendered, 88px navigation rail, 300px session sidebar, working history search, working answer-mode selection, working context drawer, 0px horizontal overflow, and no root overlaps.
 - Public and local dev entry HTML matched after server cache-version injection; the deployed assistant bundle SHA-256 matched the active build exactly.
 - No application console, page, resource, or API errors were observed. Cloudflare's injected analytics beacon is blocked by the site's CSP and `/cdn-cgi/speculation` is infrastructure traffic; both were recorded separately from application behavior.
-- The immediately previous complete frontend remains available at `/root/data/web/deploy-backups/live-dev-frontend-before-chat-surface-20260808T024412Z` for rollback. Production was not restarted or modified.
+- The review recorded an external deployment backup for rollback. That backup is not part of this repository and its current availability is not asserted here. Production was not restarted or modified during the recorded review.
 
 ## Global Display Preferences QA
 
@@ -82,8 +80,8 @@ No actionable P0, P1, or P2 differences remain in the requested desktop scope.
 - Cross-surface verification: Personal Center, Data Assistant, About Us, and the isolated Financial Terminal iframe all receive the selected font family, root size, and line-height preference.
 - Responsive desktop matrix: 1100, 1161, 1200, 1440, 1801, and 1920 CSS pixels at maximum size. No horizontal overflow, clipped preference tabs, or visible navigation collisions were observed; Personal Center switches to a usable single-column layout at narrower desktop widths.
 - Accessibility: option groups use named buttons with `aria-pressed`; the size range has an accessible name and value text; descriptive text contrast was strengthened.
-- Browser evidence: local candidate `/tmp/globemind-typography-approved-qa.eqG7Nq/` and deployed dev `/tmp/globemind-typography-public-qa.nI7rUd/`; both automated reports passed with no application console, page, resource, or API errors. The public run records Cloudflare Analytics CSP blocks separately as infrastructure noise.
+- Browser evidence was retained in temporary local candidate and deployed-dev directories; both recorded reports passed with no application console, page, resource, or API errors. The public run recorded Cloudflare Analytics CSP blocks separately as infrastructure noise.
 - Build evidence: both main-site and Financial Terminal asset budgets passed. Main entry JS is 74,276/100,000 bytes; main CSS is 745,484/750,000 bytes; Financial Terminal JS and CSS remain within their respective budgets.
 - Automated verification: 87/87 frontend feature tests passed, Financial Terminal TypeScript checking passed, targeted release-tooling tests passed, selected frontend lint passed, and diff whitespace validation passed.
 
-final result: passed
+Archived result: passed for the recorded scope; revalidation is required for current claims.

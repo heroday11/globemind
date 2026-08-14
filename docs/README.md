@@ -48,7 +48,7 @@
 
 - [`HISTORICAL_CRAWL_HANDOFF_20260621.md`](HISTORICAL_CRAWL_HANDOFF_20260621.md) — 历史抓取交接证据。
 - [`HISTORICAL_CRAWL_JOB_CONTROL.md`](HISTORICAL_CRAWL_JOB_CONTROL.md) — 历史任务控制资料。
-- [`README_CLI.md`](../README_CLI.md) — 旧 CLI/可视化路径归档入口。
+- [`archive/README.md`](archive/README.md) — 历史 CLI、产品 QA 和旧工作流索引。
 - `计划书/`、来源 discovery/report、benchmark 和带日期的阶段报告 — 研究与实验归档。
 
 归档资料不得被当作当前可执行命令清单；如需复现实验，应先建立隔离环境、确认依赖和数据授权，并由负责人确认不会触及生产边界。

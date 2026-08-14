@@ -29,6 +29,10 @@ GlobeMind 是一个面向全球新闻研究的地缘情报与舆情分析平台�
 | `config/` | 应用设置、运行时环境清单和角色配置样例 |
 | `data/` | 研究数据、来源目录和本地工作数据；不要把凭据或生产状态写入其中 |
 | `deploy/` | 候选构建、浏览器 smoke 和运行控制工具；不是日常开发入口 |
+| `ops/` | 受版本控制的功能、运行时和发布清单 |
+| `quality/` | CI 使用的预算、ratchet 和边界基线 |
+| `requirements/roles/` | 按运行角色锁定的 Python 依赖 |
+| `remotion-edit/` | 独立的视频演示编辑工具，不属于主应用运行路径 |
 | `docs/` | 当前开发/架构/运维参考与历史证据，见 [`docs/README.md`](docs/README.md) |
 
 ## 前置条件
@@ -106,7 +110,7 @@ PYTHONDONTWRITEBYTECODE=1 PYTHON_BIN=python deploy/run_quality_gate.sh
 - 发布边界：[`docs/operations/RELEASES.md`](docs/operations/RELEASES.md)
 - 运行控制：[`docs/operations/RUNTIME_CONTROL.md`](docs/operations/RUNTIME_CONTROL.md)
 - 安全贡献与漏洞报告：[`SECURITY.md`](SECURITY.md)
-- 历史 CLI 说明：[`README_CLI.md`](README_CLI.md)（仅归档，不是当前入口）
+- 历史 CLI 说明：[`docs/archive/README_CLI.md`](docs/archive/README_CLI.md)（仅归档，不是当前入口）
 
 ## 生产边界
 

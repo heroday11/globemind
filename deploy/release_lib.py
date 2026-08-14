@@ -220,6 +220,7 @@ SECRET_ALLOWLIST_PATH = PurePosixPath("quality/secret-scan-allowlist.json")
 PRODUCTION_QUALITY_STEPS = frozenset(
     {
         "config",
+        "root_layout",
         "content_bundles",
         "ruff_tool",
         "release_lint",
@@ -238,6 +239,7 @@ PRODUCTION_QUALITY_STEPS = frozenset(
 HISTORICAL_PRODUCTION_QUALITY_STEPS = {
     "0.9.2": PRODUCTION_QUALITY_STEPS
     - {
+        "root_layout",
         "content_bundles",
         "ruff_tool",
         "database_consumers",
@@ -247,14 +249,16 @@ HISTORICAL_PRODUCTION_QUALITY_STEPS = {
     },
     "0.9.3": PRODUCTION_QUALITY_STEPS
     - {
+        "root_layout",
         "content_bundles",
         "database_consumers",
         "feature_registry",
         "frontend_lint",
         "frontend_contracts",
     },
-    "0.10.0": PRODUCTION_QUALITY_STEPS - {"content_bundles", "feature_registry"},
-    "0.11.0": PRODUCTION_QUALITY_STEPS - {"content_bundles"},
+    "0.10.0": PRODUCTION_QUALITY_STEPS
+    - {"content_bundles", "feature_registry", "root_layout"},
+    "0.11.0": PRODUCTION_QUALITY_STEPS - {"content_bundles", "root_layout"},
 }
 
 

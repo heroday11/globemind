@@ -172,6 +172,7 @@ output.write_text(json.dumps(payload) + "\\n", encoding="utf-8")
         "check_feature_registry.py",
         "check_runtime_config_manifest.py",
         "check_database_consumers.py",
+        "check_root_layout.py",
     ):
         _write(project / "scripts/ci" / name, "raise SystemExit(0)\n")
     _write(project / "backend/tests/test_release_tooling.py", "# lint target\n")
@@ -257,12 +258,14 @@ def test_quality_gate_prefers_direct_ruff_and_records_exact_command(tmp_path: Pa
         "deploy/web_promotion.py",
         "scripts/ci/check_database_consumers.py",
         "scripts/ci/check_feature_registry.py",
+        "scripts/ci/check_root_layout.py",
         "backend/tests/test_browser_smoke.py",
         "backend/tests/test_candidate_smoke.py",
         "backend/tests/test_ci_workflow_contract.py",
         "backend/tests/test_release_tooling.py",
         "backend/tests/test_database_consumer_inventory.py",
         "backend/tests/test_feature_registry.py",
+        "backend/tests/test_root_layout.py",
         "backend/tests/test_web_promotion.py",
         "backend/api/features",
         "backend/api/routes/auth.py",

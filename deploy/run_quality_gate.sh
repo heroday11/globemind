@@ -88,12 +88,14 @@ ruff_targets=(
     deploy/web_promotion.py
     scripts/ci/check_database_consumers.py
     scripts/ci/check_feature_registry.py
+    scripts/ci/check_root_layout.py
     backend/tests/test_browser_smoke.py
     backend/tests/test_candidate_smoke.py
     backend/tests/test_ci_workflow_contract.py
     backend/tests/test_release_tooling.py
     backend/tests/test_database_consumer_inventory.py
     backend/tests/test_feature_registry.py
+    backend/tests/test_root_layout.py
     backend/tests/test_web_promotion.py
     backend/api/features
     backend/api/routes/auth.py
@@ -171,6 +173,8 @@ run_step config env PYTHON_BIN="$PYTHON_BIN" bash -c '
     node --check deploy/check_frontend_budgets.mjs
     "$PYTHON_BIN" -B deploy/verify_release.py --help >/dev/null
 '
+run_step root_layout "$PYTHON_BIN" -B scripts/ci/check_root_layout.py \
+    --project "$PROJECT_DIR"
 run_step ruff_tool verify_ruff_tool
 run_step release_lint "${ruff_command[@]}" check "${ruff_targets[@]}"
 run_step import_boundaries "$PYTHON_BIN" -B scripts/ci/check_import_boundaries.py
