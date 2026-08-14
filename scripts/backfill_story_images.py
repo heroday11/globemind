@@ -15,11 +15,8 @@ from typing import Any
 from urllib.parse import urljoin, urlparse
 
 import psycopg2
-from PIL import ImageFile
 import requests
-
 from db_runtime_config import require_database_password
-
 
 HEADERS = {
     "User-Agent": (
@@ -137,9 +134,9 @@ class ImageMetaParser(HTMLParser):
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Backfill news image metadata and L1 story covers.")
-    parser.add_argument("--host", default=os.getenv("PG_HOST", "192.168.207.171"))
-    parser.add_argument("--port", type=int, default=int(os.getenv("PG_PORT", "54333")))
-    parser.add_argument("--user", default=os.getenv("PG_WRITE_USER", "postgres"))
+    parser.add_argument("--host", default=os.getenv("PG_HOST", "127.0.0.1"))
+    parser.add_argument("--port", type=int, default=int(os.getenv("PG_PORT", "5432")))
+    parser.add_argument("--user", default=os.getenv("PG_WRITE_USER", ""))
     parser.add_argument("--dbname", default="news")
     parser.add_argument("--l1-run-id", default="fast_l1_v2")
     parser.add_argument("--l15-run-id", default="fast_l15_v1")
@@ -162,6 +159,8 @@ def parse_args() -> argparse.Namespace:
 
 
 def connect(args: argparse.Namespace) -> Any:
+    if not str(args.user).strip():
+        raise RuntimeError("PG_WRITE_USER is required for the story image backfill")
     return psycopg2.connect(
         host=args.host,
         port=args.port,
@@ -419,6 +418,8 @@ def new_http_session() -> requests.Session:
 
 
 def probe_image(session: requests.Session, url: str, timeout: float) -> tuple[int | None, int | None, str | None]:
+    from PIL import ImageFile
+
     try:
         with session.get(url, headers=IMAGE_HEADERS, timeout=timeout, stream=True, allow_redirects=True) as response:
             status = response.status_code

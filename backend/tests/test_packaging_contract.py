@@ -71,3 +71,19 @@ def test_event_pipeline_defers_credentials_and_uses_portable_defaults() -> None:
     )
     assert "192.168.207.171" not in text
     assert "/root/data/models/" not in text
+
+
+def test_story_image_helpers_do_not_import_optional_image_runtime_eagerly() -> None:
+    path = ROOT / "scripts" / "backfill_story_images.py"
+    text = path.read_text(encoding="utf-8")
+    tree = ast.parse(text, filename=str(path))
+    top_level_imports = {
+        alias.name
+        for node in tree.body
+        if isinstance(node, (ast.Import, ast.ImportFrom))
+        for alias in node.names
+    }
+
+    assert "PIL" not in top_level_imports
+    assert "ImageFile" not in top_level_imports
+    assert "192.168.207.171" not in text

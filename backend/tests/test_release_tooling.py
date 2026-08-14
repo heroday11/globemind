@@ -262,6 +262,7 @@ def test_quality_gate_prefers_direct_ruff_and_records_exact_command(tmp_path: Pa
         "scripts/ci/check_import_boundaries.py",
         "scripts/ci/check_repository_hygiene.py",
         "scripts/ci/check_root_layout.py",
+        "scripts/backfill_story_images.py",
         "scripts/run_event_level_pipeline.py",
         "backend/tests/test_browser_smoke.py",
         "backend/tests/test_candidate_smoke.py",
