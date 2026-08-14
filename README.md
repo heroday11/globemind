@@ -1,124 +1,284 @@
-# GlobeMind
+<div align="center">
+  <img src="frontend/vue_project/public/imgs/logo2.png" alt="GlobeMind" width="360">
 
-GlobeMind 是一个面向全球新闻研究的地缘情报与舆情分析平台。它把新闻资料整理为可检索的事件、事件共指簇和叙事线，并提供涉华分析、证据链和研究型 API/前端能力。
+  <p><strong>面向全球新闻研究的地缘情报、事件脉络与舆情分析平台</strong></p>
+  <p>把多语言新闻组织为可检索的资料、事件簇、叙事线、证据链与研究工作流。</p>
 
-仓库同时包含在线应用、离线分析模块和数据治理/运维工具。代码存在不等于真实数据、模型质量或生产发布已经验收；没有数据库、模型权重、外部服务和相应配置时，完整 AI 管线不能直接启动。
+  [![Quality gate](https://github.com/heroday11/globemind/actions/workflows/quality-gate.yml/badge.svg)](https://github.com/heroday11/globemind/actions/workflows/quality-gate.yml)
+  [![Python 3.11](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)](pyproject.toml)
+  [![Node 22](https://img.shields.io/badge/Node.js-22-339933?logo=nodedotjs&logoColor=white)](package.json)
+  [![Version](https://img.shields.io/badge/version-1.0.0-5267DF)](VERSION)
+  [![License pending](https://img.shields.io/badge/license-pending-F2A900)](LICENSE_DECISION.md)
 
-## 当前能力边界
+  [快速开始](#快速开始-quick-start) ·
+  [新人接手指南](#新人接手指南-developer-onboarding) ·
+  [系统架构](#系统架构-architecture) ·
+  [文档导航](#文档导航-documentation) ·
+  [参与开发](CONTRIBUTING.md)
+</div>
 
-- `backend/api` 提供 FastAPI 应用，入口为 `api.main:app`。
-- `frontend/vue_project` 是当前主 Vue/Vite 前端；`frontend/financial-terminal` 是另一套前端，`frontend/knowledge_graph_backup` 仅作为知识图谱兼容占位/备份目录保留。
-- `backend/agentic_rag` 包含涉华分析、检索、情感/实体处理、CCI 聚合及事件/故事线相关服务。
-- `core_pipeline` 包含事件抽取与 L1 共指聚类等研究算法。
-- 需要 PostgreSQL 才能提供完整 API 数据访问；部分检索/聚类路径还需要 Milvus 或本地替代配置。
-- vLLM、嵌入模型、GLiNER、情感模型和外部 LLM/API 均需单独安装、下载、授权并配置。本仓库不把它们伪装成“零配置可用”的完整 AI 管线。
+![GlobeMind 产品首页](docs/screenshots/homepage_screenshot.png)
 
-## Monorepo 结构
+> [!IMPORTANT]
+> GlobeMind 是包含 Web 应用、研究算法、数据治理和受控部署工具的 monorepo。
+> 仓库代码可以独立审阅和测试，但完整 AI 能力还需要 PostgreSQL、模型、向量服务、
+> 外部数据源及相应授权。代码存在不等于真实数据、模型质量或生产发布已经验收。
 
-| 路径 | 职责 |
-| --- | --- |
-| `backend/api/` | FastAPI 应用、路由、认证、数据访问与服务层；开发入口 `api.main:app` |
-| `backend/agentic_rag/` | 检索与涉华分析服务、事件/故事线处理、模型适配和 CCI |
-| `backend/tests/` | Python 单元、契约、安全、架构和集成边界测试 |
-| `core_pipeline/` | 事件抽取、事件共指聚类、实体规范化等离线算法 |
-| `scripts/` | 数据质量、审计、导入、评估和维护脚本；使用前先阅读脚本说明与运行边界 |
-| `frontend/vue_project/` | 当前主 Vue/Vite 应用及其前端测试 |
-| `frontend/financial-terminal/` | 金融终端前端 |
-| `frontend/knowledge_graph_backup/` | 知识图谱兼容占位/备份目录，不是当前独立应用入口 |
-| `frontend/shared/` | 前端共享工具与类型 |
-| `config/` | 应用设置、运行时环境清单和角色配置样例 |
-| `data/` | 研究数据、来源目录和本地工作数据；不要把凭据或生产状态写入其中 |
-| `deploy/` | 候选构建、浏览器 smoke 和运行控制工具；不是日常开发入口 |
-| `ops/` | 受版本控制的功能、运行时和发布清单 |
-| `quality/` | CI 使用的预算、ratchet 和边界基线 |
-| `requirements/roles/` | 按运行角色锁定的 Python 依赖 |
-| `remotion-edit/` | 独立的视频演示编辑工具，不属于主应用运行路径 |
-| `docs/` | 当前开发/架构/运维参考与历史证据，见 [`docs/README.md`](docs/README.md) |
+## 项目概述 Overview
 
-## 前置条件
+新闻研究的难点通常不是“找到一篇文章”，而是把不同语言、不同来源和不同时间的报道组织成可验证的研究材料。GlobeMind 围绕这个过程提供一套组合能力：
 
-- Python 3.11；建议使用仓库外或仓库内的隔离虚拟环境。
-- Node.js 22 与 npm。主前端的 `engines` 也接受 Node 20.19+，新开发统一按 Node 22 验证。
-- PostgreSQL 及一个供本地开发使用的数据库和账号。数据库 schema、运行时角色和凭据文件按 [`config/runtime/README.md`](config/runtime/README.md) 与 API 环境样例配置。
-- 若要运行模型或向量路径，还需要相应的 GPU/CPU 资源、模型权重、Milvus（或明确配置的本地替代）以及外部服务凭据。
+- 从全球新闻资料中检索文章、实体、事件与来源；
+- 将相关报道聚合为事件簇、趋势链和 L3 大事件脉络；
+- 通过证据快照、来源信息和治理记录保留结论依据；
+- 为分析人员提供研究工作区、数据助手、舆情与金融观察界面；
+- 对模型评测、数据来源、身份权限和运行状态实施可审计治理。
 
-## 安全的本地快速开始
+项目当前更适合研究开发、内部分析平台建设和可验证原型，不应被描述为无需配置即可使用的公共情报服务。
 
-以下只启动本地开发服务，不启动抓取、长时间 AI 管线或生产进程。
+## 核心能力 Capabilities
 
-1. 安装依赖并准备本地环境：
+| 能力 | 解决的问题 | 主要实现 |
+| --- | --- | --- |
+| 新闻与事件检索 | 跨来源、语言、时间和事件层级定位资料 | Search feature、PostgreSQL、可选 Milvus |
+| 事件聚类与叙事线 | 将分散报道组织为 L1/L2/L3 事件脉络 | `core_pipeline/`、Agentic RAG、Story Graph |
+| 数据助手与研究工作区 | 对检索结果、工作区材料和报告进行辅助分析 | Assistant、Research Workflow |
+| 舆情与观点分析 | 分析情感、趋势、指标语义和质量信号 | Opinion/Sentiment features |
+| 证据与数据治理 | 保存来源、快照、审批记录和模型评测证据 | Evidence、Entity/Data/Model Governance |
+| 金融与运行观察 | 展示金融信号、告警和系统健康状态 | Financial Terminal、Operations |
 
-   ```bash
-   cd /path/to/globemind
-   python3.11 -m venv .venv
-   . .venv/bin/activate
-   PYTHONDONTWRITEBYTECODE=1 python -B -m pip install -r requirements-dev.txt
-   npm ci
-   ```
+<details>
+<summary><strong>查看更多产品界面</strong></summary>
 
-   需要离线分析/模型路径时，再根据目标模块和资源情况选择性安装根目录 `requirements.txt`；其中包含重量级模型依赖，不是主前端/API 的必需最小安装。
+### 新闻与事件检索
 
-2. 准备 API 环境。仅在文件不存在时复制样例，然后编辑 `backend/api/.env`，填入本地 PostgreSQL 连接信息及必要的开发配置；不要提交 `.env`、密码、token 或模型密钥。
+![新闻与事件检索](docs/word/assets_current/globemind_data_search.png)
 
-   ```bash
-   test -e backend/api/.env || cp backend/api/.env.example backend/api/.env
-   ```
+### L3 大事件脉络图谱
 
-3. 在一个终端从 `backend` 目录启动 API：
+![L3 大事件脉络图谱](docs/word/assets_current/globemind_story_graph.png)
 
-   ```bash
-   cd backend
-   PYTHONDONTWRITEBYTECODE=1 python -B -m uvicorn api.main:app --reload --host 127.0.0.1 --port 8088
-   ```
+### 数据助手
 
-   API 启动会读取环境配置并检查数据库可用性；数据库或必需 schema 未准备好时，服务不会变成一个“假可用”的完整后端。
+![数据助手](docs/word/assets_current/globemind_data_assistant.png)
 
-4. 在另一个终端从仓库根目录启动主前端：
+截图用于展示产品交互和研究工作流，不代表截图中的数据量、实时性或模型结果已经在当前环境完成生产验收。
 
-   ```bash
-   npm --prefix frontend/vue_project run dev:main
-   ```
+</details>
 
-   `npm --prefix frontend/vue_project run dev` 是同一主站开发入口，`dev:main` 作为兼容别名保留。按前端环境样例设置 API 代理（通常指向 `http://127.0.0.1:8088`）。如果只是开发没有后端，可明确使用前端 mock；mock 不代表后端或 AI 管线已工作。
+## 系统架构 Architecture
 
-## 测试与质量门禁
+```mermaid
+flowchart LR
+    User[研究人员 / 开发者] --> Web[Vue 主站]
+    User --> Finance[React 金融终端]
+    Web --> API[FastAPI API]
+    Finance --> API
+    API --> Features[业务 Features]
+    Features --> DB[(PostgreSQL)]
+    Features --> Vector[(Milvus / 向量检索)]
+    Features --> Models[LLM / Embedding / NLP 服务]
+    Scripts[受控脚本入口] --> Pipeline[Core Pipeline]
+    Pipeline --> DB
+    Pipeline --> Models
+    Registry[Feature Registry] -.约束公共入口.-> Features
+    Quality[Quality Gate] -.检查依赖边界.-> API
+    Quality -.检查依赖边界.-> Web
+```
 
-在仓库根目录、已激活 Python 3.11 虚拟环境中运行：
+代码依赖遵循以下方向：
+
+```text
+后端：composition root → feature → domain / platform
+前端：application shell → feature public API → shared workspace
+管线：scripts entrypoint → core_pipeline
+```
+
+当前已经通过 feature registry 和 CI 固定公共边界，但旧 `routes/services/views`
+兼容层仍在逐步迁移。不要把目标架构误认为所有内部迁移已经完成。详细现状见
+[模块边界与迁移地图](docs/architecture/module-map.md)和
+[Feature Registry 说明](docs/architecture/feature-registry.md)。
+
+## 仓库结构 Repository map
+
+| 路径 | 职责 | 从这里继续阅读 |
+| --- | --- | --- |
+| `backend/api/` | FastAPI、身份、搜索、助手、治理和业务 API | [API 说明](backend/api/README.md) |
+| `backend/agentic_rag/` | 检索、涉华分析、事件/故事处理和模型适配 | [Agentic RAG](backend/agentic_rag/README.md) |
+| `backend/ai_search/` | AI Search 独立边界与兼容入口 | [AI Search](backend/ai_search/README.md) |
+| `backend/tests/` | 单元、契约、安全、架构和集成边界测试 | [后端总览](backend/README.md) |
+| `frontend/vue_project/` | Vue 3/Vite 主站 | [主前端说明](frontend/vue_project/README.md) |
+| `frontend/financial-terminal/` | React 金融终端 | [金融终端说明](frontend/financial-terminal/README.md) |
+| `frontend/shared/` | 前端 workspace 间共享的类型和工具 | [前端总览](frontend/README.md) |
+| `core_pipeline/` | 事件抽取、共指聚类和实体规范化算法 | [Pipeline 说明](core_pipeline/README.md) |
+| `scripts/` | 数据、评估、审计和维护命令入口 | [脚本分类索引](scripts/README.md) |
+| `config/` | 配置导航、环境变量目录和角色样例 | [配置说明](config/README.md) |
+| `data/` | 受版本控制的样例、研究数据和数据清单 | [数据边界](data/README.md) |
+| `deploy/` | 构建、候选验证、发布和运行控制工具 | [部署边界](deploy/README.md) |
+| `ops/` | Feature、运行时和发布事实清单 | [运维清单](ops/README.md) |
+| `quality/` | CI 预算、边界和 ratchet 基线 | [质量契约](quality/README.md) |
+| `docs/` | 当前开发、架构、运维参考与历史证据 | [文档索引](docs/README.md) |
+| `remotion-edit/` | 独立视频演示编辑工具 | [Remotion 说明](remotion-edit/README.md) |
+
+## 快速开始 Quick start
+
+### 前置条件
+
+- Git；
+- Python 3.11；
+- Node.js 22 与 npm；
+- 开发 API 时需要本地 PostgreSQL；
+- 模型和向量路径按目标功能另行准备，不是前端开发的必需条件。
+
+### 1. 获取代码并安装开发依赖
 
 ```bash
-# Python 测试（配置见 pyproject.toml，默认收集 backend/tests）
-PYTHONDONTWRITEBYTECODE=1 python -B -m pytest -q
+git clone https://github.com/heroday11/globemind.git
+cd globemind
 
-# 所有前端 workspace 的 lint、类型和测试，以及组合生产构建
+python3.11 -m venv .venv
+. .venv/bin/activate
+PYTHONDONTWRITEBYTECODE=1 python -B -m pip install -r requirements-dev.txt
+
+npm ci
+```
+
+也可以使用仓库入口：
+
+```bash
+make install-python
+make install-web
+```
+
+根目录 `requirements.txt` 包含较重的模型和离线分析依赖。仅开发 Web/API 时不要默认安装它；进入相应 AI 或 pipeline 任务后，再阅读模块文档并选择对应依赖。
+
+### 2. 只运行主前端
+
+```bash
+test -e frontend/vue_project/.env.local || \
+  cp frontend/vue_project/.env.example frontend/vue_project/.env.local
+npm run dev:web
+```
+
+根据 `.env.example` 设置 `VITE_API_PROXY_TARGET`。如果明确启用 mock，只能用于界面开发，不表示后端或 AI 管线已经可用。
+
+### 3. 运行本地 API
+
+先准备隔离的本地 PostgreSQL 和 API 配置：
+
+```bash
+test -e backend/api/.env || cp backend/api/.env.example backend/api/.env
+# 编辑 backend/api/.env，只填写本地开发配置，不要使用生产凭据
+
+make dev-api
+```
+
+默认开发地址为 `http://127.0.0.1:8088`。数据库或必要 schema 不可用时，API 会失败关闭，不会伪装成完整可用状态。
+
+### 4. 验证开发环境
+
+```bash
+# Python 与前端离线测试
+make test
+
+# 完整受控质量门禁
+make quality
+```
+
+也可以分开运行：
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python -B -m pytest -q
 npm run lint
 npm run typecheck
 npm test
 npm run build
-
-# 仓库当前受控门禁（含已纳入基线的 Python Ruff 目标）
-PYTHONDONTWRITEBYTECODE=1 PYTHON_BIN=python deploy/run_quality_gate.sh
 ```
 
-当前 Python lint 采用受控目标清单逐步扩展；全仓历史代码尚未达到一次性全量 Ruff 清零。部分测试带有 `integration`、`live_db`、`gpu` 或 `slow` 标记，需要额外服务、数据或硬件；不要为了让门禁变绿而跳过其前置条件。涉及发布、运行时清单、浏览器 smoke 或候选环境的检查，先阅读 [`docs/operations/`](docs/operations/) 中对应 runbook。质量门禁通过也不等于真实数据覆盖、模型准确率、许可或生产发布已经批准。
+带 `integration`、`live_db`、`gpu` 或 `slow` 标记的测试需要额外服务、数据或硬件。普通贡献不应连接生产数据库，也不要为了让门禁通过而删除或弱化这些边界。
 
-## 文档导航
+## 新人接手指南 Developer onboarding
 
-- 开发者入口与文档分类：[`docs/README.md`](docs/README.md)
-- 架构模块图：[`docs/architecture/module-map.md`](docs/architecture/module-map.md)
-- 开发整理路线：[`docs/DEVELOPMENT_PLAN.md`](docs/DEVELOPMENT_PLAN.md)
-- API/运行时配置：[`config/runtime/README.md`](config/runtime/README.md)
-- Python 运行时：[`docs/operations/PYTHON_RUNTIME.md`](docs/operations/PYTHON_RUNTIME.md)
-- 发布边界：[`docs/operations/RELEASES.md`](docs/operations/RELEASES.md)
-- 运行控制：[`docs/operations/RUNTIME_CONTROL.md`](docs/operations/RUNTIME_CONTROL.md)
-- 安全贡献与漏洞报告：[`SECURITY.md`](SECURITY.md)
-- 历史 CLI 说明：[`docs/archive/README_CLI.md`](docs/archive/README_CLI.md)（仅归档，不是当前入口）
-- 配置导航：[`config/README.md`](config/README.md)
-- 本地运行日志边界：[`logs/README.md`](logs/README.md)
-- GitHub 协作控制：[`.github/README.md`](.github/README.md)
-- Remotion 演示工具：[`remotion-edit/README.md`](remotion-edit/README.md)
+如果你第一次接触 GlobeMind，建议按任务而不是按文件数量阅读：
 
-## 生产边界
+| 你准备做什么 | 建议阅读顺序 | 第一个验证命令 |
+| --- | --- | --- |
+| 了解产品和当前状态 | 本页 → [文档索引](docs/README.md) → [持续改进总控](docs/GLOBEMIND_CONTINUOUS_IMPROVEMENT_MASTER_20260809.md) | `make quality` |
+| 修改 Vue 主站 | [前端总览](frontend/README.md) → [Vue README](frontend/vue_project/README.md) → 对应 `features/*/index.js` | `npm run test:web` |
+| 修改金融终端 | [金融终端 README](frontend/financial-terminal/README.md) | `npm run test:financial` |
+| 修改 API/业务功能 | [后端总览](backend/README.md) → [API README](backend/api/README.md) → [模块地图](docs/architecture/module-map.md) | `make test-python` |
+| 修改事件聚类或离线算法 | [Core Pipeline](core_pipeline/README.md) → [L1 Pipeline](docs/L1_MAIN_PIPELINE.md) | 运行目标模块测试，不启动长管线 |
+| 修改配置或数据库边界 | [配置导航](config/README.md) → [运行时配置](config/runtime/README.md) → [数据库角色](docs/operations/DATABASE_RUNTIME_ROLES.md) | `make quality` |
+| 修改发布或运行工具 | [AGENTS.md](AGENTS.md) → [Deploy README](deploy/README.md) → [发布手册](docs/operations/RELEASES.md) | 仅运行文档允许的离线验证 |
 
-生产 release 是不可随意修改的证据和部署边界。不得运行或导入 `/root/data/releases/globemind/current`、任何版本化 release、`previous` 或 `rejected` 中的 Python，也不得把 release 的 `backend` 加入 `PYTHONPATH`。发布相关工作必须在源码仓库或隔离 staging 副本中完成，并遵循 [`AGENTS.md`](AGENTS.md) 和 [`docs/operations/RELEASES.md`](docs/operations/RELEASES.md) 的校验、原子提升和回滚要求。
+开发某个业务 feature 时遵循以下规则：
 
-不要依据 PID 文件或命令名操作服务，不要在没有 checkpoint、回放证明、回滚方案和明确维护步骤时停止、重启、接管或迁移长管线。开发者快速开始不授权任何生产操作。
+1. 在 [`ops/features/registry.json`](ops/features/registry.json) 确认 owner、公共入口、路由、页面和契约测试。
+2. 后端跨 feature 只导入 `backend/api/features/<feature>/__init__.py` 暴露的接口。
+3. 前端跨 feature 只导入对应 `features/<feature>/index.js` 公共入口。
+4. 不在业务模块直接读取环境变量、创建全局数据库连接或依赖脚本入口。
+5. 修改行为时同步更新契约测试和相应模块文档。
+
+## 开发状态 Project status
+
+| 范围 | 状态 | 说明 |
+| --- | --- | --- |
+| Vue 主站与 FastAPI | 活跃开发 | 可以独立安装、测试；完整页面依赖本地数据库/API |
+| Feature 公共边界 | 已验证 | Registry、公共入口和导入门禁由 CI 检查 |
+| 内部模块迁移 | 持续进行 | 旧 route/service/view 兼容层尚未全部移除 |
+| Agentic RAG 与模型能力 | 条件可用 | 需要模型、权重、计算资源、Milvus/LLM 配置 |
+| 数据与生产可用性 | 需单独验收 | 测试通过不代表来源授权、数据新鲜度或模型质量已验收 |
+| 开源许可 | 待决定 | 外部使用或再分发前阅读 [LICENSE_DECISION.md](LICENSE_DECISION.md) |
+
+## 文档导航 Documentation
+
+### 开发与协作
+
+- [完整文档索引](docs/README.md)
+- [贡献指南](CONTRIBUTING.md)
+- [自动化与生产安全规则](AGENTS.md)
+- [安全政策](SECURITY.md)
+- [开发整理与模块化路线](docs/DEVELOPMENT_PLAN.md)
+- [GitHub 协作配置](.github/README.md)
+
+### 架构与契约
+
+- [模块边界与迁移地图](docs/architecture/module-map.md)
+- [Feature Registry 说明](docs/architecture/feature-registry.md)
+- [仓库治理契约](docs/REPOSITORY_GOVERNANCE.md)
+- [数据库结构参考](docs/DB_SCHEMA_GLOBEMIND.md)
+- [新闻字段映射](docs/NEWS_TABLE_FIELD_MAPPING.md)
+
+### 运行与发布
+
+- [Python 运行时](docs/operations/PYTHON_RUNTIME.md)
+- [发布、验证与回滚](docs/operations/RELEASES.md)
+- [运行控制](docs/operations/RUNTIME_CONTROL.md)
+- [运行服务目录](docs/operations/RUNTIME_SERVICE_CATALOG.md)
+- [持续审计](docs/operations/CONTINUOUS_AUDIT.md)
+
+历史 handoff、benchmark、实验和旧 CLI 文档保留为证据，不是当前执行入口。请从 [docs/README.md](docs/README.md) 的 Current、Architecture、Operations 和 Archive 分类进入。
+
+## 参与开发 Contributing
+
+欢迎提交问题和改进，但请先阅读 [CONTRIBUTING.md](CONTRIBUTING.md)：
+
+1. 从 Issue 或明确的问题范围开始；
+2. 保持提交单一目的，并说明不在范围内的事项；
+3. 新增 API、数据或模型时同时补充契约、权限、来源和测试；
+4. 提交前运行相关测试以及 `make quality`；
+5. 不提交 `.env`、数据库导出、token、模型密钥、日志或本地运行状态。
+
+GitHub 已配置 CODEOWNERS、Issue 模板、Pull Request 模板、Dependabot 和统一质量门禁。
+
+## 安全与生产边界 Security
+
+生产 release 是不可修改的证据边界。开发者不得运行或导入生产 release、`previous`、`rejected` 或版本化发布目录中的 Python，不得把发布目录加入 `PYTHONPATH`，也不得根据 PID 文件或命令名猜测并操作服务。
+
+数据库迁移、发布提升、运行控制和长时间 pipeline 操作必须遵循 [AGENTS.md](AGENTS.md) 及对应 [operations runbook](docs/operations/)。普通开发命令不授权访问生产数据库、停止服务或启动抓取和长管线。
+
+发现安全问题时，请按 [SECURITY.md](SECURITY.md) 私下报告，不要在公开 Issue 中提交密钥、个人数据或可利用细节。
+
+## License
+
+项目许可证尚未确定。代码、数据集、模型、媒体和文档可能具有不同的权利边界；在复制、分发或商业使用前，请阅读 [LICENSE_DECISION.md](LICENSE_DECISION.md)。仓库公开可见不等于授予开源许可。
