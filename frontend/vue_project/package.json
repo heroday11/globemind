@@ -7,13 +7,11 @@
     "node": "^20.19.0 || >=22.12.0"
   },
   "scripts": {
-    "dev": "node scripts/dev-all.mjs",
+    "dev": "vite",
     "dev:main": "vite",
-    "dev:knowledge-graph": "npm run dev --prefix ../knowledge_graph_backup",
     "build:financial-terminal": "npm run build --prefix ../financial-terminal",
     "build": "node scripts/build-release.mjs",
     "build:main-only": "VITE_BUILD_ID=${VITE_BUILD_ID:-local} vite build",
-    "build:knowledge-graph": "npm run build --prefix ../knowledge_graph_backup",
     "preview": "vite preview",
     "test:assistant": "node --test tests/assistant-feature.test.mjs",
     "test:display-preferences": "node --test tests/display-preferences-feature.test.mjs",
@@ -68,10 +66,5 @@
     "vite": "^7.1.7",
     "vite-plugin-vue-devtools": "^8.0.5",
     "whatwg-fetch": "^3.6.20"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild"
-    ]
   }
 }

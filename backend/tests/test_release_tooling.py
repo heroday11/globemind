@@ -324,8 +324,8 @@ def test_quality_gate_supports_independent_tool_python_for_ruff(tmp_path: Path) 
     _write(
         tool_python,
         "#!/bin/sh\n"
-        "[ \"${1:-}\" = -m ] && [ \"${2:-}\" = ruff ] || exit 88\n"
-        "shift 2\n"
+        "[ \"${1:-}\" = -B ] && [ \"${2:-}\" = -m ] && [ \"${3:-}\" = ruff ] || exit 88\n"
+        "shift 3\n"
         "if [ \"${1:-}\" = --version ]; then echo 'ruff 8.8.8'; fi\n",
     )
     tool_python.chmod(0o755)
@@ -342,7 +342,7 @@ def test_quality_gate_supports_independent_tool_python_for_ruff(tmp_path: Path) 
     recorded = payload["tools"]["ruff_command"]
     assert payload["tools"]["ruff"] == "ruff 8.8.8"
     assert recorded["selection"] == "TOOL_PYTHON_BIN"
-    assert recorded["argv"][:3] == [str(tool_python.resolve()), "-m", "ruff"]
+    assert recorded["argv"][:4] == [str(tool_python.resolve()), "-B", "-m", "ruff"]
 
 
 def test_quality_gate_keeps_python_bin_ruff_fallback_compatible(tmp_path: Path) -> None:
@@ -353,8 +353,8 @@ def test_quality_gate_keeps_python_bin_ruff_fallback_compatible(tmp_path: Path) 
         f"#!{sys.executable}\n"
         "import os\n"
         "import sys\n"
-        "if sys.argv[1:3] == ['-m', 'ruff']:\n"
-        "    if sys.argv[3:4] == ['--version']:\n"
+        "if sys.argv[1:4] == ['-B', '-m', 'ruff']:\n"
+        "    if sys.argv[4:5] == ['--version']:\n"
         "        print('ruff 7.7.7')\n"
         "    raise SystemExit(0)\n"
         f"os.execv({sys.executable!r}, [{sys.executable!r}, *sys.argv[1:]])\n",
@@ -377,7 +377,7 @@ def test_quality_gate_keeps_python_bin_ruff_fallback_compatible(tmp_path: Path) 
     recorded = payload["tools"]["ruff_command"]
     assert payload["tools"]["ruff"] == "ruff 7.7.7"
     assert recorded["selection"] == "PYTHON_BIN"
-    assert recorded["argv"][:3] == [str(app_python.resolve()), "-m", "ruff"]
+    assert recorded["argv"][:4] == [str(app_python.resolve()), "-B", "-m", "ruff"]
 
 
 def test_quality_gate_fails_closed_when_selected_ruff_is_missing(tmp_path: Path) -> None:
@@ -424,11 +424,11 @@ def test_quality_gate_runs_database_consumer_inventory_before_secret_scan() -> N
     source = (DEPLOY_DIR / "run_quality_gate.sh").read_text(encoding="utf-8")
 
     inventory = (
-        'run_step database_consumers "$PYTHON_BIN" '
+        'run_step database_consumers "$PYTHON_BIN" -B '
         "scripts/ci/check_database_consumers.py"
     )
     secret_scan = (
-        'run_step source_secrets "$PYTHON_BIN" deploy/release_tool.py source-secret-scan'
+        'run_step source_secrets "$PYTHON_BIN" -B deploy/release_tool.py source-secret-scan'
     )
     assert inventory in source
     assert secret_scan in source
@@ -441,10 +441,10 @@ def test_quality_gate_validates_feature_registry_before_secret_scan() -> None:
     source = (DEPLOY_DIR / "run_quality_gate.sh").read_text(encoding="utf-8")
 
     registry = (
-        'run_step feature_registry "$PYTHON_BIN" scripts/ci/check_feature_registry.py'
+        'run_step feature_registry "$PYTHON_BIN" -B scripts/ci/check_feature_registry.py'
     )
     secret_scan = (
-        'run_step source_secrets "$PYTHON_BIN" deploy/release_tool.py source-secret-scan'
+        'run_step source_secrets "$PYTHON_BIN" -B deploy/release_tool.py source-secret-scan'
     )
     assert registry in source
     assert source.index(registry) < source.index(secret_scan)

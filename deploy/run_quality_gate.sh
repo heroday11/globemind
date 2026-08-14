@@ -1,6 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 umask 027
+export PYTHONDONTWRITEBYTECODE=1
 
 PROJECT_DIR="${PROJECT_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 PYTHON_BIN="${PYTHON_BIN:-python3}"
@@ -66,12 +67,12 @@ elif [ -n "$TOOL_PYTHON_BIN" ]; then
     ruff_tool_source="TOOL_PYTHON_BIN"
     ruff_tool_mode="python_module"
     ruff_tool_executable="$(resolve_executable "$TOOL_PYTHON_BIN")"
-    ruff_command=("$ruff_tool_executable" -m ruff)
+    ruff_command=("$ruff_tool_executable" -B -m ruff)
 else
     ruff_tool_source="PYTHON_BIN"
     ruff_tool_mode="python_module"
     ruff_tool_executable="$(resolve_executable "$PYTHON_BIN")"
-    ruff_command=("$ruff_tool_executable" -m ruff)
+    ruff_command=("$ruff_tool_executable" -B -m ruff)
 fi
 
 ruff_targets=(
@@ -160,7 +161,7 @@ if [[ "$project_major" =~ ^[0-9]+$ ]] && [ "$((10#$project_major))" -ge 1 ]; the
     feature_registry_args+=(--release-ready)
     feature_registry_mode="release-ready"
 fi
-"$PYTHON_BIN" deploy/release_tool.py snapshot \
+"$PYTHON_BIN" -B deploy/release_tool.py snapshot \
     --project "$PROJECT_DIR" --output "$work_dir/source-before.json" >/dev/null
 run_step config env PYTHON_BIN="$PYTHON_BIN" bash -c '
     set -euo pipefail
@@ -168,24 +169,24 @@ run_step config env PYTHON_BIN="$PYTHON_BIN" bash -c '
     [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+([+-][0-9A-Za-z.-]+)?$ ]]
     bash -n deploy/create_release.sh deploy/build_frontend_release.sh deploy/start_web_prod.sh deploy/run_quality_gate.sh
     node --check deploy/check_frontend_budgets.mjs
-    "$PYTHON_BIN" deploy/verify_release.py --help >/dev/null
+    "$PYTHON_BIN" -B deploy/verify_release.py --help >/dev/null
 '
 run_step ruff_tool verify_ruff_tool
 run_step release_lint "${ruff_command[@]}" check "${ruff_targets[@]}"
-run_step import_boundaries "$PYTHON_BIN" scripts/ci/check_import_boundaries.py
-run_step feature_registry "$PYTHON_BIN" scripts/ci/check_feature_registry.py \
+run_step import_boundaries "$PYTHON_BIN" -B scripts/ci/check_import_boundaries.py
+run_step feature_registry "$PYTHON_BIN" -B scripts/ci/check_feature_registry.py \
     "${feature_registry_args[@]}"
-run_step runtime_config "$PYTHON_BIN" scripts/ci/check_runtime_config_manifest.py
-run_step database_consumers "$PYTHON_BIN" scripts/ci/check_database_consumers.py
-run_step content_bundles "$PYTHON_BIN" deploy/release_tool.py content-bundles \
+run_step runtime_config "$PYTHON_BIN" -B scripts/ci/check_runtime_config_manifest.py
+run_step database_consumers "$PYTHON_BIN" -B scripts/ci/check_database_consumers.py
+run_step content_bundles "$PYTHON_BIN" -B deploy/release_tool.py content-bundles \
     --project "$PROJECT_DIR" --output "$work_dir/content-bundles.json"
-run_step source_secrets "$PYTHON_BIN" deploy/release_tool.py source-secret-scan \
+run_step source_secrets "$PYTHON_BIN" -B deploy/release_tool.py source-secret-scan \
     --project "$PROJECT_DIR" --output "$work_dir/source-secrets.json"
 
 if [ "$SKIP_TESTS" -eq 0 ]; then
     read -r -a pytest_extra <<< "${QUALITY_PYTEST_ARGS:-}"
     run_step pytest env APP_ENV=test GLOBEMIND_TEST_ISOLATION=1 \
-        "$PYTHON_BIN" -m pytest -q -m "not integration and not live_db and not gpu and not slow" \
+        "$PYTHON_BIN" -B -m pytest -q -m "not integration and not live_db and not gpu and not slow" \
         --junitxml="$pytest_xml" "${pytest_extra[@]}"
 else
     printf 'pytest\t0\t0\n' >> "$steps_file"
@@ -201,7 +202,7 @@ else
     printf 'frontend_ratchet\t0\t0\n' >> "$steps_file"
 fi
 
-"$PYTHON_BIN" deploy/release_tool.py snapshot \
+"$PYTHON_BIN" -B deploy/release_tool.py snapshot \
     --project "$PROJECT_DIR" --output "$work_dir/source-after.json" >/dev/null
 run_step source_stability cmp "$work_dir/source-before.json" "$work_dir/source-after.json"
 
@@ -214,7 +215,7 @@ RUFF_TOOL_SOURCE="$ruff_tool_source" RUFF_TOOL_MODE="$ruff_tool_mode" \
 RUFF_TOOL_EXECUTABLE="$ruff_tool_executable" RUFF_VERSION="$ruff_version_output" \
 PROJECT_VERSION="$project_version" FEATURE_REGISTRY_MODE="$feature_registry_mode" \
 RUFF_TARGETS_FILE="$ruff_targets_file" \
-"$PYTHON_BIN" - <<'PY'
+"$PYTHON_BIN" -B - <<'PY'
 import json
 import os
 import platform
@@ -267,7 +268,7 @@ source_before = json.loads(Path(os.environ["SOURCE_BEFORE"]).read_text(encoding=
 source_after = json.loads(Path(os.environ["SOURCE_AFTER"]).read_text(encoding="utf-8"))
 ruff_command = [os.environ["RUFF_TOOL_EXECUTABLE"]]
 if os.environ["RUFF_TOOL_MODE"] == "python_module":
-    ruff_command.extend(["-m", "ruff"])
+    ruff_command.extend(["-B", "-m", "ruff"])
 ruff_targets = Path(os.environ["RUFF_TARGETS_FILE"]).read_text(encoding="utf-8").splitlines()
 ruff_command.extend(["check", *ruff_targets])
 
@@ -289,7 +290,7 @@ payload = {
     "source_unchanged": source_before == source_after,
     "tools": {
         "python": platform.python_version(),
-        "pytest": version([os.environ.get("PYTHON_BIN", "python3"), "-m", "pytest", "--version"]),
+        "pytest": version([os.environ.get("PYTHON_BIN", "python3"), "-B", "-m", "pytest", "--version"]),
         "ruff": os.environ.get("RUFF_VERSION") or "unavailable",
         "ruff_command": {
             "argv": ruff_command,

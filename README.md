@@ -1,172 +1,115 @@
-# GlobeMind — 地缘情报与舆情分析系统
+# GlobeMind
 
-从多语言新闻中提取地缘政治事件，通过 **L1 事件共指聚类 → L2 叙事线聚合** 形成结构化事件体系，并构建**四维涉华指数（CCI）**进行定量舆情分析。
+GlobeMind 是一个面向全球新闻研究的地缘情报与舆情分析平台。它把新闻资料整理为可检索的事件、事件共指簇和叙事线，并提供涉华分析、证据链和研究型 API/前端能力。
 
-## 管线概览
+仓库同时包含在线应用、离线分析模块和数据治理/运维工具。代码存在不等于真实数据、模型质量或生产发布已经验收；没有数据库、模型权重、外部服务和相应配置时，完整 AI 管线不能直接启动。
 
-```
-新闻语料 → v11 事件提取 (Qwen2.5-7B)
-                  ↓
-        L1 事件共指聚类 (BGE-M3 + FAISS + UnionFind)
-                  ↓
-            LLM 簇命名 → 写入 DB
-                  ↓
-          L2 Micro-Story 叙事线聚合
-                  ↓
-     ┌──────────────────────────────────┐
-     ↓                                  ↓
-  事件体系 (event_coref)        涉华分析管线
-                              BGE-M3 + LR 涉华分类
-                              GLiNER 实体 + LLM 情感/主题/框架
-                              四维涉华指数 (CCI)
-```
+## 当前能力边界
 
-## L1 事件共指聚类
+- `backend/api` 提供 FastAPI 应用，入口为 `api.main:app`。
+- `frontend/vue_project` 是当前主 Vue/Vite 前端；`frontend/financial-terminal` 是另一套前端，`frontend/knowledge_graph_backup` 仅作为知识图谱兼容占位/备份目录保留。
+- `backend/agentic_rag` 包含涉华分析、检索、情感/实体处理、CCI 聚合及事件/故事线相关服务。
+- `core_pipeline` 包含事件抽取与 L1 共指聚类等研究算法。
+- 需要 PostgreSQL 才能提供完整 API 数据访问；部分检索/聚类路径还需要 Milvus 或本地替代配置。
+- vLLM、嵌入模型、GLiNER、情感模型和外部 LLM/API 均需单独安装、下载、授权并配置。本仓库不把它们伪装成“零配置可用”的完整 AI 管线。
 
-**核心文件：** `core_pipeline/event_coref_cluster.py`
+## Monorepo 结构
 
-输入为 v11 提取的地缘政治事件（9 类），基于 BGE-M3 1024 维嵌入进行相似度聚类：
+| 路径 | 职责 |
+| --- | --- |
+| `backend/api/` | FastAPI 应用、路由、认证、数据访问与服务层；开发入口 `api.main:app` |
+| `backend/agentic_rag/` | 检索与涉华分析服务、事件/故事线处理、模型适配和 CCI |
+| `backend/tests/` | Python 单元、契约、安全、架构和集成边界测试 |
+| `core_pipeline/` | 事件抽取、事件共指聚类、实体规范化等离线算法 |
+| `scripts/` | 数据质量、审计、导入、评估和维护脚本；使用前先阅读脚本说明与运行边界 |
+| `frontend/vue_project/` | 当前主 Vue/Vite 应用及其前端测试 |
+| `frontend/financial-terminal/` | 金融终端前端 |
+| `frontend/knowledge_graph_backup/` | 知识图谱兼容占位/备份目录，不是当前独立应用入口 |
+| `frontend/shared/` | 前端共享工具与类型 |
+| `config/` | 应用设置、运行时环境清单和角色配置样例 |
+| `data/` | 研究数据、来源目录和本地工作数据；不要把凭据或生产状态写入其中 |
+| `deploy/` | 候选构建、浏览器 smoke 和运行控制工具；不是日常开发入口 |
+| `docs/` | 当前开发/架构/运维参考与历史证据，见 [`docs/README.md`](docs/README.md) |
 
-1. 文章正文质量过滤（CSS 伪影、导航页、列表页检测）
-2. 按 `event_type` 分区
-3. FAISS 余弦近邻搜索 → mutual NN → 时间窗口（7-14 天）→ 极性检查
-4. 适应性阈值：同实体对 0.75 / 单侧匹配 0.85 / 无共享实体 0.90
-5. UnionFind 连通分量 → overlong 拆分 → impure 拆分
+## 前置条件
 
-**质量指标（~30K 地缘文章）：** ~22K 簇，~15% 非单例，最大簇 ~54 篇
+- Python 3.11；建议使用仓库外或仓库内的隔离虚拟环境。
+- Node.js 22 与 npm。主前端的 `engines` 也接受 Node 20.19+，新开发统一按 Node 22 验证。
+- PostgreSQL 及一个供本地开发使用的数据库和账号。数据库 schema、运行时角色和凭据文件按 [`config/runtime/README.md`](config/runtime/README.md) 与 API 环境样例配置。
+- 若要运行模型或向量路径，还需要相应的 GPU/CPU 资源、模型权重、Milvus（或明确配置的本地替代）以及外部服务凭据。
 
-## L2 Micro-Story
+## 安全的本地快速开始
 
-在 L1 簇之上按时间轴和叙事关联聚合为故事线，供 Obsidian Vault 和前端展示。
+以下只启动本地开发服务，不启动抓取、长时间 AI 管线或生产进程。
 
-## v11 事件提取
+1. 安装依赖并准备本地环境：
 
-**核心文件：** `core_pipeline/event_extract_v11.py`
+   ```bash
+   cd /path/to/globemind
+   python3.11 -m venv .venv
+   . .venv/bin/activate
+   PYTHONDONTWRITEBYTECODE=1 python -B -m pip install -r requirements-dev.txt
+   npm ci --prefix frontend/vue_project
+   ```
 
-通过 Qwen2.5-7B-Instruct-AWQ（vLLM）提取三字段：`event_type` / `initiator` / `target`。
+   需要离线分析/模型路径时，再根据目标模块和资源情况选择性安装根目录 `requirements.txt`；其中包含重量级模型依赖，不是主前端/API 的必需最小安装。
 
-- 两步推理：先判 domain（geopolitical / general_news），再提取字段
-- 19 统一类型（9 地缘 + 10 通用），general_news 时 initiator/target 为 null
-- 输入截取 400 字符，max_tokens=80，支持断点续传 checkpoint
+2. 准备 API 环境。仅在文件不存在时复制样例，然后编辑 `backend/api/.env`，填入本地 PostgreSQL 连接信息及必要的开发配置；不要提交 `.env`、密码、token 或模型密钥。
 
-## 涉华分析管线
+   ```bash
+   test -e backend/api/.env || cp backend/api/.env.example backend/api/.env
+   ```
 
-**核心文件：** `backend/agentic_rag/analysis_service.py`
+3. 在一个终端从 `backend` 目录启动 API：
 
-### 阶段 ①a：涉华评分
+   ```bash
+   cd backend
+   PYTHONDONTWRITEBYTECODE=1 python -B -m uvicorn api.main:app --reload --host 127.0.0.1 --port 8088
+   ```
 
-```
-新闻文本 → BGE-M3 编码 (1024维)
-         → 逻辑回归 P(china|article) (ROC-AUC≈0.88)
-         → 向量锚点余弦相似度兜底
-         → china_related_index ∈ [0,1]
-```
+   API 启动会读取环境配置并检查数据库可用性；数据库或必需 schema 未准备好时，服务不会变成一个“假可用”的完整后端。
 
-闸门：仅 `china_related_index ≥ 0.40` 的文章进入阶段 ①b。
+4. 在另一个终端从仓库根目录启动主前端：
 
-### 阶段 ①b：精细分析
+   ```bash
+   npm --prefix frontend/vue_project run dev:main
+   ```
 
-```
-GLiNER 实体抽取 ──║── LLM 情感/主题/框架
-                     │
-                     ├ sentiment: 正面 / 负面 / 中立
-                     ├ topic: 涉华核心主题（2-4 字）
-                     └ frame: 中国威胁论/经济合作/军事冲突/人权批评
-                             科技竞争/外交互动/国内治理/中立报道
-```
+   `npm --prefix frontend/vue_project run dev` 是同一主站开发入口，`dev:main` 作为兼容别名保留。按前端环境样例设置 API 代理（通常指向 `http://127.0.0.1:8088`）。如果只是开发没有后端，可明确使用前端 mock；mock 不代表后端或 AI 管线已工作。
 
-### 阶段 ②：四维涉华指数 (CCI)
+## 测试与质量门禁
 
-| 维度 | 名称 | 算法 |
-|------|------|------|
-| D1 | 注意力指数 | Σ(china_index) / N × 1000 |
-| D2 | 情感效价 | 加权平均 sentiment（weighted by china_index） |
-| D3 | 不确定性 | 涉华占比的滚动波动率（GPR 方法论） |
-| D4 | 叙事分散度 | 1 - HHI（Herfindahl 逆指数） |
-
-**复合指数：** `CCI = 0.25×D1_norm + 0.25×|D2_norm| + 0.25×D3_norm + 0.25×D4_norm`
-
-所有维度支持按日/周/月聚合，可分解到话题级和框架级。
-
-## 核心技术栈
-
-| 模块 | 技术 |
-|------|------|
-| 事件提取 | Qwen2.5-7B-Instruct-AWQ @ vLLM |
-| 语义嵌入 | BAAI/bge-m3（1024 维） |
-| 事件聚类 | FAISS + sklearn + UnionFind |
-| 涉华分类 | 逻辑回归（基于 BGE 嵌入训练） |
-| 实体抽取 | GLiNER multi-v2.1 |
-| 情感分析 | XLM-R ParlaSent / FinBERT |
-| 数据库 | PostgreSQL（globemind / globemind_news）|
-| 向量库 | Milvus |
-
-## 运行管线
-
-### L1 聚类 + L2 micro-story
+在仓库根目录、已激活 Python 3.11 虚拟环境中运行：
 
 ```bash
-python scripts/run_pipeline.py
+# Python 测试（配置见 pyproject.toml，默认收集 backend/tests）
+PYTHONDONTWRITEBYTECODE=1 python -B -m pytest -q
+
+# 主前端 lint、特性测试和构建
+npm --prefix frontend/vue_project run lint
+npm --prefix frontend/vue_project run test:features
+npm --prefix frontend/vue_project run build:main-only
+
+# 仓库当前受控门禁（含已纳入基线的 Python Ruff 目标）
+PYTHONDONTWRITEBYTECODE=1 PYTHON_BIN=python deploy/run_quality_gate.sh
 ```
 
-### v11 事件提取（240K 采样）
+当前 Python lint 采用受控目标清单逐步扩展；全仓历史代码尚未达到一次性全量 Ruff 清零。部分测试带有 `integration`、`live_db`、`gpu` 或 `slow` 标记，需要额外服务、数据或硬件；不要为了让门禁变绿而跳过其前置条件。涉及发布、运行时清单、浏览器 smoke 或候选环境的检查，先阅读 [`docs/operations/`](docs/operations/) 中对应 runbook。质量门禁通过也不等于真实数据覆盖、模型准确率、许可或生产发布已经批准。
 
-```bash
-python scripts/run_v11_240k.py
-```
+## 文档导航
 
-### 涉华分析全量
+- 开发者入口与文档分类：[`docs/README.md`](docs/README.md)
+- 架构模块图：[`docs/architecture/module-map.md`](docs/architecture/module-map.md)
+- 开发整理路线：[`docs/DEVELOPMENT_PLAN.md`](docs/DEVELOPMENT_PLAN.md)
+- API/运行时配置：[`config/runtime/README.md`](config/runtime/README.md)
+- Python 运行时：[`docs/operations/PYTHON_RUNTIME.md`](docs/operations/PYTHON_RUNTIME.md)
+- 发布边界：[`docs/operations/RELEASES.md`](docs/operations/RELEASES.md)
+- 运行控制：[`docs/operations/RUNTIME_CONTROL.md`](docs/operations/RUNTIME_CONTROL.md)
+- 安全贡献与漏洞报告：[`SECURITY.md`](SECURITY.md)
+- 历史 CLI 说明：[`README_CLI.md`](README_CLI.md)（仅归档，不是当前入口）
 
-```bash
-python -m agentic_rag.analysis_service --stage 1a --max-rows 50000
-python -m agentic_rag.analysis_service --stage 1b
-```
+## 生产边界
 
-### 涉华指数聚合
+生产 release 是不可随意修改的证据和部署边界。不得运行或导入 `/root/data/releases/globemind/current`、任何版本化 release、`previous` 或 `rejected` 中的 Python，也不得把 release 的 `backend` 加入 `PYTHONPATH`。发布相关工作必须在源码仓库或隔离 staging 副本中完成，并遵循 [`AGENTS.md`](AGENTS.md) 和 [`docs/operations/RELEASES.md`](docs/operations/RELEASES.md) 的校验、原子提升和回滚要求。
 
-```bash
-python -m agentic_rag.china_index.aggregator
-```
-
-## 关键脚本
-
-| 文件 | 用途 |
-|------|------|
-| `scripts/run_pipeline.py` | 完整管线（L1+L2） |
-| `scripts/run_v11_240k.py` | 240K 文章 v11 提取 |
-| `scripts/run_v11_cluster.py` | 独立 L1 聚类（从 DB 加载） |
-| `scripts/eval_cluster_quality.py` | 聚类质量评估 |
-| `scripts/eval_cluster_deep.py` | 深层聚类质量评估 |
-| `scripts/eval_layer2_quality.py` | L2 叙事线质量评估 |
-| `scripts/run_llm_naming.py` | LLM 簇命名 |
-
-## 项目结构
-
-```
-core_pipeline/           # 核心聚类算法
-├── event_extract_v11.py       # v11 事件提取
-├── event_coref_cluster.py     # L1 事件共指聚类
-└── union_find.py              # 并查集
-
-backend/agentic_rag/     # 涉华分析后端
-├── analysis_service.py         # 分析管线入口
-├── china_index/                # 四维涉华指数
-│   ├── learned_model.py        # 逻辑回归涉华分类
-│   ├── china_anchors.py        # 向量锚点兜底
-│   └── aggregator/             # 指数聚合
-│       ├── composite.py        # CCI 合成
-│       ├── d1_attention.py     # 注意力指数
-│       ├── d2_polarity.py      # 情感效价
-│       ├── d3_uncertainty.py   # 不确定性指数
-│       └── d4_dispersion.py    # 叙事分散度
-├── pipeline/                   # DB 导入管线
-│   ├── event_coref_loader.py   # L1 写库
-│   └── micro_story_builder.py  # L2 叙事线
-└── db/                         # 数据库层
-
-scripts/                 # 运行脚本
-data/                    # 数据文件/checkpoint
-config/                  # 配置
-frontend/                # Vue / 金融终端前端
-api/ → backend/api       # API 服务（symlink）
-```
+不要依据 PID 文件或命令名操作服务，不要在没有 checkpoint、回放证明、回滚方案和明确维护步骤时停止、重启、接管或迁移长管线。开发者快速开始不授权任何生产操作。

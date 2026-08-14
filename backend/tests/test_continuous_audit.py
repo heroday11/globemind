@@ -36,6 +36,11 @@ def _validate(payload: dict, *, now: datetime = NOW) -> dict:
     )
 
 
+def _expected_report_status(report: dict) -> str:
+    """Reports with findings stay explicit; an empty finding set is a pass."""
+    return "completed_with_findings" if report["findings"] else "passed"
+
+
 def test_checked_in_registry_has_all_130_unique_items_and_honest_statuses() -> None:
     report = continuous_audit.load_and_validate(
         REGISTRY_PATH,
@@ -44,7 +49,7 @@ def test_checked_in_registry_has_all_130_unique_items_and_honest_statuses() -> N
     )
 
     assert report["integrity_passed"] is True
-    assert report["status"] == "completed_with_findings"
+    assert report["status"] == _expected_report_status(report)
     assert report["checks"]["registry_completeness"] == {
         "status": "passed",
         "expected_count": 130,
@@ -351,12 +356,17 @@ def test_cli_writes_json_and_markdown_to_a_new_external_directory(tmp_path: Path
 
     assert result.returncode == 0, result.stderr
     summary = json.loads(result.stdout)
+    expected_report = continuous_audit.load_and_validate(
+        REGISTRY_PATH,
+        repository_root=PROJECT_ROOT,
+        now=NOW,
+    )
     assert summary == {
         "automation_state": "configured_discovery_only",
         "items": 130,
         "json": "continuous-audit.json",
         "markdown": "continuous-audit.md",
-        "status": "completed_with_findings",
+        "status": _expected_report_status(expected_report),
     }
     payload = json.loads(
         (output_dir / "continuous-audit.json").read_text(encoding="utf-8")

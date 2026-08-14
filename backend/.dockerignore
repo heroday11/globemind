@@ -1,0 +1,69 @@
+# The build context is backend/ (run: docker build -f api/Dockerfile .).
+# Keep the context closed by default: the image only needs these three source
+# trees and the API requirements file.
+*
+!api/
+!api/**
+!agentic_rag/
+!agentic_rag/**
+!cppt/
+!cppt/**
+
+# Secrets are never valid image inputs. These rules intentionally come after
+# the source allow-list so they cannot be re-included by a later broad rule.
+.env
+.env.*
+**/.env
+**/.env.*
+api/.env
+agentic_rag/.env
+cppt/.env
+cppt/ppt-master/.env
+
+# Databases and other mutable data stores.
+**/*.db
+**/*.sqlite
+**/*.sqlite3
+**/*.sqlite-shm
+**/*.sqlite-wal
+**/data/
+**/data/**
+
+# Logs, interpreter/test caches, and local caches.
+**/*.log
+**/logs/
+**/logs/**
+**/__pycache__/
+**/__pycache__/**
+**/.pytest_cache/
+**/.pytest_cache/**
+**/.mypy_cache/
+**/.mypy_cache/**
+**/.ruff_cache/
+**/.ruff_cache/**
+**/.cache/
+**/.cache/**
+
+# Model weights, checkpoints, and generated/runtime output. Keep source
+# packages named models/export in the image; exclude artifact formats instead.
+**/checkpoints/
+**/checkpoints/**
+**/runs/
+**/runs/**
+**/outputs/
+**/outputs/**
+**/var/
+**/var/**
+**/runtime/
+**/runtime/**
+**/obsidian_vault/
+**/obsidian_vault/**
+**/*.bin
+**/*.gguf
+**/*.onnx
+**/*.pt
+**/*.pth
+**/*.pkl
+**/*.safetensors
+**/*.npy
+**/*.npz

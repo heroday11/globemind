@@ -8,6 +8,11 @@ __pycache__/
 dist/
 build/
 .eggs/
+.venv/
+venv/
+.coverage
+coverage.xml
+htmlcov/
 
 # ── Environment ──
 .env
@@ -59,6 +64,8 @@ desktop.ini
 # ── Node ──
 node_modules/
 dist/
+npm-debug.log*
+pnpm-debug.log*
 
 # ── PPT templates (third-party, not core code) ──
 backend/cppt/
