@@ -6,6 +6,7 @@ import os
 import re
 import shutil
 import subprocess
+import sys
 from pathlib import Path
 
 import pytest
@@ -16,7 +17,7 @@ ROLE_LOCK = PROJECT_ROOT / "requirements" / "roles" / "web.lock"
 LOCK_METADATA = PROJECT_ROOT / "requirements" / "roles" / "web.lock.metadata.json"
 BUILD_SCRIPT = PROJECT_ROOT / "deploy" / "build_python_runtime.sh"
 VERSION_FILE = PROJECT_ROOT / "VERSION"
-RUNTIME_DIR = Path("/root/data/python-runtimes/globemind-web/0.9.3")
+PROMOTED_RUNTIME = os.environ.get("GLOBEMIND_TEST_PROMOTED_RUNTIME", "").strip()
 
 
 def _sha256(path: Path) -> str:
@@ -116,6 +117,7 @@ def _source_builder(
     runtime_version: str | None = None,
 ) -> subprocess.CompletedProcess[str]:
     environment = os.environ.copy()
+    environment["SOURCE_PYTHON"] = sys.executable
     environment.pop("RUNTIME_VERSION", None)
     if runtime_version is not None:
         environment["RUNTIME_VERSION"] = runtime_version
@@ -304,6 +306,7 @@ def _run_link_validation(runtime: Path) -> subprocess.CompletedProcess[str]:
         text=True,
         capture_output=True,
         cwd=PROJECT_ROOT,
+        env={**os.environ, "SOURCE_PYTHON": sys.executable},
     )
 
 
@@ -337,11 +340,13 @@ def test_runtime_link_gate_rejects_unsafe_links(tmp_path: Path, link_kind: str) 
 
 
 def test_promoted_runtime_inventory_when_present() -> None:
-    if not RUNTIME_DIR.exists():
-        return
-    inventory_path = RUNTIME_DIR / "inventory" / "runtime.json"
-    freeze_path = RUNTIME_DIR / "inventory" / "pip-freeze.txt"
-    closure_path = RUNTIME_DIR / "inventory" / "import-closure.json"
+    if not PROMOTED_RUNTIME:
+        pytest.skip("set GLOBEMIND_TEST_PROMOTED_RUNTIME for external runtime evidence")
+    runtime_dir = Path(PROMOTED_RUNTIME)
+    assert runtime_dir.is_absolute()
+    inventory_path = runtime_dir / "inventory" / "runtime.json"
+    freeze_path = runtime_dir / "inventory" / "pip-freeze.txt"
+    closure_path = runtime_dir / "inventory" / "import-closure.json"
     assert inventory_path.is_file()
     inventory = json.loads(inventory_path.read_text(encoding="utf-8"))
     closure = json.loads(closure_path.read_text(encoding="utf-8"))
@@ -359,8 +364,8 @@ def test_promoted_runtime_inventory_when_present() -> None:
     )
     writable = [
         path
-        for path in RUNTIME_DIR.rglob("*")
+        for path in runtime_dir.rglob("*")
         if not path.is_symlink() and path.stat().st_mode & 0o022
     ]
     assert writable == []
-    assert os.access(RUNTIME_DIR / "bin" / "python", os.X_OK)
+    assert os.access(runtime_dir / "bin" / "python", os.X_OK)

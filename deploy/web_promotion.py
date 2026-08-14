@@ -162,14 +162,21 @@ def _read_bounded(path: Path, limit: int, label: str) -> bytes:
         raise PromotionError(f"cannot read {label}: {path}") from exc
 
 
-def _assert_owned_regular(path: Path, *, private: bool, executable: bool = False) -> None:
+def _assert_owned_regular(
+    path: Path,
+    *,
+    private: bool,
+    executable: bool = False,
+    allow_root_owner: bool = False,
+) -> None:
     try:
         metadata = path.lstat()
     except OSError as exc:
         raise PromotionError(f"required path is unavailable: {path}") from exc
     if not stat.S_ISREG(metadata.st_mode) or path.is_symlink():
         raise PromotionError(f"path must be a non-symlink regular file: {path}")
-    if metadata.st_uid != os.geteuid():
+    allowed_owners = {os.geteuid(), 0} if allow_root_owner else {os.geteuid()}
+    if metadata.st_uid not in allowed_owners:
         raise PromotionError(f"path is not owned by the effective user: {path}")
     forbidden = 0o077 if private else 0o022
     if stat.S_IMODE(metadata.st_mode) & forbidden:
@@ -1019,8 +1026,18 @@ def database_password_file_record(path: Path) -> dict[str, Any]:
     }
 
 
-def tool_record(path: Path, *, executable: bool) -> dict[str, Any]:
-    _assert_owned_regular(path, private=False, executable=executable)
+def tool_record(
+    path: Path,
+    *,
+    executable: bool,
+    allow_root_owner: bool = False,
+) -> dict[str, Any]:
+    _assert_owned_regular(
+        path,
+        private=False,
+        executable=executable,
+        allow_root_owner=allow_root_owner,
+    )
     metadata = path.stat()
     return {
         "path": str(path),
@@ -1044,7 +1061,11 @@ def promotion_tool_records(config: PromotionConfig) -> dict[str, Any]:
             config.verifier.parent / "release_lib.py",
             executable=False,
         ),
-        "verify_python": tool_record(config.verify_python, executable=True),
+        "verify_python": tool_record(
+            config.verify_python,
+            executable=True,
+            allow_root_owner=True,
+        ),
     }
 
 

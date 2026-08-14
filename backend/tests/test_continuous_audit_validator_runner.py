@@ -2,11 +2,11 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import sys
 from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
-
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 RUNNER_PATH = PROJECT_ROOT / "scripts" / "run_continuous_audit_validators.py"
@@ -24,12 +24,21 @@ def _plan() -> dict:
 
 def test_commands_are_derived_and_environment_does_not_inherit_secrets() -> None:
     plan = _plan()
-    static = runner.build_validator_command(plan["validators"][0], repository_root=PROJECT_ROOT)
-    pytest_command = runner.build_validator_command(plan["validators"][2], repository_root=PROJECT_ROOT)
+    python_runtime = Path(sys.executable).resolve()
+    static = runner.build_validator_command(
+        plan["validators"][0],
+        repository_root=PROJECT_ROOT,
+        python_runtime=python_runtime,
+    )
+    pytest_command = runner.build_validator_command(
+        plan["validators"][2],
+        repository_root=PROJECT_ROOT,
+        python_runtime=python_runtime,
+    )
 
-    assert static[:2] == (str(runner.LOCKED_RUNTIME), "-B")
+    assert static[:2] == (str(python_runtime), "-B")
     assert pytest_command[:5] == (
-        str(runner.LOCKED_RUNTIME),
+        str(python_runtime),
         "-B",
         "-m",
         "pytest",
@@ -39,7 +48,7 @@ def test_commands_are_derived_and_environment_does_not_inherit_secrets() -> None
     assert set(environment) == {"PATH", "LANG", "LC_ALL", "PYTHONDONTWRITEBYTECODE", "PYTHONPATH"}
     assert environment["PYTHONDONTWRITEBYTECODE"] == "1"
     assert "TOKEN" not in environment and "DATABASE_URL" not in environment
-    assert runner.validate_python_runtime(runner.LOCKED_RUNTIME).is_file()
+    assert runner.validate_python_runtime(python_runtime).is_file()
     with pytest.raises(runner.ValidatorRunError, match="absolute"):
         runner.validate_python_runtime(Path("python3"))
     with pytest.raises(runner.ValidatorRunError, match="release"):

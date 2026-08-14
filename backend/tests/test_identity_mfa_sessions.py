@@ -398,6 +398,7 @@ def test_unsafe_tampered_duplicate_and_hardlinked_storage_fails_closed(
     event = _event_files(tampered, 3)[0]
     payload = json.loads(event.read_text(encoding="utf-8"))
     payload["action"] = "mfa.enabled"
+    event.chmod(0o600)
     event.write_text(json.dumps(payload), encoding="utf-8")
     with pytest.raises(IdentityAssuranceUnavailable):
         tampered.status(3)
@@ -405,6 +406,7 @@ def test_unsafe_tampered_duplicate_and_hardlinked_storage_fails_closed(
     duplicate = IdentityAssuranceStore(tmp_path / "duplicate", clock=clock)
     duplicate.begin_enrollment(4, account_label="alice")
     duplicate_event = _event_files(duplicate, 4)[0]
+    duplicate_event.chmod(0o600)
     duplicate_event.write_text(
         duplicate_event.read_text(encoding="utf-8").replace(
             '"action":', '"action":"mfa.enrollment_started","action":'

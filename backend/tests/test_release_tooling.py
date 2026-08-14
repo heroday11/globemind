@@ -1550,7 +1550,9 @@ def test_external_runtime_rejects_wrong_manifest_before_execution(tmp_path: Path
     runtime_manifest = runtime_dir / "inventory/runtime.json"
     payload = json.loads(runtime_manifest.read_text(encoding="utf-8"))
     payload["runtime_fingerprint"] = "f" * 64
+    runtime_manifest.chmod(0o600)
     runtime_manifest.write_text(json.dumps(payload) + "\n", encoding="utf-8")
+    runtime_manifest.chmod(0o400)
 
     with pytest.raises(ReleaseError, match="manifest differs"):
         verify_external_python_runtime(

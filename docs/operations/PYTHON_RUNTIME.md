@@ -128,7 +128,14 @@ Each promoted runtime contains:
 - `inventory/pip-check.txt` and `inventory/pytest-web.log`: validation evidence.
 
 Existing inventories and installations remain immutable and are still checked
-by the focused runtime-builder tests when present. Selecting the runtime derived
-from `VERSION` requires a matching schema-v3 release, clean scoped provenance,
-candidate gates, two-phase promotion, and rollback evidence; the builder alone
-never changes the launcher.
+by the focused runtime-builder tests when explicitly selected. Repository and
+CI test runs do not inspect a host runtime by default; this keeps the suite
+portable and prevents a checkout from depending on machine-local evidence. To
+include an isolated promoted runtime in a deliberate validation run, set
+`GLOBEMIND_TEST_PROMOTED_RUNTIME` to its absolute runtime directory before
+running `backend/tests/test_python_runtime_build.py`. Never point this variable
+at a production release directory.
+
+Selecting the runtime derived from `VERSION` requires a matching schema-v3
+release, clean scoped provenance, candidate gates, two-phase promotion, and
+rollback evidence; the builder alone never changes the launcher.
