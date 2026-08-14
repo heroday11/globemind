@@ -28,6 +28,10 @@ RULE_ROUTE_DOTENV = "route-loads-dotenv"
 RULE_DIRECT_ENV = "backend-direct-environment-read"
 RULE_BACKEND_FEATURE_PUBLIC_API = "backend-feature-public-api"
 RULE_FRONTEND_FEATURE_PUBLIC_API = "frontend-feature-public-api"
+RULE_API_TO_SCRIPTS = "backend-api-imports-scripts"
+RULE_API_TO_CPPT = "backend-api-imports-cppt"
+RULE_RAG_TO_API = "agentic-rag-imports-api"
+RULE_CPPT_TO_API = "cppt-imports-api"
 
 RULES = (
     RULE_CORE_TO_SERVICES,
@@ -37,6 +41,10 @@ RULES = (
     RULE_DIRECT_ENV,
     RULE_BACKEND_FEATURE_PUBLIC_API,
     RULE_FRONTEND_FEATURE_PUBLIC_API,
+    RULE_API_TO_SCRIPTS,
+    RULE_API_TO_CPPT,
+    RULE_RAG_TO_API,
+    RULE_CPPT_TO_API,
 )
 
 RULE_DESCRIPTIONS = {
@@ -47,6 +55,10 @@ RULE_DESCRIPTIONS = {
     RULE_DIRECT_ENV: "backend runtime modules must use the central configuration boundary",
     RULE_BACKEND_FEATURE_PUBLIC_API: "backend callers must use feature public APIs",
     RULE_FRONTEND_FEATURE_PUBLIC_API: "frontend callers must use feature public APIs",
+    RULE_API_TO_SCRIPTS: "backend API must depend on backend capabilities, not executable scripts",
+    RULE_API_TO_CPPT: "backend API must mount CC through its composition boundary",
+    RULE_RAG_TO_API: "agentic RAG must not depend on the HTTP API",
+    RULE_CPPT_TO_API: "CC capability must not depend on the HTTP API",
 }
 
 FRONTEND_SOURCE_SUFFIXES = {".js", ".jsx", ".ts", ".tsx", ".vue"}
@@ -116,6 +128,14 @@ def _module_is_services(module: str) -> bool:
 
 def _module_is_scripts(module: str) -> bool:
     return module == "scripts" or module.startswith("scripts.")
+
+
+def _module_is_api(module: str) -> bool:
+    return module == "api" or module.startswith("api.")
+
+
+def _module_is_cppt(module: str) -> bool:
+    return module == "cppt" or module.startswith("cppt.")
 
 
 def _scan_for_forbidden_imports(
@@ -532,6 +552,16 @@ def scan_repository(root: Path) -> list[Violation]:
     violations.extend(_scan_frontend_feature_imports(root))
     violations.extend(_scan_route_dotenv(root))
     violations.extend(_scan_direct_environment_reads(root))
+    # These are hard architectural edges rather than ratcheted legacy debt.
+    # Keep the source roots narrow so tests and compatibility scripts do not
+    # hide production coupling.
+    for source_root, rule, predicate in (
+        (root / "backend" / "api", RULE_API_TO_SCRIPTS, _module_is_scripts),
+        (root / "backend" / "api", RULE_API_TO_CPPT, _module_is_cppt),
+        (root / "backend" / "agentic_rag", RULE_RAG_TO_API, _module_is_api),
+        (root / "backend" / "cppt", RULE_CPPT_TO_API, _module_is_api),
+    ):
+        violations.extend(_scan_for_forbidden_imports(root, source_root, rule, predicate))
     return sorted(violations)
 
 

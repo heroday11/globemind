@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "purpose": "Navigation and safety classification for scripts without moving or renaming existing entrypoints.",
+  "entrypoint_policy": "Existing paths remain stable. Add a new script to one category before wiring it into CI or an operational runbook.",
+  "categories": [
+    {
+      "id": "ci",
+      "description": "Read-only repository and release-contract checks.",
+      "globs": ["scripts/ci/**"],
+      "side_effects": "read-only"
+    },
+    {
+      "id": "runtime-control",
+      "description": "Runtime configuration, process inspection, or service/pipeline control adapters.",
+      "globs": [
+        "scripts/runtime_control/**",
+        "scripts/globemind_runtime.py",
+        "scripts/db_runtime_config.py",
+        "scripts/*_ctl.py",
+        "scripts/start_*.py",
+        "scripts/supervise_*.py",
+        "scripts/watch_*.py"
+      ],
+      "side_effects": "may-control-runtime"
+    },
+    {
+      "id": "ingestion-and-mutation",
+      "description": "Extraction, loading, backfill, refresh, export, source curation, and database mutation jobs.",
+      "globs": [
+        "scripts/adaptive_*.py",
+        "scripts/apply_*.py",
+        "scripts/backfill_*.py",
+        "scripts/build_*.py",
+        "scripts/check_*.py",
+        "scripts/continuous_audit*.py",
+        "scripts/curate_*.py",
+        "scripts/discover_*.py",
+        "scripts/enrich_*.py",
+        "scripts/export_*.py",
+        "scripts/extract_*.py",
+        "scripts/filter_*.py",
+        "scripts/historical_crawl_job.py",
+        "scripts/import_*.py",
+        "scripts/load_*.py",
+        "scripts/map_*.py",
+        "scripts/match_*.py",
+        "scripts/merge_*.py",
+        "scripts/prepare_*.py",
+        "scripts/prune_*.py",
+        "scripts/re_extract_*.py",
+        "scripts/refresh_*.py",
+        "scripts/rename_*.py",
+        "scripts/run_event_*.py",
+        "scripts/run_news_*.py",
+        "scripts/run_wave_*.py",
+        "scripts/run_wave*.py",
+        "scripts/run_continuous_audit_validators.py",
+        "scripts/select_proxy_pool_from_benchmark.py",
+        "scripts/stream_*.py",
+        "scripts/wave1_loader_migrate.py",
+        "scripts/write_*.py",
+        "scripts/ensure_*.py"
+      ],
+      "side_effects": "writes-files-or-database"
+    },
+    {
+      "id": "research-and-evaluation",
+      "description": "Benchmarks, audits, comparisons, profiling, model training, fixtures, and validation.",
+      "globs": [
+        "scripts/audit_*.py",
+        "scripts/benchmark_*.py",
+        "scripts/compare_*.py",
+        "scripts/eval_*.py",
+        "scripts/evaluate_*.py",
+        "scripts/l1_review_utils.py",
+        "scripts/llm_causal_edges.py",
+        "scripts/news_ingest_quality.py",
+        "scripts/parse_*.py",
+        "scripts/profile_*.py",
+        "scripts/score_*.py",
+        "scripts/sample_*.py",
+        "scripts/test_*.py",
+        "scripts/train_*.py",
+        "scripts/validate_*.py"
+      ],
+      "side_effects": "may-write-artifacts-or-call-services"
+    },
+    {
+      "id": "shared-library",
+      "description": "Importable helpers; do not treat these as standalone production entrypoints.",
+      "globs": ["scripts/__init__.py", "scripts/historical_http.py", "scripts/news_date_cleaning.py"],
+      "side_effects": "depends-on-caller"
+    }
+  ]
+}

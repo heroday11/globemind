@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "purpose": "Reviewed inventory and admission policy for repository data assets.",
+  "local_runtime_data": {
+    "size_statement": "A large, environment-specific local run dataset may exist; its size is not a repository fact and is not checked.",
+    "policy": "local-only",
+    "tracked_in_git": false,
+    "paths": [
+      "data/analysis/",
+      "data/historical_news/",
+      "data/milvus_local.db/",
+      "data/proxy_pool/",
+      "data/runtime/"
+    ],
+    "note": "Local run data is environment state. Keep it outside Git and provide a small, authorized fixture or a provenance-only manifest when tests need it."
+  },
+  "tracked_path_policy": {
+    "allowed_globs": [
+      {"pattern": "data/README.md", "kind": "documentation", "owner": "data-platform"},
+      {"pattern": "data/ecbplus/**", "kind": "reference-corpus", "owner": "research", "provenance": "ECB+ reference corpus; verify upstream terms before redistribution"},
+      {"pattern": "data/source_curation/**", "kind": "curated-reference", "owner": "news-intelligence", "provenance": "reviewed source catalog snapshots"},
+      {"pattern": "data/models/**", "kind": "model-artifact", "owner": "ml-platform", "provenance": "training/evaluation provenance must be recorded with each update"},
+      {"pattern": "data/*.json", "kind": "evaluation-snapshot", "owner": "research", "provenance": "reproducible evaluation output; not production truth"},
+      {"pattern": "data/*.txt", "kind": "identifier-fixture", "owner": "data-platform", "provenance": "bounded IDs or fixture inputs; no raw production records"}
+    ],
+    "forbidden_globs": [
+      "data/analysis/**",
+      "data/historical_news/**",
+      "data/milvus_local.db/**",
+      "data/proxy_pool/**",
+      "data/runtime/**",
+      "logs/**",
+      "**/__pycache__/**",
+      "**/*.pyc",
+      "**/*.pyo",
+      "remotion-edit/audio/**",
+      "remotion-edit/out/**",
+      "remotion-edit/.tmp-edge-tts-build/**"
+    ]
+  },
+  "large_file_policy": {
+    "scope_globs": ["data/**"],
+    "threshold_bytes": 10485760,
+    "require_manifest_entry": true,
+    "maximum_declared_bytes": 12582912
+  },
+  "large_files": [
+    {
+      "path": "data/training_data_event_level.json",
+      "max_bytes": 12582912,
+      "kind": "evaluation-snapshot",
+      "owner": "research",
+      "provenance": "training/evaluation snapshot retained for reproducibility",
+      "license_status": "owner-review-required"
+    }
+  ]
+}

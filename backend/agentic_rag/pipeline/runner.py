@@ -484,24 +484,25 @@ def main() -> None:
             log_stage_timing("7", time.perf_counter() - t0, clusters=nc, members=nm)
         return
 
-        if st == "8":
+    if st == "8":
         t0 = time.perf_counter()
         from agentic_rag.db.micro_story_schema import ensure_micro_story_tables
         from agentic_rag.pipeline.micro_story_builder import build_micro_stories
 
         ensure_micro_story_tables()
         ns, nc = build_micro_stories()
-        print(f"[阶段⑧] L2 故事线构建完成: {ns} 个故事, 涵盖 {nc} 个簇 ({time.perf_counter()-t0:.1f}s)", flush=True)
+        print(
+            f"[阶段⑧] L2 故事线构建完成: {ns} 个故事, 涵盖 {nc} 个簇 "
+            f"({time.perf_counter()-t0:.1f}s)",
+            flush=True,
+        )
         return
 
     if st == "llm-relevance":
         t0 = time.perf_counter()
         import importlib.util
-        import sys as _sys
 
         _scripts_dir = str(Path(__file__).resolve().parent.parent.parent / "scripts")
-        if _scripts_dir not in _sys.path:
-            _sys.path.insert(0, _scripts_dir)
         spec = importlib.util.spec_from_file_location(
             "backfill_llm_china_relevance",
             str(Path(_scripts_dir) / "backfill_llm_china_relevance.py"),
@@ -529,11 +530,8 @@ def main() -> None:
     if st == "frame-llm":
         t0 = time.perf_counter()
         import importlib.util
-        import sys as _sys
 
         _scripts_dir = str(Path(__file__).resolve().parent.parent.parent / "scripts")
-        if _scripts_dir not in _sys.path:
-            _sys.path.insert(0, _scripts_dir)
         spec = importlib.util.spec_from_file_location(
             "backfill_frames",
             str(Path(_scripts_dir) / "backfill_frames.py"),

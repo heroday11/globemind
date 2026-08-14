@@ -1,5 +1,8 @@
 # Runtime configuration catalog
 
+Status: current runtime configuration contract
+Scope: environment-variable ownership, sensitivity and activation metadata
+
 `env-manifest.json` is the machine-readable ownership and change-control catalog for GlobeMind runtime environment variables. It documents configuration metadata only and must never contain deployed secret values.
 
 Each variable declares:

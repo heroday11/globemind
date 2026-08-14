@@ -45,7 +45,7 @@ done < <(env)
 
 vue_dir="$STAGED_PROJECT/frontend/vue_project"
 financial_dir="$STAGED_PROJECT/frontend/financial-terminal"
-for required in "$vue_dir/package-lock.json" "$financial_dir/package-lock.json"; do
+for required in "$STAGED_PROJECT/package.json" "$STAGED_PROJECT/package-lock.json"; do
     if [ ! -f "$required" ]; then
         echo "missing npm lock file: $required" >&2
         exit 1
@@ -60,15 +60,14 @@ cleanup_links() {
 trap cleanup_links EXIT
 
 if [ "$DEPENDENCY_MODE" = "ci" ]; then
-    npm ci --no-audit --no-fund --prefix "$vue_dir"
-    npm ci --no-audit --no-fund --prefix "$financial_dir"
+    npm ci --no-audit --no-fund --prefix "$STAGED_PROJECT"
 else
     if [ -z "$DEPENDENCY_SOURCE_ROOT" ]; then
         echo "DEPENDENCY_SOURCE_ROOT is required for linked dependency mode" >&2
         exit 1
     fi
     dependency_root="$(realpath -e "$DEPENDENCY_SOURCE_ROOT")"
-    for relative in frontend/vue_project frontend/financial-terminal; do
+    for relative in . frontend/vue_project frontend/financial-terminal; do
         source_modules="$dependency_root/$relative/node_modules"
         target_modules="$STAGED_PROJECT/$relative/node_modules"
         if [ ! -d "$source_modules" ]; then

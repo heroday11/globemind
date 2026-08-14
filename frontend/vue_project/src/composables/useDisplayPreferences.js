@@ -11,7 +11,7 @@ import {
   normalizeDisplayPreferences,
   resolveDisplayPreferencesStorageKey,
   saveDisplayPreferences,
-} from '../../../shared/displayPreferences.js'
+} from '@globemind/shared/display-preferences'
 import { getAuthChangedEventName } from '@/utils/auth'
 
 function resolveStorage() {

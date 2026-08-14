@@ -59,7 +59,7 @@ import shlex
 import subprocess
 import sys
 import time
-from collections.abc import AsyncIterator
+from collections.abc import AsyncIterator, Awaitable, Callable
 from pathlib import Path, PurePosixPath
 from typing import Any, Literal, Optional
 from urllib.parse import quote
@@ -89,16 +89,52 @@ def _load_dotenv_files() -> None:
 
 _load_dotenv_files()
 
-from api.core.runtime_security import is_production  # noqa: E402
-from api.services.auth import get_current_user_required  # noqa: E402
-
 log = logging.getLogger("cc_bridge")
 
 
-def _require_cc_chat_access(user: dict[str, Any] = Depends(get_current_user_required)) -> dict[str, Any]:
-    if is_production():
-        raise HTTPException(status_code=404, detail="Not Found")
-    return user
+def is_production() -> bool:
+    """Resolve the deployment policy without importing the API application.
+
+    The standalone bridge deliberately has no API dependency.  The web API
+    injects its authenticated-user resolver through :func:`configure_cc_auth`
+    when it mounts this router.
+    """
+
+    return (os.environ.get("APP_ENV") or "development").strip().lower() in {
+        "prod",
+        "production",
+    }
+
+
+CCAuthProvider = Callable[[Request], Awaitable[dict[str, Any]] | dict[str, Any]]
+_cc_auth_provider: CCAuthProvider | None = None
+
+
+def configure_cc_auth(provider: CCAuthProvider | None) -> None:
+    """Inject the host application's auth policy into the CC adapter.
+
+    Keeping this seam in the bridge means the CC capability can be tested or
+    hosted independently while the API remains the composition root.
+    """
+
+    global _cc_auth_provider
+    _cc_auth_provider = provider
+
+
+async def _require_cc_chat_access(request: Request) -> dict[str, Any]:
+    provider = _cc_auth_provider
+    if provider is not None:
+        user = provider(request)
+        if hasattr(user, "__await__"):
+            user = await user
+        if not isinstance(user, dict):
+            raise HTTPException(status_code=401, detail="未登录或 token 无效")
+        return user
+
+    # Standalone mode has no identity store.  Do not treat a bearer header as
+    # proof of identity; a host must inject a complete verifier when mounting
+    # the router.  This keeps the capability fail-closed when misconfigured.
+    raise HTTPException(status_code=401, detail="CC 鉴权适配器未配置")
 
 # 已从以下文件合并过 env（仅用于 /cc/config 展示，不含密钥）
 _CLAUDE_SETTINGS_SOURCES: list[str] = []

@@ -7,7 +7,11 @@
     "core-pipeline-imports-scripts": {},
     "frontend-feature-public-api": {},
     "frontend-shared-imports-views": {},
-    "route-loads-dotenv": {}
+    "route-loads-dotenv": {},
+    "backend-api-imports-scripts": {},
+    "backend-api-imports-cppt": {},
+    "agentic-rag-imports-api": {},
+    "cppt-imports-api": {}
   },
   "schema_version": 1
 }

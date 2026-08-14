@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 PYTHON ?= python3
 
-.PHONY: help install-python install-web dev-api dev-web dev-financial test test-python test-web test-financial lint typecheck quality
+.PHONY: help install-python install-web dev-api dev-web dev-financial test test-python test-web test-financial test-shared lint typecheck quality
 
 help:
 	@echo "GlobeMind developer commands"
@@ -17,8 +17,7 @@ install-python:
 	$(PYTHON) -B -m pip install --disable-pip-version-check -r requirements-dev.txt
 
 install-web:
-	npm ci --no-audit --no-fund --prefix frontend/vue_project
-	npm ci --no-audit --no-fund --prefix frontend/financial-terminal
+	npm ci --no-audit --no-fund
 
 dev-api:
 	cd backend && PYTHONDONTWRITEBYTECODE=1 $(PYTHON) -B -m uvicorn api.main:app --host 127.0.0.1 --port 8088 --reload
@@ -29,7 +28,7 @@ dev-web:
 dev-financial:
 	npm --prefix frontend/financial-terminal run dev
 
-test: test-python test-web test-financial
+test: test-python test-web test-financial test-shared
 
 test-python:
 	PYTHONDONTWRITEBYTECODE=1 $(PYTHON) -B -m pytest -q -m "not integration and not live_db and not gpu and not slow"
@@ -40,11 +39,14 @@ test-web:
 test-financial:
 	npm --prefix frontend/financial-terminal run test:trust
 
+test-shared:
+	npm --prefix frontend/shared run test
+
 lint:
-	npm --prefix frontend/vue_project run lint
+	npm run lint
 
 typecheck:
-	npm --prefix frontend/financial-terminal run typecheck
+	npm run typecheck
 
 quality:
 	PYTHONDONTWRITEBYTECODE=1 PYTHON_BIN=$(PYTHON) deploy/run_quality_gate.sh --output /tmp/globemind-quality-gate.json

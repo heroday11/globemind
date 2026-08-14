@@ -19,6 +19,7 @@ if str(DEPLOY_DIR) not in sys.path:
 
 from release_lib import (  # noqa: E402
     DEPENDENCY_MANIFEST_FILES,
+    LEGACY_LOCK_FILES,
     LOCK_FILES,
     PRODUCTION_QUALITY_STEPS,
     REQUIRED_RUNTIME_FILES,
@@ -258,10 +259,16 @@ def test_quality_gate_prefers_direct_ruff_and_records_exact_command(tmp_path: Pa
         "deploy/web_promotion.py",
         "scripts/ci/check_database_consumers.py",
         "scripts/ci/check_feature_registry.py",
+        "scripts/ci/check_import_boundaries.py",
+        "scripts/ci/check_repository_hygiene.py",
         "scripts/ci/check_root_layout.py",
         "backend/tests/test_browser_smoke.py",
         "backend/tests/test_candidate_smoke.py",
         "backend/tests/test_ci_workflow_contract.py",
+        "backend/tests/test_architecture_gates.py",
+        "backend/tests/test_packaging_contract.py",
+        "backend/tests/test_repository_hygiene.py",
+        "backend/tests/test_runtime_control_aliases.py",
         "backend/tests/test_release_tooling.py",
         "backend/tests/test_database_consumer_inventory.py",
         "backend/tests/test_feature_registry.py",
@@ -277,6 +284,8 @@ def test_quality_gate_prefers_direct_ruff_and_records_exact_command(tmp_path: Pa
         "backend/tests/test_identity_feature.py",
         "backend/tests/test_ops_runtime_catalog.py",
         "backend/tests/test_runtime_service_catalog.py",
+        "backend/cc_integration.py",
+        "backend/runtime_control",
         "deploy/db_role_policy.py",
         "deploy/db_runtime_roles.py",
         "scripts/runtime_control",
@@ -407,10 +416,8 @@ def test_quality_gate_fails_closed_when_selected_ruff_is_missing(tmp_path: Path)
 def test_quality_gate_runs_lint_and_feature_contracts_before_frontend_ratchets() -> None:
     source = (DEPLOY_DIR / "run_quality_gate.sh").read_text(encoding="utf-8")
 
-    lint = 'run_step frontend_lint npm --prefix frontend/vue_project run lint'
-    contracts = (
-        'run_step frontend_contracts npm --prefix frontend/vue_project run test:features'
-    )
+    lint = "run_step frontend_lint npm run lint"
+    contracts = "run_step frontend_contracts npm test"
     ratchet = (
         'run_step frontend_ratchet node deploy/check_frontend_ratchet.mjs '
         '--output "$ratchet_json"'
@@ -1445,15 +1452,22 @@ def test_schema_v2_requires_explicit_legacy_gate_and_remains_fully_verified(
     release = _make_release(tmp_path)
     manifest = _make_mutable(release)
     shutil.rmtree(release / "build-metadata/python-runtime")
-    (release / "build-metadata/lockfiles/requirements/roles/web.lock").unlink()
+    for item in manifest["dependency_locks"]:
+        (release / item["artifact_path"]).unlink()
     (release / "build-metadata/dependency-manifests/requirements/roles/web.in").unlink()
     manifest["schema_version"] = 2
     manifest.pop("python_runtime")
-    manifest["dependency_locks"] = [
-        item
-        for item in manifest["dependency_locks"]
-        if item["path"] != "requirements/roles/web.lock"
-    ]
+    manifest["dependency_locks"] = []
+    for lock_name in LEGACY_LOCK_FILES:
+        lock_path = release / "build-metadata/lockfiles" / lock_name
+        _write(lock_path, '{"lockfileVersion": 3}\n')
+        manifest["dependency_locks"].append(
+            {
+                "path": lock_name,
+                "artifact_path": lock_path.relative_to(release).as_posix(),
+                "sha256": sha256_file(lock_path),
+            }
+        )
     manifest["dependency_manifests"] = [
         item
         for item in manifest["dependency_manifests"]

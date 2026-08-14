@@ -10,6 +10,6 @@
     "test": "npm run test:features --prefix vue_project && npm run test:trust --prefix financial-terminal",
     "lint": "npm run lint --prefix vue_project",
     "typecheck": "npm run typecheck --prefix financial-terminal",
-    "install:all": "npm ci --prefix vue_project && npm ci --prefix financial-terminal"
+    "install:all": "npm ci --prefix .."
   }
 }

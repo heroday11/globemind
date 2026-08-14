@@ -1,6 +1,16 @@
 # GlobeMind 文档索引
 
+状态：current navigation policy
+适用范围：源码仓库文档入口与归档分类
+事实源：当前目录结构与各文档自身声明
+
 文档按用途分层。新贡献者先读根目录 [`README.md`](../README.md)、[`CONTRIBUTING.md`](../CONTRIBUTING.md) 和 [`AGENTS.md`](../AGENTS.md)，再按任务进入下面的分类。
+
+文档元数据约定：当前政策/架构文档在开头声明状态、适用范围和事实源；带日期的
+handoff、progress、benchmark、discovery 和实验报告属于历史证据。历史内容不批量
+改写，若结论变化请新增当前文档并在归档索引中保留原文。
+
+- [`REPOSITORY_GOVERNANCE.md`](REPOSITORY_GOVERNANCE.md) — 数据、脚本、运行路径和文档治理契约。
 
 ## Current development
 

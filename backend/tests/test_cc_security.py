@@ -50,6 +50,21 @@ def test_cc_standalone_config_requires_authentication(monkeypatch: pytest.Monkey
     assert response.status_code == 401
 
 
+def test_cc_standalone_rejects_unverified_authorization_header(
+    monkeypatch: pytest.MonkeyPatch,
+):
+    monkeypatch.setenv("APP_ENV", "development")
+    monkeypatch.setenv("CC_STANDALONE_ENABLE", "1")
+
+    with TestClient(cc_bridge.create_standalone_app()) as client:
+        response = client.get(
+            "/cc/config",
+            headers={"Authorization": "Bearer deliberately-invalid"},
+        )
+
+    assert response.status_code == 401
+
+
 def test_code_execution_tool_is_disabled_by_default(monkeypatch: pytest.MonkeyPatch):
     monkeypatch.setenv("APP_ENV", "development")
     monkeypatch.delenv("CC_ENABLE_RUN_CODE", raising=False)

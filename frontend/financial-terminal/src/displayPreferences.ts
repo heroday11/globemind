@@ -4,7 +4,7 @@ import {
   loadDisplayPreferences,
   normalizeDisplayPreferences,
   resolveDisplayPreferencesStorageKey,
-} from '../../shared/displayPreferences.js'
+} from '@globemind/shared/display-preferences'
 
 type PreferenceMessage = {
   type?: string

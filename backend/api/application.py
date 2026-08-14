@@ -8,7 +8,6 @@ import hashlib
 import logging
 import os
 import re
-import sys
 import time
 from contextlib import asynccontextmanager
 from pathlib import Path
@@ -50,7 +49,12 @@ from api.features.service_level import (
     ServiceLevelStore,
 )
 from api.services.assistant_schedule import start_schedule_runner, stop_schedule_runner
-from api.services.auth import get_active_user_from_access_token, get_current_user_required
+from api.services.auth import (
+    get_active_user_from_access_token,
+    get_current_user_optional,
+    get_current_user_required,
+    security,
+)
 from api.services.helpers import run_startup_schema_check
 from api.static_cache import (
     is_static_asset_path,
@@ -59,12 +63,6 @@ from api.static_cache import (
     spa_indexing_headers,
     static_cache_headers,
 )
-
-# sys.path setup
-_API_DIR = Path(__file__).resolve().parent
-_REPO_ROOT = _API_DIR.parent
-if str(_REPO_ROOT) not in sys.path:
-    sys.path.insert(0, str(_REPO_ROOT))
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -301,8 +299,24 @@ if _frontend_index:
 else:
     print(f"[frontend] 前端目录不存在: {_frontend_dist}", flush=True)
 
-# Router modules contain individual endpoint handlers
-from cppt.cc_bridge import cc_router
+# Router modules contain individual endpoint handlers.  ``cppt`` is an
+# optional capability; its auth policy is injected here (the composition
+# root) so the bridge never imports API services back.
+from cc_integration import configure_cc_auth, cc_router
+
+
+async def _resolve_cc_user(request: Request) -> dict:
+    override = app.dependency_overrides.get(get_current_user_required)
+    if override is not None:
+        resolved = override()
+        if hasattr(resolved, "__await__"):
+            resolved = await resolved
+        return resolved
+    credentials = await security(request)
+    return get_current_user_required(get_current_user_optional(credentials))
+
+
+configure_cc_auth(_resolve_cc_user)
 
 from api.routes.assistant import router as assistant_router
 from api.routes.assistant_data import router as assistant_data_router

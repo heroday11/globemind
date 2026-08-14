@@ -31,3 +31,12 @@ PYTHONDONTWRITEBYTECODE=1 python -B -m pytest backend/tests -m "not live_db and 
 ## 当前状态
 
 目录混合了已跟踪 ECB+ 参考资料、分析快照和现有运行产物；不能假设所有内容都可重建、可公开或可提交。新增数据前应先确认用途、来源、许可、敏感级别和生命周期。
+
+## Git admission policy
+
+大规模的本地运行数据属于环境状态，必须留在 Git 之外；`data/runtime/`、
+`data/analysis/`、`data/historical_news/`、`data/proxy_pool/` 和本地 Milvus
+目录即使在开发机存在，也不得被跟踪。受控数据资产的分类、owner、provenance、
+大文件上限和生成物拒绝规则见 [`quality/data-assets-manifest.json`](../quality/data-assets-manifest.json)，
+并由 `scripts/ci/check_repository_hygiene.py` 只读执行。该 manifest 不等于数据授权：
+ECB+、媒体来源、模型和媒体资产仍需单独确认许可。

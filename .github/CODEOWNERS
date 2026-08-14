@@ -1,0 +1,16 @@
+# Default review routing. Keep ownership explicit for policy, data and runtime changes.
+* @heroday11
+
+/backend/ @heroday11
+/frontend/ @heroday11
+/core_pipeline/ @heroday11
+/data/ @heroday11
+/quality/ @heroday11
+/ops/ @heroday11
+/deploy/ @heroday11
+/scripts/ci/ @heroday11
+/scripts/ @heroday11
+/requirements/ @heroday11
+/remotion-edit/ @heroday11
+/docs/ @heroday11
+/.github/ @heroday11

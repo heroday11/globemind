@@ -13,8 +13,8 @@ import {
   normalizeDisplayPreferences,
   resolveDisplayPreferencesStorageKey,
   saveDisplayPreferences,
-} from '../../shared/displayPreferences.js'
-import { createTypographyPreferencesPlugin } from '../../shared/postcssTypographyPreferences.js'
+} from '@globemind/shared/display-preferences'
+import { createTypographyPreferencesPlugin } from '@globemind/shared/postcss-typography'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 

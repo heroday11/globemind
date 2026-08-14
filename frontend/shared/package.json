@@ -1,4 +1,33 @@
 {
+  "name": "@globemind/shared",
+  "version": "1.0.0",
   "private": true,
-  "type": "module"
+  "type": "module",
+  "types": "./displayPreferences.d.ts",
+  "exports": {
+    ".": {
+      "types": "./displayPreferences.d.ts",
+      "default": "./displayPreferences.js"
+    },
+    "./display-preferences": {
+      "types": "./displayPreferences.d.ts",
+      "default": "./displayPreferences.js"
+    },
+    "./postcss-typography": "./postcssTypographyPreferences.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "displayPreferences.js",
+    "displayPreferences.d.ts",
+    "postcssTypographyPreferences.js"
+  ],
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "lint": "node --check displayPreferences.js && node --check postcssTypographyPreferences.js",
+    "typecheck": "tsc --noEmit --skipLibCheck --module ESNext --moduleResolution Bundler --target ES2022 --lib ES2022,DOM displayPreferences.d.ts"
+  },
+  "devDependencies": {
+    "postcss": "^8.5.3",
+    "typescript": "~5.9.2"
+  }
 }

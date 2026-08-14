@@ -22,12 +22,7 @@ ASSET_INVENTORY_SCHEMA_VERSION = "globemind.asset-inventory.v1"
 
 _DEPENDENCY_MANIFESTS = (
     ("python-web", "requirements/roles/web.lock", "python-lock"),
-    ("vue-application", "frontend/vue_project/package-lock.json", "npm-lock"),
-    (
-        "financial-terminal",
-        "frontend/financial-terminal/package-lock.json",
-        "npm-lock",
-    ),
+    ("frontend-workspaces", "package-lock.json", "npm-lock"),
 )
 _ENVIRONMENT_MANIFEST = "config/runtime/env-manifest.json"
 _PINNED_REQUIREMENT = re.compile(

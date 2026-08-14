@@ -21,7 +21,7 @@ Usage:
   python -m agentic_rag.naming_service --dry-run     # print prompts, no LLM
 """
 from __future__ import annotations
-import argparse, json, os, re, sys, threading, time
+import argparse, json, os, re, threading, time
 from pathlib import Path
 from typing import Dict, List, Tuple
 
@@ -108,7 +108,6 @@ def print_openai_usage_and_cost_estimate(stage_label: str = "Stage5 命名") -> 
         )
 from dotenv import load_dotenv
 BASE_DIR = Path(__file__).parent
-sys.path.insert(0, str(BASE_DIR.parent))
 load_dotenv(BASE_DIR / ".env")
 load_dotenv(BASE_DIR / ".env.example", override=False)
 from agentic_rag.db.executor import SafePGExecutor

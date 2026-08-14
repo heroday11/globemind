@@ -4,8 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "lint": "tsc --noEmit --pretty false",
     "render": "remotion render src/index.tsx GlobemindDemo out/globemind-demo-annotated.mp4 --codec=h264 --pixel-format=yuv420p",
-    "preview": "remotion preview src/index.tsx"
+    "preview": "remotion preview src/index.tsx",
+    "typecheck": "tsc --noEmit --pretty false"
   },
   "dependencies": {
     "@remotion/cli": "^4.0.370",

@@ -4,13 +4,11 @@
 from __future__ import annotations
 
 import os
-import sys
 from collections import Counter
 from pathlib import Path
 
 root = Path(__file__).resolve().parent.parent.parent
 os.chdir(root)
-sys.path.insert(0, str(root))
 
 try:
     from dotenv import load_dotenv

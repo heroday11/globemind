@@ -242,13 +242,13 @@ test('CSP hardening inserts or rewrites the policy regardless of attribute order
   assert.throws(() => hardenIndexHtml('<script>boot()</script>'), /document head/i)
 })
 
-test('embedded static entries are noindex and script-restricted while unapproved active documents are excluded', async () => {
-  const [globe, terminal, vite] = await Promise.all([
+test('embedded static entries are noindex and script-restricted while generated app documents stay isolated', async () => {
+  const [globe, vite, buildRelease] = await Promise.all([
     read('../public/amazing-globe/index.html'),
-    read('../public/fin-terminal/index.html'),
     read('../vite.config.js'),
+    read('../scripts/build-release.mjs'),
   ])
-  for (const [name, html] of [['globe', globe], ['terminal', terminal]]) {
+  for (const [name, html] of [['globe', globe]]) {
     assert.match(html, /<html lang="zh-CN">/, name)
     assert.match(html, /<meta name="robots" content="noindex,nofollow"/, name)
     assert.match(html, /Content-Security-Policy[^>]*script-src 'self'/, name)
@@ -261,6 +261,8 @@ test('embedded static entries are noindex and script-restricted while unapproved
   assert.match(vite, /PRODUCTION_PUBLIC_ACTIVE_DOCUMENT_ROOTS[\s\S]*['"]datasets\/expert-skills['"]/)
   assert.match(vite, /removeUnapprovedActiveDocuments/)
   assert.match(vite, /removeExcludedPublicArtifactsPlugin/)
+  assert.match(buildRelease, /financialTarget = path\.join\(outputRoot, ['"]fin-terminal['"]\)/)
+  assert.match(buildRelease, /cpSync\(financialOutput, financialTarget/)
   for (const name of ['viewer.html', 'template.htm', 'plugin.js', 'worker.mjs']) {
     assert.equal(isUnapprovedActiveDocument(name), true, name)
   }

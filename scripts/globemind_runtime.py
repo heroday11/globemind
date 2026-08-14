@@ -30,6 +30,12 @@ try:
         validate_inventory,
     )
 except ModuleNotFoundError:  # Direct execution: python scripts/globemind_runtime.py
+    import sys
+    from pathlib import Path
+
+    backend_root = Path(__file__).resolve().parents[1] / "backend"
+    if str(backend_root) not in sys.path:
+        sys.path.insert(0, str(backend_root))
     from runtime_control import (  # type: ignore[no-redef]
         DATA_ROOT,
         DEFAULT_MANIFEST,

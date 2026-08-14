@@ -33,6 +33,7 @@ DIRECT_REQUIREMENT_RE = re.compile(
 SOURCE_INPUTS = (
     "VERSION",
     "package.json",
+    "package-lock.json",
     "pyproject.toml",
     "requirements.txt",
     "requirements-dev.txt",
@@ -40,6 +41,8 @@ SOURCE_INPUTS = (
     "backend/api",
     "backend/agentic_rag",
     "backend/ai_search",
+    "backend/runtime_control",
+    "backend/cc_integration.py",
     "backend/data",
     "backend/serve_prod.py",
     "backend/nav_inject.html",
@@ -84,6 +87,8 @@ RELEASE_BACKEND_INPUTS = (
     "backend/api",
     "backend/agentic_rag",
     "backend/ai_search",
+    "backend/runtime_control",
+    "backend/cc_integration.py",
     "backend/data",
     "backend/serve_prod.py",
     "backend/nav_inject.html",
@@ -107,6 +112,8 @@ V1_RELEASE_BACKEND_INPUTS = (
 REQUIRED_RUNTIME_FILES = (
     "backend/serve_prod.py",
     "backend/api/application.py",
+    "backend/cc_integration.py",
+    "backend/runtime_control/__init__.py",
     "backend/cppt/cc_bridge.py",
     "backend/cppt/ppt-master/skills/ppt-master/scripts/image_gen.py",
     "backend/cppt/ppt-master/skills/ppt-master/scripts/image_backends/backend_common.py",
@@ -131,7 +138,7 @@ LEGACY_LOCK_FILES = (
     "frontend/vue_project/pnpm-lock.yaml",
     "frontend/financial-terminal/package-lock.json",
 )
-LOCK_FILES = (*LEGACY_LOCK_FILES, "requirements/roles/web.lock")
+LOCK_FILES = ("package-lock.json", "requirements/roles/web.lock")
 
 LEGACY_DEPENDENCY_MANIFEST_FILES = (
     "requirements.txt",
@@ -221,6 +228,7 @@ PRODUCTION_QUALITY_STEPS = frozenset(
     {
         "config",
         "root_layout",
+        "repository_hygiene",
         "content_bundles",
         "ruff_tool",
         "release_lint",
@@ -241,6 +249,7 @@ HISTORICAL_PRODUCTION_QUALITY_STEPS = {
     - {
         "root_layout",
         "content_bundles",
+        "repository_hygiene",
         "ruff_tool",
         "database_consumers",
         "feature_registry",
@@ -251,14 +260,16 @@ HISTORICAL_PRODUCTION_QUALITY_STEPS = {
     - {
         "root_layout",
         "content_bundles",
+        "repository_hygiene",
         "database_consumers",
         "feature_registry",
         "frontend_lint",
         "frontend_contracts",
     },
     "0.10.0": PRODUCTION_QUALITY_STEPS
-    - {"content_bundles", "feature_registry", "root_layout"},
-    "0.11.0": PRODUCTION_QUALITY_STEPS - {"content_bundles", "root_layout"},
+    - {"content_bundles", "feature_registry", "root_layout", "repository_hygiene"},
+    "0.11.0": PRODUCTION_QUALITY_STEPS
+    - {"content_bundles", "root_layout", "repository_hygiene"},
 }
 
 

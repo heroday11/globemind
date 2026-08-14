@@ -74,6 +74,22 @@ def test_boundary_scanner_covers_backend_frontend_and_pipeline(tmp_path: Path) -
     }
 
 
+def test_production_cross_layer_edges_are_explicitly_forbidden(tmp_path: Path) -> None:
+    _write(tmp_path, "backend/api/bad_scripts.py", "from scripts.runtime_control.catalog import catalog_payload\n")
+    _write(tmp_path, "backend/api/bad_cppt.py", "from cppt.cc_bridge import cc_router\n")
+    _write(tmp_path, "backend/agentic_rag/bad_api.py", "from api.main import app\n")
+    _write(tmp_path, "backend/cppt/bad_api.py", "from api.services.auth import get_current_user_required\n")
+
+    counts = boundaries.counts_by_rule_and_path(boundaries.scan_repository(tmp_path))
+
+    assert counts[boundaries.RULE_API_TO_SCRIPTS] == {
+        "backend/api/bad_scripts.py": 1
+    }
+    assert counts[boundaries.RULE_API_TO_CPPT] == {"backend/api/bad_cppt.py": 1}
+    assert counts[boundaries.RULE_RAG_TO_API] == {"backend/agentic_rag/bad_api.py": 1}
+    assert counts[boundaries.RULE_CPPT_TO_API] == {"backend/cppt/bad_api.py": 1}
+
+
 def test_new_architecture_modules_are_also_governed(tmp_path: Path) -> None:
     _write(
         tmp_path,

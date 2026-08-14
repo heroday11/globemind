@@ -13,6 +13,8 @@ RUN python -m pip install --no-cache-dir --requirement /tmp/api-requirements.txt
 COPY api ./api
 COPY agentic_rag ./agentic_rag
 COPY cppt ./cppt
+COPY runtime_control ./runtime_control
+COPY cc_integration.py ./cc_integration.py
 
 ENV PYTHONPATH=/app
 

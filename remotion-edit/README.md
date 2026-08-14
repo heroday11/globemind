@@ -1,5 +1,8 @@
 # remotion-edit
 
+Status: current isolated demo tooling
+Scope: local Remotion source, render commands and media-input boundary
+
 ## 职责
 
 独立的 Remotion 视频演示编辑工具，用于把已有 GlobeMind 产品录屏组合成带注释的演示视频。它不是 Vue 主站、API、数据管线或生产发布的一部分。

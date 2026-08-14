@@ -13,7 +13,6 @@ Integration: add to .mcp.json -> { "url": "http://127.0.0.1:8765/mcp" }
 from __future__ import annotations
 import json
 import os
-import sys
 from pathlib import Path
 from typing import Any
 
@@ -22,7 +21,6 @@ from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from dotenv import load_dotenv
 
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 load_dotenv(dotenv_path=Path(__file__).parent.parent / ".env")
 
 from agentic_rag import VAULT_DIR

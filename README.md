@@ -53,7 +53,7 @@ GlobeMind 是一个面向全球新闻研究的地缘情报与舆情分析平台�
    python3.11 -m venv .venv
    . .venv/bin/activate
    PYTHONDONTWRITEBYTECODE=1 python -B -m pip install -r requirements-dev.txt
-   npm ci --prefix frontend/vue_project
+   npm ci
    ```
 
    需要离线分析/模型路径时，再根据目标模块和资源情况选择性安装根目录 `requirements.txt`；其中包含重量级模型依赖，不是主前端/API 的必需最小安装。
@@ -89,10 +89,11 @@ GlobeMind 是一个面向全球新闻研究的地缘情报与舆情分析平台�
 # Python 测试（配置见 pyproject.toml，默认收集 backend/tests）
 PYTHONDONTWRITEBYTECODE=1 python -B -m pytest -q
 
-# 主前端 lint、特性测试和构建
-npm --prefix frontend/vue_project run lint
-npm --prefix frontend/vue_project run test:features
-npm --prefix frontend/vue_project run build:main-only
+# 所有前端 workspace 的 lint、类型和测试，以及组合生产构建
+npm run lint
+npm run typecheck
+npm test
+npm run build
 
 # 仓库当前受控门禁（含已纳入基线的 Python Ruff 目标）
 PYTHONDONTWRITEBYTECODE=1 PYTHON_BIN=python deploy/run_quality_gate.sh
@@ -111,6 +112,10 @@ PYTHONDONTWRITEBYTECODE=1 PYTHON_BIN=python deploy/run_quality_gate.sh
 - 运行控制：[`docs/operations/RUNTIME_CONTROL.md`](docs/operations/RUNTIME_CONTROL.md)
 - 安全贡献与漏洞报告：[`SECURITY.md`](SECURITY.md)
 - 历史 CLI 说明：[`docs/archive/README_CLI.md`](docs/archive/README_CLI.md)（仅归档，不是当前入口）
+- 配置导航：[`config/README.md`](config/README.md)
+- 本地运行日志边界：[`logs/README.md`](logs/README.md)
+- GitHub 协作控制：[`.github/README.md`](.github/README.md)
+- Remotion 演示工具：[`remotion-edit/README.md`](remotion-edit/README.md)
 
 ## 生产边界
 

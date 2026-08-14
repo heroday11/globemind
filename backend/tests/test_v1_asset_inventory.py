@@ -49,7 +49,7 @@ def test_asset_inventory_covers_current_routes_locks_environment_and_processing_
         "level": "administrator",
         "evidence": "fastapi_dependency",
     }
-    assert len(payload["dependencies"]["manifests"]) == 3
+    assert len(payload["dependencies"]["manifests"]) == 2
     assert all(
         item["status"] == "available"
         for item in payload["dependencies"]["manifests"]
@@ -85,7 +85,7 @@ def test_processing_inventory_never_claims_unapproved_owner_retention_or_trainin
 def test_dependency_inventory_fails_closed_when_manifests_are_absent(tmp_path: Path) -> None:
     manifests = build_dependency_inventory(tmp_path)
 
-    assert len(manifests) == 3
+    assert len(manifests) == 2
     assert all(item["status"] == "missing" for item in manifests)
     assert all(item["sha256"] is None for item in manifests)
     assert all(item["dependencies"] == [] for item in manifests)
@@ -101,8 +101,8 @@ def test_dependency_inventory_rejects_symlinks_and_duplicate_json_keys(
     outside_lock.write_text("private-package==9.9.9\n", encoding="utf-8")
     python_lock.symlink_to(outside_lock)
 
-    npm_lock = repository / "frontend" / "vue_project" / "package-lock.json"
-    npm_lock.parent.mkdir(parents=True)
+    npm_lock = repository / "package-lock.json"
+    npm_lock.parent.mkdir(parents=True, exist_ok=True)
     npm_lock.write_text(
         '{"packages": {}, "packages": {"node_modules/private": {"version": "1"}}}',
         encoding="utf-8",
@@ -115,9 +115,9 @@ def test_dependency_inventory_rejects_symlinks_and_duplicate_json_keys(
     assert manifests["python-web"]["status"] == "invalid_path"
     assert manifests["python-web"]["sha256"] is None
     assert manifests["python-web"]["dependencies"] == []
-    assert manifests["vue-application"]["status"] == "invalid_or_empty"
-    assert manifests["vue-application"]["sha256"] is None
-    assert manifests["vue-application"]["dependencies"] == []
+    assert manifests["frontend-workspaces"]["status"] == "invalid_or_empty"
+    assert manifests["frontend-workspaces"]["sha256"] is None
+    assert manifests["frontend-workspaces"]["dependencies"] == []
 
 
 def test_dependency_inventory_rejects_partially_parseable_python_lock(

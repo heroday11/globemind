@@ -1,5 +1,13 @@
 # knowledge_graph_backup
 
+这是知识图谱的历史占位单元，仅用于归档和迁移参考，不是可部署 workspace。
+
+- 不属于根 npm workspace。
+- 不参与 Vue Tailwind content 扫描。
+- 不由主站默认构建或路由加载。
+
+如未来恢复该功能，应先建立独立 package、测试和资源边界，再接入主站构建。
+
 ## 职责
 
 知识图谱的兼容/占位单元，当前仅保留一个 `DashboardView.vue` 的展示 stub，用于兼容主站导航或构建目录结构。

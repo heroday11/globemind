@@ -4,11 +4,8 @@ Wraps RAG pipeline and PostgreSQL calls for direct in-process use by agents.
 """
 from __future__ import annotations
 import os
-import sys
 from pathlib import Path
 from typing import Any, List
-
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from dotenv import load_dotenv
 

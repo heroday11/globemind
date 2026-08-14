@@ -1,4 +1,4 @@
-/** 知识图谱（knowledge_graph_backup）使用 Tailwind；主站其它页面为 Element Plus，用 important 限定作用域，减少互相干扰 */
+/** 主站 Tailwind 仅扫描活跃 Vue 源码；归档占位单元不参与生产样式构建。 */
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: 'class',
@@ -7,7 +7,6 @@ export default {
   content: [
     './index.html',
     './src/**/*.{vue,js}',
-    '../knowledge_graph_backup/src/**/*.{vue,js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {

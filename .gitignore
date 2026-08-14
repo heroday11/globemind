@@ -38,6 +38,13 @@ data/*.npy
 *.npz
 data/*.npz
 data/*.pkl.bak
+# Model files are normally generated locally; the currently tracked reviewed
+# artifacts remain tracked, while new model outputs require an explicit
+# manifest/review before force-adding.
+data/models/*.joblib
+data/models/*.pkl
+data/models/*.pt
+data/models/*.safetensors
 data/obsidian_vault_v3/
 data/obsidian_vault_3d/
 data/reports/

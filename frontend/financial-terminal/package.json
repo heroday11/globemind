@@ -6,11 +6,14 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "lint": "npm run typecheck",
+    "test": "npm run test:trust",
     "test:trust": "node --experimental-strip-types --test tests/*.test.ts",
     "typecheck": "tsc --noEmit --pretty false",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@globemind/shared": "1.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.28.0"

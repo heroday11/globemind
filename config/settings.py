@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 from functools import lru_cache
 from pathlib import Path
@@ -110,7 +110,7 @@ class Settings(BaseSettings):
     pg_port: int = Field(default=5432, validation_alias=AliasChoices("POSTGRES_PORT", "PG_PORT"))
     pg_user: str = Field(default="postgres", validation_alias=AliasChoices("POSTGRES_USER", "PG_USER"))
     pg_password: str = Field(
-        default="postgres",
+        default="",
         validation_alias=AliasChoices("POSTGRES_PASSWORD", "PG_PASSWORD"),
     )
     pg_database: str = Field(
@@ -145,7 +145,7 @@ class Settings(BaseSettings):
     )
 
     burst_watch_tokens: str = Field(
-        default="taiwan,strait,sanctions,nuclear,鍗楁捣,鍙版咕,娴峰场",
+        default="taiwan,strait,sanctions,nuclear,南海,台湾,海峡",
         validation_alias="BURST_WATCH_TOKENS",
     )
     burst_window_minutes: int = Field(default=15, validation_alias="BURST_WINDOW_MINUTES")
@@ -243,7 +243,7 @@ class Settings(BaseSettings):
         description="vLLM OpenAI-compatible host (no path); used for /v1/chat/completions in slow-track enrich.",
     )
     slow_track_translate_model: str = Field(
-        default="/root/data/models/Qwen2.5-7B-Instruct-AWQ",
+        default="data/models/Qwen2.5-7B-Instruct-AWQ",
         validation_alias="SLOW_TRACK_TRANSLATE_MODEL",
         description="Model id string passed to vLLM chat/completions (must match served model for prefix caching).",
     )

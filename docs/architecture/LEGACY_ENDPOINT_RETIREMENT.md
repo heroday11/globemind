@@ -1,5 +1,8 @@
 # Legacy Endpoint Retirement
 
+Status: current architecture retirement record
+Scope: legacy endpoint compatibility behavior and migration evidence
+
 V0.10 retires nine read-only opinion endpoints whose source relations are not
 part of the supported Web runtime schema. Repository frontend and backend call
 sites were audited before retirement; only legacy tests referenced these paths.

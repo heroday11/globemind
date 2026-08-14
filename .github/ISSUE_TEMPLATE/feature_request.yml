@@ -1,0 +1,35 @@
+name: Feature request
+description: Propose a scoped, evidence-backed improvement.
+title: "[feature] "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and users
+      description: Who needs this and what is currently blocked?
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Proposed scope
+      description: Include affected module, contracts, data provenance, and explicit non-goals.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance evidence
+      description: Describe tests, quality gates, accessibility/reliability evidence, and rollback.
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety checklist
+      options:
+        - label: I will not include secrets, personal data, production exports, or unreviewed third-party assets.
+          required: true
+        - label: I have identified whether this changes runtime, database, release, or long-running pipeline behavior.
+          required: true

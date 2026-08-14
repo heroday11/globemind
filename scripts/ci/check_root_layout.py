@@ -16,6 +16,7 @@ ALLOWED_ROOT_FILES = frozenset(
         ".gitignore",
         "AGENTS.md",
         "CONTRIBUTING.md",
+        "LICENSE_DECISION.md",
         "Makefile",
         "README.md",
         "SECURITY.md",

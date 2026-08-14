@@ -6,8 +6,11 @@ from collections.abc import Mapping, Sequence
 from pathlib import Path
 from typing import Any
 
-from scripts.runtime_control.catalog import catalog_payload
-from scripts.runtime_control.manifest import InventoryError, load_inventory
+# Runtime catalog is a read-only backend capability.  Keep its implementation
+# in the backend package so the API does not depend on executable ``scripts``
+# (the CLI keeps its historical import path for operators).
+from runtime_control.catalog import catalog_payload
+from runtime_control.manifest import InventoryError, load_inventory
 
 SOURCE_PROJECT_ROOT = Path(__file__).resolve().parents[4]
 DEFAULT_MANIFEST = SOURCE_PROJECT_ROOT / "ops" / "runtime" / "services.json"

@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "status": "compatibility-plan-only",
+  "activation": "not-active",
+  "purpose": "Document the future externalization of source-worktree runtime state without changing service behavior.",
+  "legacy_paths": {
+    "logs": "${PROJECT_ROOT}/logs",
+    "runtime": "${PROJECT_ROOT}/data/runtime"
+  },
+  "target_paths": {
+    "logs": "${GLOBEMIND_RUNTIME_ROOT:-/root/data/runtime/globemind}/logs",
+    "runtime": "${GLOBEMIND_RUNTIME_ROOT:-/root/data/runtime/globemind}/state"
+  },
+  "compatibility_contract": {
+    "default_behavior_changes_in_this_commit": false,
+    "required_before_activation": [
+      "owner-approved maintenance window",
+      "checkpoint and replay proof for every affected pipeline",
+      "read-only catalog update and rollback path",
+      "migration rehearsal outside release directories",
+      "explicit service restart or supervisor adoption step"
+    ],
+    "environment_variables": [
+      {
+        "name": "GLOBEMIND_RUNTIME_ROOT",
+        "scope": "runtime state and logs",
+        "fallback": "/root/data/runtime/globemind",
+        "activation": "checkpointed_restart"
+      }
+    ]
+  }
+}

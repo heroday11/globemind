@@ -3,20 +3,12 @@ from __future__ import annotations
 import asyncio
 import os
 import re
-import sys
 from pathlib import Path
 from typing import Any, Optional
 import time
 
 import requests
 from pydantic import BaseModel, Field, ValidationError
-
-# 兼容“按脚本路径直接运行”(例如: uv run D:\datasearch\ai_search\research_agent.py)
-# 这种情况下需要把项目根目录加入 sys.path，才能 import ai_search.*
-_THIS_FILE = Path(__file__).resolve()
-_PROJECT_ROOT = _THIS_FILE.parent.parent
-if str(_PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(_PROJECT_ROOT))
 
 from ai_search.citation_boundary import (
     enforce_legacy_citations,

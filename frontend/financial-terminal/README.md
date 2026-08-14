@@ -11,14 +11,16 @@
 
 ## 依赖与环境
 
-需要 Node.js、React 18、TypeScript、Vite；依赖锁定在 `package-lock.json`。API 地址和 mock 行为应通过本地环境配置，浏览器端变量不得包含凭据。
+需要 Node.js、React 18、TypeScript、Vite；依赖由 npm workspace 和仓库根 `package-lock.json` 锁定。API 地址和 mock 行为应通过本地环境配置，浏览器端变量不得包含凭据。
 
 ## 开发与测试
 
 ```bash
-npm ci
+npm ci # 在仓库根目录执行
 npm run dev
 npm run typecheck
+npm run lint
+npm test
 npm run test:trust
 npm run build
 ```

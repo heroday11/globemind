@@ -1,5 +1,8 @@
 # deploy
 
+状态：current controlled operations navigation
+适用范围：只读质量门、候选构建、发布验证和受控运行工具
+
 ## 职责
 
 受控运维工具集：管理 Web/vLLM、抓取/抽取/加载循环、数据库角色策略、前端构建、质量门、release 验证和发布事务。它不是普通开发目录，也不是替代 runbook 的一键启动入口。
@@ -34,3 +37,11 @@ PYTHONDONTWRITEBYTECODE=1 python -B deploy/verify_release.py --help
 ## 当前状态
 
 脚本覆盖候选构建、Web/vLLM、新闻作业和质量验证，但职责边界严格依赖部署 runbook 与环境变量。它是受控运维层而非普通开发层；若只需检查代码，优先使用 shell/node/Python 的只读语法或帮助命令。
+
+## 源码工作区路径迁移
+
+当前脚本默认路径保持不变。未来将日志和运行状态迁移到仓库外的
+`GLOBEMIND_RUNTIME_ROOT`，但本次治理不激活该迁移；兼容性契约和必要审批见
+[`quality/runtime-path-policy.json`](../quality/runtime-path-policy.json)。任何激活都必须
+经过 checkpoint/replay 证明、迁移演练、回滚路径和明确维护窗口，不得由文档或 CI 自动
+触发服务重启。

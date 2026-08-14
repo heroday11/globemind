@@ -46,16 +46,22 @@ jobs:
           node-version: "22"
           cache: npm
           cache-dependency-path: |
-            frontend/vue_project/package-lock.json
-            frontend/financial-terminal/package-lock.json
+            package-lock.json
+            remotion-edit/package-lock.json
 
       - name: Install Python dependencies
         run: python -B -m pip install --disable-pip-version-check -r requirements-dev.txt
 
       - name: Install frontend dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Install Remotion dependencies
+        run: npm ci --no-audit --no-fund --prefix remotion-edit
+
+      - name: Check Remotion source
         run: |
-          npm ci --no-audit --no-fund --prefix frontend/vue_project
-          npm ci --no-audit --no-fund --prefix frontend/financial-terminal
+          npm --prefix remotion-edit run lint
+          npm --prefix remotion-edit run typecheck
 
       - name: Run offline quality gate
         run: deploy/run_quality_gate.sh --output "$RUNNER_TEMP/quality-gate.json"

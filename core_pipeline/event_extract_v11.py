@@ -23,7 +23,9 @@ logger = logging.getLogger("event_extract_v11")
 
 VLLM_BASE = os.environ.get("VLLM_BASE_URL", "http://127.0.0.1:8004")
 VLLM_URL = f"{VLLM_BASE.rstrip('/')}/v1/chat/completions"
-MODEL_ID = "/root/data/models/Qwen2.5-7B-Instruct-AWQ"
+# The served model is deployment-specific; keep a portable identifier and let
+# the runtime override it explicitly.
+MODEL_ID = os.environ.get("VLLM_MODEL_NAME", "Qwen2.5-7B-Instruct-AWQ")
 
 MAX_INPUT_CHARS = 400    # 标题 + 正文前导语，新闻倒金字塔结构核心信息在前 1-2 段
 MAX_OUTPUT_TOKENS = 120   # compact JSON; trigger_verb is no longer generated

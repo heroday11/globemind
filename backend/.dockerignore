@@ -8,6 +8,9 @@
 !agentic_rag/**
 !cppt/
 !cppt/**
+!runtime_control/
+!runtime_control/**
+!cc_integration.py
 
 # Secrets are never valid image inputs. These rules intentionally come after
 # the source allow-list so they cannot be re-included by a later broad rule.

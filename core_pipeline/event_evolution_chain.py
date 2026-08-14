@@ -37,7 +37,6 @@ import hashlib
 import json
 import logging
 import os
-import sys
 import time
 from collections import Counter, defaultdict
 from datetime import date, datetime, timezone
@@ -76,7 +75,6 @@ def get_conn():
 
 # ── Canonical entity resolution ──────────────────────────────
 try:
-    sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
     from core_pipeline.event_coref_cluster import _canonical_entity
 except ImportError:
 

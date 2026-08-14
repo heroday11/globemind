@@ -12,13 +12,14 @@ Vue 3/Vite 主站，包含搜索、新闻、研究工作区、助手、治理、
 
 ## 依赖与环境
 
-Node 版本要求见 `package.json`；依赖由 npm 和 `package-lock.json` 锁定，使用 `npm ci` 安装。复制 `.env.example` 为本地环境配置，按需设置 `VITE_API_PROXY_TARGET`、`VITE_USE_API_MOCK`、`VITE_VLLM_PROXY_TARGET`；`VITE_*` 值会进入浏览器环境，严禁放入秘密。
+Node 版本要求见 `package.json`；依赖由 npm workspace 和仓库根 `package-lock.json` 锁定，请先在仓库根运行 `npm ci`。复制 `.env.example` 为本地环境配置，按需设置 `VITE_API_PROXY_TARGET`、`VITE_USE_API_MOCK`、`VITE_VLLM_PROXY_TARGET`；`VITE_*` 值会进入浏览器环境，严禁放入秘密。
 
 ## 开发与测试
 
 ```bash
 npm run dev
 npm run lint
+npm run typecheck
 npm run test:features
 npm run build:main-only
 ```

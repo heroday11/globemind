@@ -17,12 +17,9 @@ from __future__ import annotations
 
 import argparse
 import os
-import sys
 from pathlib import Path
 
 _REPO = Path(__file__).resolve().parent.parent.parent.parent
-if str(_REPO) not in sys.path:
-    sys.path.insert(0, str(_REPO))
 
 
 def _load_env() -> None:

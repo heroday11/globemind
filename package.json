@@ -2,6 +2,11 @@
   "name": "globemind",
   "version": "1.0.0",
   "private": true,
+  "workspaces": [
+    "frontend/vue_project",
+    "frontend/financial-terminal",
+    "frontend/shared"
+  ],
   "description": "从多语言新闻中提取地缘政治事件，通过 **L1 事件共指聚类 → L2 叙事线聚合** 形成结构化事件体系，并构建**四维涉华指数（CCI）**进行定量舆情分析。",
   "directories": {
     "doc": "docs"
@@ -10,11 +15,18 @@
     "dev:web": "npm --prefix frontend/vue_project run dev:main",
     "dev:financial": "npm --prefix frontend/financial-terminal run dev",
     "build": "npm --prefix frontend/vue_project run build",
-    "lint": "npm --prefix frontend/vue_project run lint",
-    "typecheck": "npm --prefix frontend/financial-terminal run typecheck",
-    "test": "npm run test:web && npm run test:financial",
+    "lint": "npm run lint:web && npm run lint:financial && npm run lint:shared",
+    "lint:web": "npm --prefix frontend/vue_project run lint",
+    "lint:financial": "npm --prefix frontend/financial-terminal run lint",
+    "lint:shared": "npm --prefix frontend/shared run lint",
+    "typecheck": "npm run typecheck:web && npm run typecheck:financial && npm run typecheck:shared",
+    "typecheck:web": "npm --prefix frontend/vue_project run typecheck",
+    "typecheck:financial": "npm --prefix frontend/financial-terminal run typecheck",
+    "typecheck:shared": "npm --prefix frontend/shared run typecheck",
+    "test": "npm run test:web && npm run test:financial && npm run test:shared",
     "test:web": "npm --prefix frontend/vue_project run test:features",
-    "test:financial": "npm --prefix frontend/financial-terminal run test:trust"
+    "test:financial": "npm --prefix frontend/financial-terminal run test",
+    "test:shared": "npm --prefix frontend/shared run test"
   },
   "repository": {
     "type": "git",

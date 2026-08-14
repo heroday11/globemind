@@ -88,10 +88,16 @@ ruff_targets=(
     deploy/web_promotion.py
     scripts/ci/check_database_consumers.py
     scripts/ci/check_feature_registry.py
+    scripts/ci/check_import_boundaries.py
+    scripts/ci/check_repository_hygiene.py
     scripts/ci/check_root_layout.py
     backend/tests/test_browser_smoke.py
     backend/tests/test_candidate_smoke.py
     backend/tests/test_ci_workflow_contract.py
+    backend/tests/test_architecture_gates.py
+    backend/tests/test_packaging_contract.py
+    backend/tests/test_repository_hygiene.py
+    backend/tests/test_runtime_control_aliases.py
     backend/tests/test_release_tooling.py
     backend/tests/test_database_consumer_inventory.py
     backend/tests/test_feature_registry.py
@@ -107,6 +113,8 @@ ruff_targets=(
     backend/tests/test_identity_feature.py
     backend/tests/test_ops_runtime_catalog.py
     backend/tests/test_runtime_service_catalog.py
+    backend/cc_integration.py
+    backend/runtime_control
     deploy/db_role_policy.py
     deploy/db_runtime_roles.py
     scripts/runtime_control
@@ -175,6 +183,17 @@ run_step config env PYTHON_BIN="$PYTHON_BIN" bash -c '
 '
 run_step root_layout "$PYTHON_BIN" -B scripts/ci/check_root_layout.py \
     --project "$PROJECT_DIR"
+if [ -f scripts/ci/check_repository_hygiene.py ] \
+    && [ -f quality/data-assets-manifest.json ] \
+    && [ -f quality/runtime-path-policy.json ] \
+    && [ -f scripts/manifest.json ]; then
+    run_step repository_hygiene "$PYTHON_BIN" -B scripts/ci/check_repository_hygiene.py \
+        --project "$PROJECT_DIR"
+else
+    # Keep older isolated quality-gate fixtures compatible while making the
+    # repository's real gate fail closed once its manifests are present.
+    printf 'repository_hygiene\t0\t0\n' >> "$steps_file"
+fi
 run_step ruff_tool verify_ruff_tool
 run_step release_lint "${ruff_command[@]}" check "${ruff_targets[@]}"
 run_step import_boundaries "$PYTHON_BIN" -B scripts/ci/check_import_boundaries.py
@@ -197,8 +216,8 @@ else
 fi
 
 if [ "$SKIP_FRONTEND" -eq 0 ]; then
-    run_step frontend_lint npm --prefix frontend/vue_project run lint
-    run_step frontend_contracts npm --prefix frontend/vue_project run test:features
+    run_step frontend_lint npm run lint
+    run_step frontend_contracts npm test
     run_step frontend_ratchet node deploy/check_frontend_ratchet.mjs --output "$ratchet_json"
 else
     printf 'frontend_lint\t0\t0\n' >> "$steps_file"
