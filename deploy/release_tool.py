@@ -29,6 +29,7 @@ from release_lib import (  # noqa: E402
     digest_tree,
     is_source_input_path,
     iter_input_files,
+    load_content_bundle_policy,
     load_json,
     read_version,
     scan_secrets,
@@ -143,6 +144,19 @@ def source_secret_scan_command(args: argparse.Namespace) -> None:
 def content_bundles_command(args: argparse.Namespace) -> None:
     bundles = verify_content_bundles(args.project)
     payload = {"schema_version": 1, "status": "passed", "bundles": bundles}
+    if args.output:
+        write_json(args.output, payload)
+    print(json.dumps(payload, sort_keys=True))
+
+
+def content_bundle_policy_command(args: argparse.Namespace) -> None:
+    bundles = load_content_bundle_policy(args.project)
+    payload = {
+        "schema_version": 1,
+        "status": "passed",
+        "verification_mode": "policy_only",
+        "bundles": bundles,
+    }
     if args.output:
         write_json(args.output, payload)
     print(json.dumps(payload, sort_keys=True))
@@ -368,6 +382,11 @@ def parser() -> argparse.ArgumentParser:
     content_bundles.add_argument("--project", type=Path, required=True)
     content_bundles.add_argument("--output", type=Path)
     content_bundles.set_defaults(handler=content_bundles_command)
+
+    content_bundle_policy = subcommands.add_parser("content-bundle-policy")
+    content_bundle_policy.add_argument("--project", type=Path, required=True)
+    content_bundle_policy.add_argument("--output", type=Path)
+    content_bundle_policy.set_defaults(handler=content_bundle_policy_command)
 
     stage_content = subcommands.add_parser("stage-content-bundles")
     stage_content.add_argument("--project", type=Path, required=True)

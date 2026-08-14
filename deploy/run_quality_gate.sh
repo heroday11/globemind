@@ -201,7 +201,7 @@ run_step feature_registry "$PYTHON_BIN" -B scripts/ci/check_feature_registry.py 
     "${feature_registry_args[@]}"
 run_step runtime_config "$PYTHON_BIN" -B scripts/ci/check_runtime_config_manifest.py
 run_step database_consumers "$PYTHON_BIN" -B scripts/ci/check_database_consumers.py
-run_step content_bundles "$PYTHON_BIN" -B deploy/release_tool.py content-bundles \
+run_step content_bundles "$PYTHON_BIN" -B deploy/release_tool.py content-bundle-policy \
     --project "$PROJECT_DIR" --output "$work_dir/content-bundles.json"
 run_step source_secrets "$PYTHON_BIN" -B deploy/release_tool.py source-secret-scan \
     --project "$PROJECT_DIR" --output "$work_dir/source-secrets.json"

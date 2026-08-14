@@ -161,7 +161,7 @@ if command == "snapshot":
     payload = {"algorithm": "fixture", "file_count": 1, "sha256": "a" * 64}
 elif command == "source-secret-scan":
     payload = {"status": "passed", "finding_count": 0, "findings": []}
-elif command == "content-bundles":
+elif command in {"content-bundles", "content-bundle-policy"}:
     payload = {"schema_version": 1, "status": "passed", "bundles": []}
 else:
     raise SystemExit(2)
@@ -445,6 +445,13 @@ def test_quality_gate_runs_database_consumer_inventory_before_secret_scan() -> N
     assert source.index(inventory) < source.index(secret_scan)
     assert "scripts/ci/check_database_consumers.py" in source
     assert "backend/tests/test_database_consumer_inventory.py" in source
+
+
+def test_quality_gate_validates_external_content_policy_without_requiring_local_artifact() -> None:
+    source = (DEPLOY_DIR / "run_quality_gate.sh").read_text(encoding="utf-8")
+
+    assert "deploy/release_tool.py content-bundle-policy" in source
+    assert "deploy/release_tool.py content-bundles" not in source
 
 
 def test_quality_gate_validates_feature_registry_before_secret_scan() -> None:

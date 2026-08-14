@@ -30,6 +30,11 @@ PYTHONDONTWRITEBYTECODE=1 python -B deploy/verify_release.py --help
 
 完整质量门和任何 `start|stop|restart|build|promote|apply` 操作都应由运维 runbook 在隔离/候选环境执行。不要在开发机用控制脚本启动真实抓取、流式加载、vLLM 或生产 Web，也不要将 release 目录作为临时工作区。
 
+日常/CI 质量门只校验 `ops/release/content-bundles.json` 的策略结构，因为大型
+`expert-skills` 内容包由仓库外制品提供，干净 clone 不包含其被忽略的文件。正式
+`stage-content-bundles` 与发布流程仍会校验完整目录摘要、证据文件和秘密扫描；缺少或
+漂移的外部内容会阻断发布，策略校验不能替代发布校验。
+
 ## 数据与安全边界
 
 部署脚本会接触 release/runtime、数据库、日志、PID/socket、模型和密钥文件；运行状态必须位于受控外部目录。禁止在命令行、日志或 README 暴露 secret/连接串，禁止仅凭 PID 文件杀进程，禁止未经 checkpoint、回放证明和回滚步骤迁移或重启管线。release 目录应只由验证和原子晋升流程管理。
