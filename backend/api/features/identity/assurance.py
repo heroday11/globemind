@@ -294,14 +294,23 @@ class IdentityAssuranceStore:
         if not raw.is_absolute():
             raise IdentityAssuranceUnavailable("IDENTITY_ASSURANCE_ROOT_NOT_ABSOLUTE")
         self.root = Path(os.path.abspath(os.fspath(raw)))
-        if _path_has_symlink(self.root):
-            raise IdentityAssuranceUnavailable("IDENTITY_ASSURANCE_ROOT_SYMLINK_REJECTED")
         try:
             self.root.relative_to(_FORBIDDEN_RELEASE_ROOT)
         except ValueError:
             pass
         else:
             raise IdentityAssuranceUnavailable("IDENTITY_ASSURANCE_ROOT_IN_RELEASE")
+        try:
+            if _path_has_symlink(self.root):
+                raise IdentityAssuranceUnavailable(
+                    "IDENTITY_ASSURANCE_ROOT_SYMLINK_REJECTED"
+                )
+        except IdentityAssuranceUnavailable:
+            raise
+        except OSError as exc:
+            raise IdentityAssuranceUnavailable(
+                "IDENTITY_ASSURANCE_ROOT_PROBE_FAILED"
+            ) from exc
         self.clock = clock
 
     @property
