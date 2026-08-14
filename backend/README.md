@@ -9,6 +9,7 @@
 ## 主要入口
 
 - API：在 `backend/` 目录使用 `api.main:app`（实现位于 `api/application.py`）。
+- Feature 导航：[`api/features/README.md`](api/features/README.md) 列出每个业务边界及首选契约测试。
 - Agentic RAG：`agentic_rag/cli.py`、`agentic_rag/search_server.py` 及其 pipeline 模块；具体作业按脚本说明单独选择。
 - 测试配置：仓库根目录 `pyproject.toml` 将测试目录设为 `backend/tests`，并提供 `gpu`、`integration`、`live_db`、`slow` 标记。
 
@@ -25,6 +26,7 @@ PYTHONDONTWRITEBYTECODE=1 python -B -m pytest backend/tests
 ```
 
 按需排除需要外部服务的测试：`-m "not live_db and not integration and not gpu"`。静态检查以仓库 `pyproject.toml` 和受控质量门为准；不要把任意 pipeline 脚本当作 smoke test 执行。
+测试层级和 marker 说明见 [`docs/development/TESTING.md`](../docs/development/TESTING.md)。
 
 ## 数据与安全边界
 

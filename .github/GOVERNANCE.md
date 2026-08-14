@@ -15,3 +15,10 @@ Scope: review routing, dependency updates and issue intake
 The files are statically checked by
 `scripts/ci/check_repository_hygiene.py`; they do not grant production or
 deployment authority.
+
+## Remote repository settings
+
+Repository files cannot enforce GitHub branch protection. Before granting another
+developer write access, the owner should protect `main`, require pull requests and the
+`quality-gate` status check, and disable force pushes and branch deletion. Keep direct
+pushes limited to the sole-maintainer phase.

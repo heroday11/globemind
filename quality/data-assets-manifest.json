@@ -16,12 +16,12 @@
   },
   "tracked_path_policy": {
     "allowed_globs": [
-      {"pattern": "data/README.md", "kind": "documentation", "owner": "data-platform"},
-      {"pattern": "data/ecbplus/**", "kind": "reference-corpus", "owner": "research", "provenance": "ECB+ reference corpus; verify upstream terms before redistribution"},
-      {"pattern": "data/source_curation/**", "kind": "curated-reference", "owner": "news-intelligence", "provenance": "reviewed source catalog snapshots"},
-      {"pattern": "data/models/**", "kind": "model-artifact", "owner": "ml-platform", "provenance": "training/evaluation provenance must be recorded with each update"},
-      {"pattern": "data/*.json", "kind": "evaluation-snapshot", "owner": "research", "provenance": "reproducible evaluation output; not production truth"},
-      {"pattern": "data/*.txt", "kind": "identifier-fixture", "owner": "data-platform", "provenance": "bounded IDs or fixture inputs; no raw production records"}
+      {"pattern": "data/README.md", "kind": "documentation", "owner": "data-platform", "license_status": "repository-documentation"},
+      {"pattern": "data/ecbplus/**", "kind": "reference-corpus", "owner": "research", "provenance": "ECB+ reference corpus", "license_status": "upstream-review-required"},
+      {"pattern": "data/source_curation/**", "kind": "curated-reference", "owner": "news-intelligence", "provenance": "reviewed source catalog snapshots", "license_status": "owner-review-required"},
+      {"pattern": "data/models/**", "kind": "model-artifact", "owner": "ml-platform", "provenance": "training/evaluation provenance must be recorded with each update", "license_status": "owner-review-required"},
+      {"pattern": "data/*.json", "kind": "evaluation-snapshot", "owner": "research", "provenance": "reproducible evaluation output; not production truth", "license_status": "owner-review-required"},
+      {"pattern": "data/*.txt", "kind": "identifier-fixture", "owner": "data-platform", "provenance": "bounded IDs or fixture inputs; no raw production records", "license_status": "owner-review-required"}
     ],
     "forbidden_globs": [
       "data/analysis/**",

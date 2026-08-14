@@ -2,10 +2,14 @@
 
 感谢你为 GlobeMind 提交改进。这里的代码同时服务于在线 API、前端、离线研究和数据治理；提交前请说明改动属于哪一层，并保持产品声明与实际证据一致。
 
+项目许可证尚未决定。外部贡献者在提交代码、数据、模型或媒体前，应先由维护者
+确认贡献与再分发条款；公开仓库和 Pull Request 不自动授予任何使用许可。
+
 ## 开始之前
 
 1. 阅读 [`AGENTS.md`](AGENTS.md) 和 [`README.md`](README.md)。
 2. 使用 Python 3.11、Node 22 和本地 PostgreSQL；按 README 配置隔离环境。
+   纯前端任务可以先按 [`docs/development/LOCAL_DEVELOPMENT.md`](docs/development/LOCAL_DEVELOPMENT.md) 使用 mock 模式，无需数据库。
 3. 不要把 `.env`、密码、token、模型密钥、真实数据库导出或个人数据加入提交。
 4. 先检查工作树，保留与本任务无关的现有改动；不要用 reset/checkout 覆盖他人或用户资产。
 
@@ -19,6 +23,8 @@
 - 代码修改使用精确补丁，避免重排无关文件或提交生成的构建产物、缓存和字节码。
 
 ## 本地验证
+
+测试分层、marker 和聚焦命令见 [`docs/development/TESTING.md`](docs/development/TESTING.md)。
 
 在仓库根目录运行与改动相关的最小门禁；Python 命令从启动前设置禁止字节码：
 

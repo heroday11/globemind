@@ -8,6 +8,7 @@
 
 - ASGI 对象：`api.main:app`（转发到 `api.application.app`）。
 - 路由：`routes/`；业务服务：`services/`；运行时和安全配置：`core/`。
+- Feature 公共入口与首选测试：[`features/README.md`](features/README.md)。
 - 容器入口记录在 `Dockerfile`；容器构建/部署须由运维流程执行。
 
 ## 依赖与环境

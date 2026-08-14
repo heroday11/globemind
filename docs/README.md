@@ -12,6 +12,14 @@ handoff、progress、benchmark、discovery 和实验报告属于历史证据。�
 
 - [`REPOSITORY_GOVERNANCE.md`](REPOSITORY_GOVERNANCE.md) — 数据、脚本、运行路径和文档治理契约。
 
+## Developer guides
+
+- [`development/README.md`](development/README.md) — 新人开发文档入口。
+- [`development/LOCAL_DEVELOPMENT.md`](development/LOCAL_DEVELOPMENT.md) — 前端 mock、API 与 pipeline 的安全本地模式。
+- [`development/TESTING.md`](development/TESTING.md) — 聚焦测试、marker 与 CI 等价质量门禁。
+- [`../backend/api/features/README.md`](../backend/api/features/README.md) — 后端 feature 责任与首选契约测试。
+- [`../frontend/vue_project/src/features/README.md`](../frontend/vue_project/src/features/README.md) — Vue feature 责任与首选契约测试。
+
 ## Current development
 
 当前开发与能力状态，关注“代码已实现”与“真实数据/候选/生产门禁已验收”的区别：

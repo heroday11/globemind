@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[2]
 DATA_MANIFEST = ROOT / "quality" / "data-assets-manifest.json"
 PATH_POLICY = ROOT / "quality" / "runtime-path-policy.json"
 SCRIPTS_MANIFEST = ROOT / "scripts" / "manifest.json"
+PUBLIC_SCHEMA_REFERENCE = Path("docs/DB_SCHEMA_GLOBEMIND.md")
 DOC_LINK_RE = re.compile(r"!?(?:\[[^\]]*\])\(([^)\s]+)(?:\s+[^)]*)?\)")
 WORKSPACE_ABSOLUTE_RE = re.compile(
     r"(?<![\w])/(?:root|home|opt|var|tmp|Users|Volumes)(?:/[A-Za-z0-9_.-]+)+"
@@ -28,10 +29,22 @@ CURRENT_DOC_GLOBS = (
     "README.md",
     "CONTRIBUTING.md",
     "SECURITY.md",
+    "backend/README.md",
+    "backend/api/README.md",
+    "backend/agentic_rag/README.md",
+    "backend/ai_search/README.md",
+    "frontend/README.md",
+    "frontend/vue_project/README.md",
+    "frontend/financial-terminal/README.md",
+    "core_pipeline/README.md",
+    "data/README.md",
     "docs/README.md",
     "docs/REPOSITORY_GOVERNANCE.md",
+    "docs/development/*.md",
     "docs/word/README.md",
     "docs/architecture/*.md",
+    "backend/api/features/README.md",
+    "frontend/vue_project/src/features/README.md",
     ".github/GOVERNANCE.md",
     "config/README.md",
     "config/runtime/README.md",
@@ -42,6 +55,24 @@ CURRENT_DOC_GLOBS = (
     "scripts/README.md",
     "deploy/README.md",
     "remotion-edit/README.md",
+)
+PUBLIC_SCHEMA_REQUIRED_MARKERS = (
+    "Status: current sanitized schema reference",
+    "contains no database row",
+    "is not an executable migration",
+)
+PUBLIC_SCHEMA_FORBIDDEN_PATTERNS = (
+    ("row-value Example column", re.compile(r"\|\s*Example\s*\|", re.IGNORECASE)),
+    (
+        "email-like row value",
+        re.compile(r"\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b", re.IGNORECASE),
+    ),
+    ("bcrypt hash row value", re.compile(r"\$2[aby]\$\d{2}\$[./A-Za-z0-9]{53}")),
+    ("phone-like row value", re.compile(r"(?<!\d)1[3-9]\d{9}(?!\d)")),
+    (
+        "live database export claim",
+        re.compile(r"auto-generated from current postgresql", re.IGNORECASE),
+    ),
 )
 
 
@@ -90,7 +121,20 @@ def check_data_assets(project: Path, paths: list[str]) -> list[str]:
     forbidden = policy.get("forbidden_globs")
     if not isinstance(allowed, list) or not isinstance(forbidden, list):
         raise HygieneError("data manifest glob policies must be lists")
-    allowed_patterns = [item.get("pattern") for item in allowed if isinstance(item, dict)]
+    allowed_patterns: list[str] = []
+    for entry in allowed:
+        if not isinstance(entry, dict) or not isinstance(entry.get("pattern"), str):
+            raise HygieneError("every allowed data glob needs a pattern")
+        allowed_patterns.append(entry["pattern"])
+        for field in ("kind", "owner", "license_status"):
+            if not isinstance(entry.get(field), str) or not entry[field].strip():
+                raise HygieneError(
+                    f"allowed data glob {entry['pattern']} is missing {field}"
+                )
+        if entry["kind"] != "documentation" and not isinstance(entry.get("provenance"), str):
+            raise HygieneError(
+                f"allowed data glob {entry['pattern']} is missing provenance"
+            )
     forbidden_patterns = [item for item in forbidden if isinstance(item, str)]
     issues: list[str] = []
     for path in paths:
@@ -253,6 +297,28 @@ def check_document_hygiene(project: Path) -> list[str]:
     return issues
 
 
+def check_public_schema_reference(project: Path) -> list[str]:
+    """Keep the public schema catalog structural and free of database row values."""
+    path = project / PUBLIC_SCHEMA_REFERENCE
+    try:
+        text = path.read_text(encoding="utf-8")
+    except (OSError, UnicodeError) as exc:
+        return [f"cannot read sanitized schema reference: {exc}"]
+
+    normalized = text.lower()
+    issues = [
+        f"sanitized schema reference is missing required marker: {marker}"
+        for marker in PUBLIC_SCHEMA_REQUIRED_MARKERS
+        if marker.lower() not in normalized
+    ]
+    for label, pattern in PUBLIC_SCHEMA_FORBIDDEN_PATTERNS:
+        match = pattern.search(text)
+        if match is not None:
+            line = text.count("\n", 0, match.start()) + 1
+            issues.append(f"sanitized schema reference contains {label} at line {line}")
+    return issues
+
+
 def check_github_configuration(project: Path) -> list[str]:
     issues: list[str] = []
     codeowners = project / ".github" / "CODEOWNERS"
@@ -338,6 +404,7 @@ def main() -> int:
     issues.extend(check_scripts_manifest(project, paths))
     issues.extend(check_runtime_path_policy(project))
     issues.extend(check_document_hygiene(project))
+    issues.extend(check_public_schema_reference(project))
     issues.extend(check_github_configuration(project))
     if issues:
         print("repository hygiene check failed:")

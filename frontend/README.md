@@ -8,6 +8,7 @@
 
 - 根 `package.json` 声明 npm workspaces，并保留既有子项目脚本转发命令。
 - Vue 主站入口：`vue_project/src/main.js`；金融终端入口：`financial-terminal/src/main.tsx`。
+- Vue feature 公共入口与首选测试：[`vue_project/src/features/README.md`](vue_project/src/features/README.md)。
 - 生产构建编排：`vue_project/scripts/build-release.mjs`；该脚本输出应指向隔离构建目录。
 
 ## 依赖与环境

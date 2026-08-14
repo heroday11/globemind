@@ -40,3 +40,5 @@ PYTHONDONTWRITEBYTECODE=1 python -B -m pytest backend/tests -m "not live_db and 
 大文件上限和生成物拒绝规则见 [`quality/data-assets-manifest.json`](../quality/data-assets-manifest.json)，
 并由 `scripts/ci/check_repository_hygiene.py` 只读执行。该 manifest 不等于数据授权：
 ECB+、媒体来源、模型和媒体资产仍需单独确认许可。
+每类受控数据必须同时声明 owner、provenance 和 `license_status`；状态为
+`owner-review-required` 或 `upstream-review-required` 时，不得据此进行再分发。

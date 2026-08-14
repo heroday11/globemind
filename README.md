@@ -154,6 +154,14 @@ make install-web
 
 ### 2. 只运行主前端
 
+最快的新人接手路径是不连接数据库，使用受控本地 mock：
+
+```bash
+make dev-web-mock
+```
+
+需要连接本地 API 时再准备前端环境：
+
 ```bash
 test -e frontend/vue_project/.env.local || \
   cp frontend/vue_project/.env.example frontend/vue_project/.env.local
@@ -239,6 +247,8 @@ npm run build
 - [自动化与生产安全规则](AGENTS.md)
 - [安全政策](SECURITY.md)
 - [开发整理与模块化路线](docs/DEVELOPMENT_PLAN.md)
+- [本地开发模式](docs/development/LOCAL_DEVELOPMENT.md)
+- [测试指南](docs/development/TESTING.md)
 - [GitHub 协作配置](.github/GOVERNANCE.md)
 
 ### 架构与契约

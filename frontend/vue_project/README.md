@@ -8,6 +8,7 @@ Vue 3/Vite 主站，包含搜索、新闻、研究工作区、助手、治理、
 
 - `src/main.js` 创建 Vue 应用、Pinia 和 router。
 - `src/App.vue` 与 `src/router/` 组织页面；`src/config/api.js` 管理 API 地址。
+- `src/features/README.md` 是业务 feature、公共入口和聚焦测试索引。
 - `scripts/build-release.mjs` 构建主站并整合金融终端；`scripts/dev-all.mjs` 是未接入默认命令的历史编排器。
 
 ## 依赖与环境
@@ -25,6 +26,7 @@ npm run build:main-only
 ```
 
 以上命令在本目录执行。`npm run dev` 只启动 Vue 主站；`dev:main` 是兼容别名。构建输出可由 `VITE_OUT_DIR` 指向隔离目录，避免覆盖源文件或受控发布目录。
+从仓库根目录执行 `make dev-web-mock` 可以使用有界本地 mock API 开始纯前端开发。
 
 ## 数据与安全边界
 
