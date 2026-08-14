@@ -50,3 +50,24 @@ def test_settings_source_has_safe_defaults_and_clean_utf8() -> None:
     assert "/root/data/models/" not in text
     assert "鍗" not in text
     assert "南海" in text
+
+
+def test_event_pipeline_defers_credentials_and_uses_portable_defaults() -> None:
+    path = ROOT / "scripts" / "run_event_level_pipeline.py"
+    text = path.read_text(encoding="utf-8")
+    tree = ast.parse(text, filename=str(path))
+
+    top_level_calls = [
+        child
+        for node in tree.body
+        if not isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef))
+        for child in ast.walk(node)
+        if isinstance(child, ast.Call)
+    ]
+    assert not any(
+        isinstance(call.func, ast.Name)
+        and call.func.id == "require_database_password"
+        for call in top_level_calls
+    )
+    assert "192.168.207.171" not in text
+    assert "/root/data/models/" not in text

@@ -11,45 +11,35 @@
   4. 写入 DB + 保存映射文件
 
 用法:
-    python scripts/run_event_level_pipeline.py
+    PYTHONDONTWRITEBYTECODE=1 python -B -m scripts.run_event_level_pipeline
 """
 from __future__ import annotations
 
 import json
 import logging
 import os
-import sys
 import time
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 
-_REPO = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(_REPO))
-sys.path.insert(0, str(_REPO / "backend"))
-
-try:
-    from dotenv import load_dotenv
-    load_dotenv(_REPO / "backend" / "agentic_rag" / ".env", override=False)
-    load_dotenv(_REPO / ".env", override=False)
-except ImportError:
-    pass
-
 import numpy as np
 import psycopg2
 
-from core_pipeline.event_extract_v11 import Event, ExtractionResult
+from core_pipeline.entity_normalizer import entity_pair_key
 from core_pipeline.event_coref_cluster import (
     build_event_coreference_with_embeddings,
     load_entity_aliases,
 )
-from scripts.db_runtime_config import require_database_password
-from core_pipeline.entity_normalizer import entity_pair_key
+from core_pipeline.event_extract_v11 import Event, ExtractionResult
 from core_pipeline.topic_clustering import (
     cluster_topics,
     validate_document_format,
 )
+from scripts.db_runtime_config import require_database_password
+
+_REPO = Path(__file__).resolve().parent.parent
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger("event_level_pipeline")
@@ -62,11 +52,27 @@ CHECKPOINT = CHECKPOINT_V13 if CHECKPOINT_V13.exists() else (CHECKPOINT_V12 if C
 MAPPING_OUT = _REPO / "data" / "event_coref_mapping_layer1.jsonl"
 ALIAS_PATH = _REPO / "backend" / "agentic_rag" / "pipeline" / "entity_alias.json"
 
-DB_HOST = os.getenv("PG_HOST", "192.168.207.171")
-DB_PORT = int(os.getenv("PG_PORT", "54333"))
-DB_NAME = "globemind_news"
-DB_USER = os.getenv("PG_WRITE_USER", "postgres")
-DB_PASSWORD = require_database_password()
+def _connect_database():
+    """Resolve database credentials only for an explicitly executed database operation."""
+    try:
+        from dotenv import load_dotenv
+
+        load_dotenv(_REPO / "backend" / "agentic_rag" / ".env", override=False)
+        load_dotenv(_REPO / ".env", override=False)
+    except ImportError:
+        pass
+
+    write_user = os.getenv("PG_WRITE_USER", "").strip()
+    if not write_user:
+        raise RuntimeError("PG_WRITE_USER is required for the event-level pipeline")
+    return psycopg2.connect(
+        host=os.getenv("PG_HOST", "127.0.0.1"),
+        port=int(os.getenv("PG_PORT", "5432")),
+        dbname=os.getenv("PG_DATABASE", "globemind_news"),
+        user=write_user,
+        password=require_database_password(),
+        connect_timeout=15,
+    )
 
 
 @dataclass
@@ -265,8 +271,7 @@ def load_checkpoint(path: str) -> list[ExtractionResult]:
 
 
 def load_article_content(results: list[ExtractionResult]) -> tuple[dict[int, str], dict[int, str]]:
-    conn = psycopg2.connect(host=DB_HOST, port=DB_PORT, dbname=DB_NAME,
-                           user=DB_USER, password=DB_PASSWORD, connect_timeout=15)
+    conn = _connect_database()
     cur = conn.cursor()
     article_ids = [r.article_id for r in results]
     bodies: dict[int, str] = {}
@@ -283,13 +288,13 @@ def load_article_content(results: list[ExtractionResult]) -> tuple[dict[int, str
             body = str(row[2] or "")
             titles[article_id] = title
             bodies[article_id] = f"{title} {body}".strip()
-    cur.close(); conn.close()
+    cur.close()
+    conn.close()
     return bodies, titles
 
 
 def load_embeddings(article_ids: set[int]) -> dict[int, np.ndarray]:
-    conn = psycopg2.connect(host=DB_HOST, port=DB_PORT, dbname=DB_NAME,
-                           user=DB_USER, password=DB_PASSWORD, connect_timeout=15)
+    conn = _connect_database()
     cur = conn.cursor()
     cur.execute("SELECT news_id, embedding FROM news_embeddings WHERE model IN ('bge-m3','BAAI/bge-m3')")
     embs: dict[int, np.ndarray] = {}
@@ -303,14 +308,14 @@ def load_embeddings(article_ids: set[int]) -> dict[int, np.ndarray]:
         if isinstance(raw, str):
             raw = json.loads(raw)
         embs[int(nid)] = np.array(raw, dtype=np.float32)
-    cur.close(); conn.close()
+    cur.close()
+    conn.close()
     return embs
 
 
 def write_to_db(clusters: dict[str, list[int]], results: list[ExtractionResult]) -> None:
     lookup = {r.article_id: r for r in results}
-    conn = psycopg2.connect(host=DB_HOST, port=DB_PORT, dbname=DB_NAME,
-                           user=DB_USER, password=DB_PASSWORD, connect_timeout=15)
+    conn = _connect_database()
     conn.autocommit = True
     cur = conn.cursor()
     cur.execute("TRUNCATE event_coref_members CASCADE")
@@ -328,7 +333,8 @@ def write_to_db(clusters: dict[str, list[int]], results: list[ExtractionResult])
                         from datetime import datetime
                         dt = datetime.fromisoformat(str(r.published_at).replace("Z","+00:00").replace(" ","T"))
                         dates.append(dt.date())
-                    except: pass
+                    except ValueError:
+                        pass
         et = Counter(ev_types).most_common(1)[0][0] if ev_types else "other"
         sd = min(dates) if dates else None
         ed = max(dates) if dates else None
@@ -336,7 +342,8 @@ def write_to_db(clusters: dict[str, list[int]], results: list[ExtractionResult])
                     (cid, len(aids), et, Counter(inits).most_common(1)[0][0] if inits else "?", Counter(tgts).most_common(1)[0][0] if tgts else "?", sd, ed))
         for aid in aids:
             cur.execute("INSERT INTO event_coref_members(cluster_id,news_id) VALUES(%s,%s) ON CONFLICT DO NOTHING", (cid, aid))
-    cur.close(); conn.close()
+    cur.close()
+    conn.close()
 
 
 def main() -> None:
@@ -448,10 +455,12 @@ def main() -> None:
     # ── Step 9: LLM Naming (L1 clusters + L2 stories) ──
     logger.info("Step 9/9: Generating event & story titles...")
     try:
-        import asyncio, aiohttp
+        import asyncio
+
+        import aiohttp
         vllm_url = os.environ.get("VLLM_BASE_URL", "http://127.0.0.1:8004").rstrip("/") + "/v1/chat/completions"
         logger.info("  Using vLLM at %s", vllm_url)
-        model = "/root/data/models/Qwen2.5-7B-Instruct-AWQ"
+        model = os.environ.get("VLLM_MODEL_NAME", "Qwen/Qwen2.5-7B-Instruct")
         sem = asyncio.Semaphore(20)
 
         async def _name_batch(items, prompt_fn, max_tokens=30):
@@ -470,12 +479,11 @@ def main() -> None:
                             try:
                                 d = await resp.json()
                                 return d["choices"][0]["message"]["content"].strip().strip('"').strip("'")
-                            except: return ""
+                            except (KeyError, TypeError, ValueError):
+                                return ""
             return await asyncio.gather(*[_name_one(item) for item in items])
 
-        conn_n = psycopg2.connect(host=os.getenv("PG_HOST","192.168.207.171"), port=int(os.getenv("PG_PORT","54333")),
-                                   dbname="globemind_news", user=os.getenv("PG_WRITE_USER","postgres"),
-                                   password=DB_PASSWORD, connect_timeout=15)
+        conn_n = _connect_database()
         cur_n = conn_n.cursor()
 
         # L1 clusters (with L2 story context)
