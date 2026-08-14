@@ -274,6 +274,13 @@ if pytest_xml.is_file():
     root = ET.parse(pytest_xml).getroot()
     suite = root if root.tag == "testsuite" else root.find("testsuite")
     if suite is not None:
+        failed_cases = []
+        for case in root.iter("testcase"):
+            if case.find("failure") is None and case.find("error") is None:
+                continue
+            class_name = case.attrib.get("classname", "").strip()
+            test_name = case.attrib.get("name", "unknown").strip()
+            failed_cases.append(f"{class_name}::{test_name}".strip(":"))
         tests = {
             "status": "passed" if int(suite.attrib.get("failures", 0)) + int(suite.attrib.get("errors", 0)) == 0 else "failed",
             "total": int(suite.attrib.get("tests", 0)),
@@ -281,6 +288,7 @@ if pytest_xml.is_file():
             "errors": int(suite.attrib.get("errors", 0)),
             "skipped": int(suite.attrib.get("skipped", 0)),
             "duration_seconds": round(float(suite.attrib.get("time", 0)), 3),
+            "failed_cases": failed_cases[:50],
         }
 
 ratchets = {"status": "skipped"}

@@ -66,6 +66,30 @@ jobs:
       - name: Run offline quality gate
         run: deploy/run_quality_gate.sh --output "$RUNNER_TEMP/quality-gate.json"
 
+      - name: Report offline quality gate result
+        if: always()
+        env:
+          QUALITY_GATE_REPORT: ${{ runner.temp }}/quality-gate.json
+        run: |
+          python -B - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          report_path = Path(os.environ["QUALITY_GATE_REPORT"])
+          if not report_path.is_file():
+              print("::error file=deploy/run_quality_gate.sh,title=Offline quality gate::Report was not created")
+              raise SystemExit(0)
+          report = json.loads(report_path.read_text(encoding="utf-8"))
+          for step in report.get("steps", []):
+              if step.get("status") == "failed":
+                  name = str(step.get("name") or "unknown").replace("\n", " ")
+                  print(f"::error file=deploy/run_quality_gate.sh,title=Offline quality gate::{name}")
+          for test_id in report.get("tests", {}).get("failed_cases", []):
+              safe_id = str(test_id).replace("\n", " ")
+              print(f"::error file=backend/tests,title=Pytest failure::{safe_id}")
+          PY
+
       - name: Run bounded continuous audit
         env:
           PYTHONDONTWRITEBYTECODE: "1"
