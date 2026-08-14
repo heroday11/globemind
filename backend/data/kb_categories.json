@@ -1,0 +1,38 @@
+[
+  {
+    "id": "geo",
+    "name": "地缘政治",
+    "count": 234,
+    "icon": "🌍"
+  },
+  {
+    "id": "mil",
+    "name": "军事安全",
+    "count": 189,
+    "icon": "⚔"
+  },
+  {
+    "id": "econ",
+    "name": "经济贸易",
+    "count": 312,
+    "icon": "📊"
+  },
+  {
+    "id": "tech",
+    "name": "科技情报",
+    "count": 156,
+    "icon": "🔬"
+  },
+  {
+    "id": "social",
+    "name": "社会舆情",
+    "count": 278,
+    "icon": "📢"
+  },
+  {
+    "id": "law",
+    "name": "法律法规",
+    "count": 98,
+    "icon": "⚖"
+  }
+]

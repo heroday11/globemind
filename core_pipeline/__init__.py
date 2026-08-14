@@ -1,0 +1,1 @@
+# GlobeMind core pipeline package

@@ -1,0 +1,1160 @@
+{
+  "schema_version": 1,
+  "policy": {
+    "change_control": "Every production change must identify an owner, activation mode, rollback value, and affected services.",
+    "secrets": "Secret values belong in a 0600 environment or secret file and must never be committed or passed on a command line.",
+    "pipeline_restart": "checkpointed_restart means stop only at a documented checkpoint; never interrupt an active long-running batch to apply configuration."
+  },
+  "services": {
+    "assistant-scheduler": {
+      "owner": "product-assistant",
+      "description": "Assistant schedule leader and workspace job executor."
+    },
+    "cloudflare-tunnel": {
+      "owner": "platform-runtime",
+      "description": "Public ingress connector for globemind.top."
+    },
+    "daily-ingest": {
+      "owner": "data-acquisition",
+      "description": "Recurring discovery, extraction, and load pipeline."
+    },
+    "embedding-service": {
+      "owner": "ai-platform",
+      "description": "Text embedding and vector retrieval endpoint."
+    },
+    "frontend-release": {
+      "owner": "frontend-platform",
+      "description": "Immutable Vue and financial-terminal browser assets."
+    },
+    "ground-news-refresh": {
+      "owner": "news-intelligence",
+      "description": "Ground News aggregation and image refresh loops."
+    },
+    "news-quality": {
+      "owner": "data-quality",
+      "description": "Continuous news quality labeling pipeline."
+    },
+    "postgres": {
+      "owner": "data-platform",
+      "description": "Primary transactional and analytics PostgreSQL service."
+    },
+    "vllm": {
+      "owner": "ai-platform",
+      "description": "Local OpenAI-compatible model inference service."
+    },
+    "wave1-extractor": {
+      "owner": "data-acquisition",
+      "description": "Checkpointed historical article extraction pipeline."
+    },
+    "wave1-loader": {
+      "owner": "data-platform",
+      "description": "Checkpointed PostgreSQL article loading pipeline."
+    },
+    "web-api": {
+      "owner": "platform-api",
+      "description": "FastAPI application and production static asset server."
+    }
+  },
+  "variables": [
+    {
+      "name": "APP_ENV",
+      "scope": "web",
+      "owner": "platform-api",
+      "sensitivity": "public",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "process_restart",
+      "default_policy": {"mode": "safe_default", "value": "development"},
+      "description": "Runtime safety profile; production deployments must set production explicitly."
+    },
+    {
+      "name": "APP_VERSION",
+      "scope": "web",
+      "owner": "release-engineering",
+      "sensitivity": "public",
+      "services": ["web-api", "frontend-release"],
+      "restart_required": true,
+      "activation": "process_restart",
+      "default_policy": {"mode": "derived", "source": "VERSION"},
+      "description": "Semantic application version exposed by health endpoints."
+    },
+    {
+      "name": "BUILD_ID",
+      "scope": "web",
+      "owner": "release-engineering",
+      "sensitivity": "public",
+      "services": ["web-api", "frontend-release"],
+      "restart_required": true,
+      "activation": "process_restart",
+      "default_policy": {"mode": "required_in_production"},
+      "description": "Immutable release identifier used for readiness and deployment verification."
+    },
+    {
+      "name": "GIT_SHA",
+      "scope": "web",
+      "owner": "release-engineering",
+      "sensitivity": "public",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "process_restart",
+      "default_policy": {"mode": "derived", "source": "git rev-parse HEAD"},
+      "description": "Source revision included in release diagnostics."
+    },
+    {
+      "name": "HOST",
+      "scope": "web",
+      "owner": "platform-runtime",
+      "sensitivity": "public",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "127.0.0.1"},
+      "description": "Web bind address; loopback is mandatory behind the local tunnel."
+    },
+    {
+      "name": "PORT",
+      "scope": "web",
+      "owner": "platform-runtime",
+      "sensitivity": "public",
+      "services": ["web-api", "cloudflare-tunnel"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "8088"},
+      "description": "Web listener and tunnel origin port."
+    },
+    {
+      "name": "WEB_WORKERS",
+      "scope": "web",
+      "owner": "platform-runtime",
+      "sensitivity": "public",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "4"},
+      "description": "Uvicorn worker count; capacity changes must account for database pool multiplication."
+    },
+    {
+      "name": "FRONTEND_DIST",
+      "scope": "web",
+      "owner": "release-engineering",
+      "sensitivity": "internal",
+      "services": ["web-api", "frontend-release"],
+      "restart_required": true,
+      "activation": "process_restart",
+      "default_policy": {"mode": "required_in_production"},
+      "description": "Absolute path to a verified immutable frontend release directory."
+    },
+    {
+      "name": "RELEASE_DIR",
+      "scope": "web",
+      "owner": "release-engineering",
+      "sensitivity": "internal",
+      "services": ["web-api", "frontend-release"],
+      "restart_required": true,
+      "activation": "process_restart",
+      "default_policy": {"mode": "derived", "source": "verified release manifest"},
+      "description": "Absolute root of the verified immutable release used to resolve executable code."
+    },
+    {
+      "name": "GLOBEMIND_FRONTEND_PUBLIC_ROOT",
+      "scope": "web",
+      "owner": "release-engineering",
+      "sensitivity": "internal",
+      "services": ["web-api", "frontend-release"],
+      "restart_required": true,
+      "activation": "process_restart",
+      "default_policy": {"mode": "derived", "source": "FRONTEND_DIST"},
+      "description": "Read-only public dataset root, forced to the current immutable frontend release."
+    },
+    {
+      "name": "GLOBEMIND_GENERATED_ASSET_ROOT",
+      "scope": "web",
+      "owner": "platform-runtime",
+      "sensitivity": "internal",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "/root/data/web/generated-assets"},
+      "description": "Writable generated-media root kept outside immutable release directories."
+    },
+    {
+      "name": "GLOBEMIND_WORKSPACE_ROOT",
+      "scope": "web",
+      "owner": "product-assistant",
+      "sensitivity": "internal",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "/root/data/workspace"},
+      "description": "Release-external user workspace root; the research workflow uses an isolated service directory beneath it."
+    },
+    {
+      "name": "EVIDENCE_SNAPSHOT_ROOT",
+      "scope": "web",
+      "owner": "data-quality",
+      "sensitivity": "internal",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "/root/data/web/evidence-snapshots"},
+      "description": "Release-external immutable article snapshot and downstream-impact ledger root."
+    },
+    {
+      "name": "SEARCH_SNAPSHOT_ROOT",
+      "scope": "web",
+      "owner": "platform-api",
+      "sensitivity": "internal",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "/root/data/web/search-snapshots"},
+      "description": "Release-external per-user append-only query-contract and ordered-result-ID snapshot root."
+    },
+    {
+      "name": "MODEL_ASSURANCE_ROOT",
+      "scope": "ai",
+      "owner": "ml-platform",
+      "sensitivity": "internal",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "/root/data/web/model_assurance"},
+      "description": "Release-external append-only model evaluation, calibration, drift, and rollback-evidence ledger root."
+    },
+    {
+      "name": "PRIVACY_RIGHTS_ROOT",
+      "scope": "security",
+      "owner": "platform-api",
+      "sensitivity": "internal",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "/root/data/web/privacy-rights"},
+      "description": "Release-external append-only intake ledger for account deletion requests and cancellations; it does not represent completed erasure."
+    },
+    {
+      "name": "IDENTITY_ASSURANCE_ROOT",
+      "scope": "security",
+      "owner": "platform-api",
+      "sensitivity": "internal",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "/root/data/web/identity-assurance"},
+      "description": "Release-external encrypted MFA enrollment, tracked-session revocation, and tamper-evident security-event ledger root."
+    },
+    {
+      "name": "SERVICE_LEVEL_ROOT",
+      "scope": "web",
+      "owner": "platform-api",
+      "sensitivity": "internal",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "/root/data/web/service-level"},
+      "description": "Release-external append-only, privacy-minimal search/export/report observation ledger. Measurements do not become approved SLOs without separate approver evidence."
+    },
+    {
+      "name": "ENTITY_GOVERNANCE_ROOT",
+      "scope": "web",
+      "owner": "data-quality",
+      "sensitivity": "internal",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "/root/data/web/entity-governance"},
+      "description": "Release-external append-only temporal entity-governance and human-review ledger root."
+    },
+    {
+      "name": "FINANCIAL_ALERT_TRIAGE_ROOT",
+      "scope": "web",
+      "owner": "financial-intelligence",
+      "sensitivity": "internal",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "/root/data/web/financial-alert-triage"},
+      "description": "Release-external append-only financial alert triage and postmortem ledger root; local hash chains are not WORM or an external trust anchor."
+    },
+    {
+      "name": "HERMES_IMAGE_SCRIPT",
+      "scope": "ai",
+      "owner": "release-engineering",
+      "sensitivity": "internal",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "process_restart",
+      "default_policy": {"mode": "derived", "source": "RELEASE_DIR"},
+      "description": "Image generation executable path, forced to the current immutable release."
+    },
+    {
+      "name": "HERMES_IMAGE_ENV_FILE",
+      "scope": "ai",
+      "owner": "ml-platform",
+      "sensitivity": "internal",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "process_restart",
+      "default_policy": {"mode": "optional"},
+      "description": "External owner-only configuration file for image-provider settings; never bundled in a release."
+    },
+    {
+      "name": "GLOBEMIND_ENV_FILE",
+      "scope": "web",
+      "owner": "platform-runtime",
+      "sensitivity": "internal",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "optional"},
+      "description": "Backward-compatible single explicit environment file; GLOBEMIND_ENV_FILES takes precedence."
+    },
+    {
+      "name": "GLOBEMIND_ENV_FILES",
+      "scope": "web",
+      "owner": "platform-runtime",
+      "sensitivity": "internal",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "required_in_production"},
+      "description": "Path-separator-delimited, explicitly ordered environment files loaded before API imports; earlier files win."
+    },
+    {
+      "name": "CORS_ORIGINS",
+      "scope": "web",
+      "owner": "platform-api",
+      "sensitivity": "public",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "process_restart",
+      "default_policy": {"mode": "required_in_production"},
+      "description": "Comma-separated exact browser origins permitted by the API."
+    },
+    {
+      "name": "ALLOW_RUNTIME_SCHEMA_MUTATIONS",
+      "scope": "web",
+      "owner": "data-platform",
+      "sensitivity": "internal",
+      "services": ["web-api", "postgres"],
+      "restart_required": true,
+      "activation": "process_restart",
+      "default_policy": {"mode": "disabled_by_default", "value": "0"},
+      "description": "Emergency-only startup DDL switch; migrations remain the normal schema path."
+    },
+    {
+      "name": "HTTP_MAX_REQUEST_BYTES",
+      "scope": "web",
+      "owner": "platform-api",
+      "sensitivity": "public",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "process_restart",
+      "default_policy": {"mode": "safe_default", "value": "8388608"},
+      "description": "Default maximum write request body size."
+    },
+    {
+      "name": "HTTP_MAX_AI_REQUEST_BYTES",
+      "scope": "web",
+      "owner": "platform-api",
+      "sensitivity": "public",
+      "services": ["web-api", "vllm"],
+      "restart_required": true,
+      "activation": "process_restart",
+      "default_policy": {"mode": "safe_default", "value": "2097152"},
+      "description": "Maximum request body forwarded to AI endpoints."
+    },
+    {
+      "name": "HTTP_MAX_UPLOAD_REQUEST_BYTES",
+      "scope": "web",
+      "owner": "product-assistant",
+      "sensitivity": "public",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "process_restart",
+      "default_policy": {"mode": "safe_default", "value": "106954752"},
+      "description": "Multipart upload ceiling including framing overhead."
+    },
+    {
+      "name": "ENTITY_GOVERNANCE_HMAC_KEY",
+      "scope": "security",
+      "owner": "security-platform",
+      "sensitivity": "secret",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "secret_required"},
+      "description": "HMAC key of at least 32 bytes for the local entity-governance chain; key identifiers and dual-key verification are not implemented, so rotation requires a separately controlled ledger migration."
+    },
+    {
+      "name": "JWT_SECRET_KEY",
+      "scope": "security",
+      "owner": "security-platform",
+      "sensitivity": "secret",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "secret_required"},
+      "description": "Signing key for access tokens and derivation key for identity-assurance event HMACs; rotation invalidates current sessions and makes existing local assurance chains unverifiable because JWT dual-key support is not implemented."
+    },
+    {
+      "name": "USER_API_KEYS_ENCRYPTION_KEY",
+      "scope": "security",
+      "owner": "security-platform",
+      "sensitivity": "secret",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "secret_required"},
+      "description": "Primary Fernet key for user-owned provider credentials and MFA TOTP enrollment secrets."
+    },
+    {
+      "name": "USER_API_KEYS_DECRYPTION_KEYS",
+      "scope": "security",
+      "owner": "security-platform",
+      "sensitivity": "secret",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "optional"},
+      "description": "Previous Fernet keys retained temporarily for decrypting user API-key and MFA ciphertext during rotation."
+    },
+    {
+      "name": "ADMIN_USER",
+      "scope": "security",
+      "owner": "platform-api",
+      "sensitivity": "internal",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "process_restart",
+      "default_policy": {"mode": "safe_default", "value": "admin"},
+      "description": "Legacy bootstrap administrator identity; database roles are authoritative after bootstrap."
+    },
+    {
+      "name": "ADMIN_PASSWORD",
+      "scope": "security",
+      "owner": "security-platform",
+      "sensitivity": "secret",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "optional"},
+      "description": "Development-only legacy administrator password; prohibited as a production login path."
+    },
+    {
+      "name": "SEED_DEFAULT_USER_PASSWORD",
+      "scope": "security",
+      "owner": "security-platform",
+      "sensitivity": "secret",
+      "services": ["web-api", "postgres"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "optional"},
+      "description": "One-time bootstrap password; leave unset after initial provisioning."
+    },
+    {
+      "name": "WORKSPACE_UPLOAD_MAX_FILE_BYTES",
+      "scope": "security",
+      "owner": "product-assistant",
+      "sensitivity": "public",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "process_restart",
+      "default_policy": {"mode": "safe_default", "value": "26214400"},
+      "description": "Maximum size of one workspace upload."
+    },
+    {
+      "name": "WORKSPACE_UPLOAD_MAX_REQUEST_BYTES",
+      "scope": "security",
+      "owner": "product-assistant",
+      "sensitivity": "public",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "process_restart",
+      "default_policy": {"mode": "safe_default", "value": "104857600"},
+      "description": "Aggregate payload ceiling for a workspace upload request."
+    },
+    {
+      "name": "WORKSPACE_USER_MAX_BYTES",
+      "scope": "security",
+      "owner": "product-assistant",
+      "sensitivity": "public",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "process_restart",
+      "default_policy": {"mode": "safe_default", "value": "5368709120"},
+      "description": "Total disk quota across all workspaces owned by one user."
+    },
+    {
+      "name": "WORKSPACE_DISK_MIN_FREE_BYTES",
+      "scope": "security",
+      "owner": "platform-runtime",
+      "sensitivity": "internal",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "process_restart",
+      "default_policy": {"mode": "safe_default", "value": "1073741824"},
+      "description": "Low-water mark below which new workspace writes are rejected."
+    },
+    {
+      "name": "DB_HOST",
+      "scope": "database",
+      "owner": "data-platform",
+      "sensitivity": "internal",
+      "services": ["web-api", "postgres", "wave1-loader", "daily-ingest"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "127.0.0.1"},
+      "description": "Canonical PostgreSQL hostname; replaces legacy PG_HOST at service boundaries."
+    },
+    {
+      "name": "DB_PORT",
+      "scope": "database",
+      "owner": "data-platform",
+      "sensitivity": "public",
+      "services": ["web-api", "postgres", "wave1-loader", "daily-ingest"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "5432"},
+      "description": "Canonical PostgreSQL TCP port."
+    },
+    {
+      "name": "DB_NAME",
+      "scope": "database",
+      "owner": "data-platform",
+      "sensitivity": "internal",
+      "services": ["web-api", "postgres", "wave1-loader", "daily-ingest"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "news"},
+      "description": "Canonical application database name."
+    },
+    {
+      "name": "DB_USER",
+      "scope": "database",
+      "owner": "data-platform",
+      "sensitivity": "internal",
+      "services": ["web-api", "postgres", "wave1-loader", "daily-ingest"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "required_in_production"},
+      "description": "Canonical least-privilege PostgreSQL role."
+    },
+    {
+      "name": "DB_PASSWORD",
+      "scope": "database",
+      "owner": "data-platform",
+      "sensitivity": "secret",
+      "services": ["postgres"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "optional"},
+      "description": "Legacy bootstrap secret; Web and pipeline runtime roles must use GLOBEMIND_DB_PASSWORD_FILE."
+    },
+    {
+      "name": "GLOBEMIND_DB_PASSWORD_FILE",
+      "scope": "database",
+      "owner": "data-platform",
+      "sensitivity": "internal",
+      "services": ["web-api", "wave1-loader", "daily-ingest", "postgres"],
+      "restart_required": true,
+      "activation": "checkpointed_restart",
+      "default_policy": {"mode": "required_in_production"},
+      "description": "Absolute path to an owner-matched, non-symlink mode-0600 database password file."
+    },
+    {
+      "name": "DB_SSLMODE",
+      "scope": "database",
+      "owner": "data-platform",
+      "sensitivity": "internal",
+      "services": ["web-api", "wave1-loader", "daily-ingest"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "required", "allowed": ["verify-full", "require", "disable"]},
+      "description": "Explicit libpq transport policy; implicit prefer/downgrade is forbidden."
+    },
+    {
+      "name": "GLOBEMIND_ALLOW_PRIVATE_SCRAM_TRANSPORT",
+      "scope": "database",
+      "owner": "security-platform",
+      "sensitivity": "internal",
+      "services": ["web-api", "wave1-loader", "daily-ingest"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "disabled_by_default", "value": "0"},
+      "description": "Required value 1 only for an audited ssl=off RFC1918 SCRAM transition; remove after TLS activation."
+    },
+    {
+      "name": "WAVE1_LOADER_DB_PASSWORD_SOURCE_FILE",
+      "scope": "database",
+      "owner": "data-platform",
+      "sensitivity": "internal",
+      "services": ["wave1-loader"],
+      "restart_required": true,
+      "activation": "checkpointed_restart",
+      "default_policy": {"mode": "required"},
+      "description": "Dedicated owner-0600 non-symlink source for the wave1_loader role secret."
+    },
+    {
+      "name": "DAILY_INGEST_DB_PASSWORD_SOURCE_FILE",
+      "scope": "database",
+      "owner": "data-platform",
+      "sensitivity": "internal",
+      "services": ["daily-ingest"],
+      "restart_required": true,
+      "activation": "checkpointed_restart",
+      "default_policy": {"mode": "required"},
+      "description": "Dedicated owner-0600 non-symlink source for daily ingest's wave1_loader credential."
+    },
+    {
+      "name": "WAVE1_LOADER_ALLOW_LEGACY_DB_ROLE",
+      "scope": "database",
+      "owner": "data-platform",
+      "sensitivity": "internal",
+      "services": ["wave1-loader"],
+      "restart_required": true,
+      "activation": "checkpointed_restart",
+      "default_policy": {"mode": "disabled_by_default", "value": "0"},
+      "description": "Allows DB_USER=postgres only during an approved Wave1 rollback."
+    },
+    {
+      "name": "DAILY_INGEST_ALLOW_LEGACY_DB_ROLE",
+      "scope": "database",
+      "owner": "data-platform",
+      "sensitivity": "internal",
+      "services": ["daily-ingest"],
+      "restart_required": true,
+      "activation": "checkpointed_restart",
+      "default_policy": {"mode": "disabled_by_default", "value": "0"},
+      "description": "Allows DB_USER=postgres only during an approved daily-ingest rollback."
+    },
+    {
+      "name": "PG_HOST",
+      "scope": "database",
+      "owner": "data-platform",
+      "sensitivity": "internal",
+      "services": ["web-api", "wave1-loader", "daily-ingest"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "optional"},
+      "description": "Legacy DB_HOST alias retained during configuration consolidation."
+    },
+    {
+      "name": "PG_PORT",
+      "scope": "database",
+      "owner": "data-platform",
+      "sensitivity": "public",
+      "services": ["web-api", "wave1-loader", "daily-ingest"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "optional"},
+      "description": "Legacy DB_PORT alias retained during configuration consolidation."
+    },
+    {
+      "name": "PG_USER",
+      "scope": "database",
+      "owner": "data-platform",
+      "sensitivity": "internal",
+      "services": ["web-api", "wave1-loader", "daily-ingest"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "optional"},
+      "description": "Legacy DB_USER alias; do not introduce new consumers."
+    },
+    {
+      "name": "PG_PASSWORD",
+      "scope": "database",
+      "owner": "data-platform",
+      "sensitivity": "secret",
+      "services": ["web-api", "wave1-loader", "daily-ingest"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "optional"},
+      "description": "Legacy DB_PASSWORD alias; remove after all consumers use the canonical secret source."
+    },
+    {
+      "name": "PG_WRITE_USER",
+      "scope": "database",
+      "owner": "data-platform",
+      "sensitivity": "internal",
+      "services": ["wave1-loader", "daily-ingest"],
+      "restart_required": true,
+      "activation": "checkpointed_restart",
+      "default_policy": {"mode": "required"},
+      "description": "Write-capable PostgreSQL role for ingestion pipelines."
+    },
+    {
+      "name": "PG_WRITE_PASSWORD",
+      "scope": "database",
+      "owner": "data-platform",
+      "sensitivity": "secret",
+      "services": ["wave1-loader", "daily-ingest"],
+      "restart_required": true,
+      "activation": "checkpointed_restart",
+      "default_policy": {"mode": "optional"},
+      "description": "Legacy pipeline write password alias; password-file delivery is preferred."
+    },
+    {
+      "name": "DB_POOL_SIZE",
+      "scope": "database",
+      "owner": "platform-api",
+      "sensitivity": "public",
+      "services": ["web-api", "postgres"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "3"},
+      "description": "Persistent SQLAlchemy connections per web worker."
+    },
+    {
+      "name": "DB_MAX_OVERFLOW",
+      "scope": "database",
+      "owner": "platform-api",
+      "sensitivity": "public",
+      "services": ["web-api", "postgres"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "2"},
+      "description": "Temporary SQLAlchemy overflow connections per worker."
+    },
+    {
+      "name": "DB_POOL_TIMEOUT",
+      "scope": "database",
+      "owner": "platform-api",
+      "sensitivity": "public",
+      "services": ["web-api", "postgres"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "10"},
+      "description": "Seconds to wait for an available pooled database connection."
+    },
+    {
+      "name": "VLLM_TARGET",
+      "scope": "ai",
+      "owner": "ai-platform",
+      "sensitivity": "internal",
+      "services": ["web-api", "vllm"],
+      "restart_required": true,
+      "activation": "process_restart",
+      "default_policy": {"mode": "safe_default", "value": "http://127.0.0.1:8004"},
+      "description": "Authenticated web proxy target for local vLLM."
+    },
+    {
+      "name": "VLLM_BASE_URL",
+      "scope": "ai",
+      "owner": "ai-platform",
+      "sensitivity": "internal",
+      "services": ["web-api", "vllm", "wave1-extractor"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "http://127.0.0.1:8004"},
+      "description": "OpenAI-compatible base URL used by internal AI clients."
+    },
+    {
+      "name": "VLLM_PROFILE",
+      "scope": "ai",
+      "owner": "ai-platform",
+      "sensitivity": "public",
+      "services": ["vllm"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "event_extract"},
+      "description": "Validated inference tuning profile."
+    },
+    {
+      "name": "VLLM_MODEL_PATH",
+      "scope": "ai",
+      "owner": "ai-platform",
+      "sensitivity": "internal",
+      "services": ["vllm"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "required"},
+      "description": "Local model artifact directory."
+    },
+    {
+      "name": "VLLM_SERVED_MODEL_NAME",
+      "scope": "ai",
+      "owner": "ai-platform",
+      "sensitivity": "public",
+      "services": ["vllm", "web-api"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "derived", "source": "VLLM_MODEL_PATH plus stable alias"},
+      "description": "Model identifiers exposed by the OpenAI-compatible endpoint."
+    },
+    {
+      "name": "VLLM_HOST",
+      "scope": "ai",
+      "owner": "ai-platform",
+      "sensitivity": "public",
+      "services": ["vllm"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "127.0.0.1"},
+      "description": "vLLM bind address; must remain loopback unless separately firewalled."
+    },
+    {
+      "name": "VLLM_PORT",
+      "scope": "ai",
+      "owner": "ai-platform",
+      "sensitivity": "public",
+      "services": ["vllm", "web-api"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "8004"},
+      "description": "Local vLLM listener port."
+    },
+    {
+      "name": "CUDA_VISIBLE_DEVICES",
+      "scope": "ai",
+      "owner": "ai-platform",
+      "sensitivity": "internal",
+      "services": ["vllm", "embedding-service"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "0"},
+      "description": "GPU allocation for each inference service; collisions require a capacity review."
+    },
+    {
+      "name": "VLLM_GPU_MEMORY_UTILIZATION",
+      "scope": "ai",
+      "owner": "ai-platform",
+      "sensitivity": "public",
+      "services": ["vllm"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "derived", "source": "VLLM_PROFILE"},
+      "description": "Fraction of visible GPU memory reserved by vLLM."
+    },
+    {
+      "name": "VLLM_MAX_MODEL_LEN",
+      "scope": "ai",
+      "owner": "ai-platform",
+      "sensitivity": "public",
+      "services": ["vllm"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "derived", "source": "VLLM_PROFILE"},
+      "description": "Maximum model context length; changes affect KV cache capacity."
+    },
+    {
+      "name": "HERMES_API_KEY",
+      "scope": "ai",
+      "owner": "product-assistant",
+      "sensitivity": "secret",
+      "services": ["web-api"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "optional"},
+      "description": "Server-side assistant provider credential; user-owned keys remain encrypted in the database."
+    },
+    {
+      "name": "HERMES_BASE_URL",
+      "scope": "ai",
+      "owner": "product-assistant",
+      "sensitivity": "internal",
+      "services": ["web-api", "vllm"],
+      "restart_required": true,
+      "activation": "process_restart",
+      "default_policy": {"mode": "optional"},
+      "description": "Primary assistant OpenAI-compatible endpoint."
+    },
+    {
+      "name": "HERMES_MODEL",
+      "scope": "ai",
+      "owner": "product-assistant",
+      "sensitivity": "public",
+      "services": ["web-api", "vllm"],
+      "restart_required": true,
+      "activation": "process_restart",
+      "default_policy": {"mode": "optional"},
+      "description": "Primary assistant model identifier."
+    },
+    {
+      "name": "DEEPSEEK_API_KEY",
+      "scope": "ai",
+      "owner": "ai-platform",
+      "sensitivity": "secret",
+      "services": ["web-api", "wave1-extractor"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "optional"},
+      "description": "Shared DeepSeek credential for explicitly approved server-side jobs."
+    },
+    {
+      "name": "BGE_M3_BASE_URL",
+      "scope": "ai",
+      "owner": "ai-platform",
+      "sensitivity": "internal",
+      "services": ["web-api", "embedding-service"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "http://127.0.0.1:8001"},
+      "description": "Embedding endpoint used by semantic search."
+    },
+    {
+      "name": "BGE_TEI_URL",
+      "scope": "ai",
+      "owner": "ai-platform",
+      "sensitivity": "internal",
+      "services": ["embedding-service", "wave1-extractor"],
+      "restart_required": true,
+      "activation": "checkpointed_restart",
+      "default_policy": {"mode": "optional"},
+      "description": "Text Embeddings Inference endpoint for streaming L1 embedding jobs."
+    },
+    {
+      "name": "ASSISTANT_SCHEDULE_DISABLE",
+      "scope": "ai",
+      "owner": "product-assistant",
+      "sensitivity": "internal",
+      "services": ["assistant-scheduler", "web-api"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "0"},
+      "description": "Disables schedule execution for candidate or maintenance instances."
+    },
+    {
+      "name": "ASSISTANT_SCHEDULE_TICK_SEC",
+      "scope": "ai",
+      "owner": "product-assistant",
+      "sensitivity": "public",
+      "services": ["assistant-scheduler"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "60"},
+      "description": "Leader scan interval for due assistant schedules."
+    },
+    {
+      "name": "ASSISTANT_SCHEDULE_CONCURRENCY",
+      "scope": "ai",
+      "owner": "product-assistant",
+      "sensitivity": "public",
+      "services": ["assistant-scheduler", "vllm"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "1"},
+      "description": "Maximum simultaneous scheduled assistant jobs."
+    },
+    {
+      "name": "GLOBEMIND_HOME",
+      "scope": "pipeline",
+      "owner": "platform-runtime",
+      "sensitivity": "internal",
+      "services": ["wave1-extractor", "wave1-loader", "daily-ingest", "ground-news-refresh", "news-quality", "vllm"],
+      "restart_required": true,
+      "activation": "checkpointed_restart",
+      "default_policy": {"mode": "safe_default", "value": "/root/data/globemind"},
+      "description": "Repository root used by current service control scripts."
+    },
+    {
+      "name": "PYTHON_BIN",
+      "scope": "pipeline",
+      "owner": "platform-runtime",
+      "sensitivity": "internal",
+      "services": ["wave1-extractor", "wave1-loader", "daily-ingest", "ground-news-refresh", "news-quality"],
+      "restart_required": true,
+      "activation": "checkpointed_restart",
+      "default_policy": {"mode": "required"},
+      "description": "Pinned Python interpreter for reproducible pipeline execution."
+    },
+    {
+      "name": "GLOBEMIND_RESUME_INDEX_DIR",
+      "scope": "pipeline",
+      "owner": "data-acquisition",
+      "sensitivity": "internal",
+      "services": ["wave1-extractor"],
+      "restart_required": true,
+      "activation": "checkpointed_restart",
+      "default_policy": {"mode": "safe_default", "value": "/root/.cache/globemind/resume_indexes"},
+      "description": "Persistent resume-index location for historical extraction."
+    },
+    {
+      "name": "INPUT",
+      "scope": "pipeline",
+      "owner": "data-acquisition",
+      "sensitivity": "internal",
+      "services": ["wave1-extractor"],
+      "restart_required": true,
+      "activation": "checkpointed_restart",
+      "default_policy": {"mode": "derived", "source": "wave1 job directory"},
+      "description": "Historical extractor input JSONL; legacy generic name should become WAVE1_INPUT."
+    },
+    {
+      "name": "OUTPUT",
+      "scope": "pipeline",
+      "owner": "data-acquisition",
+      "sensitivity": "internal",
+      "services": ["wave1-extractor"],
+      "restart_required": true,
+      "activation": "checkpointed_restart",
+      "default_policy": {"mode": "derived", "source": "wave1 job directory"},
+      "description": "Historical extractor output JSONL; legacy generic name should become WAVE1_OUTPUT."
+    },
+    {
+      "name": "PROXY_POOL",
+      "scope": "pipeline",
+      "owner": "data-acquisition",
+      "sensitivity": "internal",
+      "services": ["wave1-extractor", "daily-ingest"],
+      "restart_required": true,
+      "activation": "checkpointed_restart",
+      "default_policy": {"mode": "required"},
+      "description": "Validated proxy pool manifest used by acquisition workers."
+    },
+    {
+      "name": "GLOBAL_CONCURRENCY",
+      "scope": "pipeline",
+      "owner": "data-acquisition",
+      "sensitivity": "public",
+      "services": ["wave1-extractor"],
+      "restart_required": true,
+      "activation": "checkpointed_restart",
+      "default_policy": {"mode": "safe_default", "value": "6"},
+      "description": "Maximum concurrent extraction requests across domains."
+    },
+    {
+      "name": "MAX_PER_DOMAIN",
+      "scope": "pipeline",
+      "owner": "data-acquisition",
+      "sensitivity": "public",
+      "services": ["wave1-extractor"],
+      "restart_required": true,
+      "activation": "checkpointed_restart",
+      "default_policy": {"mode": "safe_default", "value": "2"},
+      "description": "Maximum concurrent requests to one source domain."
+    },
+    {
+      "name": "RETRY_LIMIT",
+      "scope": "pipeline",
+      "owner": "data-acquisition",
+      "sensitivity": "public",
+      "services": ["wave1-extractor", "daily-ingest"],
+      "restart_required": true,
+      "activation": "checkpointed_restart",
+      "default_policy": {"mode": "legacy_contextual"},
+      "description": "Per-item retry ceiling; current defaults differ by acquisition service and must be namespaced."
+    },
+    {
+      "name": "MAX_RUNTIME_SEC",
+      "scope": "pipeline",
+      "owner": "data-acquisition",
+      "sensitivity": "public",
+      "services": ["wave1-extractor"],
+      "restart_required": true,
+      "activation": "checkpointed_restart",
+      "default_policy": {"mode": "safe_default", "value": "21600"},
+      "description": "Maximum extractor process lifetime before a checkpointed supervisor recycle."
+    },
+    {
+      "name": "RESTART_DELAY_SEC",
+      "scope": "pipeline",
+      "owner": "platform-runtime",
+      "sensitivity": "public",
+      "services": ["wave1-extractor"],
+      "restart_required": true,
+      "activation": "checkpointed_restart",
+      "default_policy": {"mode": "safe_default", "value": "45"},
+      "description": "Supervisor delay between checkpointed extractor processes."
+    },
+    {
+      "name": "BATCH_SIZE",
+      "scope": "pipeline",
+      "owner": "data-platform",
+      "sensitivity": "public",
+      "services": ["wave1-loader", "news-quality"],
+      "restart_required": true,
+      "activation": "checkpointed_restart",
+      "default_policy": {"mode": "legacy_contextual"},
+      "description": "Legacy batch-size name with service-specific defaults; replace with namespaced variables."
+    },
+    {
+      "name": "POLL_SEC",
+      "scope": "pipeline",
+      "owner": "data-platform",
+      "sensitivity": "public",
+      "services": ["wave1-loader"],
+      "restart_required": true,
+      "activation": "checkpointed_restart",
+      "default_policy": {"mode": "safe_default", "value": "15"},
+      "description": "Loader delay while waiting for newly extracted records."
+    },
+    {
+      "name": "INTERVAL_SECONDS",
+      "scope": "pipeline",
+      "owner": "platform-runtime",
+      "sensitivity": "public",
+      "services": ["daily-ingest", "ground-news-refresh", "news-quality"],
+      "restart_required": true,
+      "activation": "checkpointed_restart",
+      "default_policy": {"mode": "legacy_contextual"},
+      "description": "Legacy loop interval with different service defaults; replace with namespaced schedules."
+    },
+    {
+      "name": "LOOKBACK_DAYS",
+      "scope": "pipeline",
+      "owner": "news-intelligence",
+      "sensitivity": "public",
+      "services": ["daily-ingest", "ground-news-refresh"],
+      "restart_required": true,
+      "activation": "checkpointed_restart",
+      "default_policy": {"mode": "legacy_contextual"},
+      "description": "Time window scanned by recurring news jobs; service defaults currently differ."
+    },
+    {
+      "name": "L1_RUN_ID",
+      "scope": "pipeline",
+      "owner": "news-intelligence",
+      "sensitivity": "internal",
+      "services": ["ground-news-refresh"],
+      "restart_required": true,
+      "activation": "checkpointed_restart",
+      "default_policy": {"mode": "safe_default", "value": "fast_l1_v2"},
+      "description": "Selected L1 extraction run for downstream news refresh."
+    },
+    {
+      "name": "L15_RUN_ID",
+      "scope": "pipeline",
+      "owner": "news-intelligence",
+      "sensitivity": "internal",
+      "services": ["ground-news-refresh"],
+      "restart_required": true,
+      "activation": "checkpointed_restart",
+      "default_policy": {"mode": "safe_default", "value": "fast_l15_v1"},
+      "description": "Selected L1.5 segmentation run for downstream news refresh."
+    },
+    {
+      "name": "L2_RUN_ID",
+      "scope": "pipeline",
+      "owner": "news-intelligence",
+      "sensitivity": "internal",
+      "services": ["ground-news-refresh"],
+      "restart_required": true,
+      "activation": "checkpointed_restart",
+      "default_policy": {"mode": "safe_default", "value": "fast_l2_v1"},
+      "description": "Selected L2 storyline run for downstream news refresh."
+    },
+    {
+      "name": "CLOUDFLARED_CONFIG",
+      "scope": "web",
+      "owner": "platform-runtime",
+      "sensitivity": "internal",
+      "services": ["cloudflare-tunnel"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "/root/data/cloudflared/config.yml"},
+      "description": "Mode-0600 tunnel configuration path; connector restarts must preserve rollback capacity."
+    },
+    {
+      "name": "CLOUDFLARED_PROTOCOL",
+      "scope": "web",
+      "owner": "platform-runtime",
+      "sensitivity": "public",
+      "services": ["cloudflare-tunnel"],
+      "restart_required": true,
+      "activation": "service_restart",
+      "default_policy": {"mode": "safe_default", "value": "http2"},
+      "description": "Cloudflare Tunnel connector transport protocol."
+    }
+  ]
+}

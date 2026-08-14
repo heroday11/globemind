@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <title>GlobeMind 数据助手 · 视觉方案评审</title>
+    <style>
+      :root {
+        font-family: Inter, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+        color: #10213c;
+        background: #f3f6fa;
+        font-synthesis: none;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        min-width: 1180px;
+        background:
+          radial-gradient(circle at 8% -10%, rgba(35, 105, 225, 0.10), transparent 30rem),
+          #f3f6fa;
+      }
+
+      button, a { font: inherit; }
+
+      .page {
+        width: min(1560px, calc(100% - 72px));
+        margin: 0 auto;
+        padding: 52px 0 80px;
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: #1261d7;
+        font-size: 13px;
+        font-weight: 750;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 34px;
+        line-height: 1.25;
+        letter-spacing: -0.025em;
+      }
+
+      .intro {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 36px;
+        padding-bottom: 28px;
+        border-bottom: 1px solid #dce3ed;
+      }
+
+      .intro p:last-child {
+        max-width: 720px;
+        margin: 14px 0 0;
+        color: #627089;
+        font-size: 15px;
+        line-height: 1.8;
+      }
+
+      .hint {
+        flex: 0 0 auto;
+        padding: 10px 14px;
+        border: 1px solid #cfdaea;
+        border-radius: 9px;
+        background: rgba(255,255,255,.72);
+        color: #53627a;
+        font-size: 13px;
+      }
+
+      .options {
+        display: grid;
+        gap: 46px;
+        padding-top: 38px;
+      }
+
+      .featured {
+        padding: 22px;
+        border: 1px solid #c8d8ef;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, .76);
+        box-shadow: 0 24px 70px rgba(31, 50, 79, .10);
+      }
+
+      .featured .preview {
+        border-radius: 16px;
+        box-shadow: none;
+      }
+
+      .featured-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 0;
+        font-size: 20px;
+      }
+
+      .badge {
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: #e7f0ff;
+        color: #145fc3;
+        font-size: 12px;
+        font-weight: 750;
+        letter-spacing: .04em;
+      }
+
+      .archive-title {
+        margin: 10px 0 -14px;
+        color: #748199;
+        font-size: 13px;
+        font-weight: 650;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+      }
+
+      .option {
+        scroll-margin-top: 24px;
+      }
+
+      .option-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 14px;
+      }
+
+      .option-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 0;
+        font-size: 18px;
+      }
+
+      .number {
+        display: grid;
+        width: 30px;
+        height: 30px;
+        place-items: center;
+        border-radius: 8px;
+        background: #105cce;
+        color: white;
+        font-size: 14px;
+        box-shadow: 0 6px 18px rgba(16, 92, 206, .22);
+      }
+
+      .open {
+        border: 0;
+        padding: 8px 0;
+        background: transparent;
+        color: #1261d7;
+        cursor: pointer;
+      }
+
+      .open:hover { text-decoration: underline; }
+
+      .preview {
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        border: 1px solid #d8e0eb;
+        border-radius: 14px;
+        background: white;
+        box-shadow: 0 20px 56px rgba(31, 50, 79, .10);
+        cursor: zoom-in;
+      }
+
+      .preview img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      dialog {
+        width: min(96vw, 1800px);
+        max-width: none;
+        padding: 0;
+        border: 0;
+        border-radius: 14px;
+        background: #0b1424;
+        box-shadow: 0 30px 100px rgba(0,0,0,.4);
+      }
+
+      dialog::backdrop { background: rgba(4, 12, 26, .78); }
+
+      dialog img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .close {
+        position: fixed;
+        top: 18px;
+        right: 24px;
+        z-index: 2;
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(255,255,255,.28);
+        border-radius: 10px;
+        background: rgba(9, 20, 38, .82);
+        color: #fff;
+        font-size: 22px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="intro">
+        <div>
+          <p class="eyebrow">GlobeMind · Design Review</p>
+          <h1>数据助手 · 柔和现代工作台</h1>
+          <p>最新修订稿已减少说明文字与卡片层级，保留完整会话侧栏，并用统一的圆角、留白和浅色层次收拢视觉风格。点击图片可全屏查看。</p>
+        </div>
+        <div class="hint">请回复：采用修订稿 / 继续调整</div>
+      </header>
+
+      <section class="options" aria-label="设计方案">
+        <article class="option featured" id="latest-revision">
+          <div class="option-head">
+            <h2 class="featured-title"><span class="badge">最新修订</span>柔和现代工作台</h2>
+            <button class="open" data-image="soft-modern-revision.png">放大查看</button>
+          </div>
+          <button class="preview" data-image="soft-modern-revision.png" aria-label="放大查看最新修订稿">
+            <img src="soft-modern-revision.png" alt="GlobeMind 数据助手柔和现代工作台修订稿" />
+          </button>
+        </article>
+
+        <p class="archive-title">上一轮方案 · 仅供对照</p>
+
+        <article class="option" id="option-1">
+          <div class="option-head">
+            <h2 class="option-title"><span class="number">1</span>方案 1</h2>
+            <button class="open" data-image="option-1.png">放大查看</button>
+          </div>
+          <button class="preview" data-image="option-1.png" aria-label="放大查看方案 1">
+            <img src="option-1.png" alt="GlobeMind 数据助手方案 1" />
+          </button>
+        </article>
+
+        <article class="option" id="option-2">
+          <div class="option-head">
+            <h2 class="option-title"><span class="number">2</span>方案 2</h2>
+            <button class="open" data-image="option-2.png">放大查看</button>
+          </div>
+          <button class="preview" data-image="option-2.png" aria-label="放大查看方案 2">
+            <img src="option-2.png" alt="GlobeMind 数据助手方案 2" />
+          </button>
+        </article>
+
+        <article class="option" id="option-3">
+          <div class="option-head">
+            <h2 class="option-title"><span class="number">3</span>方案 3</h2>
+            <button class="open" data-image="option-3.png">放大查看</button>
+          </div>
+          <button class="preview" data-image="option-3.png" aria-label="放大查看方案 3">
+            <img src="option-3.png" alt="GlobeMind 数据助手方案 3" />
+          </button>
+        </article>
+      </section>
+    </main>
+
+    <dialog id="lightbox">
+      <button class="close" aria-label="关闭">×</button>
+      <img alt="放大的设计方案" />
+    </dialog>
+
+    <script>
+      const dialog = document.querySelector('#lightbox');
+      const dialogImage = dialog.querySelector('img');
+      document.querySelectorAll('[data-image]').forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          dialogImage.src = trigger.dataset.image;
+          dialog.showModal();
+        });
+      });
+      dialog.querySelector('.close').addEventListener('click', () => dialog.close());
+      dialog.addEventListener('click', (event) => {
+        if (event.target === dialog) dialog.close();
+      });
+    </script>
+  </body>
+</html>

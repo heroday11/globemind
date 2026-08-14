@@ -1,0 +1,20 @@
+{
+  "command": "pip-compile --resolver=backtracking --generate-hashes --allow-unsafe --index-url=https://pypi.org/simple",
+  "direct_artifacts": [
+    "https://download.pytorch.org/whl/cpu/torch-2.10.0%2Bcpu-cp311-cp311-manylinux_2_28_x86_64.whl"
+  ],
+  "generated_at": "2026-07-10T09:36:37.000108+00:00",
+  "implementation": "CPython",
+  "index_urls": [
+    "https://pypi.org/simple"
+  ],
+  "input_sha256": "9cc8d80b4c4e013c6ecc435ff565fedac3714e6f0b3771ddc48f32c815a0f363",
+  "lock_sha256": "0c74875fc24621dd6dd367f9f006059e9585ff102df7c919cb1647685a636662",
+  "machine": "x86_64",
+  "pip_tools_version": "7.5.2",
+  "platform": "linux-x86_64",
+  "python": "3.11.15",
+  "resolver": "pip-tools backtracking",
+  "role": "web",
+  "schema_version": 1
+}

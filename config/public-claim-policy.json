@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "policy_id": "globemind-public-claim-integrity-v1",
+  "automation": {
+    "state": "configured",
+    "scheduler_locator": ".github/workflows/quality-gate.yml",
+    "artifact_retention_locator": ".github/workflows/quality-gate.yml",
+    "reason_code": "AUTOMATED_DISCOVERY_NO_HUMAN_TRIAGE"
+  },
+  "scope": {
+    "include_roots": [
+      "frontend/vue_project/src",
+      "frontend/financial-terminal/src"
+    ],
+    "suffixes": [
+      ".vue",
+      ".js",
+      ".ts",
+      ".tsx"
+    ],
+    "max_files": 256,
+    "max_file_bytes": 262144,
+    "max_total_bytes": 8388608,
+    "exclusions": [
+      {
+        "locator": "frontend/vue_project/src/features/search",
+        "classification": "separately_owned_domain",
+        "reason_code": "SEARCH_WIP_EXCLUDED"
+      },
+      {
+        "locator": "frontend/vue_project/src/features/assistant",
+        "classification": "separately_owned_domain",
+        "reason_code": "ASSISTANT_PROMPT_WIP_EXCLUDED"
+      },
+      {
+        "locator": "frontend/vue_project/src/views/DataSearch.vue",
+        "classification": "separately_owned_domain",
+        "reason_code": "SEARCH_WIP_EXCLUDED"
+      },
+      {
+        "locator": "frontend/vue_project/src/views/DataService/data-search.vue",
+        "classification": "separately_owned_domain",
+        "reason_code": "SEARCH_WIP_EXCLUDED"
+      },
+      {
+        "locator": "frontend/vue_project/src/views/DataAssistant.vue",
+        "classification": "separately_owned_domain",
+        "reason_code": "ASSISTANT_PROMPT_WIP_EXCLUDED"
+      },
+      {
+        "locator": "frontend/vue_project/src/views/DataService/report-center.vue",
+        "classification": "separately_owned_domain",
+        "reason_code": "ASSISTANT_PROMPT_WIP_EXCLUDED"
+      },
+      {
+        "locator": "frontend/vue_project/src/views/ShowcaseOrbis.vue",
+        "classification": "development_only",
+        "reason_code": "NOT_IN_PRODUCTION_ROUTE_TABLE"
+      },
+      {
+        "locator": "frontend/vue_project/src/views/DeltaForceStudio.vue",
+        "classification": "development_only",
+        "reason_code": "NOT_IN_PRODUCTION_ROUTE_TABLE"
+      },
+      {
+        "locator": "frontend/vue_project/src/views/StoryGraphHandleDebugView.vue",
+        "classification": "development_only",
+        "reason_code": "NOT_IN_PRODUCTION_ROUTE_TABLE"
+      },
+      {
+        "locator": "frontend/vue_project/src/views/story-graph-handle-debug.js",
+        "classification": "development_only",
+        "reason_code": "NOT_IN_PRODUCTION_ROUTE_TABLE"
+      },
+      {
+        "locator": "frontend/financial-terminal/src/hooks/useMock.ts",
+        "classification": "fixture",
+        "reason_code": "EXPLICIT_MOCK_FIXTURE"
+      },
+      {
+        "locator": "frontend/financial-terminal/src/lib/mockData.ts",
+        "classification": "fixture",
+        "reason_code": "EXPLICIT_MOCK_FIXTURE"
+      }
+    ]
+  },
+  "rules": [
+    {
+      "code": "CLM_REALTIME_UNQUALIFIED",
+      "pattern": "(?:实时|今日|今天|\\bLIVE\\b|\\bREAL(?:-| )?TIME\\b)",
+      "ignore_case": false,
+      "safe_context_patterns": [
+        "aria-live",
+        "(?:不代表|不得|不应|不建议|不要|尚未|未|不可|历史|模拟|Mock|mock|预览|状态|门禁|时限|截止|高频更新|持续更新|tick|监控面板)"
+      ]
+    },
+    {
+      "code": "CLM_ASSURANCE_UNQUALIFIED",
+      "pattern": "(?:准确率|高可信|中等可信|低可信|可信(?:数据库|结论|判断|分析|计算|结果|数据)|专业(?:结论|判断|分析|报告|研判)|智能决策|无需复核|\\baccuracy (?:rate|score|claim)\\b|\\b(?:trusted|trustworthy) (?:data|database|result|analysis|conclusion|report)s?\\b|\\bprofessional (?:analysis|conclusion|report)s?\\b)",
+      "ignore_case": true,
+      "safe_context_patterns": [
+        "(?:不代表|不等于|不应|不得|不满足|尚未|未|不可|不足|未知|待|not_measured|门禁|门槛|状态|边界|条件|标签|目录|人工复核|模拟|试验|historical|unverified|unknown|pending|catalog|status|label)"
+      ]
+    },
+    {
+      "code": "CLM_QUANTIFIED_COVERAGE_UNQUALIFIED",
+      "pattern": "(?:(?<![\\w$])\\d[\\d,.]*(?:\\s|<[^>\\n]+>){0,6}(?:个|条|种|家|项|篇|人)(?:\\s|<[^>\\n]+>){0,6}[^\\n]{0,40}(?:来源|信源|语种|语言|国家|地区|覆盖|新闻|网站|智库|论文|成员|学生|奖项|项目)|(?:来源|信源|语种|语言|国家|地区|覆盖|新闻|网站|智库|论文|成员|学生|奖项|项目)[^\\n]{0,48}(?<![\\w$])\\d[\\d,.]*(?:\\+|\\s*(?:余|万|百万|亿|%|％|个|条|种|家|项|篇|人))|(?<![\\w$])\\d[\\d,.]*(?:\\+|\\s+(?:million|billion))?(?![\\d,.])\\s+(?:sources?|languages?|countries|regions|news sites?|think tanks?)\\b)",
+      "ignore_case": true,
+      "safe_context_patterns": [
+        "(?:历史|截至|截止|曾|待核验|不代表|不可|尚未|未公布|样本|最多|上限|输入限制|阈值待批准|不支撑强结论|historical|unverified|unknown|pending|sample|fixture|catalog)"
+      ]
+    },
+    {
+      "code": "CLM_SCALE_UNQUALIFIED",
+      "pattern": "(?<![\\w$])\\d[\\d,.]*(?:\\+|\\s*(?:万|百万|亿)|\\s+(?:million|billion)\\b)",
+      "ignore_case": true,
+      "suffixes": [
+        ".vue"
+      ],
+      "safe_context_patterns": [
+        "(?:历史|截至|截止|曾|待核验|不代表|不可|尚未|未公布|样本|最多|上限|阈值待批准|historical|unverified|unknown|pending|sample|fixture|catalog)"
+      ]
+    },
+    {
+      "code": "CLM_SUPERLATIVE_UNQUALIFIED",
+      "pattern": "(?:顶级|权威(?:期刊|来源|数据|结论)|典型样本|行业领先|全球领先|最全面|专业情报|高水平(?:论文|成果)|经验丰富)",
+      "ignore_case": true,
+      "safe_context_patterns": [
+        "(?:历史|曾|待核验|不代表|尚未|未|不可|未知|需要复核|人工复核)"
+      ]
+    }
+  ],
+  "evidence_mappings": [
+    {
+      "source_locator": "frontend/vue_project/src/views/GroundNewsHome.vue",
+      "rule_code": "CLM_QUANTIFIED_COVERAGE_UNQUALIFIED",
+      "claim_anchor_pattern": "Ready\\s*=\\s*3\\+\\s*信源",
+      "classification": "evidence_backed",
+      "evidence": [
+        {
+          "kind": "method",
+          "locator": "backend/api/routes/story_graph.py"
+        },
+        {
+          "kind": "status",
+          "locator": "frontend/vue_project/src/features/ground-news/home.js"
+        }
+      ]
+    },
+    {
+      "source_locator": "frontend/vue_project/src/views/GroundNewsHome.vue",
+      "rule_code": "CLM_SCALE_UNQUALIFIED",
+      "claim_anchor_pattern": "Ready\\s*=\\s*3\\+\\s*信源",
+      "classification": "evidence_backed",
+      "evidence": [
+        {
+          "kind": "method",
+          "locator": "backend/api/routes/story_graph.py"
+        },
+        {
+          "kind": "status",
+          "locator": "frontend/vue_project/src/features/ground-news/home.js"
+        }
+      ]
+    },
+    {
+      "source_locator": "frontend/vue_project/src/views/EntityGovernance.vue",
+      "rule_code": "CLM_ASSURANCE_UNQUALIFIED",
+      "claim_anchor_pattern": "准确率声明",
+      "classification": "evidence_backed",
+      "evidence": [
+        {
+          "kind": "status",
+          "locator": "backend/api/features/entity_governance/service.py"
+        },
+        {
+          "kind": "status",
+          "locator": "frontend/vue_project/src/features/entity-governance/model.js"
+        }
+      ]
+    }
+  ]
+}

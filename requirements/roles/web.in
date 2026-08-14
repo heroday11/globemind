@@ -1,0 +1,62 @@
+# GlobeMind V0.9.3 Web/API/CC runtime, CPython 3.11 on Linux x86_64.
+#
+# Audited roots:
+#   backend/serve_prod.py -> api.application -> api.routes/api.services
+#   cppt.cc_bridge and assistant image subprocess entry
+#   fuzzy search through numpy + pymilvus, remote BGE HTTP when available,
+#   and the current local BGE fallback
+#   ppt-master document, image, SVG and PPTX helper entry points
+#
+# Deliberately excluded role boundaries:
+#   GLiNER and vLLM
+# vLLM remains an HTTP dependency. GLiNER belongs to a pipeline runtime. The
+# local BGE fallback remains necessary until a dedicated service is deployed.
+
+# Reproducible bootstrap tools
+pip==25.3
+setuptools==80.9.0
+wheel==0.46.3
+
+# ASGI and API
+fastapi==0.136.0
+uvicorn[standard]==0.46.0
+httpx==0.28.1
+pydantic==2.13.3
+email-validator==2.3.0
+python-dotenv==1.2.2
+python-multipart==0.0.26
+orjson==3.11.8
+
+# PostgreSQL, authentication and encrypted user settings
+SQLAlchemy==2.0.49
+psycopg2-binary==2.9.12
+PyJWT==2.12.1
+bcrypt==4.3.0
+cryptography==46.0.7
+
+# Fuzzy search and the current local BGE compatibility fallback. The CPU wheel
+# keeps CUDA runtime packages out of the Web role; transformers stays below 5.2.
+numpy==2.2.6
+pymilvus==2.6.12
+PyYAML==6.0.3
+torch @ https://download.pytorch.org/whl/cpu/torch-2.10.0%2Bcpu-cp311-cp311-manylinux_2_28_x86_64.whl
+sentence-transformers==5.4.1
+transformers==5.1.0
+
+# Assistant and CC providers
+openai==2.32.0
+anthropic==0.96.0
+requests==2.33.1
+beautifulsoup4==4.14.3
+
+# Document, image, PDF, SVG and PPTX entry points
+Pillow==12.1.1
+PyMuPDF==1.26.7
+python-pptx==1.0.2
+CairoSVG==2.8.2
+reportlab==4.4.10
+svglib==2.0.2
+
+# Validation runs with the exact candidate interpreter.
+pytest==9.1.0
+pytest-asyncio==1.4.0

@@ -1,0 +1,55 @@
+/* 知识图谱嵌入页。base（Preflight）需保留否则 Tailwind 生成异常，通过 important 限定作用域避免影响主站 Element Plus */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 嵌入页根节点需带 data-tw-important（见 tailwind.config important） */
+
+/* 仪表盘深色壳：保证浏览器 form 元素（select/input/button）使用深色渲染，不自作主张变浅色 */
+@layer base {
+  [data-tw-important] .dashboard-shell {
+    color-scheme: dark;
+  }
+}
+
+/* Orbis 展示页：液态玻璃与噪点层（需置于 @tailwind 之后） */
+@layer utilities {
+  .liquid-glass {
+    background: rgba(255, 255, 255, 0.01);
+    background-blend-mode: luminosity;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: none;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .liquid-glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.4px;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.45) 0%,
+      rgba(255, 255, 255, 0.15) 20%,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0) 60%,
+      rgba(255, 255, 255, 0.15) 80%,
+      rgba(255, 255, 255, 0.45) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .texture-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)' opacity='0.5'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    mix-blend-mode: soft-light;
+    opacity: 0.55;
+  }
+}

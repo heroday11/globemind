@@ -1,0 +1,18 @@
+site_id,domain,layer,priority_tier,region,source_type,preferred_entry,signal_role,origin,notes
+bernama_com,bernama.com,wire_fast,P0,asia,state_media,https://www.bernama.com/en/world/,event_baseline,media_core,national wire with strong region coverage
+kyodo_co_jp,kyodo.co.jp,wire_fast,P0,asia,wire_service,http://www.kyodo.co.jp/news/,event_baseline,media_core,top Japanese wire
+ansa_it,ansa.it,wire_fast,P0,europe,wire_service,https://www.ansa.it/sito/notizie/topnews/index.shtml,event_baseline,media_core,major Italian wire
+interfax_com,interfax.com,wire_fast,P0,europe,wire_service,https://interfax.com/newsroom/top-stories/,event_baseline,media_core,important regional wire
+tass_com,tass.com,wire_fast,P0,europe,state_media,https://tass.com/middle-east-conflict,event_baseline,media_core,major state news agency with strong geopolitical coverage
+afp_global,afp.com,wire_fast,P0,global,wire_service,https://www.afp.com/en,event_baseline,strategic_addition,global wire with wide geographic reach
+ap_world,apnews.com,wire_fast,P0,global,wire_service,https://apnews.com/world-news,event_baseline,strategic_addition,global wire and factual baseline source
+reuters_world,reuters.com,wire_fast,P0,global,wire_service,https://www.reuters.com/world/,event_baseline,strategic_addition,global wire baseline and high-volume first report source
+irna_ir,irna.ir,wire_fast,P0,middle_east,state_media,https://www.irna.ir/rss,event_baseline,media_core,official Iranian news agency
+wafa_ps,wafa.ps,wire_fast,P0,middle_east,state_media,https://wafa.ps/Pages/LastNews,event_baseline,media_core,official Palestinian news agency
+focus_taiwan,focustaiwan.tw,wire_fast,P1,asia,wire_service,https://focustaiwan.tw/,event_baseline,strategic_addition,Central News Agency English service useful for Taiwan signal
+xinhua_english,english.news.cn,wire_fast,P1,asia,state_media,https://english.news.cn/,event_baseline,strategic_addition,official China wire perspective in English
+yonhap_english,en.yna.co.kr,wire_fast,P1,asia,wire_service,https://en.yna.co.kr/,event_baseline,strategic_addition,major Korean wire useful for Northeast Asia
+dpa_com,dpa.com,wire_fast,P1,europe,wire_service,https://www.dpa.com/en/international-news,event_baseline,media_core,major wire; use English international news service rather than corporate pages
+ukrinform,ukrinform.net,wire_fast,P1,europe,wire_service,https://www.ukrinform.net/,event_baseline,strategic_addition,official Ukrainian national news agency and war baseline source
+efe_com,efe.com,wire_fast,P1,latin_america,wire_service,https://efe.com/english/,event_baseline,media_core,valuable wire but path should be tuned
+unb_com_bd,unb.com.bd,wire_fast,P1,south_asia,wire_service,https://unb.com.bd/latestnews,event_baseline,media_core,useful Bangladesh wire

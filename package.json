@@ -1,0 +1,23 @@
+{
+  "name": "globemind",
+  "version": "1.0.0",
+  "description": "从多语言新闻中提取地缘政治事件，通过 **L1 事件共指聚类 → L2 叙事线聚合** 形成结构化事件体系，并构建**四维涉华指数（CCI）**进行定量舆情分析。",
+  "main": "workflow-cluster-optimization.wf.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heroday11/globemind.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heroday11/globemind/issues"
+  },
+  "homepage": "https://github.com/heroday11/globemind#readme"
+}

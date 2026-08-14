@@ -1,0 +1,17 @@
+use_default_settings: true
+
+general:
+  debug: false
+
+search:
+  # formats: [html, csv, json, rss]
+  formats:
+    - json
+
+server:
+  bind_address: "0.0.0.0"
+  port: 8080
+  # 本地部署用固定 key；如要暴露到局域网/公网请替换为强随机值
+  secret_key: "change-me-local-dev"
+  public_instance: false
+

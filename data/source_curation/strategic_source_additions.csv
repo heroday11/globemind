@@ -1,0 +1,52 @@
+site_id,domain,layer,priority_tier,region,source_type,preferred_entry,signal_role,origin,notes
+reuters_world,reuters.com,wire_fast,P0,global,wire_service,https://www.reuters.com/world/,event_baseline,strategic_addition,global wire baseline and high-volume first report source
+ap_world,apnews.com,wire_fast,P0,global,wire_service,https://apnews.com/world-news,event_baseline,strategic_addition,global wire and factual baseline source
+afp_global,afp.com,wire_fast,P0,global,wire_service,https://www.afp.com/en,event_baseline,strategic_addition,global wire with wide geographic reach
+yonhap_english,en.yna.co.kr,wire_fast,P1,asia,wire_service,https://en.yna.co.kr/,event_baseline,strategic_addition,major Korean wire useful for Northeast Asia
+xinhua_english,english.news.cn,wire_fast,P1,asia,state_media,https://english.news.cn/,event_baseline,strategic_addition,official China wire perspective in English
+dw_english,dw.com,media_narrative,P1,europe,public_broadcaster,https://www.dw.com/en/top-stories/s-9097,narrative_and_agenda,strategic_addition,global public broadcaster with strong world desk
+france24_english,france24.com,media_narrative,P1,europe,public_broadcaster,https://www.france24.com/en/,narrative_and_agenda,strategic_addition,international public broadcaster with strong Africa and Middle East coverage
+rfi_english,rfi.fr,media_narrative,P2,africa,public_broadcaster,https://www.rfi.fr/en/,narrative_and_agenda,strategic_addition,valuable Francophone Africa signal source
+euronews,euronews.com,media_narrative,P2,europe,regional_major_media,https://www.euronews.com/news/international,narrative_and_agenda,strategic_addition,regional European perspective and multilingual reach
+africanews,africanews.com,media_narrative,P1,africa,regional_major_media,https://www.africanews.com/tag/politics/,narrative_and_agenda,strategic_addition,high-value pan-African news source
+allafrica,allafrica.com,media_narrative,P2,africa,regional_network,https://allafrica.com/latest/,narrative_and_agenda,strategic_addition,pan-African aggregation useful for country coverage expansion
+dailymaverick,dailymaverick.co.za,media_narrative,P1,africa,national_major_media,https://www.dailymaverick.co.za/section/world/,narrative_and_agenda,strategic_addition,high-quality South Africa outlet with strong politics coverage
+mail_guardian,mg.co.za,media_narrative,P2,africa,national_major_media,https://mg.co.za/,narrative_and_agenda,strategic_addition,South Africa perspective and investigative value
+premium_times,premiumtimesng.com,media_narrative,P1,africa,national_major_media,https://www.premiumtimesng.com/,narrative_and_agenda,strategic_addition,important Nigeria national and governance source
+nation_africa,nation.africa,media_narrative,P1,africa,national_major_media,https://nation.africa/kenya/news,narrative_and_agenda,strategic_addition,major East Africa newsroom
+east_african,theeastafrican.co.ke,media_narrative,P2,africa,regional_major_media,https://www.theeastafrican.co.ke/tea/news,narrative_and_agenda,strategic_addition,regional East African policy and geopolitics coverage
+clarin_mundo,clarin.com,media_narrative,P1,latin_america,national_major_media,https://www.clarin.com/mundo/,narrative_and_agenda,strategic_addition,major Argentina outlet with regional reach
+folha_mundo,folha.uol.com.br,media_narrative,P1,latin_america,national_major_media,https://www1.folha.uol.com.br/mundo/,narrative_and_agenda,strategic_addition,major Brazil outlet with international desk
+el_tiempo_mundo,eltiempo.com,media_narrative,P1,latin_america,national_major_media,https://www.eltiempo.com/mundo,narrative_and_agenda,strategic_addition,major Colombia outlet with Latin America coverage
+el_universal_mx,eluniversal.com.mx,media_narrative,P1,latin_america,national_major_media,https://www.eluniversal.com.mx/mundo/,narrative_and_agenda,strategic_addition,major Mexico outlet with world coverage
+el_comercio_pe,elcomercio.pe,media_narrative,P1,latin_america,national_major_media,https://elcomercio.pe/mundo/,narrative_and_agenda,strategic_addition,major Peru outlet with world desk
+latercera_cl,latercera.com,media_narrative,P1,latin_america,national_major_media,https://www.latercera.com/canal/politica/,narrative_and_agenda,strategic_addition,major Chile politics coverage
+the_national_uae,thenationalnews.com,media_narrative,P1,middle_east,national_major_media,https://www.thenationalnews.com/world/,narrative_and_agenda,strategic_addition,high-quality UAE-based regional and global coverage
+arab_news,arabnews.com,media_narrative,P1,middle_east,national_major_media,https://www.arabnews.com/,narrative_and_agenda,strategic_addition,Saudi-based English source with regional political coverage
+the_hindu_world,thehindu.com,media_narrative,P1,south_asia,national_major_media,https://www.thehindu.com/news/international/,narrative_and_agenda,strategic_addition,major India outlet with strong foreign desk
+mainichi_english,mainichi.jp,media_narrative,P1,asia,national_major_media,https://mainichi.jp/english/,narrative_and_agenda,strategic_addition,major Japan outlet with English service
+japan_times,japantimes.co.jp,media_narrative,P1,asia,national_major_media,https://www.japantimes.co.jp/news_category/world/,narrative_and_agenda,strategic_addition,important English-language Japan source
+korea_herald,koreaherald.com,media_narrative,P1,asia,national_major_media,https://www.koreaherald.com/,narrative_and_agenda,strategic_addition,major Korea English outlet
+focus_taiwan,focustaiwan.tw,wire_fast,P1,asia,wire_service,https://focustaiwan.tw/,event_baseline,strategic_addition,Central News Agency English service useful for Taiwan signal
+rappler_world,rappler.com,media_narrative,P1,asia,national_major_media,https://www.rappler.com/world/,narrative_and_agenda,strategic_addition,major Philippines digital newsroom with strong political coverage
+ukrinform,ukrinform.net,wire_fast,P1,europe,wire_service,https://www.ukrinform.net/,event_baseline,strategic_addition,official Ukrainian national news agency and war baseline source
+kyiv_independent,kyivindependent.com,media_narrative,P1,europe,national_major_media,https://kyivindependent.com/,narrative_and_agenda,strategic_addition,high-value English-language Ukraine war and policy coverage
+nato_news,nato.int,official_direct,P0,europe,international_security_org,https://www.nato.int/cps/en/natohq/news.htm,official_position,strategic_addition,official alliance security statements and briefings
+osce_press,osce.org,official_direct,P1,europe,international_organization,https://www.osce.org/press-releases,official_position,strategic_addition,official European security and election monitoring statements
+oas_news,oas.org,official_direct,P1,latin_america,international_organization,https://www.oas.org/en/media_center/default.asp,official_position,strategic_addition,official Americas multilateral organization statements
+asean_news,asean.org,official_direct,P1,asia,international_organization,https://asean.org/news/,official_position,strategic_addition,official ASEAN institutional and summit signals
+saudi_mofa,mofa.gov.sa,official_direct,P1,middle_east,foreign_ministry,https://www.mofa.gov.sa/en/ministry/news/Pages/default.aspx,official_position,strategic_addition,official Saudi foreign ministry news
+turkiye_mfa,mfa.gov.tr,official_direct,P1,middle_east,foreign_ministry,https://www.mfa.gov.tr/press-information.en.mfa,official_position,strategic_addition,official Türkiye foreign ministry statements
+qatar_mofa,mofa.gov.qa,official_direct,P1,middle_east,foreign_ministry,https://mofa.gov.qa/en/all-mofa-news,official_position,strategic_addition,official Qatar foreign ministry statements and ministry news
+uae_mofa,mofaic.gov.ae,official_direct,P1,middle_east,foreign_ministry,https://www.mofaic.gov.ae/en/,official_position,strategic_addition,official UAE foreign ministry statements and releases
+egypt_mfa,mfa.gov.eg,official_direct,P1,middle_east,foreign_ministry,https://www.mfa.gov.eg/,official_position,strategic_addition,official Egypt foreign ministry signal source
+australia_dfat,dfat.gov.au,official_direct,P1,asia_pacific,foreign_ministry,https://www.dfat.gov.au/news-speeches-and-media,official_position,strategic_addition,official Australian foreign ministry signal
+canada_gac,international.gc.ca,official_direct,P1,north_america,foreign_ministry,https://www.international.gc.ca/global-affairs-affaires-mondiales/news-nouvelles/index.aspx?lang=eng,official_position,strategic_addition,official Canadian foreign affairs signal
+mexico_sre,gob.mx,official_direct,P1,latin_america,foreign_ministry,https://www.gob.mx/sre/en/archivo/prensa,official_position,strategic_addition,official Mexico foreign ministry press archive
+argentina_cancilleria,cancilleria.gob.ar,official_direct,P1,latin_america,foreign_ministry,https://www.cancilleria.gob.ar/en/news,official_position,strategic_addition,official Argentina foreign ministry news
+indonesia_kemlu,kemlu.go.id,official_direct,P1,asia,foreign_ministry,https://kemlu.go.id/portal/en,official_position,strategic_addition,official Indonesia foreign ministry portal
+southkorea_mofa,mofa.go.kr,official_direct,P1,asia,foreign_ministry,https://www.mofa.go.kr/eng/index.do,official_position,strategic_addition,official Korea foreign ministry portal
+nigeria_mfa,foreignaffairs.gov.ng,official_direct,P2,africa,foreign_ministry,https://foreignaffairs.gov.ng/,official_position,strategic_addition,official Nigeria foreign policy signal source
+arabnews_arab,arabnews.jp,media_narrative,P2,asia,regional_major_media,https://www.arabnews.jp/en/,narrative_and_agenda,strategic_addition,Middle East coverage for Japanese and Asian audiences
+bloomberg_politics,bloomberg.com,media_narrative,P1,global,business_media,https://www.bloomberg.com/politics,narrative_and_agenda,strategic_addition,elite policy and markets lens on political developments
+politico_eu,politico.eu,media_narrative,P1,europe,regional_major_media,https://www.politico.eu/,narrative_and_agenda,strategic_addition,high-value EU politics and policy outlet

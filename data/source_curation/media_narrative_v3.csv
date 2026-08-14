@@ -1,0 +1,109 @@
+site_id,domain,layer,priority_tier,region,source_type,preferred_entry,signal_role,origin,notes
+asahi_com,asahi.com,media_narrative,P0,asia,national_major_media,https://www.asahi.com/politics/?iref=pc_gnavi,narrative_and_agenda,media_core,top Japanese daily
+channelnewsasia_com,channelnewsasia.com,media_narrative,P0,asia,regional_major_media,http://www.channelnewsasia.com/latest-news,narrative_and_agenda,media_core,excellent Southeast Asia and China coverage
+freemalaysiatoday_com,freemalaysiatoday.com,media_narrative,P0,asia,national_major_media,http://www.freemalaysiatoday.com/news,narrative_and_agenda,media_core,high update frequency
+inquirer_net,inquirer.net,media_narrative,P0,asia,national_major_media,https://newsinfo.inquirer.net/,narrative_and_agenda,media_core,major Philippines source
+nikkei_com,nikkei.com,media_narrative,P0,asia,national_major_media,https://www.nikkei.com/world/,narrative_and_agenda,media_core,use politics and Asia sections rather than current URL
+scmp_com,scmp.com,media_narrative,P0,asia,regional_major_media,http://www.scmp.com/news/china/military,narrative_and_agenda,media_core,top source for China and region
+straitstimes_com,straitstimes.com,media_narrative,P0,asia,national_major_media,http://www.straitstimes.com/world,narrative_and_agenda,media_core,top Singapore source
+thejakartapost_com,thejakartapost.com,media_narrative,P0,asia,national_major_media,http://www.thejakartapost.com/world,narrative_and_agenda,media_core,top Indonesia English source
+vnexpress_net,vnexpress.net,media_narrative,P0,asia,national_major_media,http://vnexpress.net/tin-tuc-24h,narrative_and_agenda,media_core,top Vietnam source
+yomiuri_co_jp,yomiuri.co.jp,media_narrative,P0,asia,national_major_media,http://www.yomiuri.co.jp/politics/,narrative_and_agenda,media_core,top Japanese daily
+zaobao_com,zaobao.com,media_narrative,P0,asia,regional_major_media,http://www.zaobao.com/news,narrative_and_agenda,media_core,key Chinese language regional source
+abc_net_au,abc.net.au,media_narrative,P0,asia_pacific,public_broadcaster,http://www.abc.net.au/news/justin,narrative_and_agenda,media_core,public broadcaster with strong Asia coverage
+rnz_co_nz,rnz.co.nz,media_narrative,P0,asia_pacific,public_broadcaster,https://www.rnz.co.nz/news/world,narrative_and_agenda,media_core,high quality New Zealand source
+smh_com_au,smh.com.au,media_narrative,P0,asia_pacific,national_major_media,https://www.smh.com.au/world/north-america,narrative_and_agenda,media_core,major Australia paper
+theage_com_au,theage.com.au,media_narrative,P0,asia_pacific,national_major_media,http://www.theage.com.au/world/north-america,narrative_and_agenda,media_core,major Australia paper
+elmundo_es,elmundo.es,media_narrative,P0,europe,national_major_media,https://www.elmundo.es/internacional.html,narrative_and_agenda,media_core,major Spanish daily
+elpais_com,elpais.com,media_narrative,P0,europe,national_major_media,https://elpais.com/internacional/,narrative_and_agenda,media_core,major Spanish global desk
+faz_net,faz.net,media_narrative,P0,europe,national_major_media,https://www.faz.net/aktuell/politik/,narrative_and_agenda,media_core,major German paper
+lefigaro_fr,lefigaro.fr,media_narrative,P0,europe,national_major_media,https://www.lefigaro.fr/international,narrative_and_agenda,media_core,major French daily
+rtve_es,rtve.es,media_narrative,P0,europe,public_broadcaster,http://www.rtve.es/noticias/ultimas-noticias/,narrative_and_agenda,media_core,public broadcaster with broad coverage
+theguardian_com,theguardian.com,media_narrative,P0,europe,global_major_media,https://www.theguardian.com/world,narrative_and_agenda,media_core,major global coverage
+bbc_com,bbc.com,media_narrative,P0,global,global_major_media,https://www.bbc.com/news,narrative_and_agenda,media_core,high quality global coverage
+lanacion_com_ar,lanacion.com.ar,media_narrative,P0,latin_america,national_major_media,http://www.lanacion.com.ar/politica/,narrative_and_agenda,media_core,major Argentina source
+aljazeera_net,aljazeera.net,media_narrative,P0,middle_east,global_major_media,https://www.aljazeera.net/news/,narrative_and_agenda,media_core,major source for Middle East coverage
+haaretz_com,haaretz.com,media_narrative,P0,middle_east,national_major_media,https://www.haaretz.com/israel-news/israel-security,narrative_and_agenda,media_core,high value for Israel coverage
+hurriyetdailynews_com,hurriyetdailynews.com,media_narrative,P0,middle_east,national_major_media,https://www.hurriyetdailynews.com/world/,narrative_and_agenda,media_core,English Turkey source
+jpost_com,jpost.com,media_narrative,P0,middle_east,national_major_media,https://www.jpost.com/israel-news,narrative_and_agenda,media_core,major English Israel source
+ynetnews_com,ynetnews.com,media_narrative,P0,middle_east,national_major_media,https://www.ynetnews.com/category/9733,narrative_and_agenda,media_core,major Israel English source
+cbc_ca,cbc.ca,media_narrative,P0,north_america,public_broadcaster,http://www.cbc.ca/news/world,narrative_and_agenda,media_core,high quality public broadcaster
+cbsnews_com,cbsnews.com,media_narrative,P0,north_america,global_major_media,http://www.cbsnews.com/world/,narrative_and_agenda,media_core,strong general international coverage
+latimes_com,latimes.com,media_narrative,P0,north_america,national_major_media,https://www.latimes.com/politics,narrative_and_agenda,media_core,major US paper
+npr_org,npr.org,media_narrative,P0,north_america,public_broadcaster,http://www.npr.org/sections/news/,narrative_and_agenda,media_core,strong international reporting
+theglobeandmail_com,theglobeandmail.com,media_narrative,P0,north_america,national_major_media,http://www.theglobeandmail.com/world/,narrative_and_agenda,media_core,major Canada source
+dawnnews_tv,dawnnews.tv,media_narrative,P0,south_asia,national_major_media,https://www.dawnnews.tv/pakistan,narrative_and_agenda,media_core,important Pakistan source
+geo_tv,geo.tv,media_narrative,P0,south_asia,national_major_media,https://www.geo.tv/latest-news,narrative_and_agenda,media_core,high volume Pakistan source
+hindustantimes_com,hindustantimes.com,media_narrative,P0,south_asia,national_major_media,https://www.hindustantimes.com/world-news,narrative_and_agenda,media_core,major India source
+prothomalo_com,prothomalo.com,media_narrative,P0,south_asia,national_major_media,https://www.prothomalo.com/world,narrative_and_agenda,media_core,major Bangladesh source
+timesofindia_indiatimes_com,timesofindia.indiatimes.com,media_narrative,P0,south_asia,national_major_media,https://timesofindia.indiatimes.com/world/rest-of-world,narrative_and_agenda,media_core,high volume India source
+africanews,africanews.com,media_narrative,P1,africa,regional_major_media,https://www.africanews.com/tag/politics/,narrative_and_agenda,strategic_addition,high-value pan-African news source
+dailymaverick,dailymaverick.co.za,media_narrative,P1,africa,national_major_media,https://www.dailymaverick.co.za/section/world/,narrative_and_agenda,strategic_addition,high-quality South Africa outlet with strong politics coverage
+east_african,theeastafrican.co.ke,media_narrative,P1,africa,regional_major_media,https://www.theeastafrican.co.ke/tea/news,narrative_and_agenda,strategic_addition_v2,regional East African policy and geopolitics coverage
+nation_africa,nation.africa,media_narrative,P1,africa,national_major_media,https://nation.africa/kenya/news,narrative_and_agenda,strategic_addition,major East Africa newsroom
+news24_politics,news24.com,media_narrative,P1,africa,national_major_media,https://www.news24.com/politics,narrative_and_agenda,strategic_addition_v2,major South Africa politics desk with strong domestic governance coverage
+premium_times,premiumtimesng.com,media_narrative,P1,africa,national_major_media,https://www.premiumtimesng.com/,narrative_and_agenda,strategic_addition,important Nigeria national and governance source
+asiaone_com,asiaone.com,media_narrative,P1,asia,regional_major_media,http://www.asiaone.com/world,narrative_and_agenda,media_core,regional aggregator with useful coverage
+bangkokbiznews_com,bangkokbiznews.com,media_narrative,P1,asia,national_major_media,http://www.bangkokbiznews.com/world/geopolitics,narrative_and_agenda,media_core,strong geopolitics section
+bisnis_com,bisnis.com,media_narrative,P1,asia,national_major_media,http://www.bisnis.com/,narrative_and_agenda,media_core,business and policy coverage
+businesstimes_com_sg,businesstimes.com.sg,media_narrative,P1,asia,business_media,http://www.businesstimes.com.sg/singapore,narrative_and_agenda,media_core,strong policy and macro angle
+chinatimes_com,chinatimes.com,media_narrative,P1,asia,national_major_media,https://www.chinatimes.com/realtimenews/,narrative_and_agenda,media_core,important Taiwan source
+detik_com,detik.com,media_narrative,P1,asia,national_major_media,https://news.detik.com/,narrative_and_agenda,media_core,major Indonesia source
+detiknews_com,detik.com,media_narrative,P1,asia,national_major_media,https://news.detik.com/berita,narrative_and_agenda,media_core,major Indonesia news section
+japan_times,japantimes.co.jp,media_narrative,P1,asia,national_major_media,https://www.japantimes.co.jp/news_category/world/,narrative_and_agenda,strategic_addition,important English-language Japan source
+kompas_com,kompas.com,media_narrative,P1,asia,national_major_media,https://news.kompas.com?source=navbar,narrative_and_agenda,media_core,major Indonesia source
+korea_herald,koreaherald.com,media_narrative,P1,asia,national_major_media,https://www.koreaherald.com/,narrative_and_agenda,strategic_addition,major Korea English outlet
+liputan6_com,liputan6.com,media_narrative,P1,asia,national_major_media,https://www.liputan6.com/news,narrative_and_agenda,media_core,major Indonesia source
+mainichi_english,mainichi.jp,media_narrative,P1,asia,national_major_media,https://mainichi.jp/english/,narrative_and_agenda,strategic_addition,major Japan outlet with English service
+manilatimes_net,manilatimes.net,media_narrative,P1,asia,national_major_media,https://www.manilatimes.net/world/feed,narrative_and_agenda,media_core,good Philippines supplement source
+nationthailand_com,nationthailand.com,media_narrative,P1,asia,national_major_media,https://www.nationthailand.com/news/world,narrative_and_agenda,media_core,strong Thailand and region coverage
+news_thaipbs_or_th,news.thaipbs.or.th,media_narrative,P1,asia,public_broadcaster,https://news.thaipbs.or.th/news/world,narrative_and_agenda,media_core,high quality Thai public broadcaster
+phnompenhpost_com,phnompenhpost.com,media_narrative,P1,asia,national_major_media,http://www.phnompenhpost.com/category/national/,narrative_and_agenda,media_core,good Cambodia source
+prachachat_net,prachachat.net,media_narrative,P1,asia,national_major_media,https://www.prachachat.net/politics,narrative_and_agenda,media_core,strong politics coverage
+rappler_world,rappler.com,media_narrative,P1,asia,national_major_media,https://www.rappler.com/world/,narrative_and_agenda,strategic_addition,major Philippines digital newsroom with strong political coverage
+republika_co_id,republika.co.id,media_narrative,P1,asia,national_major_media,https://news.republika.co.id/,narrative_and_agenda,media_core,major Indonesia source
+thanhnien_vn,thanhnien.vn,media_narrative,P1,asia,national_major_media,https://thanhnien.vn/bien-dong/thoi-su.htm,narrative_and_agenda,media_core,strong Vietnam and South China Sea coverage
+theedgemalaysia_com,theedgemalaysia.com,media_narrative,P1,asia,business_media,http://www.theedgemalaysia.com/categories/world,narrative_and_agenda,media_core,strong economic policy lens
+thestar_com_my,thestar.com.my,media_narrative,P1,asia,national_major_media,https://www.thestar.com.my/news/world,narrative_and_agenda,media_core,use domain but replace weak section URL
+todayonline_com,todayonline.com,media_narrative,P1,asia,national_major_media,https://www.todayonline.com/world,narrative_and_agenda,media_core,use domain but replace weak section URL
+tuoitre_vn,tuoitre.vn,media_narrative,P1,asia,national_major_media,https://tuoitre.vn/the-gioi.htm,narrative_and_agenda,media_core,use domain but replace video URL
+vietnamnet_vn,vietnamnet.vn,media_narrative,P1,asia,national_major_media,http://vietnamnet.vn/chinh-tri,narrative_and_agenda,media_core,major Vietnam source
+vov_vn,vov.vn,media_narrative,P1,asia,public_broadcaster,http://vov.vn/chinh-tri,narrative_and_agenda,media_core,strong Vietnam public broadcaster
+nzherald_co_nz,nzherald.co.nz,media_narrative,P1,asia_pacific,national_major_media,http://www.nzherald.co.nz/latest-news/,narrative_and_agenda,media_core,good regional supplement
+abc_es,abc.es,media_narrative,P1,europe,national_major_media,http://www.abc.es/internacional/,narrative_and_agenda,media_core,good Spain supplement
+dn_pt,dn.pt,media_narrative,P1,europe,national_major_media,https://www.dn.pt/%C3%BAltimas,narrative_and_agenda,media_core,good Portugal supplement
+dw_english,dw.com,media_narrative,P1,europe,public_broadcaster,https://www.dw.com/en/top-stories/s-9097,narrative_and_agenda,strategic_addition,global public broadcaster with strong world desk
+france24_english,france24.com,media_narrative,P1,europe,public_broadcaster,https://www.france24.com/en/,narrative_and_agenda,strategic_addition,international public broadcaster with strong Africa and Middle East coverage
+kyiv_independent,kyivindependent.com,media_narrative,P1,europe,national_major_media,https://kyivindependent.com/,narrative_and_agenda,strategic_addition,high-value English-language Ukraine war and policy coverage
+politico_eu,politico.eu,media_narrative,P1,europe,regional_major_media,https://www.politico.eu/,narrative_and_agenda,strategic_addition,high-value EU politics and policy outlet
+publico_pt,publico.pt,media_narrative,P1,europe,national_major_media,https://www.publico.pt/politica,narrative_and_agenda,media_core,good Portugal source
+bloomberg_politics,bloomberg.com,media_narrative,P1,global,business_media,https://www.bloomberg.com/politics,narrative_and_agenda,strategic_addition,elite policy and markets lens on political developments
+csmonitor_com,csmonitor.com,media_narrative,P1,global,global_major_media,https://www.csmonitor.com/World,narrative_and_agenda,media_core,use domain but replace weak section URL
+clarin_mundo,clarin.com,media_narrative,P1,latin_america,national_major_media,https://www.clarin.com/mundo/,narrative_and_agenda,strategic_addition,major Argentina outlet with regional reach
+el_comercio_pe,elcomercio.pe,media_narrative,P1,latin_america,national_major_media,https://elcomercio.pe/mundo/,narrative_and_agenda,strategic_addition,major Peru outlet with world desk
+el_espectador_politica,elespectador.com,media_narrative,P1,latin_america,national_major_media,https://www.elespectador.com/politica/,narrative_and_agenda,strategic_addition_v2,major Colombia politics desk
+el_tiempo_mundo,eltiempo.com,media_narrative,P1,latin_america,national_major_media,https://www.eltiempo.com/mundo,narrative_and_agenda,strategic_addition,major Colombia outlet with Latin America coverage
+el_universal_mx,eluniversal.com.mx,media_narrative,P1,latin_america,national_major_media,https://www.eluniversal.com.mx/mundo/,narrative_and_agenda,strategic_addition,major Mexico outlet with world coverage
+folha_mundo,folha.uol.com.br,media_narrative,P1,latin_america,national_major_media,https://www1.folha.uol.com.br/mundo/,narrative_and_agenda,strategic_addition,major Brazil outlet with international desk
+latercera_cl,latercera.com,media_narrative,P1,latin_america,national_major_media,https://www.latercera.com/canal/politica/,narrative_and_agenda,strategic_addition,major Chile politics coverage
+ahram_online_politics,english.ahram.org.eg,media_narrative,P1,middle_east,national_major_media,https://english.ahram.org.eg/Category/1/64/Egypt/Politics-.aspx,narrative_and_agenda,strategic_addition_v2,major Egypt English-language politics desk
+arab_news,arabnews.com,media_narrative,P1,middle_east,national_major_media,https://www.arabnews.com/,narrative_and_agenda,strategic_addition,Saudi-based English source with regional political coverage
+gulf_news_world,gulfnews.com,media_narrative,P1,middle_east,national_major_media,https://gulfnews.com/world,narrative_and_agenda,strategic_addition_v2,major Gulf regional outlet with broad MENA coverage
+haberturk_com,haberturk.com,media_narrative,P1,middle_east,national_major_media,https://www.haberturk.com/gundem,narrative_and_agenda,media_core,important Turkey source
+israelhayom_co_il,israelhayom.co.il,media_narrative,P1,middle_east,national_major_media,https://www.israelhayom.co.il/news,narrative_and_agenda,media_core,high relevance but paywall risk
+the_national_uae,thenationalnews.com,media_narrative,P1,middle_east,national_major_media,https://www.thenationalnews.com/world/,narrative_and_agenda,strategic_addition,high-quality UAE-based regional and global coverage
+times_of_israel,timesofisrael.com,media_narrative,P1,middle_east,national_major_media,https://www.timesofisrael.com/israel-and-the-region/,narrative_and_agenda,strategic_addition_v2,major Israel English-language political and regional coverage
+abcnews_go_com,abcnews.go.com,media_narrative,P1,north_america,global_major_media,https://abcnews.go.com/international,narrative_and_agenda,media_core,major US broadcaster; use international desk rather than climate alerts page
+nbcnews_com,nbcnews.com,media_narrative,P1,north_america,global_major_media,https://www.nbcnews.com/world,narrative_and_agenda,media_core,use domain but replace weak section URL
+newsweek_com,newsweek.com,media_narrative,P1,north_america,global_major_media,http://www.newsweek.com/world,narrative_and_agenda,media_core,good archive and world desk
+thestar_com,thestar.com,media_narrative,P1,north_america,national_major_media,http://www.thestar.com/news/world/,narrative_and_agenda,media_core,good Canada supplement
+arynews_tv,arynews.tv,media_narrative,P1,south_asia,national_major_media,https://arynews.tv/category/pakistan,narrative_and_agenda,media_core,important Pakistan source
+daily_star_bd,thedailystar.net,media_narrative,P1,south_asia,national_major_media,https://www.thedailystar.net/news/world,narrative_and_agenda,strategic_addition_v2,major Bangladesh English-language outlet with regional and world coverage
+express_pk,express.pk,media_narrative,P1,south_asia,national_major_media,https://www.express.pk/world,narrative_and_agenda,media_core,major Pakistan source
+indian_express_world,indianexpress.com,media_narrative,P1,south_asia,national_major_media,https://indianexpress.com/section/world/,narrative_and_agenda,strategic_addition_v2,major India outlet with strong international desk
+the_hindu_world,thehindu.com,media_narrative,P1,south_asia,national_major_media,https://www.thehindu.com/news/international/,narrative_and_agenda,strategic_addition,major India outlet with strong foreign desk
+allafrica,allafrica.com,media_narrative,P2,africa,regional_network,https://allafrica.com/latest/,narrative_and_agenda,strategic_addition,pan-African aggregation useful for country coverage expansion
+mail_guardian,mg.co.za,media_narrative,P2,africa,national_major_media,https://mg.co.za/,narrative_and_agenda,strategic_addition,South Africa perspective and investigative value
+rfi_english,rfi.fr,media_narrative,P2,africa,public_broadcaster,https://www.rfi.fr/en/,narrative_and_agenda,strategic_addition,valuable Francophone Africa signal source
+arabnews_arab,arabnews.jp,media_narrative,P2,asia,regional_major_media,https://www.arabnews.jp/en/,narrative_and_agenda,strategic_addition,Middle East coverage for Japanese and Asian audiences
+euronews,euronews.com,media_narrative,P2,europe,regional_major_media,https://www.euronews.com/news/international,narrative_and_agenda,strategic_addition,regional European perspective and multilingual reach

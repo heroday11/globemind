@@ -1,0 +1,13 @@
+{
+  "policy": "per-file ceilings; current counts may only stay equal or decrease",
+  "rules": {
+    "backend-core-imports-services": {},
+    "backend-direct-environment-read": {},
+    "backend-feature-public-api": {},
+    "core-pipeline-imports-scripts": {},
+    "frontend-feature-public-api": {},
+    "frontend-shared-imports-views": {},
+    "route-loads-dotenv": {}
+  },
+  "schema_version": 1
+}

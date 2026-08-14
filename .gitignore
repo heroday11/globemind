@@ -1,0 +1,111 @@
+# ── Python ──
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ── Environment ──
+.env
+.env.*
+!.env.example
+.env_torch/
+
+# ── Database ──
+*.db
+*.sqlite
+*.sqlite3
+volumes/
+milvus_data/
+etcd_data/
+minio_data/
+
+# ── Data artifacts ──
+data/*.jsonl
+data/*.db
+data/*.pkl
+data/*.bak
+data/*.npy
+*.npz
+data/*.npz
+data/*.pkl.bak
+data/obsidian_vault_v3/
+data/obsidian_vault_3d/
+data/reports/
+data/l1_audit*/
+data/runtime/
+
+# ── Logs ──
+*.log
+
+# ── OS ──
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE ──
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Claude Code ──
+.claude/
+
+# ── Node ──
+node_modules/
+dist/
+
+# ── PPT templates (third-party, not core code) ──
+backend/cppt/
+
+# ── Large files ──
+*.gz
+*.zip
+*.deb
+cloudflared
+cloudflared_config.yml
+
+# ── Test caches ──
+.pytest_cache/
+
+# ── Temp ──
+tmp/
+warc_temp/
+*.bak
+
+# ── Local diagnostics and generated captures ──
+.venv_hist/
+analysis_frames/
+analysis_output/
+MP4/
+test-results/
+
+# ── Runtime controller state ──
+logs/*.pid
+logs/*.pid.*
+logs/*_supervisor.json
+
+# ── Bulk runtime datasets and model caches ──
+data/analysis/
+data/historical_news/
+data/proxy_pool/
+voxcpm2-test/
+
+# ── Remotion local build and media artifacts ──
+remotion-edit/.tmp-edge-tts-build/
+remotion-edit/.venv/
+remotion-edit/audio/
+remotion-edit/node_modules/
+remotion-edit/out/
+remotion-edit/public/source.mp4
+
+# ── Attested runtime content ──
+# These trees are validated by ops/release/content-bundles.json and injected
+# into release staging; they are not application source inputs.
+frontend/vue_project/public/datasets/expert-skills/
+frontend/vue_project/public/imgs/hermes-generated/

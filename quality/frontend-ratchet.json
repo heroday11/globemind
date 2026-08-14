@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "financial_typescript": {
+    "max_errors": 0
+  },
+  "vue_eslint": {
+    "max_errors": 0,
+    "max_fatal_errors": 0,
+    "max_warnings": 0,
+    "paths": [
+      "src",
+      "scripts",
+      "vite.config.js",
+      "eslint.config.js"
+    ]
+  }
+}

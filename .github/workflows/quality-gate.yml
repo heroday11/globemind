@@ -1,0 +1,93 @@
+name: quality-gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: "17 2 * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-gate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      APP_ENV: test
+      GLOBEMIND_TEST_ISOLATION: "1"
+      PYTHONUNBUFFERED: "1"
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: |
+            requirements-dev.txt
+            backend/api/requirements.txt
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: |
+            frontend/vue_project/package-lock.json
+            frontend/financial-terminal/package-lock.json
+
+      - name: Install Python dependencies
+        run: python -m pip install --disable-pip-version-check -r requirements-dev.txt
+
+      - name: Install frontend dependencies
+        run: |
+          npm ci --no-audit --no-fund --prefix frontend/vue_project
+          npm ci --no-audit --no-fund --prefix frontend/financial-terminal
+
+      - name: Run offline quality gate
+        run: deploy/run_quality_gate.sh --output "$RUNNER_TEMP/quality-gate.json"
+
+      - name: Run bounded continuous audit
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: |
+          python -B scripts/continuous_audit.py \
+            --output-dir "$RUNNER_TEMP/continuous-audit-registry"
+          python -B scripts/run_continuous_audit_validators.py \
+            --python-runtime "$pythonLocation/bin/python" \
+            --output-dir "$RUNNER_TEMP/continuous-audit-validators"
+          python -B scripts/continuous_audit_triage.py \
+            --audit-report "$RUNNER_TEMP/continuous-audit-registry/continuous-audit.json" \
+            --validator-report "$RUNNER_TEMP/continuous-audit-validators/continuous-audit-validator-run.json" \
+            --output-dir "$RUNNER_TEMP/continuous-audit-triage"
+
+      - name: Validate release tooling contracts (no artifact)
+        run: |
+          python -m pytest -q \
+            backend/tests/test_release_tooling.py \
+            backend/tests/test_ci_workflow_contract.py
+
+      - name: Retain bounded audit evidence
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: continuous-audit-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/quality-gate.json
+            ${{ runner.temp }}/continuous-audit-registry
+            ${{ runner.temp }}/continuous-audit-validators
+            ${{ runner.temp }}/continuous-audit-triage
+          if-no-files-found: error
+          retention-days: 30

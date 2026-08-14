@@ -1,0 +1,105 @@
+site_id,url,domain,seed_tier,seed_type,layer,priority_tier,region,source_type,signal_role,notes
+asahi_com,https://www.asahi.com/politics/?iref=pc_gnavi,asahi.com,A,national_media,media_narrative,P0,asia,national_major_media,narrative_and_agenda,top Japanese daily
+channelnewsasia_com,http://www.channelnewsasia.com/latest-news,channelnewsasia.com,A,regional_media,media_narrative,P0,asia,regional_major_media,narrative_and_agenda,excellent Southeast Asia and China coverage
+freemalaysiatoday_com,http://www.freemalaysiatoday.com/news,freemalaysiatoday.com,A,national_media,media_narrative,P0,asia,national_major_media,narrative_and_agenda,high update frequency
+inquirer_net,https://newsinfo.inquirer.net/,inquirer.net,A,national_media,media_narrative,P0,asia,national_major_media,narrative_and_agenda,major Philippines source
+nikkei_com,https://www.nikkei.com/world/,nikkei.com,A,national_media,media_narrative,P0,asia,national_major_media,narrative_and_agenda,use politics and Asia sections rather than current URL
+scmp_com,http://www.scmp.com/news/china/military,scmp.com,A,regional_media,media_narrative,P0,asia,regional_major_media,narrative_and_agenda,top source for China and region
+straitstimes_com,http://www.straitstimes.com/world,straitstimes.com,A,national_media,media_narrative,P0,asia,national_major_media,narrative_and_agenda,top Singapore source
+thejakartapost_com,http://www.thejakartapost.com/world,thejakartapost.com,A,national_media,media_narrative,P0,asia,national_major_media,narrative_and_agenda,top Indonesia English source
+vnexpress_net,http://vnexpress.net/tin-tuc-24h,vnexpress.net,A,national_media,media_narrative,P0,asia,national_major_media,narrative_and_agenda,top Vietnam source
+yomiuri_co_jp,http://www.yomiuri.co.jp/politics/,yomiuri.co.jp,A,national_media,media_narrative,P0,asia,national_major_media,narrative_and_agenda,top Japanese daily
+zaobao_com,http://www.zaobao.com/news,zaobao.com,A,regional_media,media_narrative,P0,asia,regional_major_media,narrative_and_agenda,key Chinese language regional source
+abc_net_au,http://www.abc.net.au/news/justin,abc.net.au,A,major_media,media_narrative,P0,asia_pacific,public_broadcaster,narrative_and_agenda,public broadcaster with strong Asia coverage
+rnz_co_nz,https://www.rnz.co.nz/news/world,rnz.co.nz,A,major_media,media_narrative,P0,asia_pacific,public_broadcaster,narrative_and_agenda,high quality New Zealand source
+smh_com_au,https://www.smh.com.au/world/north-america,smh.com.au,A,national_media,media_narrative,P0,asia_pacific,national_major_media,narrative_and_agenda,major Australia paper
+theage_com_au,http://www.theage.com.au/world/north-america,theage.com.au,A,national_media,media_narrative,P0,asia_pacific,national_major_media,narrative_and_agenda,major Australia paper
+elmundo_es,https://www.elmundo.es/internacional.html,elmundo.es,A,national_media,media_narrative,P0,europe,national_major_media,narrative_and_agenda,major Spanish daily
+elpais_com,https://elpais.com/internacional/,elpais.com,A,national_media,media_narrative,P0,europe,national_major_media,narrative_and_agenda,major Spanish global desk
+faz_net,https://www.faz.net/aktuell/politik/,faz.net,A,national_media,media_narrative,P0,europe,national_major_media,narrative_and_agenda,major German paper
+lefigaro_fr,https://www.lefigaro.fr/international,lefigaro.fr,A,national_media,media_narrative,P0,europe,national_major_media,narrative_and_agenda,major French daily
+rtve_es,http://www.rtve.es/noticias/ultimas-noticias/,rtve.es,A,major_media,media_narrative,P0,europe,public_broadcaster,narrative_and_agenda,public broadcaster with broad coverage
+theguardian_com,https://www.theguardian.com/world,theguardian.com,A,major_media,media_narrative,P0,europe,global_major_media,narrative_and_agenda,major global coverage
+bbc_com,https://www.bbc.com/news,bbc.com,A,major_media,media_narrative,P0,global,global_major_media,narrative_and_agenda,high quality global coverage
+lanacion_com_ar,http://www.lanacion.com.ar/politica/,lanacion.com.ar,A,national_media,media_narrative,P0,latin_america,national_major_media,narrative_and_agenda,major Argentina source
+aljazeera_net,https://www.aljazeera.net/news/,aljazeera.net,A,major_media,media_narrative,P0,middle_east,global_major_media,narrative_and_agenda,major source for Middle East coverage
+haaretz_com,https://www.haaretz.com/israel-news/israel-security,haaretz.com,A,national_media,media_narrative,P0,middle_east,national_major_media,narrative_and_agenda,high value for Israel coverage
+hurriyetdailynews_com,https://www.hurriyetdailynews.com/world/,hurriyetdailynews.com,A,national_media,media_narrative,P0,middle_east,national_major_media,narrative_and_agenda,English Turkey source
+jpost_com,https://www.jpost.com/israel-news,jpost.com,A,national_media,media_narrative,P0,middle_east,national_major_media,narrative_and_agenda,major English Israel source
+ynetnews_com,https://www.ynetnews.com/category/9733,ynetnews.com,A,national_media,media_narrative,P0,middle_east,national_major_media,narrative_and_agenda,major Israel English source
+cbc_ca,http://www.cbc.ca/news/world,cbc.ca,A,major_media,media_narrative,P0,north_america,public_broadcaster,narrative_and_agenda,high quality public broadcaster
+cbsnews_com,http://www.cbsnews.com/world/,cbsnews.com,A,major_media,media_narrative,P0,north_america,global_major_media,narrative_and_agenda,strong general international coverage
+latimes_com,https://www.latimes.com/politics,latimes.com,A,national_media,media_narrative,P0,north_america,national_major_media,narrative_and_agenda,major US paper
+npr_org,http://www.npr.org/sections/news/,npr.org,A,major_media,media_narrative,P0,north_america,public_broadcaster,narrative_and_agenda,strong international reporting
+theglobeandmail_com,http://www.theglobeandmail.com/world/,theglobeandmail.com,A,national_media,media_narrative,P0,north_america,national_major_media,narrative_and_agenda,major Canada source
+dawnnews_tv,https://www.dawnnews.tv/pakistan,dawnnews.tv,A,national_media,media_narrative,P0,south_asia,national_major_media,narrative_and_agenda,important Pakistan source
+geo_tv,https://www.geo.tv/latest-news,geo.tv,A,national_media,media_narrative,P0,south_asia,national_major_media,narrative_and_agenda,high volume Pakistan source
+hindustantimes_com,https://www.hindustantimes.com/world-news,hindustantimes.com,A,national_media,media_narrative,P0,south_asia,national_major_media,narrative_and_agenda,major India source
+prothomalo_com,https://www.prothomalo.com/world,prothomalo.com,A,national_media,media_narrative,P0,south_asia,national_major_media,narrative_and_agenda,major Bangladesh source
+timesofindia_indiatimes_com,https://timesofindia.indiatimes.com/world/rest-of-world,timesofindia.indiatimes.com,A,national_media,media_narrative,P0,south_asia,national_major_media,narrative_and_agenda,high volume India source
+african_union,https://au.int/en/happening,au.int,A,official,official_direct,P1,africa,international_organization,official_position,official African Union news and press releases
+ecowas_news,https://www.ecowas.int/,ecowas.int,A,official,official_direct,P1,africa,international_organization,official_position,official West African regional organization news and communiques
+ethiopia_mfa,https://mfa.gov.et/news,mfa.gov.et,A,official,official_direct,P1,africa,foreign_ministry,official_position,official Ethiopia foreign ministry news
+kenya_mfa,https://mfa.go.ke/allnews,mfa.go.ke,A,official,official_direct,P1,africa,foreign_ministry,official_position,official Kenya foreign affairs news and diplomacy updates
+nigeria_mfa,https://foreignaffairs.gov.ng/news/latest-news/,foreignaffairs.gov.ng,A,official,official_direct,P1,africa,foreign_ministry,official_position,official Nigeria foreign ministry news and press releases
+southafrica_dirco,https://dirco.gov.za/media-statements/,dirco.gov.za,A,official,official_direct,P1,africa,foreign_ministry,official_position,official South Africa foreign policy statements
+asean_news,https://asean.org/news/,asean.org,A,official,official_direct,P1,asia,international_organization,official_position,official ASEAN institutional and summit signals
+china_mfa,https://www.mfa.gov.cn/eng/xw/,mfa.gov.cn,A,official,official_direct,P0,asia,foreign_ministry,official_position,official China foreign ministry news
+id_mofcom_gov_cn,https://fdi.mofcom.gov.cn/EN/come-zonghe-list.html,id.mofcom.gov.cn,A,official,official_direct,P1,asia,economic_ministry,official_position,official China commerce and investment policy signal
+indonesia_kemlu,https://kemlu.go.id/portal/en,kemlu.go.id,A,official,official_direct,P1,asia,foreign_ministry,official_position,official Indonesia foreign ministry portal
+japan_mofa,https://www.mofa.go.jp/press/release/index.html,mofa.go.jp,A,official,official_direct,P0,asia,foreign_ministry,official_position,official Japan foreign ministry releases
+malaysia_mfa,https://www.kln.gov.my/web/guest/press-releases,kln.gov.my,A,official,official_direct,P1,asia,foreign_ministry,official_position,official Malaysia foreign ministry press releases
+singapore_mfa,https://www.mfa.gov.sg/newsroom/press-statements-transcripts-and-photos/,mfa.gov.sg,A,official,official_direct,P1,asia,foreign_ministry,official_position,official Singapore foreign ministry press statements
+southkorea_mofa,https://www.mofa.go.kr/eng/index.do,mofa.go.kr,A,official,official_direct,P1,asia,foreign_ministry,official_position,official Korea foreign ministry portal
+taiwan_mofa,https://en.mofa.gov.tw/News.aspx?n=1328&sms=273,en.mofa.gov.tw,A,official,official_direct,P1,asia,foreign_ministry,official_position,official Taiwan foreign ministry news and responses
+vietnam_mofa,https://mofa.gov.vn/en/web/ministry-of-foreign-affairs,mofa.gov.vn,A,official,official_direct,P1,asia,foreign_ministry,official_position,official Vietnam foreign ministry portal with spokesperson and press release sections
+australia_dfat,https://www.dfat.gov.au/news-speeches-and-media,dfat.gov.au,A,official,official_direct,P1,asia_pacific,foreign_ministry,official_position,official Australian foreign ministry signal
+newzealand_mfat,https://www.mfat.govt.nz/en/media-and-resources,mfat.govt.nz,A,official,official_direct,P1,asia_pacific,foreign_ministry,official_position,official New Zealand foreign affairs and trade statements and resources
+bundesregierung_de,https://www.bundesregierung.de/breg-de/bundesregierung,bundesregierung.de,A,official,official_direct,P1,europe,executive_government,official_position,official German government newsroom
+eeas_europa,https://www.eeas.europa.eu/eeas/press-material_en,eeas.europa.eu,A,official,official_direct,P0,europe,foreign_service,official_position,official EU diplomatic service press material
+eu_commission_press,https://ec.europa.eu/commission/presscorner/home/en,ec.europa.eu,A,official,official_direct,P0,europe,supranational_executive,official_position,official European Commission press corner
+fcdo_gov_uk,https://www.gov.uk/government/organisations/foreign-commonwealth-development-office,gov.uk,A,official,official_direct,P0,europe,foreign_ministry,official_position,official UK foreign office news and communications
+france_diplomatie,https://www.diplomatie.gouv.fr/en/press/news,diplomatie.gouv.fr,A,official,official_direct,P1,europe,foreign_ministry,official_position,official France foreign ministry news
+nato_news,https://www.nato.int/cps/en/natohq/news.htm,nato.int,A,official,official_direct,P0,europe,international_security_org,official_position,official alliance security statements and briefings
+osce_press,https://www.osce.org/press-releases,osce.org,A,official,official_direct,P1,europe,international_organization,official_position,official European security and election monitoring statements
+russia_mfa,https://mid.ru/en/press_service/,mid.ru,A,official,official_direct,P1,europe,foreign_ministry,official_position,official Russian foreign ministry statements and briefings
+ukraine_mfa,https://mfa.gov.ua/en/news,mfa.gov.ua,A,official,official_direct,P1,europe,foreign_ministry,official_position,official Ukraine foreign ministry statements and news
+un_org,https://news.un.org/en/news,un.org,A,official,official_direct,P0,global,international_organization,official_position,official UN news and statements
+who_int,https://www.who.int/news-room,who.int,A,official,official_direct,P1,global,international_organization,official_position,official institutional and emergency updates with lower direct political density
+argentina_cancilleria,https://www.cancilleria.gob.ar/en/news,cancilleria.gob.ar,A,official,official_direct,P1,latin_america,foreign_ministry,official_position,official Argentina foreign ministry news
+brazil_mre,https://www.gov.br/mre/en/contact-us/press-area/press-releases,gov.br/mre,A,official,official_direct,P1,latin_america,foreign_ministry,official_position,official Brazil foreign ministry press area
+chile_minrel,https://www.minrel.gob.cl/minrel/sala-de-prensa/p/1,minrel.gob.cl,A,official,official_direct,P1,latin_america,foreign_ministry,official_position,official Chile foreign ministry press room
+colombia_cancilleria,https://www.cancilleria.gov.co/sala-de-prensa/noticias,cancilleria.gov.co,A,official,official_direct,P1,latin_america,foreign_ministry,official_position,official Colombia foreign ministry newsroom
+mexico_sre,https://www.gob.mx/sre/en/archivo/prensa,gob.mx,A,official,official_direct,P1,latin_america,foreign_ministry,official_position,official Mexico foreign ministry press archive
+oas_news,https://www.oas.org/en/media_center/default.asp,oas.org,A,official,official_direct,P1,latin_america,international_organization,official_position,official Americas multilateral organization statements
+peru_rree,https://www.gob.pe/institucion/rree/noticias,gob.pe,A,official,official_direct,P1,latin_america,foreign_ministry,official_position,official Peru foreign ministry news and press releases
+egypt_mfa,https://www.mfa.gov.eg/,mfa.gov.eg,A,official,official_direct,P1,middle_east,foreign_ministry,official_position,official Egypt foreign ministry signal source
+israel_mfa,https://www.gov.il/en/departments/ministry_of_foreign_affairs,gov.il,A,official,official_direct,P1,middle_east,foreign_ministry,official_position,official Israeli foreign ministry news and statements
+qatar_mofa,https://mofa.gov.qa/en/all-mofa-news,mofa.gov.qa,A,official,official_direct,P1,middle_east,foreign_ministry,official_position,official Qatar foreign ministry statements and ministry news
+saudi_mofa,https://www.mofa.gov.sa/en/ministry/news/Pages/default.aspx,mofa.gov.sa,A,official,official_direct,P1,middle_east,foreign_ministry,official_position,official Saudi foreign ministry news
+turkiye_mfa,https://www.mfa.gov.tr/press-information.en.mfa,mfa.gov.tr,A,official,official_direct,P1,middle_east,foreign_ministry,official_position,official Türkiye foreign ministry statements
+uae_mofa,https://www.mofaic.gov.ae/en/,mofaic.gov.ae,A,official,official_direct,P1,middle_east,foreign_ministry,official_position,official UAE foreign ministry statements and releases
+canada_gac,https://www.international.gc.ca/global-affairs-affaires-mondiales/news-nouvelles/index.aspx?lang=eng,international.gc.ca,A,official,official_direct,P1,north_america,foreign_ministry,official_position,official Canadian foreign affairs signal
+state_gov,https://www.state.gov/press-releases,state.gov,A,official,official_direct,P0,north_america,foreign_ministry,official_position,official US State Department releases
+whitehouse_gov,https://www.whitehouse.gov/news/,whitehouse.gov,A,official,official_direct,P0,north_america,executive_government,official_position,official White House releases and briefings
+bangladesh_mofa,https://mofa.gov.bd/pages/press-releases,mofa.gov.bd,A,official,official_direct,P1,south_asia,foreign_ministry,official_position,official Bangladesh foreign ministry press releases
+india_mea,https://www.mea.gov.in/press-releases,mea.gov.in,A,official,official_direct,P0,south_asia,foreign_ministry,official_position,official India external affairs releases
+pakistan_mofa,https://mofa.gov.pk/press-releases,mofa.gov.pk,A,official,official_direct,P1,south_asia,foreign_ministry,official_position,official Pakistan foreign ministry press releases
+sri_lanka_mfa,https://www.mfa.gov.lk/en/news/ministry-news,mfa.gov.lk,A,official,official_direct,P1,south_asia,foreign_ministry,official_position,official Sri Lanka foreign ministry news
+bernama_com,https://www.bernama.com/en/world/,bernama.com,A,wire,wire_fast,P0,asia,state_media,event_baseline,national wire with strong region coverage
+focus_taiwan,https://focustaiwan.tw/,focustaiwan.tw,A,wire,wire_fast,P1,asia,wire_service,event_baseline,Central News Agency English service useful for Taiwan signal
+kyodo_co_jp,http://www.kyodo.co.jp/news/,kyodo.co.jp,A,wire,wire_fast,P0,asia,wire_service,event_baseline,top Japanese wire
+xinhua_english,https://english.news.cn/,english.news.cn,A,wire,wire_fast,P1,asia,state_media,event_baseline,official China wire perspective in English
+yonhap_english,https://en.yna.co.kr/,en.yna.co.kr,A,wire,wire_fast,P1,asia,wire_service,event_baseline,major Korean wire useful for Northeast Asia
+ansa_it,https://www.ansa.it/sito/notizie/topnews/index.shtml,ansa.it,A,wire,wire_fast,P0,europe,wire_service,event_baseline,major Italian wire
+dpa_com,https://www.dpa.com/en/international-news,dpa.com,A,wire,wire_fast,P1,europe,wire_service,event_baseline,major wire; use English international news service rather than corporate pages
+interfax_com,https://interfax.com/newsroom/top-stories/,interfax.com,A,wire,wire_fast,P0,europe,wire_service,event_baseline,important regional wire
+tass_com,https://tass.com/middle-east-conflict,tass.com,A,wire,wire_fast,P0,europe,state_media,event_baseline,major state news agency with strong geopolitical coverage
+ukrinform,https://www.ukrinform.net/,ukrinform.net,A,wire,wire_fast,P1,europe,wire_service,event_baseline,official Ukrainian national news agency and war baseline source
+afp_global,https://www.afp.com/en,afp.com,A,wire,wire_fast,P0,global,wire_service,event_baseline,global wire with wide geographic reach
+ap_world,https://apnews.com/world-news,apnews.com,A,wire,wire_fast,P0,global,wire_service,event_baseline,global wire and factual baseline source
+reuters_world,https://www.reuters.com/world/,reuters.com,A,wire,wire_fast,P0,global,wire_service,event_baseline,global wire baseline and high-volume first report source
+efe_com,https://efe.com/english/,efe.com,A,wire,wire_fast,P1,latin_america,wire_service,event_baseline,valuable wire but path should be tuned
+irna_ir,https://www.irna.ir/rss,irna.ir,A,wire,wire_fast,P0,middle_east,state_media,event_baseline,official Iranian news agency
+wafa_ps,https://wafa.ps/Pages/LastNews,wafa.ps,A,wire,wire_fast,P0,middle_east,state_media,event_baseline,official Palestinian news agency
+unb_com_bd,https://unb.com.bd/latestnews,unb.com.bd,A,wire,wire_fast,P1,south_asia,wire_service,event_baseline,useful Bangladesh wire

@@ -1,0 +1,23 @@
+{
+  "tests": {
+    "topic_clustering": {
+      "success": true,
+      "topics": 32,
+      "singletons": 0,
+      "elapsed_seconds": 6.44
+    },
+    "classifier_latency": {
+      "success": true,
+      "avg_latency_ms": 0.1949,
+      "trials": 100
+    },
+    "l1_clustering": {
+      "success": true,
+      "clusters": 100,
+      "articles": 100,
+      "elapsed_seconds": 0.12
+    }
+  },
+  "all_passed": true,
+  "timestamp": "2026-05-31 00:11:05"
+}

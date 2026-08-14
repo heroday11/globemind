@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "name": "heroday",
+    "role": "admin",
+    "title": "首席研究员",
+    "dept": "globemind",
+    "avatar": "",
+    "online": true
+  }
+]

@@ -1,0 +1,103 @@
+<div id="gm-header" class="gm-header gm-header-white">
+  <div class="gm-logo-corner" onclick="window.location.href='/'" title="返回首页"><img src="/imgs/logo2.png" alt="GlobeMind" class="gm-logo-img" /></div>
+  <button class="gm-mobile-hamburger" id="gmHamburger" onclick="gmToggleM()" aria-label="菜单"><span class="gm-ham-line"></span><span class="gm-ham-line"></span><span class="gm-ham-line"></span></button>
+  <div class="gm-nav-shell">
+    <div class="gm-nav-center"><div class="gm-middle"><ul class="gm-nav-list">
+      <li class="gm-nav-item"><a href="/">首页</a></li>
+      <li class="gm-nav-item"><a href="/sentiment-analysis">涉华舆情分析</a></li>
+      <li class="gm-nav-item"><a href="/data-statistics">星空知识图谱</a></li>
+      <li class="gm-nav-item gm-dropdown-item" onmouseenter="gmOpen('ds')" onmouseleave="gmClose('ds')">
+        <span class="gm-dropdown-trigger"><span>多语数智服务</span><span class="gm-dd-icon" id="gm-ar-ds"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></span>
+        <div class="gm-dd-menu" id="gm-dd-ds" onmouseenter="gmCancel('ds')" onmouseleave="gmClose('ds')">
+          <div class="gm-dd-item" onclick="window.location.href='/data-service/data-search'"><span class="gm-dd-icon">📄</span><span>数据搜索</span></div>
+          <div class="gm-dd-item" onclick="window.location.href='/data-service/paper/'"><span class="gm-dd-icon">🔔</span><span>情报雷达</span></div>
+          <div class="gm-dd-item" onclick="window.location.href='/data-service/bridge/'"><span class="gm-dd-icon">🎯</span><span>规则工场</span></div>
+        </div>
+      </li>
+      <li class="gm-nav-item"><a href="/data-service/report-center">报告中心</a></li>
+      <li class="gm-nav-item"><a href="/data-assistant">数据助手</a></li>
+      <li class="gm-nav-item"><a href="/financial-terminal">数值分析预警</a></li>
+      <li class="gm-nav-item"><a href="/academic-data">智库信息汇聚</a></li>
+      <li class="gm-nav-item"><a href="/about-us" class="gm-about-link">关于我们</a></li>
+    </ul></div></div>
+    <div class="gm-header-actions">
+      <form class="gm-header-search" onsubmit="gmSubmitSearch(event)">
+        <button type="submit" class="gm-search-submit" aria-label="检索"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+        <input type="search" class="gm-search-input" id="gmSi" placeholder="检索情报、实体、事件…" autocomplete="off" />
+      </form>
+      <button class="gm-action-btn gm-login-btn" onclick="window.location.href='/login'">登录</button>
+    </div>
+  </div>
+</div><style>.gm-header{position:fixed;top:0;left:0;right:0;height:64px;z-index:100;will-change:transform;backface-visibility:hidden;padding:10px 24px;background:rgba(240,246,255,0.92);backdrop-filter:blur(12px) saturate(1.15);-webkit-backdrop-filter:blur(12px) saturate(1.15);box-shadow:0 1px 12px rgba(29,78,216,0.08),0 2px 8px rgba(0,0,0,0.06);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif}.gm-logo-corner{position:fixed;top:10px;left:24px;height:56px;width:72px;display:flex;align-items:center;cursor:pointer;z-index:101}.gm-logo-img{height:52px;width:auto;max-width:none;flex-shrink:0}.gm-nav-shell{height:100%;width:100%;display:flex;align-items:center}.gm-nav-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;max-width:calc(100vw-520px)}.gm-middle{display:flex;align-items:center;padding:8px 22px;border-radius:14px;background:rgba(255,255,255,0.62);backdrop-filter:blur(12px) saturate(1.12);-webkit-backdrop-filter:blur(12px) saturate(1.12);box-shadow:inset 0 1px rgba(255,255,255,0.72),0 4px 14px rgba(15,23,42,0.075)}.gm-nav-list{display:flex;list-style:none;gap:42px;align-items:center;margin:0;white-space:nowrap;padding:0 10px}.gm-nav-item{position:relative;white-space:nowrap;flex-shrink:0}.gm-nav-item a{text-decoration:none;color:#334155;font-size:15px;font-weight:600;letter-spacing:.02em;line-height:42px;padding:0;transition:color .2s;white-space:nowrap;display:inline-block}.gm-nav-item a:hover{color:#0f172a}.gm-dropdown-trigger{display:flex;align-items:center;gap:6px;cursor:pointer;color:#334155;font-size:15px;font-weight:600;min-height:42px;line-height:42px;transition:color .2s}.gm-dropdown-trigger:hover{color:#0f172a}.gm-dd-icon{font-size:12px;display:inline-flex;align-items:center;transition:transform .3s;color:#94a3b8}.gm-dd-icon.gm-rotate{transform:rotate(180deg)}.gm-dd-menu{position:absolute;top:100%;left:0;background:#fff;border:1px solid #e9ecef;border-radius:6px;box-shadow:0 4px 12px rgba(0,0,0,0.15);z-index:1000;min-width:160px;padding:8px 0;pointer-events:none;transform-origin:top;transition:all .3s cubic-bezier(.25,.46,.45,.94);transform:translateY(-15px) scaleY(.8);opacity:0;visibility:hidden}.gm-dd-menu.gm-show{transform:translateY(0) scaleY(1);opacity:1;visibility:visible;pointer-events:auto}.gm-dd-menu::before{content:"";position:absolute;top:-10px;left:0;right:0;height:10px}.gm-dd-item{display:flex;align-items:center;gap:10px;padding:12px 16px;cursor:pointer;font-size:15px;font-weight:500;color:#475569;user-select:none}.gm-dd-item:hover{background:#f1f5f9;color:#0f172a}.gm-header-actions{position:fixed;right:24px;top:10px;height:44px;display:flex;align-items:center;z-index:101;gap:16px}.gm-header-search{display:flex;align-items:center;gap:6px;min-width:200px;max-width:300px;height:40px;padding:0 4px 0 10px;border-radius:999px;border:1px solid rgba(148,163,184,0.45);background:rgba(248,250,252,0.85);box-shadow:inset 0 1px rgba(255,255,255,0.9),0 4px 18px rgba(15,23,42,0.08);transition:border-color .2s}.gm-header-search:focus-within{border-color:rgba(56,189,248,0.65);box-shadow:inset 0 1px rgba(255,255,255,0.65),0 0 0 3px rgba(56,189,248,0.2)}.gm-search-submit{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:34px;height:34px;border:none;border-radius:50%;cursor:pointer;color:rgba(15,23,42,0.75);background:rgba(255,255,255,0.55)}.gm-search-submit:hover{background:rgba(56,189,248,0.2);color:#0369a1}.gm-search-input{flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font-size:14px;font-weight:500;color:rgba(15,23,42,0.88)}.gm-search-input::placeholder{color:rgba(71,85,105,0.72)}.gm-action-btn{background:none;border:none;padding:10px;border-radius:6px;cursor:pointer;color:#475569;display:flex;align-items:center}.gm-action-btn:hover{background:#f1f5f9;color:#0f172a}.gm-login-btn{background:linear-gradient(135deg,#667eea,#4e67d8);color:#fff;padding:0 18px;font-size:16px;font-weight:700;height:42px;line-height:42px;border-radius:10px;box-shadow:0 10px 22px rgba(29,78,216,0.22),0 2px 6px rgba(2,12,27,0.16)}.gm-login-btn:hover{background:linear-gradient(135deg,#5d74df,#435ecf);color:#fff!important}.gm-about-link{color:#2563eb!important;border:1px solid rgba(37,99,235,0.55);padding:0 16px;border-radius:10px;background:rgba(255,255,255,0.55);font-size:15px;font-weight:700;height:42px;line-height:40px!important;display:inline-flex;align-items:center}.gm-about-link:hover{background:linear-gradient(135deg,#2563eb,#1d4ed8)!important;border-color:transparent!important;color:#fff!important}.gm-mobile-hamburger{display:none;position:fixed;top:14px;right:16px;width:36px;height:36px;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:rgba(255,255,255,0.75);border:1px solid rgba(148,163,184,0.35);border-radius:10px;cursor:pointer;z-index:102;padding:0;backdrop-filter:blur(8px)}.gm-ham-line{display:block;width:18px;height:2px;border-radius:2px;background:#334155;transition:transform .3s,opacity .3s}.gm-hamburger--active .gm-ham-line:nth-child(1){transform:translateY(7px) rotate(45deg)}.gm-hamburger--active .gm-ham-line:nth-child(2){opacity:0}.gm-hamburger--active .gm-ham-line:nth-child(3){transform:translateY(-7px) rotate(-45deg)}@media(max-width:1024px){.gm-mobile-hamburger{display:flex}.gm-nav-center,.gm-header-actions{display:none!important}.gm-header{padding:10px 16px}.gm-logo-corner{left:16px}.gm-logo-img{height:40px}}@media(max-width:480px){.gm-header{padding:8px 12px;height:56px}.gm-logo-corner{top:6px;left:12px}.gm-logo-img{height:34px}.gm-mobile-hamburger{top:10px;right:12px;width:34px;height:34px;gap:4px}.gm-ham-line{width:16px}}body{padding-top:64px!important}
+/* Dark header variant for dark-themed pages (paper/bridge) */
+.gm-header-dark{background:rgba(10,10,10,0.95)!important;box-shadow:0 2px 12px rgba(0,0,0,0.3)!important;border-bottom:1px solid rgba(255,255,255,0.06)!important}
+.gm-header-dark .gm-nav-item a{color:rgba(248,250,252,0.88)!important}
+.gm-header-dark .gm-nav-item a:hover{color:#fff!important}
+.gm-header-dark .gm-dropdown-trigger{color:rgba(248,250,252,0.88)!important}
+.gm-header-dark .gm-dropdown-trigger:hover{color:#fff!important}
+.gm-header-dark .gm-middle{background:rgba(255,255,255,0.08)!important;backdrop-filter:blur(12px) saturate(1.15)!important;-webkit-backdrop-filter:blur(12px) saturate(1.15)!important}
+.gm-header-dark .gm-header-search{border-color:rgba(148,163,184,0.25)!important;background:rgba(255,255,255,0.06)!important}
+.gm-header-dark .gm-search-input{color:rgba(248,250,252,0.9)!important}
+.gm-header-dark .gm-search-input::placeholder{color:rgba(255,255,255,0.75)!important}
+.gm-header-dark .gm-search-submit{color:rgba(248,250,252,0.7)!important;background:rgba(255,255,255,0.08)!important}
+.gm-header-dark .gm-search-submit:hover{background:rgba(56,189,248,0.2)!important;color:#7dd3fc!important}
+.gm-header-dark .gm-about-link{color:rgba(248,250,252,0.9)!important;border-color:rgba(248,250,252,0.25)!important;background:rgba(255,255,255,0.06)!important}
+.gm-header-dark .gm-about-link:hover{background:rgba(255,255,255,0.15)!important;border-color:transparent!important;color:#fff!important}
+.gm-header-dark .gm-dd-icon{color:rgba(148,163,184,0.65)!important}
+.gm-header-dark .gm-dd-menu{background:rgba(15,23,42,0.98)!important;border-color:rgba(148,163,184,0.12)!important;box-shadow:0 8px 24px rgba(0,0,0,0.4)!important}
+.gm-header-dark .gm-dd-item{color:rgba(203,213,225,0.88)!important}
+.gm-header-dark .gm-dd-item:hover{background:rgba(255,255,255,0.08)!important;color:#fff!important}
+.gm-header-dark .gm-login-btn{box-shadow:0 10px 22px rgba(0,0,0,0.3),0 2px 6px rgba(0,0,0,0.2)!important}
+.gm-header-dark .gm-mobile-hamburger{background:rgba(255,255,255,0.08)!important;border-color:rgba(148,163,184,0.2)!important}
+.gm-header-dark .gm-ham-line{background:rgba(248,250,252,0.85)!important}
+.gm-header-dark .gm-logo-corner{background:transparent!important;border-radius:0!important;padding:0!important;width:auto!important;border-bottom:none!important;box-shadow:none!important}
+.gm-header-dark .gm-logo-corner::after{content:'';position:absolute;bottom:-4px;left:-6px;right:-6px;height:18px;background:linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.25));clip-path:polygon(10% 0,90% 0,100% 100%,0% 100%);pointer-events:none;z-index:-1}
+.gm-header-dark .gm-logo-img{filter:drop-shadow(1.5px 0 0 rgba(255,255,255,0.85)) drop-shadow(-1.5px 0 0 rgba(255,255,255,0.85)) drop-shadow(0 1.5px 0 rgba(255,255,255,0.85)) drop-shadow(0 -1.5px 0 rgba(255,255,255,0.85))!important}
+.gm-header-dark .gm-middle{background:rgba(255,255,255,0.1)!important;backdrop-filter:blur(12px) saturate(1.2)!important;-webkit-backdrop-filter:blur(12px) saturate(1.2)!important}
+/* Show & style sentinel global nav (Paper/Bridge tab bar) */
+.sentinel-global-nav{display:flex!important;position:sticky;top:64px;z-index:99;background:rgba(10,10,10,0.98)!important;border-top:1px solid rgba(255,255,255,0.1)!important;border-bottom:1px solid rgba(255,255,255,0.2)!important;padding:0 24px!important;gap:2.5rem!important;align-items:center!important;justify-content:center!important;height:50px!important}
+.sentinel-global-nav a{display:inline-flex;align-items:center;font-size:13px!important;font-weight:600!important;color:#fff!important;text-decoration:none!important;padding:0.3rem 1rem!important;border-radius:999px!important;border:1.5px solid rgba(255,255,255,0.2)!important;transition:color .2s,border-color .2s,background .2s}
+.sentinel-global-nav a:hover{color:#fff!important;border-color:rgba(255,255,255,0.5)!important;background:rgba(255,255,255,0.1)!important}
+.sentinel-global-nav a.is-active{color:#fff!important;border-color:rgba(255,255,255,0.55)!important;background:rgba(255,255,255,0.15)!important}</style>
+<div class="gm-drawer-overlay" id="gmDo" onclick="gmCloseM()" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(15,23,42,0.45);backdrop-filter:blur(4px)"><div class="gm-drawer" onclick="event.stopPropagation()" style="position:fixed;top:0;right:0;bottom:0;width:85vw;max-width:380px;background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);box-shadow:-8px 0 40px rgba(15,23,42,0.15);display:flex;flex-direction:column;overflow:hidden;transform:translateX(100%);transition:transform .3s cubic-bezier(.25,.46,.45,.94)">
+  <div style="display:flex;justify-content:flex-end;padding:12px 12px 0"><button onclick="gmCloseM()" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:rgba(241,245,249,0.85);border:1px solid rgba(148,163,184,0.25);border-radius:10px;cursor:pointer;color:#475569;font-size:22px">&times;</button></div>
+  <nav style="flex:1;overflow-y:auto;padding:8px 16px;display:flex;flex-direction:column;gap:2px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Microsoft YaHei,sans-serif">
+    <div style="display:flex;align-items:center;padding:14px;color:#334155;font-size:15px;font-weight:600;border-radius:12px;cursor:pointer" onclick="gmCloseM();window.location.href='/'">首页</div>
+    <div style="display:flex;align-items:center;padding:14px;color:#334155;font-size:15px;font-weight:600;border-radius:12px;cursor:pointer" onclick="gmCloseM();window.location.href='/sentiment-analysis'">涉华舆情分析</div>
+    <div style="display:flex;align-items:center;padding:14px;color:#334155;font-size:15px;font-weight:600;border-radius:12px;cursor:pointer" onclick="gmCloseM();window.location.href='/data-statistics'">星空知识图谱</div>
+    <div style="display:flex;align-items:center;padding:14px;color:#334155;font-size:15px;font-weight:600;border-radius:12px;cursor:pointer" onclick="var e=document.getElementById('gmDdDs');e.style.display=e.style.display==='none'?'':'none'">多语数智服务 <span style="margin-left:auto;transition:transform .3s;color:#94a3b8;display:inline-flex"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></div>
+    <div id="gmDdDs" style="display:none;flex-direction:column;padding:0 0 4px 16px">
+      <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;cursor:pointer;color:#475569;font-size:14px;font-weight:500" onclick="gmCloseM();window.location.href='/data-service/data-search'">数据搜索</div>
+      <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;cursor:pointer;color:#475569;font-size:14px;font-weight:500" onclick="gmCloseM();window.location.href='/data-service/paper/'">情报雷达</div>
+      <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;cursor:pointer;color:#475569;font-size:14px;font-weight:500" onclick="gmCloseM();window.location.href='/data-service/bridge/'">规则工场</div>
+    </div>
+    <div style="display:flex;align-items:center;padding:14px;color:#334155;font-size:15px;font-weight:600;border-radius:12px;cursor:pointer" onclick="gmCloseM();window.location.href='/data-service/report-center'">报告中心</div>
+    <div style="display:flex;align-items:center;padding:14px;color:#334155;font-size:15px;font-weight:600;border-radius:12px;cursor:pointer" onclick="gmCloseM();window.location.href='/data-assistant'">数据助手</div>
+    <div style="display:flex;align-items:center;padding:14px;color:#334155;font-size:15px;font-weight:600;border-radius:12px;cursor:pointer" onclick="gmCloseM();window.location.href='/financial-terminal'">数值分析预警</div>
+    <div style="display:flex;align-items:center;padding:14px;color:#334155;font-size:15px;font-weight:600;border-radius:12px;cursor:pointer" onclick="gmCloseM();window.location.href='/academic-data'">智库信息汇聚</div>
+    <div style="display:flex;align-items:center;padding:14px;color:#334155;font-size:15px;font-weight:600;border-radius:12px;cursor:pointer" onclick="gmCloseM();window.location.href='/about-us'">关于我们</div>
+    <div style="display:flex;align-items:center;padding:14px;color:#334155;font-size:15px;font-weight:600;border-radius:12px;cursor:pointer" onclick="gmCloseM();window.location.href='/user-center/personal-center'">用户中心</div>
+  </nav>
+  <div style="padding:12px 16px 24px;border-top:1px solid rgba(148,163,184,0.15)"><button onclick="gmCloseM();window.location.href='/login'" style="width:100%;height:46px;border:none;border-radius:12px;background:linear-gradient(135deg,#667eea,#4e67d8);color:#fff;font-size:16px;font-weight:700;cursor:pointer">登录 / 注册</button></div>
+</div></div>
+<script>
+var gt={};function gmOpen(n){if(gt[n]){clearTimeout(gt[n]);gt[n]=null}
+var e=document.getElementById("gm-dd-"+n),a=document.getElementById("gm-ar-"+n)
+if(e)e.classList.add("gm-show");if(a)a.classList.add("gm-rotate")}
+function gmClose(n){gt[n]=setTimeout(function(){
+var e=document.getElementById("gm-dd-"+n),a=document.getElementById("gm-ar-"+n)
+if(e)e.classList.remove("gm-show");if(a)a.classList.remove("gm-rotate")},300)}
+function gmCancel(n){if(gt[n]){clearTimeout(gt[n]);gt[n]=null}}
+function gmSubmitSearch(e){e.preventDefault()
+var q=document.getElementById("gmSi").value.trim()
+window.location.href=q?"/data-service/data-search?topic="+encodeURIComponent(q):"/data-service/data-search"}
+function gmToggleM(){var o=document.getElementById("gmDo"),h=document.getElementById("gmHamburger")
+if(o){var open=o.style.display!="none";o.style.display=open?"none":""
+var d=document.querySelector(".gm-drawer");if(d)d.style.transform=open?"translateX(100%)":"translateX(0)"
+if(h)h.classList.toggle("gm-hamburger--active",!open)}}
+function gmCloseM(){var o=document.getElementById("gmDo"),h=document.getElementById("gmHamburger")
+if(o){o.style.display="none";var d=document.querySelector(".gm-drawer");if(d)d.style.transform="translateX(100%)"}
+if(h)h.classList.remove("gm-hamburger--active")}
+/* Sentinel nav fix: show sentinel-global-nav, create if missing; switch header to dark */
+(function(){function init(){var p=location.pathname||"";var isPaper=p==="/data-service/paper"||p.startsWith("/data-service/paper/");var isBridge=p==="/data-service/bridge"||p.startsWith("/data-service/bridge/");if(!isPaper&&!isBridge)return;var h=document.getElementById("gm-header");if(h){h.classList.remove("gm-header-white");h.classList.add("gm-header-dark")}document.querySelectorAll(".sentinel-global-nav").forEach(function(e){e.remove()});var nav=document.createElement("nav");nav.className="sentinel-global-nav";nav.setAttribute("aria-label","Sentinel 全局导航");nav.innerHTML='<a id="sentinelNavPaper" href="/data-service/paper/" target="_top">🌍 情报雷达 (Paper)</a><a id="sentinelNavBridge" href="/data-service/bridge/" target="_top">🕷️ 规则工场 (Bridge)</a>';var ref=document.querySelector(".page-shell,.dashboard,#app");if(ref)ref.parentNode.insertBefore(nav,ref);else{var hdr=document.getElementById("gm-header");if(hdr&&hdr.nextSibling)hdr.parentNode.insertBefore(nav,hdr.nextSibling);else document.body.appendChild(nav)}nav.querySelectorAll("a").forEach(function(a){if((isPaper&&a.id==="sentinelNavPaper")||(isBridge&&a.id==="sentinelNavBridge")){a.classList.add("is-active")}})}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init()})();
+</script>

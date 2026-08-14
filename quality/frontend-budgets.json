@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "main": {
+    "assets_path": "assets",
+    "index_path": "index.html",
+    "entry_prefix": "/assets/",
+    "max_asset_files": 85,
+    "max_total_asset_bytes": 9750000,
+    "max_total_js_bytes": 3300000,
+    "max_total_css_bytes": 750000,
+    "max_single_asset_bytes": 3200000,
+    "max_entry_js_bytes": 100000
+  },
+  "financial": {
+    "assets_path": "fin-terminal/assets",
+    "index_path": "fin-terminal/index.html",
+    "entry_prefix": "/fin-terminal/assets/",
+    "max_asset_files": 6,
+    "max_total_asset_bytes": 320000,
+    "max_total_js_bytes": 260000,
+    "max_total_css_bytes": 50000,
+    "max_single_asset_bytes": 200000,
+    "max_entry_js_bytes": 100000
+  }
+}

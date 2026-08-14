@@ -1,0 +1,260 @@
+{
+  "schema_version": 2,
+  "catalog_version": "entity-aliases-2026.08.09-v2",
+  "entity_id_policy": {
+    "country": "urn:globemind:entity:country:<ISO-3166-1-alpha-2>",
+    "person": "urn:globemind:entity:person:<curated-stable-slug>",
+    "organization": "urn:globemind:entity:organization:<curated-stable-slug>",
+    "location": "urn:globemind:entity:location:<curated-stable-slug>"
+  },
+  "supported_entity_types": ["country", "person", "organization", "location"],
+  "default_review_status": "review_required",
+  "default_review_note": "AI 整理的种子记录，尚无已登记的人工裁决；精确别名映射可用于检索，但仍需人工复核。",
+  "catalog_review_status": "review_required",
+  "curation_method": "ai_seed",
+  "human_review_evidence": null,
+  "default_valid_from": null,
+  "default_valid_to": null,
+  "validity_semantics": "valid_from/valid_to describe documented alias-entity validity, not news coverage; null means unknown and is never inferred from current time.",
+  "review_lifecycle": {
+    "statuses": ["review_required", "approved"],
+    "review_required": "No sufficient human adjudication evidence is registered; reviewed_at, reviewed_by and review_evidence may remain null.",
+    "approved": "Requires non-null reviewed_at, reviewed_by and review_evidence.",
+    "expiry_behavior": "A passed valid_to does not rewrite history; callers must expose the recorded interval and review state."
+  },
+  "accuracy_claim": "not_measured",
+  "scope": "Small, versioned, high-confidence seed set. It is not a complete entity-resolution catalog and makes no accuracy claim.",
+  "entities": [
+    {
+      "entity_id": "urn:globemind:entity:country:CN",
+      "entity_type": "country",
+      "canonical_names": { "zh-Hans": "中国", "en": "China" },
+      "aliases": [
+        { "value": "中国", "language": "zh-Hans", "kind": "preferred_name" },
+        { "value": "中國", "language": "zh-Hant", "kind": "preferred_name" },
+        { "value": "中华人民共和国", "language": "zh-Hans", "kind": "formal_name" },
+        { "value": "中華人民共和國", "language": "zh-Hant", "kind": "formal_name" },
+        { "value": "China", "language": "en", "kind": "preferred_name" },
+        { "value": "People's Republic of China", "language": "en", "kind": "formal_name" },
+        { "value": "PRC", "language": "en", "kind": "abbreviation" }
+      ]
+    },
+    {
+      "entity_id": "urn:globemind:entity:country:US",
+      "entity_type": "country",
+      "canonical_names": { "zh-Hans": "美国", "en": "United States" },
+      "aliases": [
+        { "value": "美国", "language": "zh-Hans", "kind": "preferred_name" },
+        { "value": "美國", "language": "zh-Hant", "kind": "preferred_name" },
+        { "value": "美利坚合众国", "language": "zh-Hans", "kind": "formal_name" },
+        { "value": "美利堅合眾國", "language": "zh-Hant", "kind": "formal_name" },
+        { "value": "United States", "language": "en", "kind": "preferred_name" },
+        { "value": "United States of America", "language": "en", "kind": "formal_name" },
+        { "value": "USA", "language": "en", "kind": "abbreviation" },
+        { "value": "U.S.A.", "language": "en", "kind": "abbreviation" },
+        { "value": "U.S.", "language": "en", "kind": "abbreviation" }
+      ]
+    },
+    {
+      "entity_id": "urn:globemind:entity:country:RU",
+      "entity_type": "country",
+      "canonical_names": { "zh-Hans": "俄罗斯", "en": "Russia" },
+      "aliases": [
+        { "value": "俄罗斯", "language": "zh-Hans", "kind": "preferred_name" },
+        { "value": "俄羅斯", "language": "zh-Hant", "kind": "preferred_name" },
+        { "value": "俄罗斯联邦", "language": "zh-Hans", "kind": "formal_name" },
+        { "value": "Russia", "language": "en", "kind": "preferred_name" },
+        { "value": "Russian Federation", "language": "en", "kind": "formal_name" }
+      ]
+    },
+    {
+      "entity_id": "urn:globemind:entity:country:UA",
+      "entity_type": "country",
+      "canonical_names": { "zh-Hans": "乌克兰", "en": "Ukraine" },
+      "aliases": [
+        { "value": "乌克兰", "language": "zh-Hans", "kind": "preferred_name" },
+        { "value": "烏克蘭", "language": "zh-Hant", "kind": "preferred_name" },
+        { "value": "Ukraine", "language": "en", "kind": "preferred_name" }
+      ]
+    },
+    {
+      "entity_id": "urn:globemind:entity:country:JP",
+      "entity_type": "country",
+      "canonical_names": { "zh-Hans": "日本", "en": "Japan" },
+      "aliases": [
+        { "value": "日本", "language": "ja", "kind": "preferred_name" },
+        { "value": "Japan", "language": "en", "kind": "preferred_name" }
+      ]
+    },
+    {
+      "entity_id": "urn:globemind:entity:country:KR",
+      "entity_type": "country",
+      "canonical_names": { "zh-Hans": "韩国", "en": "South Korea" },
+      "aliases": [
+        { "value": "韩国", "language": "zh-Hans", "kind": "preferred_name" },
+        { "value": "韓國", "language": "zh-Hant", "kind": "preferred_name" },
+        { "value": "南韩", "language": "zh-Hans", "kind": "alternative_name" },
+        { "value": "南韓", "language": "zh-Hant", "kind": "alternative_name" },
+        { "value": "South Korea", "language": "en", "kind": "preferred_name" },
+        { "value": "Republic of Korea", "language": "en", "kind": "formal_name" }
+      ]
+    },
+    {
+      "entity_id": "urn:globemind:entity:country:KP",
+      "entity_type": "country",
+      "canonical_names": { "zh-Hans": "朝鲜", "en": "North Korea" },
+      "aliases": [
+        { "value": "朝鲜", "language": "zh-Hans", "kind": "preferred_name" },
+        { "value": "朝鮮", "language": "zh-Hant", "kind": "preferred_name" },
+        { "value": "北韩", "language": "zh-Hans", "kind": "alternative_name" },
+        { "value": "北韓", "language": "zh-Hant", "kind": "alternative_name" },
+        { "value": "North Korea", "language": "en", "kind": "preferred_name" },
+        { "value": "Democratic People's Republic of Korea", "language": "en", "kind": "formal_name" },
+        { "value": "DPRK", "language": "en", "kind": "abbreviation" }
+      ]
+    },
+    {
+      "entity_id": "urn:globemind:entity:country:IN",
+      "entity_type": "country",
+      "canonical_names": { "zh-Hans": "印度", "en": "India" },
+      "aliases": [
+        { "value": "印度", "language": "zh-Hans", "kind": "preferred_name" },
+        { "value": "India", "language": "en", "kind": "preferred_name" },
+        { "value": "Republic of India", "language": "en", "kind": "formal_name" },
+        { "value": "Bharat", "language": "en", "kind": "transliterated_name" }
+      ]
+    },
+    {
+      "entity_id": "urn:globemind:entity:country:IR",
+      "entity_type": "country",
+      "canonical_names": { "zh-Hans": "伊朗", "en": "Iran" },
+      "aliases": [
+        { "value": "伊朗", "language": "zh-Hans", "kind": "preferred_name" },
+        { "value": "Iran", "language": "en", "kind": "preferred_name" },
+        { "value": "Islamic Republic of Iran", "language": "en", "kind": "formal_name" }
+      ]
+    },
+    {
+      "entity_id": "urn:globemind:entity:country:IL",
+      "entity_type": "country",
+      "canonical_names": { "zh-Hans": "以色列", "en": "Israel" },
+      "aliases": [
+        { "value": "以色列", "language": "zh-Hans", "kind": "preferred_name" },
+        { "value": "Israel", "language": "en", "kind": "preferred_name" },
+        { "value": "State of Israel", "language": "en", "kind": "formal_name" }
+      ]
+    },
+    {
+      "entity_id": "urn:globemind:entity:country:PS",
+      "entity_type": "country",
+      "canonical_names": { "zh-Hans": "巴勒斯坦", "en": "Palestine" },
+      "aliases": [
+        { "value": "巴勒斯坦", "language": "zh-Hans", "kind": "preferred_name" },
+        { "value": "Palestine", "language": "en", "kind": "preferred_name" },
+        { "value": "State of Palestine", "language": "en", "kind": "formal_name" }
+      ]
+    },
+    {
+      "entity_id": "urn:globemind:entity:country:MM",
+      "entity_type": "country",
+      "canonical_names": { "zh-Hans": "缅甸", "en": "Myanmar" },
+      "aliases": [
+        { "value": "缅甸", "language": "zh-Hans", "kind": "preferred_name" },
+        { "value": "緬甸", "language": "zh-Hant", "kind": "preferred_name" },
+        { "value": "Myanmar", "language": "en", "kind": "preferred_name" },
+        { "value": "Burma", "language": "en", "kind": "historical_or_contextual_name", "status": "context_dependent" }
+      ]
+    },
+    {
+      "entity_id": "urn:globemind:entity:country:TR",
+      "entity_type": "country",
+      "canonical_names": { "zh-Hans": "土耳其", "en": "Türkiye" },
+      "aliases": [
+        { "value": "土耳其", "language": "zh-Hans", "kind": "preferred_name" },
+        { "value": "Türkiye", "language": "tr", "kind": "preferred_name" },
+        { "value": "Turkey", "language": "en", "kind": "historical_or_contextual_name", "status": "context_dependent" },
+        { "value": "Republic of Türkiye", "language": "en", "kind": "formal_name" }
+      ]
+    },
+    {
+      "entity_id": "urn:globemind:entity:person:xi-jinping",
+      "entity_type": "person",
+      "canonical_names": { "zh-Hans": "习近平", "en": "Xi Jinping" },
+      "aliases": [
+        { "value": "习近平", "language": "zh-Hans", "kind": "preferred_name" },
+        { "value": "習近平", "language": "zh-Hant", "kind": "preferred_name" },
+        { "value": "Xi Jinping", "language": "en", "kind": "preferred_name" }
+      ]
+    },
+    {
+      "entity_id": "urn:globemind:entity:person:vladimir-putin",
+      "entity_type": "person",
+      "canonical_names": { "zh-Hans": "弗拉基米尔·普京", "en": "Vladimir Putin" },
+      "aliases": [
+        { "value": "弗拉基米尔·普京", "language": "zh-Hans", "kind": "preferred_name" },
+        { "value": "Vladimir Putin", "language": "en", "kind": "preferred_name" }
+      ]
+    },
+    {
+      "entity_id": "urn:globemind:entity:person:donald-trump",
+      "entity_type": "person",
+      "canonical_names": { "zh-Hans": "唐纳德·特朗普", "en": "Donald Trump" },
+      "aliases": [
+        { "value": "唐纳德·特朗普", "language": "zh-Hans", "kind": "preferred_name" },
+        { "value": "Donald Trump", "language": "en", "kind": "preferred_name" }
+      ]
+    },
+    {
+      "entity_id": "urn:globemind:entity:organization:united-nations",
+      "entity_type": "organization",
+      "canonical_names": { "zh-Hans": "联合国", "en": "United Nations" },
+      "aliases": [
+        { "value": "联合国", "language": "zh-Hans", "kind": "preferred_name" },
+        { "value": "聯合國", "language": "zh-Hant", "kind": "preferred_name" },
+        { "value": "United Nations", "language": "en", "kind": "preferred_name" }
+      ]
+    },
+    {
+      "entity_id": "urn:globemind:entity:organization:nato",
+      "entity_type": "organization",
+      "canonical_names": { "zh-Hans": "北大西洋公约组织", "en": "North Atlantic Treaty Organization" },
+      "aliases": [
+        { "value": "北大西洋公约组织", "language": "zh-Hans", "kind": "formal_name" },
+        { "value": "北约", "language": "zh-Hans", "kind": "abbreviation" },
+        { "value": "北約", "language": "zh-Hant", "kind": "abbreviation" },
+        { "value": "North Atlantic Treaty Organization", "language": "en", "kind": "formal_name" },
+        { "value": "NATO", "language": "en", "kind": "abbreviation" }
+      ]
+    },
+    {
+      "entity_id": "urn:globemind:entity:location:south-china-sea",
+      "entity_type": "location",
+      "canonical_names": { "zh-Hans": "南海", "en": "South China Sea" },
+      "aliases": [
+        { "value": "南海", "language": "zh-Hans", "kind": "preferred_name", "status": "context_dependent" },
+        { "value": "南中國海", "language": "zh-Hant", "kind": "alternative_name" },
+        { "value": "South China Sea", "language": "en", "kind": "preferred_name" }
+      ]
+    },
+    {
+      "entity_id": "urn:globemind:entity:location:taiwan-strait",
+      "entity_type": "location",
+      "canonical_names": { "zh-Hans": "台湾海峡", "en": "Taiwan Strait" },
+      "aliases": [
+        { "value": "台湾海峡", "language": "zh-Hans", "kind": "preferred_name" },
+        { "value": "臺灣海峽", "language": "zh-Hant", "kind": "preferred_name" },
+        { "value": "Taiwan Strait", "language": "en", "kind": "preferred_name" }
+      ]
+    },
+    {
+      "entity_id": "urn:globemind:entity:location:gaza-strip",
+      "entity_type": "location",
+      "canonical_names": { "zh-Hans": "加沙地带", "en": "Gaza Strip" },
+      "aliases": [
+        { "value": "加沙地带", "language": "zh-Hans", "kind": "preferred_name" },
+        { "value": "加薩走廊", "language": "zh-Hant", "kind": "preferred_name" },
+        { "value": "Gaza Strip", "language": "en", "kind": "preferred_name" }
+      ]
+    }
+  ]
+}

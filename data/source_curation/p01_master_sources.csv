@@ -1,0 +1,88 @@
+site_id,domain,priority_tier,quality_tier,source_type,region,batch,preferred_crawl_entry,original_url,notes
+abc_es,abc.es,P1,B,national_major_media,europe,batch_6_global_expansion,http://www.abc.es/internacional/,http://www.abc.es/internacional/,good Spain supplement
+abc_net_au,abc.net.au,P0,A,public_broadcaster,asia_pacific,batch_3_global_and_western,http://www.abc.net.au/news/justin,http://www.abc.net.au/news/justin,public broadcaster with strong Asia coverage
+abcnews_go_com,abcnews.go.com,P1,B,global_major_media,north_america,batch_6_global_expansion,https://abcnews.go.com/international,http://abcnews.go.com/alerts/climatechange/,major US broadcaster; use international desk rather than climate alerts page
+aljazeera_net,aljazeera.net,P0,A,global_major_media,middle_east,batch_2_asia_middle_east,https://www.aljazeera.net/news/,https://www.aljazeera.net/news/,major source for Middle East coverage
+ansa_it,ansa.it,P0,A,wire_service,europe,batch_3_global_and_western,https://www.ansa.it/sito/notizie/topnews/index.shtml,https://www.ansa.it/sito/notizie/topnews/index.shtml,major Italian wire
+arynews_tv,arynews.tv,P1,B,national_major_media,south_asia,batch_6_global_expansion,https://arynews.tv/category/pakistan,https://arynews.tv/category/pakistan,important Pakistan source
+asahi_com,asahi.com,P0,A,national_major_media,asia,batch_2_asia_middle_east,https://www.asahi.com/politics/?iref=pc_gnavi,https://www.asahi.com/politics/?iref=pc_gnavi,top Japanese daily
+asiaone_com,asiaone.com,P1,B,regional_major_media,asia,batch_5_asia_expansion,http://www.asiaone.com/world,http://www.asiaone.com/world,regional aggregator with useful coverage
+bangkokbiznews_com,bangkokbiznews.com,P1,B,national_major_media,asia,batch_5_asia_expansion,http://www.bangkokbiznews.com/world/geopolitics,http://www.bangkokbiznews.com/world/geopolitics,strong geopolitics section
+bbc_com,bbc.com,P0,A,global_major_media,global,batch_3_global_and_western,https://www.bbc.com/news,https://www.bbc.com/news,high quality global coverage
+bernama_com,bernama.com,P0,A,state_media,asia,batch_1_official_and_state,https://www.bernama.com/en/world/,https://www.bernama.com/en/world/,national wire with strong region coverage
+bisnis_com,bisnis.com,P1,B,national_major_media,asia,batch_5_asia_expansion,http://www.bisnis.com/,http://www.bisnis.com/,business and policy coverage
+bundesregierung_de,bundesregierung.de,P1,B,official_government,europe,batch_6_global_expansion,https://www.bundesregierung.de/breg-de/bundesregierung,https://www.bundesregierung.de/breg-de/bundesregierung,official government newsroom
+businesstimes_com_sg,businesstimes.com.sg,P1,B,business_media,asia,batch_5_asia_expansion,http://www.businesstimes.com.sg/singapore,http://www.businesstimes.com.sg/singapore,strong policy and macro angle
+cbc_ca,cbc.ca,P0,A,public_broadcaster,north_america,batch_3_global_and_western,http://www.cbc.ca/news/world,http://www.cbc.ca/news/world,high quality public broadcaster
+cbsnews_com,cbsnews.com,P0,A,global_major_media,north_america,batch_3_global_and_western,http://www.cbsnews.com/world/,http://www.cbsnews.com/world/,strong general international coverage
+channelnewsasia_com,channelnewsasia.com,P0,A,regional_major_media,asia,batch_2_asia_middle_east,http://www.channelnewsasia.com/latest-news,http://www.channelnewsasia.com/latest-news,excellent Southeast Asia and China coverage
+chinatimes_com,chinatimes.com,P1,B,national_major_media,asia,batch_5_asia_expansion,https://www.chinatimes.com/realtimenews/,https://www.chinatimes.com/realtimenews/,important Taiwan source
+csmonitor_com,csmonitor.com,P1,B,global_major_media,global,batch_6_global_expansion,https://www.csmonitor.com/World,http://www.csmonitor.com/The-Culture/Faith-Religion,use domain but replace weak section URL
+dawnnews_tv,dawnnews.tv,P0,A,national_major_media,south_asia,batch_3_global_and_western,https://www.dawnnews.tv/pakistan,https://www.dawnnews.tv/pakistan,important Pakistan source
+detik_com,detik.com,P1,B,national_major_media,asia,batch_5_asia_expansion,https://news.detik.com/,https://news.detik.com/,major Indonesia source
+detiknews_com,detik.com,P1,B,national_major_media,asia,batch_5_asia_expansion,https://news.detik.com/berita,https://news.detik.com/berita,major Indonesia news section
+dn_pt,dn.pt,P1,B,national_major_media,europe,batch_6_global_expansion,https://www.dn.pt/%C3%BAltimas,https://www.dn.pt/%C3%BAltimas,good Portugal supplement
+dpa_com,dpa.com,P1,B,wire_service,europe,batch_4_public_and_wire,https://www.dpa.com/en/international-news,https://www.dpa.com/en/about-dpa/ownership-management,major wire; use English international news service rather than corporate pages
+efe_com,efe.com,P1,B,wire_service,latin_america,batch_4_public_and_wire,https://efe.com/english/,https://www.efe.com/efe/espana/1/inicio-america/,valuable wire but path should be tuned
+elmundo_es,elmundo.es,P0,A,national_major_media,europe,batch_3_global_and_western,https://www.elmundo.es/internacional.html,https://www.elmundo.es/internacional.html,major Spanish daily
+elpais_com,elpais.com,P0,A,national_major_media,europe,batch_3_global_and_western,https://elpais.com/internacional/,https://elpais.com/internacional/,major Spanish global desk
+express_pk,express.pk,P1,B,national_major_media,south_asia,batch_6_global_expansion,https://www.express.pk/world,https://www.express.pk/world,major Pakistan source
+faz_net,faz.net,P0,A,national_major_media,europe,batch_3_global_and_western,https://www.faz.net/aktuell/politik/,https://www.faz.net/aktuell/politik/,major German paper
+freemalaysiatoday_com,freemalaysiatoday.com,P0,A,national_major_media,asia,batch_2_asia_middle_east,http://www.freemalaysiatoday.com/news,http://www.freemalaysiatoday.com/news,high update frequency
+geo_tv,geo.tv,P0,A,national_major_media,south_asia,batch_3_global_and_western,https://www.geo.tv/latest-news,https://www.geo.tv/latest-news,high volume Pakistan source
+haaretz_com,haaretz.com,P0,A,national_major_media,middle_east,batch_2_asia_middle_east,https://www.haaretz.com/israel-news/israel-security,https://www.haaretz.com/israel-news/israel-security,high value for Israel coverage
+haberturk_com,haberturk.com,P1,B,national_major_media,middle_east,batch_5_asia_expansion,https://www.haberturk.com/gundem,https://www.haberturk.com/gundem,important Turkey source
+hindustantimes_com,hindustantimes.com,P0,A,national_major_media,south_asia,batch_3_global_and_western,https://www.hindustantimes.com/world-news,https://www.hindustantimes.com/world-news,major India source
+hurriyetdailynews_com,hurriyetdailynews.com,P0,A,national_major_media,middle_east,batch_2_asia_middle_east,https://www.hurriyetdailynews.com/world/,https://www.hurriyetdailynews.com/world/,English Turkey source
+id_mofcom_gov_cn,id.mofcom.gov.cn,P1,B,official_government,asia,batch_5_asia_expansion,https://fdi.mofcom.gov.cn/EN/come-zonghe-list.html,https://id.mofcom.gov.cn/mytz/index.html,official commerce and investment news source useful for China policy framing
+inquirer_net,inquirer.net,P0,A,national_major_media,asia,batch_2_asia_middle_east,https://newsinfo.inquirer.net/,https://newsinfo.inquirer.net/,major Philippines source
+interfax_com,interfax.com,P0,A,wire_service,europe,batch_3_global_and_western,https://interfax.com/newsroom/top-stories/,https://interfax.com/newsroom/top-stories/,important regional wire
+irna_ir,irna.ir,P0,A,state_media,middle_east,batch_1_official_and_state,https://www.irna.ir/rss,https://www.irna.ir/rss,official Iranian news agency
+israelhayom_co_il,israelhayom.co.il,P1,B,national_major_media,middle_east,batch_5_asia_expansion,https://www.israelhayom.co.il/news,https://www.israelhayom.co.il/news,high relevance but paywall risk
+jpost_com,jpost.com,P0,A,national_major_media,middle_east,batch_2_asia_middle_east,https://www.jpost.com/israel-news,https://www.jpost.com/israel-news,major English Israel source
+kompas_com,kompas.com,P1,B,national_major_media,asia,batch_5_asia_expansion,https://news.kompas.com?source=navbar,https://news.kompas.com?source=navbar,major Indonesia source
+kyodo_co_jp,kyodo.co.jp,P0,A,wire_service,asia,batch_2_asia_middle_east,http://www.kyodo.co.jp/news/,http://www.kyodo.co.jp/news/,top Japanese wire
+lanacion_com_ar,lanacion.com.ar,P0,A,national_major_media,latin_america,batch_3_global_and_western,http://www.lanacion.com.ar/politica/,http://www.lanacion.com.ar/politica/,major Argentina source
+latimes_com,latimes.com,P0,A,national_major_media,north_america,batch_3_global_and_western,https://www.latimes.com/politics,https://www.latimes.com/politics,major US paper
+lefigaro_fr,lefigaro.fr,P0,A,national_major_media,europe,batch_3_global_and_western,https://www.lefigaro.fr/international,https://www.lefigaro.fr/international,major French daily
+liputan6_com,liputan6.com,P1,B,national_major_media,asia,batch_5_asia_expansion,https://www.liputan6.com/news,https://www.liputan6.com/news,major Indonesia source
+manilatimes_net,manilatimes.net,P1,B,national_major_media,asia,batch_5_asia_expansion,https://www.manilatimes.net/world/feed,https://www.manilatimes.net/world/feed,good Philippines supplement source
+nationthailand_com,nationthailand.com,P1,B,national_major_media,asia,batch_5_asia_expansion,https://www.nationthailand.com/news/world,https://www.nationthailand.com/news/world,strong Thailand and region coverage
+nbcnews_com,nbcnews.com,P1,B,global_major_media,north_america,batch_6_global_expansion,https://www.nbcnews.com/world,https://www.nbcnews.com/science,use domain but replace weak section URL
+news_thaipbs_or_th,news.thaipbs.or.th,P1,B,public_broadcaster,asia,batch_4_public_and_wire,https://news.thaipbs.or.th/news/world,https://news.thaipbs.or.th/news/world,high quality Thai public broadcaster
+newsweek_com,newsweek.com,P1,B,global_major_media,north_america,batch_6_global_expansion,http://www.newsweek.com/world,http://www.newsweek.com/world,good archive and world desk
+nikkei_com,nikkei.com,P0,A,national_major_media,asia,batch_2_asia_middle_east,https://www.nikkei.com/world/,https://www.nikkei.com/business/column/,use politics and Asia sections rather than current URL
+npr_org,npr.org,P0,A,public_broadcaster,north_america,batch_3_global_and_western,http://www.npr.org/sections/news/,http://www.npr.org/sections/news/,strong international reporting
+nzherald_co_nz,nzherald.co.nz,P1,B,national_major_media,asia_pacific,batch_6_global_expansion,http://www.nzherald.co.nz/latest-news/,http://www.nzherald.co.nz/latest-news/,good regional supplement
+phnompenhpost_com,phnompenhpost.com,P1,B,national_major_media,asia,batch_5_asia_expansion,http://www.phnompenhpost.com/category/national/,http://www.phnompenhpost.com/category/national/,good Cambodia source
+prachachat_net,prachachat.net,P1,B,national_major_media,asia,batch_5_asia_expansion,https://www.prachachat.net/politics,https://www.prachachat.net/politics,strong politics coverage
+prothomalo_com,prothomalo.com,P0,A,national_major_media,south_asia,batch_3_global_and_western,https://www.prothomalo.com/world,https://www.prothomalo.com/world,major Bangladesh source
+publico_pt,publico.pt,P1,B,national_major_media,europe,batch_6_global_expansion,https://www.publico.pt/politica,https://www.publico.pt/politica,good Portugal source
+republika_co_id,republika.co.id,P1,B,national_major_media,asia,batch_5_asia_expansion,https://news.republika.co.id/,https://news.republika.co.id/,major Indonesia source
+rnz_co_nz,rnz.co.nz,P0,A,public_broadcaster,asia_pacific,batch_3_global_and_western,https://www.rnz.co.nz/news/world,https://www.rnz.co.nz/news/world,high quality New Zealand source
+rtve_es,rtve.es,P0,A,public_broadcaster,europe,batch_3_global_and_western,http://www.rtve.es/noticias/ultimas-noticias/,http://www.rtve.es/noticias/ultimas-noticias/,public broadcaster with broad coverage
+scmp_com,scmp.com,P0,A,regional_major_media,asia,batch_2_asia_middle_east,http://www.scmp.com/news/china/military,http://www.scmp.com/news/china/military,top source for China and region
+smh_com_au,smh.com.au,P0,A,national_major_media,asia_pacific,batch_3_global_and_western,https://www.smh.com.au/world/north-america,https://www.smh.com.au/world/north-america,major Australia paper
+straitstimes_com,straitstimes.com,P0,A,national_major_media,asia,batch_2_asia_middle_east,http://www.straitstimes.com/world,http://www.straitstimes.com/world,top Singapore source
+tass_com,tass.com,P0,A,state_media,europe,batch_1_official_and_state,https://tass.com/middle-east-conflict,https://tass.com/middle-east-conflict,major state news agency with strong geopolitical coverage
+thanhnien_vn,thanhnien.vn,P1,B,national_major_media,asia,batch_5_asia_expansion,https://thanhnien.vn/bien-dong/thoi-su.htm,https://thanhnien.vn/bien-dong/thoi-su.htm,strong Vietnam and South China Sea coverage
+theage_com_au,theage.com.au,P0,A,national_major_media,asia_pacific,batch_3_global_and_western,http://www.theage.com.au/world/north-america,http://www.theage.com.au/world/north-america,major Australia paper
+theedgemalaysia_com,theedgemalaysia.com,P1,B,business_media,asia,batch_5_asia_expansion,http://www.theedgemalaysia.com/categories/world,http://www.theedgemalaysia.com/categories/world,strong economic policy lens
+theglobeandmail_com,theglobeandmail.com,P0,A,national_major_media,north_america,batch_3_global_and_western,http://www.theglobeandmail.com/world/,http://www.theglobeandmail.com/world/,major Canada source
+theguardian_com,theguardian.com,P0,A,global_major_media,europe,batch_3_global_and_western,https://www.theguardian.com/world,https://www.theguardian.com/world,major global coverage
+thejakartapost_com,thejakartapost.com,P0,A,national_major_media,asia,batch_2_asia_middle_east,http://www.thejakartapost.com/world,http://www.thejakartapost.com/world,top Indonesia English source
+thestar_com,thestar.com,P1,B,national_major_media,north_america,batch_6_global_expansion,http://www.thestar.com/news/world/,http://www.thestar.com/news/world/,good Canada supplement
+thestar_com_my,thestar.com.my,P1,B,national_major_media,asia,batch_5_asia_expansion,https://www.thestar.com.my/news/world,http://www.thestar.com.my/education/news,use domain but replace weak section URL
+timesofindia_indiatimes_com,timesofindia.indiatimes.com,P0,A,national_major_media,south_asia,batch_3_global_and_western,https://timesofindia.indiatimes.com/world/rest-of-world,https://timesofindia.indiatimes.com/world/rest-of-world,high volume India source
+todayonline_com,todayonline.com,P1,B,national_major_media,asia,batch_5_asia_expansion,https://www.todayonline.com/world,http://www.todayonline.com/watch,use domain but replace weak section URL
+tuoitre_vn,tuoitre.vn,P1,B,national_major_media,asia,batch_5_asia_expansion,https://tuoitre.vn/the-gioi.htm,http://tuoitre.vn/video/moi-nhat.htm,use domain but replace video URL
+un_org,un.org,P0,A,official_io,global,batch_1_official_and_state,https://news.un.org/en/news,https://news.un.org/en/news,official multilateral news source
+unb_com_bd,unb.com.bd,P1,B,wire_service,south_asia,batch_4_public_and_wire,https://unb.com.bd/latestnews,https://unb.com.bd/latestnews,useful Bangladesh wire
+vietnamnet_vn,vietnamnet.vn,P1,B,national_major_media,asia,batch_5_asia_expansion,http://vietnamnet.vn/chinh-tri,http://vietnamnet.vn/chinh-tri,major Vietnam source
+vnexpress_net,vnexpress.net,P0,A,national_major_media,asia,batch_2_asia_middle_east,http://vnexpress.net/tin-tuc-24h,http://vnexpress.net/tin-tuc-24h,top Vietnam source
+vov_vn,vov.vn,P1,B,public_broadcaster,asia,batch_4_public_and_wire,http://vov.vn/chinh-tri,http://vov.vn/chinh-tri,strong Vietnam public broadcaster
+wafa_ps,wafa.ps,P0,A,state_media,middle_east,batch_1_official_and_state,https://wafa.ps/Pages/LastNews,https://wafa.ps/Pages/LastNews,official Palestinian news agency
+who_int,who.int,P1,B,official_io,global,batch_6_global_expansion,https://www.who.int/myanmar/news,https://www.who.int/myanmar/news,official but health focused
+ynetnews_com,ynetnews.com,P0,A,national_major_media,middle_east,batch_2_asia_middle_east,https://www.ynetnews.com/category/9733,https://www.ynetnews.com/category/9733,major Israel English source
+yomiuri_co_jp,yomiuri.co.jp,P0,A,national_major_media,asia,batch_2_asia_middle_east,http://www.yomiuri.co.jp/politics/,http://www.yomiuri.co.jp/politics/,top Japanese daily
+zaobao_com,zaobao.com,P0,A,regional_major_media,asia,batch_2_asia_middle_east,http://www.zaobao.com/news,http://www.zaobao.com/news,key Chinese language regional source

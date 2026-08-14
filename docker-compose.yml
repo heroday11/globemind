@@ -1,0 +1,22 @@
+# Optional local stack: Postgres for GlobeMind. Point PG_DSN / DATABASE_URL at this instance.
+# Milvus Lite often runs in-process via pymilvus; full Milvus is not included here.
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: globemind
+      POSTGRES_PASSWORD: globemind
+      POSTGRES_DB: globemind
+    ports:
+      - "5432:5432"
+    volumes:
+      - globemind_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U globemind -d globemind"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  globemind_pgdata:

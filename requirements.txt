@@ -1,0 +1,35 @@
+# GlobeMind V2 core web stack
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+httpx>=0.27.0
+aiohttp>=3.9.0
+aiohttp-socks>=0.11.0
+tenacity>=8.2.0
+pydantic-settings>=2.4.0
+beautifulsoup4>=4.12.0
+python-dateutil>=2.9.0
+trafilatura>=2.1.0
+
+# Model runtime
+torch>=2.3.0
+transformers>=4.44.0
+sentence-transformers>=3.0.0
+FlagEmbedding>=1.2.0
+tqdm>=4.66.0
+vllm>=0.6.0
+
+# Monitoring / GPU telemetry
+nvidia-ml-py3>=7.352.0
+
+# Data persistence layer
+sqlalchemy>=2.0.0
+psycopg2-binary>=2.9.0
+pymilvus[milvus_lite]>=2.4.0
+
+# V3 offline clustering (TF-IDF / hashing + k-means)
+scikit-learn>=1.4.0
+numpy>=1.26.0
+
+# V3 graph clustering (Leiden)
+python-igraph>=0.11.0
+leidenalg>=0.10.0

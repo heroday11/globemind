@@ -1,0 +1,122 @@
+# =============================================================================
+# datasearch — Milvus Standalone（向量库，供 Stage 5 / pymilvus 使用）
+# =============================================================================
+# 启动（需先安装 Docker Desktop）:
+#   cd C:\Users\Administrator\Desktop\datasearch
+#   docker compose up -d
+# 查看状态: docker compose ps
+# 日志:      docker compose logs -f milvus
+# 停止:      docker compose down
+#
+# -----------------------------------------------------------------------------
+# 宿主机端口规划（避免与业务前后端冲突）
+# -----------------------------------------------------------------------------
+# 本栈对外 ONLY:
+#   19530  → Milvus gRPC（代码里 MILVUS_HOST/MILVUS_PORT，默认 localhost:19530）
+#   9091   → Milvus HTTP /healthz（监控与健康检查，勿与业务 API 混用）
+#
+#  deliberately 不映射到宿主机（仅 Docker 内网，不占你本机端口）:
+#   etcd:2379, minio:9000/9001 —— 避免与 PostgreSQL、前端 dev server 等冲突
+#
+# 建议你本机其它服务（仓库内常见约定，请勿占用 19530/9091）:
+#   PostgreSQL 54333, vLLM 8000, MCP/工具 8765
+#   若 search_server 与 vLLM 同用 8000，请给其一改端口（如 uvicorn --port 8080）
+#
+# vLLM（OpenAI 兼容）建议用单独 Compose 在 Docker 里跑模型，宿主机不要 python -m vllm...：
+#   docker compose -f docker-compose.vllm.yml up -d
+# 流水线连接: QWEN_LOCAL_FALLBACK_BASE_URL=http://127.0.0.1:8000/v1（见 agentic_rag/.env.example）
+# =============================================================================
+
+name: datasearch-milvus
+
+services:
+
+  etcd:
+    container_name: milvus-etcd
+    image: quay.io/coreos/etcd:v3.5.14
+    environment:
+      - ETCDCTL_API=3
+      - ETCD_AUTO_COMPACTION_MODE=revision
+      - ETCD_AUTO_COMPACTION_RETENTION=1000
+      - ETCD_QUOTA_BACKEND_BYTES=4294967296
+      - ETCD_SNAPSHOT_COUNT=50000
+    volumes:
+      - etcd_data:/etcd
+    command: |
+      etcd
+      --advertise-client-urls=http://etcd:2379
+      --listen-client-urls=http://0.0.0.0:2379
+      --data-dir=/etcd
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    healthcheck:
+      test: ["CMD", "etcdctl", "endpoint", "health", "--endpoints=http://127.0.0.1:2379"]
+      interval: 30s
+      timeout: 20s
+      retries: 5
+      start_period: 15s
+    restart: unless-stopped
+
+  minio:
+    container_name: milvus-minio
+    image: docker.m.daocloud.io/minio/minio:RELEASE.2023-03-20T20-16-18Z
+    environment:
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin
+    volumes:
+      - minio_data:/minio_data
+    command: minio server /minio_data --console-address ":9001"
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 5
+      start_period: 15s
+    restart: unless-stopped
+
+  milvus:
+    container_name: milvus-standalone
+    image: docker.m.daocloud.io/milvusdb/milvus:v2.4.13
+    command: ["milvus", "run", "standalone"]
+    environment:
+      ETCD_ENDPOINTS: etcd:2379
+      MINIO_ADDRESS: minio:9000
+      QUERY_NODE_MEMORY_HIGH_WATER_LEVEL: "0.75"
+      QUERY_NODE_MEMORY_LOW_WATER_LEVEL: "0.65"
+      COMMON_CACHE_SIZE: "4294967296"
+      DATACOORD_ENABLE_COMPACTION: "true"
+    volumes:
+      - milvus_data:/var/lib/milvus
+    ports:
+      - "19530:19530"
+      - "9091:9091"
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+    depends_on:
+      etcd:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9091/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 8
+      start_period: 90s
+    restart: unless-stopped
+
+volumes:
+  etcd_data:
+    driver: local
+  minio_data:
+    driver: local
+  milvus_data:
+    driver: local

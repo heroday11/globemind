@@ -1,0 +1,154 @@
+site_id,url,domain,priority_tier,quality_tier,source_type,region,action,notes
+un_org,https://news.un.org/en/news,un.org,P0,A,official_io,global,primary_crawl,official multilateral news source
+who_int,https://www.who.int/myanmar/news,who.int,P1,B,official_io,global,secondary_crawl,official but health focused
+bundesregierung_de,https://www.bundesregierung.de/breg-de/bundesregierung,bundesregierung.de,P1,B,official_government,europe,secondary_crawl,official government newsroom
+na_gov_la,http://na.gov.la/%e0%ba%99%e0%ba%b4%e0%ba%95%e0%ba%b4%e0%ba%81%e0%ba%b3/%e0%ba%9a%e0%ba%b1%e0%ba%99%e0%ba%94%e0%ba%b2%e0%ba%81%e0%ba%bb%e0%ba%94%e0%bb%9d%e0%ba%b2%e0%ba%8d/,na.gov.la,P2,C,official_government,asia,selective_crawl,official but narrow parliamentary focus
+bkn_go_id,https://www.bkn.go.id/publikasi/akuntabilitas-kinerja/rencana-kerja-bkn/,bkn.go.id,P2,C,official_government,asia,selective_crawl,official but administrative focus
+kemhan_go_id,http://www.kemhan.go.id/category/foto,kemhan.go.id,P2,C,official_government,asia,selective_crawl,defense ministry source with limited structured text
+kkp_go_id,http://www.kkp.go.id/news.html,kkp.go.id,P2,C,official_government,asia,selective_crawl,official agency with partial policy relevance
+komisiyudisial_go_id,http://www.komisiyudisial.go.id/frontend/news,komisiyudisial.go.id,P2,C,official_government,asia,selective_crawl,official judiciary source not core geopolitics
+kemenpora_go_id,http://www.kemenpora.go.id/berita,kemenpora.go.id,P2,C,official_government,asia,selective_crawl,official but sports ministry focus
+pertanian_go_id,http://www.pertanian.go.id/?show=news&act=view_all,pertanian.go.id,P2,C,official_government,asia,selective_crawl,official agriculture source
+mot_go_th,https://ops.mot.go.th/,ops.mot.go.th,P2,C,official_government,asia,selective_crawl,transport ministry source
+wafa_ps,https://wafa.ps/Pages/LastNews,wafa.ps,P0,A,state_media,middle_east,primary_crawl,official Palestinian news agency
+irna_ir,https://www.irna.ir/rss,irna.ir,P0,A,state_media,middle_east,primary_crawl,official Iranian news agency
+tass_com,https://tass.com/middle-east-conflict,tass.com,P0,A,state_media,europe,primary_crawl,major state news agency with strong geopolitical coverage
+bernama_com,https://www.bernama.com/en/world/,bernama.com,P0,A,state_media,asia,primary_crawl,national wire with strong region coverage
+rtve_es,http://www.rtve.es/noticias/ultimas-noticias/,rtve.es,P0,A,public_broadcaster,europe,primary_crawl,public broadcaster with broad coverage
+bbc_com,https://www.bbc.com/news,bbc.com,P0,A,global_major_media,global,primary_crawl,high quality global coverage
+abc_net_au,http://www.abc.net.au/news/justin,abc.net.au,P0,A,public_broadcaster,asia_pacific,primary_crawl,public broadcaster with strong Asia coverage
+aljazeera_net,https://www.aljazeera.net/news/,aljazeera.net,P0,A,global_major_media,middle_east,primary_crawl,major source for Middle East coverage
+ansa_it,https://www.ansa.it/sito/notizie/topnews/index.shtml,ansa.it,P0,A,wire_service,europe,primary_crawl,major Italian wire
+asahi_com,https://www.asahi.com/politics/?iref=pc_gnavi,asahi.com,P0,A,national_major_media,asia,primary_crawl,top Japanese daily
+cbc_ca,http://www.cbc.ca/news/world,cbc.ca,P0,A,public_broadcaster,north_america,primary_crawl,high quality public broadcaster
+cbsnews_com,http://www.cbsnews.com/world/,cbsnews.com,P0,A,global_major_media,north_america,primary_crawl,strong general international coverage
+channelnewsasia_com,http://www.channelnewsasia.com/latest-news,channelnewsasia.com,P0,A,regional_major_media,asia,primary_crawl,excellent Southeast Asia and China coverage
+csmonitor_com,http://www.csmonitor.com/The-Culture/Faith-Religion,csmonitor.com,P1,B,global_major_media,global,secondary_crawl,use domain but replace weak section URL
+dawnnews_tv,https://www.dawnnews.tv/pakistan,dawnnews.tv,P0,A,national_major_media,south_asia,primary_crawl,important Pakistan source
+efe_com,https://www.efe.com/efe/espana/1/inicio-america/,efe.com,P1,B,wire_service,latin_america,secondary_crawl,valuable wire but path should be tuned
+elmundo_es,https://www.elmundo.es/internacional.html,elmundo.es,P0,A,national_major_media,europe,primary_crawl,major Spanish daily
+elpais_com,https://elpais.com/internacional/,elpais.com,P0,A,national_major_media,europe,primary_crawl,major Spanish global desk
+faz_net,https://www.faz.net/aktuell/politik/,faz.net,P0,A,national_major_media,europe,primary_crawl,major German paper
+freemalaysiatoday_com,http://www.freemalaysiatoday.com/news,freemalaysiatoday.com,P0,A,national_major_media,asia,primary_crawl,high update frequency
+geo_tv,https://www.geo.tv/latest-news,geo.tv,P0,A,national_major_media,south_asia,primary_crawl,high volume Pakistan source
+haaretz_com,https://www.haaretz.com/israel-news/israel-security,haaretz.com,P0,A,national_major_media,middle_east,primary_crawl,high value for Israel coverage
+hindustantimes_com,https://www.hindustantimes.com/world-news,hindustantimes.com,P0,A,national_major_media,south_asia,primary_crawl,major India source
+hurriyetdailynews_com,https://www.hurriyetdailynews.com/world/,hurriyetdailynews.com,P0,A,national_major_media,middle_east,primary_crawl,English Turkey source
+interfax_com,https://interfax.com/newsroom/top-stories/,interfax.com,P0,A,wire_service,europe,primary_crawl,important regional wire
+inquirer_net,https://newsinfo.inquirer.net/,inquirer.net,P0,A,national_major_media,asia,primary_crawl,major Philippines source
+israelhayom_co_il,https://www.israelhayom.co.il/news,israelhayom.co.il,P1,B,national_major_media,middle_east,secondary_crawl,high relevance but paywall risk
+jpost_com,https://www.jpost.com/israel-news,jpost.com,P0,A,national_major_media,middle_east,primary_crawl,major English Israel source
+kyodo_co_jp,http://www.kyodo.co.jp/news/,kyodo.co.jp,P0,A,wire_service,asia,primary_crawl,top Japanese wire
+lanacion_com_ar,http://www.lanacion.com.ar/politica/,lanacion.com.ar,P0,A,national_major_media,latin_america,primary_crawl,major Argentina source
+latimes_com,https://www.latimes.com/politics,latimes.com,P0,A,national_major_media,north_america,primary_crawl,major US paper
+lefigaro_fr,https://www.lefigaro.fr/international,lefigaro.fr,P0,A,national_major_media,europe,primary_crawl,major French daily
+manilatimes_net,https://www.manilatimes.net/world/feed,manilatimes.net,P1,B,national_major_media,asia,secondary_crawl,good Philippines supplement source
+nbcnews_com,https://www.nbcnews.com/science,nbcnews.com,P1,B,global_major_media,north_america,secondary_crawl,use domain but replace weak section URL
+newsweek_com,http://www.newsweek.com/world,newsweek.com,P1,B,global_major_media,north_america,secondary_crawl,good archive and world desk
+nikkei_com,https://www.nikkei.com/business/column/,nikkei.com,P0,A,national_major_media,asia,primary_crawl,use politics and Asia sections rather than current URL
+npr_org,http://www.npr.org/sections/news/,npr.org,P0,A,public_broadcaster,north_america,primary_crawl,strong international reporting
+nzherald_co_nz,http://www.nzherald.co.nz/latest-news/,nzherald.co.nz,P1,B,national_major_media,asia_pacific,secondary_crawl,good regional supplement
+phnompenhpost_com,http://www.phnompenhpost.com/category/national/,phnompenhpost.com,P1,B,national_major_media,asia,secondary_crawl,good Cambodia source
+prothomalo_com,https://www.prothomalo.com/world,prothomalo.com,P0,A,national_major_media,south_asia,primary_crawl,major Bangladesh source
+publico_pt,https://www.publico.pt/politica,publico.pt,P1,B,national_major_media,europe,secondary_crawl,good Portugal source
+rnz_co_nz,https://www.rnz.co.nz/news/world,rnz.co.nz,P0,A,public_broadcaster,asia_pacific,primary_crawl,high quality New Zealand source
+scmp_com,http://www.scmp.com/news/china/military,scmp.com,P0,A,regional_major_media,asia,primary_crawl,top source for China and region
+smh_com_au,https://www.smh.com.au/world/north-america,smh.com.au,P0,A,national_major_media,asia_pacific,primary_crawl,major Australia paper
+straitstimes_com,http://www.straitstimes.com/world,straitstimes.com,P0,A,national_major_media,asia,primary_crawl,top Singapore source
+theage_com_au,http://www.theage.com.au/world/north-america,theage.com.au,P0,A,national_major_media,asia_pacific,primary_crawl,major Australia paper
+theglobeandmail_com,http://www.theglobeandmail.com/world/,theglobeandmail.com,P0,A,national_major_media,north_america,primary_crawl,major Canada source
+theguardian_com,https://www.theguardian.com/world,theguardian.com,P0,A,global_major_media,europe,primary_crawl,major global coverage
+thejakartapost_com,http://www.thejakartapost.com/world,thejakartapost.com,P0,A,national_major_media,asia,primary_crawl,top Indonesia English source
+thestar_com,http://www.thestar.com/news/world/,thestar.com,P1,B,national_major_media,north_america,secondary_crawl,good Canada supplement
+timesofindia_indiatimes_com,https://timesofindia.indiatimes.com/world/rest-of-world,timesofindia.indiatimes.com,P0,A,national_major_media,south_asia,primary_crawl,high volume India source
+todayonline_com,http://www.todayonline.com/watch,todayonline.com,P1,B,national_major_media,asia,secondary_crawl,use domain but replace weak section URL
+unb_com_bd,https://unb.com.bd/latestnews,unb.com.bd,P1,B,wire_service,south_asia,secondary_crawl,useful Bangladesh wire
+vnexpress_net,http://vnexpress.net/tin-tuc-24h,vnexpress.net,P0,A,national_major_media,asia,primary_crawl,top Vietnam source
+ynetnews_com,https://www.ynetnews.com/category/9733,ynetnews.com,P0,A,national_major_media,middle_east,primary_crawl,major Israel English source
+yomiuri_co_jp,http://www.yomiuri.co.jp/politics/,yomiuri.co.jp,P0,A,national_major_media,asia,primary_crawl,top Japanese daily
+zaobao_com,http://www.zaobao.com/news,zaobao.com,P0,A,regional_major_media,asia,primary_crawl,key Chinese language regional source
+abc_es,http://www.abc.es/internacional/,abc.es,P1,B,national_major_media,europe,secondary_crawl,good Spain supplement
+aajtak_intoday_in,https://aajtak.intoday.in/india/delhi,aajtak.intoday.in,P2,C,national_major_media,south_asia,selective_crawl,high volume but uneven relevance
+amarujala_com,https://www.amarujala.com/india-news,amarujala.com,P2,C,national_major_media,south_asia,selective_crawl,valuable Hindi source
+arynews_tv,https://arynews.tv/category/pakistan,arynews.tv,P1,B,national_major_media,south_asia,secondary_crawl,important Pakistan source
+bangkokbiznews_com,http://www.bangkokbiznews.com/world/geopolitics,bangkokbiznews.com,P1,B,national_major_media,asia,secondary_crawl,strong geopolitics section
+bangla_bdnews24_com,https://bangla.bdnews24.com/world,bangla.bdnews24.com,P2,C,national_major_media,south_asia,selective_crawl,valuable Bengali coverage
+bhaskar_com,https://www.bhaskar.com/national/,bhaskar.com,P2,C,national_major_media,south_asia,selective_crawl,major Hindi audience but noisy
+bisnis_com,http://www.bisnis.com/,bisnis.com,P1,B,national_major_media,asia,secondary_crawl,business and policy coverage
+bolnews_com,https://www.bolnews.com/category/latest-news/,bolnews.com,P2,C,national_major_media,south_asia,selective_crawl,useful but quality inconsistent
+businesstimes_com_sg,http://www.businesstimes.com.sg/singapore,businesstimes.com.sg,P1,B,business_media,asia,secondary_crawl,strong policy and macro angle
+chinatimes_com,https://www.chinatimes.com/realtimenews/,chinatimes.com,P1,B,national_major_media,asia,secondary_crawl,important Taiwan source
+dailyexpress_com_my,http://www.dailyexpress.com.my/world/,dailyexpress.com.my,P2,C,national_major_media,asia,selective_crawl,regional supplement source
+dailynews_co_th,http://www.dailynews.co.th/news/,dailynews.co.th,P2,C,national_major_media,asia,selective_crawl,high volume Thai source
+detik_com,https://news.detik.com/,detik.com,P1,B,national_major_media,asia,secondary_crawl,major Indonesia source
+detiknews_com,https://news.detik.com/berita,detik.com,P1,B,national_major_media,asia,secondary_crawl,major Indonesia news section
+dn_pt,https://www.dn.pt/%C3%BAltimas,dn.pt,P1,B,national_major_media,europe,secondary_crawl,good Portugal supplement
+echoroukonline_com,https://www.echoroukonline.com/world,echoroukonline.com,P2,C,national_major_media,middle_east,selective_crawl,useful Algeria source
+ekushey_tv_com,https://www.ekushey-tv.com/1/national/,ekushey-tv.com,P2,C,national_major_media,south_asia,selective_crawl,useful Bangladesh TV source
+el_nacional_com,http://www.el-nacional.com/politica/,el-nacional.com,P2,C,national_major_media,latin_america,selective_crawl,useful but country scope limited
+express_pk,https://www.express.pk/world,express.pk,P1,B,national_major_media,south_asia,secondary_crawl,major Pakistan source
+gatra_com,http://www.gatra.com/category-234-Nasional.html,gatra.com,P2,C,national_major_media,asia,selective_crawl,useful Indonesia supplement
+haberler_com,https://www.haberler.com/dunya/,haberler.com,P2,C,national_major_media,middle_east,selective_crawl,high volume Turkey source
+haberturk_com,https://www.haberturk.com/gundem,haberturk.com,P1,B,national_major_media,middle_east,secondary_crawl,important Turkey source
+jagran_com,https://www.jagran.com/world-news-hindi.html,jagran.com,P2,C,national_major_media,south_asia,selective_crawl,major Hindi source
+jugantor_com,https://www.jugantor.com/latest,jugantor.com,P2,C,national_major_media,south_asia,selective_crawl,major Bangladesh source
+kompas_com,https://news.kompas.com?source=navbar,kompas.com,P1,B,national_major_media,asia,secondary_crawl,major Indonesia source
+liputan6_com,https://www.liputan6.com/news,liputan6.com,P1,B,national_major_media,asia,secondary_crawl,major Indonesia source
+mb_com_ph,https://mb.com.ph/category/philippines,mb.com.ph,P2,C,national_major_media,asia,selective_crawl,useful Philippines supplement
+nationthailand_com,https://www.nationthailand.com/news/world,nationthailand.com,P1,B,national_major_media,asia,secondary_crawl,strong Thailand and region coverage
+nationtv_tv,http://www.nationtv.tv/news/foreign,nationtv.tv,P2,C,national_major_media,asia,selective_crawl,useful Thailand supplement
+news_thaipbs_or_th,https://news.thaipbs.or.th/news/world,news.thaipbs.or.th,P1,B,public_broadcaster,asia,secondary_crawl,high quality Thai public broadcaster
+okezone_com,https://news.okezone.com/,okezone.com,P2,C,national_major_media,asia,selective_crawl,high volume and noisy
+posttoday_com,https://www.posttoday.com/category/latest-news,posttoday.com,P2,C,national_major_media,asia,selective_crawl,useful but broad scope
+prachachat_net,https://www.prachachat.net/politics,prachachat.net,P1,B,national_major_media,asia,secondary_crawl,strong politics coverage
+republika_co_id,https://news.republika.co.id/,republika.co.id,P1,B,national_major_media,asia,secondary_crawl,major Indonesia source
+sindonews_com,https://www.sindonews.com/nasional,sindonews.com,P2,C,national_major_media,asia,selective_crawl,large but noisy Indonesia source
+thanhnien_vn,https://thanhnien.vn/bien-dong/thoi-su.htm,thanhnien.vn,P1,B,national_major_media,asia,secondary_crawl,strong Vietnam and South China Sea coverage
+thairath_co_th,http://www.thairath.co.th/news,thairath.co.th,P2,C,national_major_media,asia,selective_crawl,major Thai outlet with broad noise
+theedgemalaysia_com,http://www.theedgemalaysia.com/categories/world,theedgemalaysia.com,P1,B,business_media,asia,secondary_crawl,strong economic policy lens
+thethaiger_com,https://thethaiger.com/news,thethaiger.com,P2,C,national_major_media,asia,selective_crawl,useful English Thailand supplement
+thestar_com_my,http://www.thestar.com.my/education/news,thestar.com.my,P1,B,national_major_media,asia,secondary_crawl,use domain but replace weak section URL
+tuoitre_vn,http://tuoitre.vn/video/moi-nhat.htm,tuoitre.vn,P1,B,national_major_media,asia,secondary_crawl,use domain but replace video URL
+vietnamnet_vn,http://vietnamnet.vn/chinh-tri,vietnamnet.vn,P1,B,national_major_media,asia,secondary_crawl,major Vietnam source
+voaindonesia_com,https://www.voaindonesia.com/BeritaDunia,voaindonesia.com,P2,C,public_broadcaster,asia,selective_crawl,valuable government funded external broadcaster
+vov_vn,http://vov.vn/chinh-tri,vov.vn,P1,B,public_broadcaster,asia,secondary_crawl,strong Vietnam public broadcaster
+alittihad_ae,https://www.alittihad.ae/category/%D8%B9%D8%B1%D8%A8%D9%8A-%D9%88%D8%AF%D9%88%D9%84%D9%8A,alittihad.ae,P2,C,national_major_media,middle_east,selective_crawl,valuable UAE source
+alriyadh_com,https://www.alriyadh.com/news.inter,alriyadh.com,P2,C,national_major_media,middle_east,selective_crawl,valuable Saudi source
+emaratalyoum_com,https://www.emaratalyoum.com/politics/news,emaratalyoum.com,P2,C,national_major_media,middle_east,selective_crawl,valuable UAE source
+sana_sy,https://sana.sy/syria-news/,sana.sy,P2,C,state_media,middle_east,selective_crawl,state source with relevance for Syria coverage
+sabanew_net,https://www.sabanew.net/category/ar/1/,sabanew.net,P2,C,state_media,middle_east,selective_crawl,state source for Yemen coverage
+french_xinhuanet_com,http://french.xinhuanet.com/monde/index.htm,french.xinhuanet.com,P2,C,state_media,asia,selective_crawl,state source useful for multilingual China framing
+th_news_cn,http://th.news.cn/ssyw.htm,th.news.cn,P2,C,state_media,asia,selective_crawl,state source useful for Thai language China framing
+xinhuamyanmar_com,https://xinhuamyanmar.com/news/,xinhuamyanmar.com,P2,C,state_media,asia,selective_crawl,state source useful for Myanmar language China framing
+asiaone_com,http://www.asiaone.com/world,asiaone.com,P1,B,regional_major_media,asia,secondary_crawl,regional aggregator with useful coverage
+asianews_network,https://asianews.network/tag/Afghanistan/,asianews.network,P2,C,regional_network,asia,selective_crawl,valuable cross Asia syndication
+brookings_edu,https://www.brookings.edu/topics/international-affairs/,brookings.edu,P3,C,think_tank_context,global,context_only,analysis source not news backbone
+carnegieendowment_org,https://carnegieendowment.org/programs/africa,carnegieendowment.org,P3,C,think_tank_context,global,context_only,analysis source not news backbone
+csis_org,https://www.csis.org/analysis,csis.org,P3,C,think_tank_context,global,context_only,analysis source not news backbone
+foreignaffairs_org,http://www.foreignaffairs.org/topics/geopolitics,foreignaffairs.org,P3,C,think_tank_context,global,context_only,magazine analysis not raw news
+heritage_org,https://www.heritage.org/global-politics,heritage.org,P3,C,think_tank_context,north_america,context_only,policy advocacy source not news backbone
+hoover_org,https://www.hoover.org/publications/defining-ideas,hoover.org,P3,C,think_tank_context,north_america,context_only,analysis source not news backbone
+hudson_org,http://www.hudson.org/foreign-policy,hudson.org,P3,C,think_tank_context,north_america,context_only,analysis source not news backbone
+lowyinstitute_org,https://www.lowyinstitute.org/publications,lowyinstitute.org,P3,C,think_tank_context,asia_pacific,context_only,analysis source not news backbone
+rand_org,https://www.rand.org/topics/international-affairs.html,rand.org,P3,C,think_tank_context,global,context_only,analysis source not news backbone
+sipri_org,https://www.sipri.org/news,sipri.org,P3,C,think_tank_context,europe,context_only,defense research context source
+wilsoncenter_org,https://www.wilsoncenter.org/press-room,wilsoncenter.org,P3,C,think_tank_context,north_america,context_only,analysis source not news backbone
+dropbox_com,https://www.dropbox.com/business/solutions/marketing,dropbox.com,Drop,D,noise,global,drop,enterprise software site
+dictionary_cambridge_org,https://www.dictionary.cambridge.org/dictionary/,dictionary.cambridge.org,Drop,D,noise,global,drop,dictionary not news
+wiktionary_org,https://ru.wiktionary.org/,wiktionary.org,Drop,D,noise,global,drop,wiki dictionary not news
+wikisource_org,https://www.wikisource.org/wiki/Wikisource:News,wikisource.org,Drop,D,noise,global,drop,library project not live news
+fc2_com,https://video.fc2.com/en/,fc2.com,Drop,D,noise,global,drop,video platform not news
+dcinside_com,https://gall.dcinside.com,dcinside.com,Drop,D,noise,asia,drop,forum platform not news
+trendyol_com,https://www.trendyol.com/butik/liste/2/erkek,trendyol.com,Drop,D,noise,global,drop,e-commerce site
+marca_com,https://www.marca.com/futbol.html,marca.com,Drop,D,noise,europe,drop,sports site
+siamsport_co_th,http://www.siamsport.co.th/football-international,siamsport.co.th,Drop,D,noise,asia,drop,sports site
+femmeactuelle_fr,https://www.femmeactuelle.fr/actu,femmeactuelle.fr,Drop,D,noise,europe,drop,lifestyle and celebrity site
+wordreference_com,https://forum.wordreference.com,wordreference.com,Drop,D,noise,global,drop,forum and language site
+awesome_blog,https://awesome.blog/browse,awesome.blog,Drop,D,noise,global,drop,blog platform
+data_blog,https://data.blog/category/data-engineering/,data.blog,Drop,D,noise,global,drop,blog platform
+bangla_kobita_com,https://www.bangla-kobita.com/ashor/,bangla-kobita.com,Drop,D,noise,south_asia,drop,poetry site
+medicitalia_it,https://www.medicitalia.it/dizionario-medico/salute-benessere/emorroidi/,medicitalia.it,Drop,D,noise,europe,drop,medical reference site
+japan_guide_com,https://www.japan-guide.com/news/,japan-guide.com,Drop,D,noise,asia,drop,tourism site
+tourismcambodia_com,http://www.tourismcambodia.com/directory/business-services/,tourismcambodia.com,Drop,D,noise,asia,drop,tourism directory
+germany_travel,https://www.germany.travel/de/startseite.html/de/inspiring-germany/uebersicht.html,germany.travel,Drop,D,noise,europe,drop,tourism site
+peugeot_fr,https://www.peugeot.fr/nos-vehicules/gamme/vehicules-electriques.html,peugeot.fr,Drop,D,noise,europe,drop,brand site

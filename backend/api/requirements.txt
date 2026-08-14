@@ -1,0 +1,36 @@
+# =============================================================================
+# FastAPI 应用 `uvicorn api.main:app` 的运行时依赖（api/ 包内实际 import + 惰性加载）
+# =============================================================================
+# 惰性加载路径：
+#   - agentic_rag.ingestion.embedder（语义检索 / BGE）→ sentence-transformers 及 PyTorch 等传递依赖
+#   - agentic_rag.db.milvus_store → pymilvus
+#   - cppt.cc_bridge（数据助手 CC 路由）→ anthropic（Anthropic 模式）
+#   - application 内 openai / numpy
+#
+# 数据流水线（UMAP 导出、GLiNER、全量 Stage 等）请使用仓库根目录 requirements.txt
+# （-r agentic_rag/requirements.txt + SQLAlchemy 等）。
+# =============================================================================
+
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+pydantic>=2.7.0
+python-dotenv>=1.0.0
+python-multipart>=0.0.9
+
+sqlalchemy>=2.0.23
+psycopg2-binary>=2.9.9
+
+PyJWT>=2.8.0
+
+numpy>=1.26.0
+pymilvus>=2.4.0
+
+sentence-transformers>=3.0.0
+PyYAML>=6.0.0
+
+openai>=1.50.0
+httpx>=0.27.0
+anthropic>=0.34.0
+passlib[bcrypt]>=1.7.4
+bcrypt>=4.0.1,<5
+cryptography>=44.0.0,<47

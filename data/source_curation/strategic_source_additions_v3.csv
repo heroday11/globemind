@@ -1,0 +1,8 @@
+site_id,domain,layer,priority_tier,region,source_type,preferred_entry,signal_role,origin,notes
+peru_rree,gob.pe,official_direct,P1,latin_america,foreign_ministry,https://www.gob.pe/institucion/rree/noticias,official_position,strategic_addition_v3,official Peru foreign ministry news and press releases
+newzealand_mfat,mfat.govt.nz,official_direct,P1,asia_pacific,foreign_ministry,https://www.mfat.govt.nz/en/media-and-resources,official_position,strategic_addition_v3,official New Zealand foreign affairs and trade statements and resources
+malaysia_mfa,kln.gov.my,official_direct,P1,asia,foreign_ministry,https://www.kln.gov.my/web/guest/press-releases,official_position,strategic_addition_v3,official Malaysia foreign ministry press releases
+bangkok_post,bangkokpost.com,media_narrative,P1,asia,national_major_media,https://www.bangkokpost.com/thailand,narrative_and_agenda,strategic_addition_v3,major Thailand English-language outlet with strong domestic politics coverage
+philstar_headlines,philstar.com,media_narrative,P1,asia,national_major_media,https://www.philstar.com/headlines,narrative_and_agenda,strategic_addition_v3,major Philippines national headlines and political coverage
+el_universo_politica,eluniverso.com,media_narrative,P1,latin_america,national_major_media,https://www.eluniverso.com/noticias/politica/,narrative_and_agenda,strategic_addition_v3,major Ecuador politics desk
+rfi_english,rfi.fr,media_narrative,P1,africa,public_broadcaster,https://www.rfi.fr/en/,narrative_and_agenda,strategic_addition_v3,valuable Francophone Africa signal source with broad regional reach

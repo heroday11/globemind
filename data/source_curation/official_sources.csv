@@ -1,0 +1,4 @@
+site_id,url,domain,tier,source_type
+un_org,https://news.un.org/en/news,un.org,A,official
+who_int,https://www.who.int/myanmar/news,who.int,A,official
+bundesregierung_de,https://www.bundesregierung.de/breg-de/bundesregierung,bundesregierung.de,A,official

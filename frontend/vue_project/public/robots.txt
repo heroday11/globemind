@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+Disallow: /login
+Disallow: /register
+Disallow: /forgot-password
+Disallow: /reset-password
+Disallow: /user-center
+Disallow: /research-workspace
+Disallow: /model-assurance
+Disallow: /entity-governance
+Disallow: /data-service/pipeline-monitor
+Disallow: /amazing-globe
+Disallow: /fin-terminal
+Disallow: /datasets
+Disallow: /design-review
+
+Sitemap: https://globemind.top/sitemap.xml

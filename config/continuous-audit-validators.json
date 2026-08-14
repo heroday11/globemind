@@ -1,0 +1,85 @@
+{
+  "schema_version": "globemind-continuous-audit-validator-plan-v1",
+  "plan_state": "configured_manual_and_repository_ci",
+  "execution_state": "configured_not_observed",
+  "scheduler_state": "configured_daily_repository_workflow",
+  "artifact_retention_state": "configured_30_day_repository_workflow",
+  "issue_integration_state": "not_configured",
+  "automation_owner_state": "role_declared_person_not_assigned",
+  "runner_locator": "scripts/run_continuous_audit_validators.py",
+  "scheduler_locator": ".github/workflows/quality-gate.yml",
+  "artifact_retention_locator": ".github/workflows/quality-gate.yml",
+  "automation_owner_role": "quality-security-accessibility",
+  "safety": {
+    "network_access": false,
+    "database_access": false,
+    "service_control": false,
+    "release_access": false,
+    "production_mutation": false
+  },
+  "validators": [
+    {
+      "id": "public-claim-contract",
+      "domain": "IA",
+      "kind": "python_static",
+      "locator": "scripts/ci/check_public_claims.py",
+      "policy_locator": "config/public-claim-policy.json"
+    },
+    {
+      "id": "claim-output-coverage",
+      "domain": "EV",
+      "kind": "python_static",
+      "locator": "scripts/ci/check_claim_output_coverage.py",
+      "policy_locator": "config/claim-output-inventory.json"
+    },
+    {
+      "id": "search-qrels-contract",
+      "domain": "SR",
+      "kind": "pytest_contract",
+      "locator": "backend/tests/test_search_qrels_dataset.py",
+      "policy_locator": null
+    },
+    {
+      "id": "search-qrels-benchmark-contract",
+      "domain": "SR",
+      "kind": "pytest_contract",
+      "locator": "backend/tests/test_search_qrels_benchmark.py",
+      "policy_locator": null
+    },
+    {
+      "id": "country-data-contract",
+      "domain": "CD",
+      "kind": "pytest_contract",
+      "locator": "backend/tests/test_country_primary_document_catalog.py",
+      "policy_locator": null
+    },
+    {
+      "id": "country-primary-document-bundle-contract",
+      "domain": "CD",
+      "kind": "pytest_contract",
+      "locator": "backend/tests/test_country_primary_document_bundle.py",
+      "policy_locator": null
+    },
+    {
+      "id": "assistant-structured-claim-contract",
+      "domain": "AI",
+      "kind": "pytest_contract",
+      "locator": "backend/tests/test_assistant_structured_claims.py",
+      "policy_locator": null
+    },
+    {
+      "id": "continuous-audit-triage-contract",
+      "domain": "QA",
+      "kind": "pytest_contract",
+      "locator": "backend/tests/test_continuous_audit_triage.py",
+      "policy_locator": "config/continuous-audit-triage-policy.json"
+    },
+    {
+      "id": "candidate-browser-contract",
+      "domain": "QA",
+      "kind": "pytest_contract",
+      "locator": "backend/tests/test_browser_smoke.py",
+      "policy_locator": "docs/operations/V011_BROWSER_SMOKE.md"
+    }
+  ]
+}

@@ -1,0 +1,596 @@
+{
+  "schema_version": 1,
+  "inventory_version": "0.10.0",
+  "service_manifest": "ops/runtime/services.json",
+  "consumers": [
+    {
+      "id": "postgres-news-web",
+      "service_id": "web",
+      "owner": "platform",
+      "entrypoint": {
+        "type": "python_cli",
+        "path": "backend/serve_prod.py"
+      },
+      "controller": {
+        "type": "shell-script",
+        "path": "deploy/start_web_prod.sh"
+      },
+      "database": {
+        "name": "news",
+        "schema": "public"
+      },
+      "current_role": {
+        "name": "web_runtime",
+        "status": "assigned_runtime"
+      },
+      "target_role": {
+        "name": "web_runtime",
+        "status": "assigned",
+        "required_capabilities": [
+          "web_allowlist"
+        ]
+      },
+      "credential_references": [
+        {
+          "name": "GLOBEMIND_DB_PASSWORD_FILE",
+          "type": "secret_file_environment"
+        }
+      ],
+      "transport": {
+        "network_scope": "private_network",
+        "current_tls": "disabled_private_scram_exception",
+        "target_tls": "verify_full",
+        "status": "exception_active"
+      },
+      "long_running": true,
+      "maintenance_window": {
+        "required": true,
+        "status": "not_scheduled"
+      },
+      "migration": {
+        "status": "role_assigned_transport_pending",
+        "blockers": [
+          "tls_not_verified"
+        ]
+      }
+    },
+    {
+      "id": "postgres-news-wave1-loader",
+      "service_id": "wave1_loader",
+      "owner": "data-ingestion",
+      "entrypoint": {
+        "type": "python_cli",
+        "path": "scripts/stream_load_news_to_postgres.py"
+      },
+      "controller": {
+        "type": "shell-script",
+        "path": "deploy/wave1_loader_ctl.sh"
+      },
+      "database": {
+        "name": "news",
+        "schema": "public"
+      },
+      "current_role": {
+        "name": "wave1_loader",
+        "status": "assigned_runtime"
+      },
+      "target_role": {
+        "name": "wave1_loader",
+        "status": "assigned",
+        "required_capabilities": [
+          "wave1_loader_allowlist"
+        ]
+      },
+      "credential_references": [
+        {
+          "name": "WAVE1_LOADER_DB_PASSWORD_SOURCE_FILE",
+          "type": "controller_source_secret_file_environment"
+        },
+        {
+          "name": "GLOBEMIND_DB_PASSWORD_FILE",
+          "type": "materialized_secret_file_environment"
+        }
+      ],
+      "transport": {
+        "network_scope": "private_network",
+        "current_tls": "disabled_private_scram_exception",
+        "target_tls": "verify_full",
+        "status": "exception_active"
+      },
+      "long_running": true,
+      "maintenance_window": {
+        "required": true,
+        "status": "not_scheduled"
+      },
+      "migration": {
+        "status": "role_assigned_transport_pending",
+        "blockers": [
+          "tls_not_verified"
+        ]
+      }
+    },
+    {
+      "id": "postgres-news-l1-prep",
+      "service_id": "l1_prep",
+      "owner": "news-intelligence",
+      "entrypoint": {
+        "type": "python_cli",
+        "path": "scripts/stream_l1_event_features.py"
+      },
+      "controller": {
+        "type": "shell-script",
+        "path": "deploy/l1_stream_workers_ctl.sh"
+      },
+      "database": {
+        "name": "news",
+        "schema": "public"
+      },
+      "current_role": {
+        "name": "postgres",
+        "status": "legacy_owner_default"
+      },
+      "target_role": {
+        "name": null,
+        "status": "unassigned",
+        "required_capabilities": [
+          "read_news_quality_inputs",
+          "write_l1_prep"
+        ]
+      },
+      "credential_references": [
+        {
+          "name": "GLOBEMIND_DB_PASSWORD_FILE",
+          "type": "secret_file_environment"
+        },
+        {
+          "name": "L1_DB_PASSWORD",
+          "type": "legacy_plaintext_environment_or_dotenv"
+        },
+        {
+          "name": "PG_WRITE_PASSWORD",
+          "type": "legacy_plaintext_environment_or_dotenv"
+        },
+        {
+          "name": "DB_PASSWORD",
+          "type": "legacy_plaintext_environment_or_dotenv"
+        },
+        {
+          "name": "PG_PASSWORD",
+          "type": "legacy_plaintext_environment_or_dotenv"
+        }
+      ],
+      "transport": {
+        "network_scope": "private_network",
+        "current_tls": "driver_default_unverified",
+        "target_tls": "verify_full",
+        "status": "unverified"
+      },
+      "long_running": true,
+      "maintenance_window": {
+        "required": true,
+        "status": "not_scheduled"
+      },
+      "migration": {
+        "status": "blocked",
+        "blockers": [
+          "target_role_unassigned",
+          "runtime_ddl_not_separated",
+          "credential_source_allows_plaintext",
+          "tls_not_verified"
+        ]
+      }
+    },
+    {
+      "id": "postgres-news-l1-extract",
+      "service_id": "l1_extract",
+      "owner": "news-intelligence",
+      "entrypoint": {
+        "type": "python_cli",
+        "path": "scripts/stream_l1_event_features.py"
+      },
+      "controller": {
+        "type": "shell-script",
+        "path": "deploy/l1_stream_workers_ctl.sh"
+      },
+      "database": {
+        "name": "news",
+        "schema": "public"
+      },
+      "current_role": {
+        "name": "postgres",
+        "status": "legacy_owner_default"
+      },
+      "target_role": {
+        "name": null,
+        "status": "unassigned",
+        "required_capabilities": [
+          "read_l1_prep",
+          "write_l1_event_extractions"
+        ]
+      },
+      "credential_references": [
+        {
+          "name": "GLOBEMIND_DB_PASSWORD_FILE",
+          "type": "secret_file_environment"
+        },
+        {
+          "name": "L1_DB_PASSWORD",
+          "type": "legacy_plaintext_environment_or_dotenv"
+        },
+        {
+          "name": "PG_WRITE_PASSWORD",
+          "type": "legacy_plaintext_environment_or_dotenv"
+        },
+        {
+          "name": "DB_PASSWORD",
+          "type": "legacy_plaintext_environment_or_dotenv"
+        },
+        {
+          "name": "PG_PASSWORD",
+          "type": "legacy_plaintext_environment_or_dotenv"
+        }
+      ],
+      "transport": {
+        "network_scope": "private_network",
+        "current_tls": "driver_default_unverified",
+        "target_tls": "verify_full",
+        "status": "unverified"
+      },
+      "long_running": true,
+      "maintenance_window": {
+        "required": true,
+        "status": "not_scheduled"
+      },
+      "migration": {
+        "status": "blocked",
+        "blockers": [
+          "target_role_unassigned",
+          "runtime_ddl_not_separated",
+          "credential_source_allows_plaintext",
+          "tls_not_verified"
+        ]
+      }
+    },
+    {
+      "id": "postgres-news-daily-ingest",
+      "service_id": "daily_ingest",
+      "owner": "data-ingestion",
+      "entrypoint": {
+        "type": "shell_loop",
+        "path": "deploy/daily_news_ingest_loop.sh"
+      },
+      "controller": {
+        "type": "shell-script",
+        "path": "deploy/daily_news_ingest_ctl.sh"
+      },
+      "database": {
+        "name": "news",
+        "schema": "public"
+      },
+      "current_role": {
+        "name": null,
+        "status": "legacy_runtime_unverified"
+      },
+      "target_role": {
+        "name": "wave1_loader",
+        "status": "assigned",
+        "required_capabilities": [
+          "wave1_loader_allowlist"
+        ]
+      },
+      "credential_references": [
+        {
+          "name": "DAILY_INGEST_DB_PASSWORD_SOURCE_FILE",
+          "type": "target_controller_source_secret_file_environment"
+        },
+        {
+          "name": "GLOBEMIND_DB_PASSWORD_FILE",
+          "type": "target_materialized_secret_file_environment"
+        }
+      ],
+      "transport": {
+        "network_scope": "legacy_runtime_unverified",
+        "current_tls": "legacy_runtime_unverified",
+        "target_tls": "disabled_private_scram_exception",
+        "status": "managed_takeover_pending"
+      },
+      "long_running": true,
+      "maintenance_window": {
+        "required": true,
+        "status": "not_scheduled"
+      },
+      "migration": {
+        "status": "managed_role_takeover_pending",
+        "blockers": [
+          "checkpointed_takeover_not_completed",
+          "current_runtime_role_unverified",
+          "current_runtime_tls_unverified",
+          "tls_not_verified"
+        ]
+      }
+    },
+    {
+      "id": "postgres-news-quality-labels",
+      "service_id": "quality_labels",
+      "owner": "data-quality",
+      "entrypoint": {
+        "type": "shell_loop",
+        "path": "deploy/news_quality_labels_loop.sh"
+      },
+      "controller": {
+        "type": "shell-script",
+        "path": "deploy/news_quality_labels_ctl.sh"
+      },
+      "database": {
+        "name": "news",
+        "schema": "public"
+      },
+      "current_role": {
+        "name": "postgres",
+        "status": "legacy_owner_default"
+      },
+      "target_role": {
+        "name": null,
+        "status": "unassigned",
+        "required_capabilities": [
+          "read_news_quality_inputs",
+          "write_news_quality_labels"
+        ]
+      },
+      "credential_references": [
+        {
+          "name": "GLOBEMIND_DB_PASSWORD_FILE",
+          "type": "secret_file_environment"
+        },
+        {
+          "name": "L1_DB_PASSWORD",
+          "type": "legacy_plaintext_environment_or_dotenv"
+        },
+        {
+          "name": "PG_WRITE_PASSWORD",
+          "type": "legacy_plaintext_environment_or_dotenv"
+        },
+        {
+          "name": "DB_PASSWORD",
+          "type": "legacy_plaintext_environment_or_dotenv"
+        },
+        {
+          "name": "PG_PASSWORD",
+          "type": "legacy_plaintext_environment_or_dotenv"
+        }
+      ],
+      "transport": {
+        "network_scope": "private_network",
+        "current_tls": "driver_default_unverified",
+        "target_tls": "verify_full",
+        "status": "unverified"
+      },
+      "long_running": true,
+      "maintenance_window": {
+        "required": true,
+        "status": "not_scheduled"
+      },
+      "migration": {
+        "status": "blocked",
+        "blockers": [
+          "target_role_unassigned",
+          "runtime_ddl_not_separated",
+          "credential_source_allows_plaintext",
+          "tls_not_verified"
+        ]
+      }
+    },
+    {
+      "id": "postgres-news-ground-refresh",
+      "service_id": "ground_refresh",
+      "owner": "news-intelligence",
+      "entrypoint": {
+        "type": "shell_loop",
+        "path": "deploy/ground_news_realtime_refresh_loop.sh"
+      },
+      "controller": {
+        "type": "shell-loop",
+        "path": "deploy/ground_news_realtime_refresh_loop.sh"
+      },
+      "database": {
+        "name": "news",
+        "schema": "public"
+      },
+      "current_role": {
+        "name": "postgres",
+        "status": "legacy_owner_default"
+      },
+      "target_role": {
+        "name": null,
+        "status": "unassigned",
+        "required_capabilities": [
+          "read_news_story_inputs",
+          "write_l1_l15_l2_story_data"
+        ]
+      },
+      "credential_references": [
+        {
+          "name": "GLOBEMIND_DB_PASSWORD_FILE",
+          "type": "secret_file_environment"
+        },
+        {
+          "name": "L1_DB_PASSWORD",
+          "type": "legacy_plaintext_environment_or_dotenv"
+        },
+        {
+          "name": "PG_WRITE_PASSWORD",
+          "type": "legacy_plaintext_environment_or_dotenv"
+        },
+        {
+          "name": "DB_PASSWORD",
+          "type": "legacy_plaintext_environment_or_dotenv"
+        },
+        {
+          "name": "PG_PASSWORD",
+          "type": "legacy_plaintext_environment_or_dotenv"
+        }
+      ],
+      "transport": {
+        "network_scope": "private_network",
+        "current_tls": "driver_default_unverified",
+        "target_tls": "verify_full",
+        "status": "unverified"
+      },
+      "long_running": true,
+      "maintenance_window": {
+        "required": true,
+        "status": "not_scheduled"
+      },
+      "migration": {
+        "status": "blocked",
+        "blockers": [
+          "target_role_unassigned",
+          "runtime_ddl_not_separated",
+          "credential_source_allows_plaintext",
+          "tls_not_verified"
+        ]
+      }
+    },
+    {
+      "id": "postgres-news-ground-images",
+      "service_id": "ground_images",
+      "owner": "news-intelligence",
+      "entrypoint": {
+        "type": "shell_loop",
+        "path": "deploy/ground_news_image_backfill_loop.sh"
+      },
+      "controller": {
+        "type": "shell-loop",
+        "path": "deploy/ground_news_image_backfill_loop.sh"
+      },
+      "database": {
+        "name": "news",
+        "schema": "public"
+      },
+      "current_role": {
+        "name": "postgres",
+        "status": "legacy_owner_default"
+      },
+      "target_role": {
+        "name": null,
+        "status": "unassigned",
+        "required_capabilities": [
+          "read_news_story_inputs",
+          "write_news_and_story_image_assets"
+        ]
+      },
+      "credential_references": [
+        {
+          "name": "GLOBEMIND_DB_PASSWORD_FILE",
+          "type": "secret_file_environment"
+        },
+        {
+          "name": "L1_DB_PASSWORD",
+          "type": "legacy_plaintext_environment_or_dotenv"
+        },
+        {
+          "name": "PG_WRITE_PASSWORD",
+          "type": "legacy_plaintext_environment_or_dotenv"
+        },
+        {
+          "name": "DB_PASSWORD",
+          "type": "legacy_plaintext_environment_or_dotenv"
+        },
+        {
+          "name": "PG_PASSWORD",
+          "type": "legacy_plaintext_environment_or_dotenv"
+        }
+      ],
+      "transport": {
+        "network_scope": "private_network",
+        "current_tls": "driver_default_unverified",
+        "target_tls": "verify_full",
+        "status": "unverified"
+      },
+      "long_running": true,
+      "maintenance_window": {
+        "required": true,
+        "status": "not_scheduled"
+      },
+      "migration": {
+        "status": "blocked",
+        "blockers": [
+          "target_role_unassigned",
+          "runtime_ddl_not_separated",
+          "credential_source_allows_plaintext",
+          "tls_not_verified"
+        ]
+      }
+    }
+  ],
+  "maintenance_entrypoints": [
+    {
+      "id": "v093-database-schema",
+      "class": "schema_migration",
+      "entrypoint": {
+        "type": "python_cli",
+        "path": "deploy/v093_database_schema.py"
+      },
+      "database": {
+        "name": "news",
+        "schema": "public"
+      },
+      "execution_role": {
+        "name": "postgres",
+        "status": "maintenance_only"
+      },
+      "credential_references": [
+        {
+          "name": "--admin-password-file",
+          "type": "command_line_secret_file_reference"
+        }
+      ],
+      "transport": {
+        "network_scope": "operator_selected",
+        "current_tls": "explicit_cli_selection",
+        "target_tls": "verify_full",
+        "status": "maintenance_only"
+      },
+      "long_running": false,
+      "approval": "approved_on_demand"
+    },
+    {
+      "id": "database-runtime-roles",
+      "class": "role_administration",
+      "entrypoint": {
+        "type": "python_cli",
+        "path": "deploy/db_runtime_roles.py"
+      },
+      "database": {
+        "name": "news",
+        "schema": "public"
+      },
+      "execution_role": {
+        "name": "postgres",
+        "status": "maintenance_only"
+      },
+      "credential_references": [
+        {
+          "name": "--admin-password-file",
+          "type": "command_line_secret_file_reference"
+        },
+        {
+          "name": "--web-password-file",
+          "type": "command_line_secret_file_reference"
+        },
+        {
+          "name": "--loader-password-file",
+          "type": "command_line_secret_file_reference"
+        }
+      ],
+      "transport": {
+        "network_scope": "operator_selected",
+        "current_tls": "explicit_cli_selection",
+        "target_tls": "verify_full",
+        "status": "maintenance_only"
+      },
+      "long_running": false,
+      "approval": "approved_on_demand"
+    }
+  ]
+}

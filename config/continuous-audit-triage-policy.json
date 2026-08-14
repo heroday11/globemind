@@ -1,0 +1,20 @@
+{
+  "schema_version": "globemind-continuous-audit-triage-policy-v1",
+  "policy_id": "globemind-bounded-audit-triage",
+  "thresholds": {
+    "audit_integrity_required": true,
+    "validator_failure_limit": 0,
+    "validator_finding_limit": 0,
+    "stale_evidence_limit": 0
+  },
+  "ownership": {
+    "owner_role": "quality-security-accessibility",
+    "named_person_state": "not_assigned",
+    "human_triage_state": "required_for_action"
+  },
+  "integrations": {
+    "issue_creation_state": "not_configured",
+    "trend_baseline_state": "not_configured",
+    "scheduler_execution_observation_state": "not_configured"
+  }
+}

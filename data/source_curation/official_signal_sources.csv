@@ -1,0 +1,17 @@
+site_id,domain,region,institution_type,priority_tier,preferred_crawl_entry,role,notes
+un_org,un.org,global,international_organization,P0,https://news.un.org/en/news,official_position,official UN news and statements
+who_int,who.int,global,international_organization,P1,https://www.who.int/news-room,official_position,official institutional and emergency updates with lower direct political density
+african_union,au.int,africa,international_organization,P1,https://au.int/en/happening,official_position,official African Union news and press releases
+whitehouse_gov,whitehouse.gov,north_america,executive_government,P0,https://www.whitehouse.gov/news/,official_position,official White House releases and briefings
+state_gov,state.gov,north_america,foreign_ministry,P0,https://www.state.gov/press-releases,official_position,official US State Department releases
+fcdo_gov_uk,gov.uk,europe,foreign_ministry,P0,https://www.gov.uk/government/organisations/foreign-commonwealth-development-office,official_position,official UK foreign office news and communications
+eu_commission_press,ec.europa.eu,europe,supranational_executive,P0,https://ec.europa.eu/commission/presscorner/home/en,official_position,official European Commission press corner
+eeas_europa,eeas.europa.eu,europe,foreign_service,P0,https://www.eeas.europa.eu/eeas/press-material_en,official_position,official EU diplomatic service press material
+bundesregierung_de,bundesregierung.de,europe,executive_government,P1,https://www.bundesregierung.de/breg-de/bundesregierung,official_position,official German government newsroom
+france_diplomatie,diplomatie.gouv.fr,europe,foreign_ministry,P1,https://www.diplomatie.gouv.fr/en/press/news,official_position,official France foreign ministry news
+japan_mofa,mofa.go.jp,asia,foreign_ministry,P0,https://www.mofa.go.jp/press/release/index.html,official_position,official Japan foreign ministry releases
+china_mfa,mfa.gov.cn,asia,foreign_ministry,P0,https://www.mfa.gov.cn/eng/xw/,official_position,official China foreign ministry news
+india_mea,mea.gov.in,south_asia,foreign_ministry,P0,https://www.mea.gov.in/press-releases,official_position,official India external affairs releases
+id_mofcom_gov_cn,id.mofcom.gov.cn,asia,economic_ministry,P1,https://fdi.mofcom.gov.cn/EN/come-zonghe-list.html,official_position,official China commerce and investment policy signal
+brazil_mre,gov.br/mre,latin_america,foreign_ministry,P1,https://www.gov.br/mre/en/contact-us/press-area/press-releases,official_position,official Brazil foreign ministry press area
+southafrica_dirco,dirco.gov.za,africa,foreign_ministry,P1,https://dirco.gov.za/media-statements/,official_position,official South Africa foreign policy statements

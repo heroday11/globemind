@@ -1,0 +1,63 @@
+# -----------------------------------------------------------------------------
+# 可选：在 Docker 中运行 vLLM OpenAI 兼容服务（与 datasearch 命名/安全回退对接）
+# -----------------------------------------------------------------------------
+# 若报错 container name "/vllm-server" already in use：先执行 docker rm -f vllm-server 再 up。
+# 启动前：安装 NVIDIA Container Toolkit；按需设置环境变量或下方默认值。
+#   docker compose -f docker-compose.vllm.yml up -d
+# 宿主机访问: http://127.0.0.1:8000/v1
+# 模型权重建议放在宿主机 D:/models（与 config/ontology_and_trust.yaml 一致），并增加挂载：
+#   volumes 中取消下一行注释：  - D:/models:/model:ro
+# agentic_rag/.env 中配置示例（宿主机 Windows 直接跑 vLLM 时用 D:/models/... 全路径）:
+#   VLLM_MODEL=D:/models/Qwen2.5-1.5B-Instruct
+# Docker 挂载 D:/models:/model:ro 时与容器内路径对齐:
+#   VLLM_MODEL=/model/Qwen2.5-1.5B-Instruct
+#   VLLM_SERVED_MODEL_NAME=/model/Qwen2.5-1.5B-Instruct
+#   QWEN_LOCAL_FALLBACK_BASE_URL=http://127.0.0.1:8000/v1
+#   QWEN_LOCAL_FALLBACK_MODEL=/model/Qwen2.5-1.5B-Instruct
+# -----------------------------------------------------------------------------
+name: datasearch-vllm
+
+services:
+  vllm-openai:
+    image: vllm/vllm-openai:latest
+    container_name: vllm-server
+    ports:
+      - "8000:8000"
+    ipc: host
+    shm_size: "2g"
+    environment:
+      HF_TOKEN: ${HF_TOKEN:-}
+    # 模型缓存；Windows 可在 .env 设 VLLM_HF_BIND=C:/Users/你/.cache/huggingface 覆盖为绑定挂载
+    volumes:
+      - ${VLLM_HF_BIND:-vllm_hf_cache}:/root/.cache/huggingface
+      # 宿主机 D:\models（含 Qwen2.5-1.5B-Instruct）→ 容器 /model（与 VLLM_MODEL=/model/... 一致）
+      - D:/models:/model:ro
+    # 与镜像入口一致：挂载 D:/models→/model 时默认 1.5B；Windows 原生 vLLM 请在 .env 设 D:/models/Qwen2.5-1.5B-Instruct
+    command:
+      - --model
+      - ${VLLM_MODEL:-/model/Qwen2.5-1.5B-Instruct}
+      - --served-model-name
+      - ${VLLM_SERVED_MODEL_NAME:-/model/Qwen2.5-1.5B-Instruct}
+      # 3080 10GB：1.5B 可用 half / bfloat16；通过 .env 设 VLLM_DTYPE=half 或 bfloat16
+      - --dtype
+      - ${VLLM_DTYPE:-half}
+      - --gpu-memory-utilization
+      - ${VLLM_GPU_MEMORY_UTILIZATION:-0.8}
+      - --max-model-len
+      - ${VLLM_MAX_MODEL_LEN:-2048}
+      - --max-num-seqs
+      - ${VLLM_MAX_NUM_SEQS:-1}
+      # WSL / 部分环境上 CUDA Graph 可能导致生成卡住；追求极限吞吐时可删本行（可能复现挂起）
+      - --enforce-eager
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: unless-stopped
+
+volumes:
+  vllm_hf_cache:
+    driver: local

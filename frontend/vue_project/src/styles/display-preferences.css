@@ -1,0 +1,37 @@
+:root {
+  --gm-font-sans:
+    system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei',
+    sans-serif;
+  --gm-font-serif: 'Noto Serif CJK SC', 'Source Han Serif SC', 'Songti SC', SimSun, Georgia, serif;
+  --gm-font-mono:
+    ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+  --gm-root-font-size: 16px;
+  --gm-leading: 0;
+  --gm-leading-px: 0px;
+}
+
+html,
+body,
+#app,
+.app-shell {
+  font-family: var(--gm-font-sans);
+}
+
+html {
+  font-size: var(--gm-root-font-size);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  --el-font-family: var(--gm-font-sans);
+  font-size: 1rem;
+  line-height: calc(1.5 + var(--gm-leading));
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}

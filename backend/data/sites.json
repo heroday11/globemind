@@ -1,0 +1,38 @@
+[
+  {
+    "id": 2,
+    "name": "路透社亚太",
+    "url": "reuters.com/asia-pacific",
+    "status": "active",
+    "lastCrawl": "2026-04-30 14:30",
+    "articles": 956,
+    "icon": "📡"
+  },
+  {
+    "id": 3,
+    "name": "CSIS 智库",
+    "url": "csis.org",
+    "status": "active",
+    "lastCrawl": "2026-04-30 12:00",
+    "articles": 432,
+    "icon": "🎓"
+  },
+  {
+    "id": 4,
+    "name": "南华早报",
+    "url": "scmp.com",
+    "status": "paused",
+    "lastCrawl": "2026-04-29 08:00",
+    "articles": 2103,
+    "icon": "📋"
+  },
+  {
+    "id": 6,
+    "name": "联合国安理会报告",
+    "url": "un.org/sc",
+    "status": "error",
+    "lastCrawl": "2026-04-28 22:00",
+    "articles": 89,
+    "icon": "🇺🇳"
+  }
+]

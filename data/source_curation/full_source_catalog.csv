@@ -1,0 +1,637 @@
+site_id,url,domain,priority_tier,quality_tier,source_type,region,action,notes,classification_basis
+2001_com_ve,http://2001.com.ve/internacionales,2001.com.ve,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+20minutes_fr,https://www.20minutes.fr/monde/,20minutes.fr,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+24h_com_vn,https://www.24h.com.vn/tin-tuc-bien-dong-c46e3601.html/tin-tuc-quoc-te-c415.html,24h.com.vn,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+26sep_net,https://www.26sep.net/index.php/paper-news,26sep.net,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+5septiembre_cu,http://www.5septiembre.cu/category/politica/,5septiembre.cu,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+aajtak_intoday_in,https://aajtak.intoday.in/india/delhi,aajtak.intoday.in,P2,C,national_major_media,south_asia,selective_crawl,high volume but uneven relevance,manual_or_curated
+aap_com_au,https://www.aapnews.com.au/,aapnews.com.au,P2,C,wire_service,asia_pacific,selective_crawl,unclear source value; manual review recommended,heuristic
+abc_es,http://www.abc.es/internacional/,abc.es,P1,B,national_major_media,europe,secondary_crawl,good Spain supplement,manual_or_curated
+abc_net_au,http://www.abc.net.au/news/justin,abc.net.au,P0,A,public_broadcaster,asia_pacific,primary_crawl,public broadcaster with strong Asia coverage,manual_or_curated
+abcnews_go_com,http://abcnews.go.com/alerts/climatechange/,abcnews.go.com,P1,B,global_major_media,north_america,secondary_crawl,major US broadcaster; use international desk rather than climate alerts page,manual_override
+abplive_com,https://www.abplive.com/lifestyle/food,abplive.com,Drop,D,noise,latin_america,drop,"non-news, utility, forum, lifestyle, or commerce source",heuristic
+abpnews_abplive_in,https://abpnews.abplive.in/blog,abpnews.abplive.in,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+acd_com_tw,https://www.acd.com.tw/info/news/,acd.com.tw,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+acn_cu,http://www.acn.cu/mundo,acn.cu,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+actu_fr,https://www.actu.fr/enquetes-d-actu/,actu.fr,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+addustour_com,https://www.addustour.com/categories/1-%D9%85%D8%AD%D9%84%D9%8A%D8%A7%D8%AA,addustour.com,P2,C,regional_media_candidate,north_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+adelante_cu,http://www.adelante.cu/index.php/es/noticias,adelante.cu,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+aei_org,https://www.aei.org/policy-areas/economics/,aei.org,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+aei_um_edu_my,https://aei.um.edu.my/latest-news,aei.um.edu.my,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+afp_com,https://www.afp.com/en/agency/inside-afp/press-releases,afp.com,P2,C,wire_service,global,selective_crawl,unclear source value; manual review recommended,heuristic
+afyonhaber_com,https://www.afyonhaber.com/turkiye,afyonhaber.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+agrasamachar_com,http://www.agrasamachar.com/search/label/%E0%A4%86%E0%A4%97%E0%A4%B0%E0%A4%BE,agrasamachar.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+ahora_cu,http://www.ahora.cu/es/cobertura-especial,ahora.cu,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+akhbar_alkhaleej_com,http://www.akhbar-alkhaleej.com/news/section/BNEW,akhbar-alkhaleej.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+akhbarelyom_com,https://akhbarelyom.com/news/newssection/1/1/%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1-%D9%85%D8%B5%D8%B1,akhbarelyom.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+akhbarona_com,https://www.akhbarona.com/world/index.1.html,akhbarona.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+akhbarwatan_net,http://akhbarwatan.net/category/news/,akhbarwatan.net,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+al_ain_com,https://al-ain.com/latestnews/,al-ain.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+al_sharq_com,https://al-sharq.com/category/%D8%B9%D8%B1%D8%A8%D9%8A-%D9%88%D8%AF%D9%88%D9%84%D9%8A,al-sharq.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+al_watan_com,https://www.al-watan.com/%D8%B9%D8%B1%D8%A8%D9%8A-%D9%88%D8%AF%D9%88%D9%84%D9%8A,al-watan.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+alakhbar_press_ma,https://www.alakhbar.press.ma/news/politique,alakhbar.press.ma,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+alarab_qa,https://alarab.qa/category/%D9%85%D8%AD%D9%84%D9%8A%D8%A7%D8%AA,alarab.qa,P2,C,regional_media_candidate,middle_east,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+alayyam_info,https://www.alayyam.info/cat/7ELLY5TQ-G2DFQ3,alayyam.info,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+albiladpress_com,http://www.albiladpress.com/news/bahrain,albiladpress.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+alchourouk_com,https://www.alchourouk.com/%D8%B9%D8%A7%D9%84%D9%85%D9%8A%D8%A9,alchourouk.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+algeriatimes_net,https://www.algeriatimes.net/detail/category/2,algeriatimes.net,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+alhaya_ps,https://www.alhaya.ps/ar/Category/43/arab-and-international,alhaya.ps,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+alittihad_ae,https://www.alittihad.ae/category/%D8%B9%D8%B1%D8%A8%D9%8A-%D9%88%D8%AF%D9%88%D9%84%D9%8A,alittihad.ae,P2,C,national_major_media,middle_east,selective_crawl,valuable UAE source,manual_or_curated
+aljazeera_net,https://www.aljazeera.net/news/,aljazeera.net,P0,A,global_major_media,middle_east,primary_crawl,major source for Middle East coverage,manual_or_curated
+allafrica_com,http://allafrica.com/latest/,allafrica.com,P2,C,regional_network,europe,selective_crawl,unclear source value; manual review recommended,heuristic
+alquds_com,http://www.alquds.com/ar/categories/business,alquds.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+alrai_com,https://alrai.com/,alrai.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+alraimedia_com,https://www.alraimedia.com/%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1-%D9%85%D8%AD%D9%84%D9%8A%D8%A9,alraimedia.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+alrakoba_net,https://www.alrakoba.net/%d8%a3%d8%ae%d8%a8%d8%a7%d8%b1-%d8%a7%d9%84%d8%b3%d9%88%d8%af%d8%a7%d9%86/,alrakoba.net,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+alriyadh_com,https://www.alriyadh.com/news.inter,alriyadh.com,P2,C,national_major_media,middle_east,selective_crawl,valuable Saudi source,manual_or_curated
+althawrah_ye,http://althawrah.ye/archives/category/%d8%af%d9%88%d9%84%d9%8a,althawrah.ye,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+alwatannews_net,https://alwatannews.net/world,alwatannews.net,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+amarujala_com,https://www.amarujala.com/india-news,amarujala.com,P2,C,national_major_media,south_asia,selective_crawl,valuable Hindi source,manual_or_curated
+americanprogress_org,https://www.americanprogress.org/topic/economy/,americanprogress.org,P2,C,public_broadcaster,europe,selective_crawl,unclear source value; manual review recommended,heuristic
+ami_mr,http://www.ami.mr/archives/tag/%d8%b1%d8%a6%d9%80%d8%a7%d8%b3%d9%8a%d9%80%d8%a7%d8%aa-2024,ami.mr,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+anamurekspres_com,https://www.anamurekspres.com/haber/kategori/guncel-2,anamurekspres.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+anandamela_in,https://www.anandamela.in/latest-news,anandamela.in,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+ankaragazete_com,http://www.ankaragazete.com/politika,ankaragazete.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+annahar_com,https://www.annahar.com/international,annahar.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+ansa_it,https://www.ansa.it/sito/notizie/topnews/index.shtml,ansa.it,P0,A,wire_service,europe,primary_crawl,major Italian wire,manual_or_curated
+antakyagazetesi_com,http://www.antakyagazetesi.com/haber/gundem/,antakyagazetesi.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+arynews_tv,https://arynews.tv/category/pakistan,arynews.tv,P1,B,national_major_media,south_asia,secondary_crawl,important Pakistan source,manual_or_curated
+asahi_com,https://www.asahi.com/politics/?iref=pc_gnavi,asahi.com,P0,A,national_major_media,asia,primary_crawl,top Japanese daily,manual_or_curated
+aseancenter_org_tw,http://www.aseancenter.org.tw/news/categories/%E6%9D%B1%E5%8D%94%E6%96%B0%E8%81%9E,aseancenter.org.tw,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+asia_cnn_com,https://edition.cnn.com/world,edition.cnn.com,P2,C,regional_major_media,europe,selective_crawl,unclear source value; manual review recommended,heuristic
+asianews_network,https://asianews.network/tag/Afghanistan/,asianews.network,P2,C,regional_network,asia,selective_crawl,valuable cross Asia syndication,manual_or_curated
+asianjournal_com,http://asianjournal.com/category/world/,asianjournal.com,P2,C,regional_major_media,global,selective_crawl,unclear source value; manual review recommended,heuristic
+asiaone_com,http://www.asiaone.com/world,asiaone.com,P1,B,regional_major_media,asia,secondary_crawl,regional aggregator with useful coverage,manual_or_curated
+asiapacific_ca,https://www.asiapacific.ca/insights,asiapacific.ca,P2,C,regional_major_media,global,selective_crawl,unclear source value; manual review recommended,heuristic
+aspi_org_au,https://www.aspi.org.au/all-work/?s=&filter_tag=all&filter_programs=all&filter_category=report,aspi.org.au,P2,C,regional_media_candidate,asia_pacific,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+atulyaloktantranews_com,https://www.atulyaloktantranews.com/category/national/,atulyaloktantranews.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+avn_info_ve,http://www.avn.info.ve/politica/,avn.info.ve,P2,C,state_media,latin_america,selective_crawl,unclear source value; manual review recommended,heuristic
+awesome_blog,https://awesome.blog/browse,awesome.blog,Drop,D,noise,global,drop,blog platform,manual_or_curated
+aydinses_com,https://www.aydinses.com/gundem,aydinses.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+bafrahaber_com,https://www.bafrahaber.com/gundem,bafrahaber.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+bangkok_today_com,http://bangkok-today.com/category/%e0%b8%82%e0%b9%88%e0%b8%b2%e0%b8%a7/,bangkok-today.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+bangkokbiznews_com,http://www.bangkokbiznews.com/world/geopolitics,bangkokbiznews.com,P1,B,national_major_media,asia,secondary_crawl,strong geopolitics section,manual_or_curated
+bangla_24livenewspaper_com,https://www.bangla.24livenewspaper.com/bangladesh,bangla.24livenewspaper.com,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+bangla_aajtak_in,https://bangla.aajtak.in/desh,bangla.aajtak.in,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+bangla_asianetnews_com,https://bangla.asianetnews.com/latest-news,bangla.asianetnews.com,P2,C,regional_major_media,asia,selective_crawl,unclear source value; manual review recommended,heuristic
+bangla_bdnews24_com,https://bangla.bdnews24.com/world,bangla.bdnews24.com,P2,C,national_major_media,south_asia,selective_crawl,valuable Bengali coverage,manual_or_curated
+bangla_kobita_com,https://www.bangla-kobita.com/ashor/,bangla-kobita.com,Drop,D,noise,south_asia,drop,poetry site,manual_or_curated
+bangla_plus,https://bangla.plus/bangladesh-news-headlines/,bangla.plus,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+banque_france_fr,https://www.banque-france.fr/fr/publications-et-recherche,banque-france.fr,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+banquepopulaire_fr,https://www.banquepopulaire.fr/gestion-privee/,banquepopulaire.fr,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+baobacninh_com_vn,http://baobacninhtv.vn/doi-song,baobacninhtv.vn,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+baocantho_com_vn,http://www.baocantho.com.vn/thoi-su/,baocantho.com.vn,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+baodautu_vn,https://baodautu.vn/thoi-su-dau-tu-d1/,baodautu.vn,P2,C,regional_media_candidate,asia_pacific,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+baoquocte_vn,https://baoquocte.vn/tin-24h,baoquocte.vn,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+bartabazar_com,http://bartabazar.com/news/category/%e0%a6%b9%e0%a7%8d%e0%a6%af%e0%a6%be%e0%a6%b2%e0%a7%8b-%e0%a6%b8%e0%a6%ae%e0%a7%8d%e0%a6%aa%e0%a6%be%e0%a6%a6%e0%a6%95/,bartabazar.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+basakgazetesi_com,https://www.basakgazetesi.com/foto-galeri/cona_kanyonu-14,basakgazetesi.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+batmancagdas_com,https://www.batmancagdas.com/gundem,batmancagdas.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+bbc_co_uk,https://www.bbc.co.uk/burmese/topics/cnlv9j1z93wt,bbc.co.uk,P2,C,public_broadcaster,asia,selective_crawl,BBC Burmese service is useful for Myanmar coverage but not core main crawl,manual_override
+bbc_com,https://www.bbc.com/news,bbc.com,P0,A,global_major_media,global,primary_crawl,high quality global coverage,manual_or_curated
+bengkuluekspress_com,http://bengkuluekspress.com/kategori/headline,bengkuluekspress.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+bernama_com,https://www.bernama.com/en/world/,bernama.com,P0,A,state_media,asia,primary_crawl,national wire with strong region coverage,manual_or_curated
+bhaskar_com,https://www.bhaskar.com/national/,bhaskar.com,P2,C,national_major_media,south_asia,selective_crawl,major Hindi audience but noisy,manual_or_curated
+birgun_net,https://www.birgun.net/kategori/guncel-7,birgun.net,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+bisnis_com,http://www.bisnis.com/,bisnis.com,P1,B,national_major_media,asia,secondary_crawl,business and policy coverage,manual_or_curated
+bk_mufg_jp,https://www.bk.mufg.jp/kigyou/index.html,bk.mufg.jp,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+bkn_go_id,https://www.bkn.go.id/publikasi/akuntabilitas-kinerja/rencana-kerja-bkn/,bkn.go.id,P2,C,official_government,asia,selective_crawl,official but administrative focus,manual_or_curated
+bnionline_net,https://www.bnionline.net/mm/news,bnionline.net,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+boj_or_jp,https://www.boj.or.jp/mopo/outlook/index.htm,boj.or.jp,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+bolgegazetesi_com,https://www.bolgegazetesi.com/haber/politika,bolgegazetesi.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+bolnews_com,https://www.bolnews.com/category/latest-news/,bolnews.com,P2,C,national_major_media,south_asia,selective_crawl,useful but quality inconsistent,manual_or_curated
+bolugundem_com,https://www.bolugundem.com/siyaset,bolugundem.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+bolununsesi_com,http://www.bolununsesi.com/haberler,bolununsesi.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+brookings_edu,https://www.brookings.edu/topics/international-affairs/,brookings.edu,P3,C,think_tank_context,global,context_only,analysis source not news backbone,manual_or_curated
+brudirect_com,http://www.brudirect.com/result.php?title=&category=national-headline&subcategory=,brudirect.com,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+bruegel_org,https://www.bruegel.org/topics,bruegel.org,P3,C,think_tank_context,latin_america,context_only,"analysis source; useful for context, not raw news backbone",heuristic
+bssnews_net,https://www.bssnews.net/news,bssnews.net,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+buenosairesherald_com,http://www.buenosairesherald.com/business,buenosairesherald.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+bulgaronline_com,https://www.bulgaronline.com/news,bulgaronline.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+bundesregierung_de,https://www.bundesregierung.de/breg-de/bundesregierung,bundesregierung.de,P1,B,official_government,europe,secondary_crawl,official government newsroom,manual_or_curated
+burasicanakkale_com,https://www.burasicanakkale.com.tr/kategori/40/siyaset/1,burasicanakkale.com.tr,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+burmese_kachinnews_com,http://burmese.kachinnews.com/category/news/,burmese.kachinnews.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+burmese_monnews_org,https://burmese.monnews.org/category/news/,burmese.monnews.org,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+bursagundem_com,http://www.bursagundem.com/siyaset-haberleri/,bursagundem.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+businesstimes_com_sg,http://www.businesstimes.com.sg/singapore,businesstimes.com.sg,P1,B,business_media,asia,secondary_crawl,strong policy and macro angle,manual_or_curated
+buzzfeed_com,https://www.buzzfeed.com/in-the-news,buzzfeed.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+bworldonline_com,http://www.bworldonline.com/top-stories/,bworldonline.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+cambodiadaily_com,https://www.cambodiadaily.com/category/news/,cambodiadaily.com,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+canakkaleolay_com,http://www.canakkaleolay.com/kategori/guncel,canakkaleolay.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+canaln_pe,https://canaln.pe/actualidad,canaln.pe,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+cankirininsesi_com,https://www.cankirininsesi.com/category/uncategorized/,cankirininsesi.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+carnegie_ru,https://carnegie.ru/commentary/topic/52,carnegie.ru,P3,C,think_tank_context,global,context_only,"analysis source; useful for context, not raw news backbone",heuristic
+carnegiecouncil_org,https://www.carnegiecouncil.org/initiatives-issues/emerging-technology,carnegiecouncil.org,P3,C,think_tank_context,global,context_only,"analysis source; useful for context, not raw news backbone",heuristic
+carnegieendowment_org,https://carnegieendowment.org/programs/africa,carnegieendowment.org,P3,C,think_tank_context,global,context_only,analysis source not news backbone,manual_or_curated
+cartercenter_org,https://www.cartercenter.org/programs/peace/,cartercenter.org,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+cbc_ca,http://www.cbc.ca/news/world,cbc.ca,P0,A,public_broadcaster,north_america,primary_crawl,high quality public broadcaster,manual_or_curated
+cbsnews_com,http://www.cbsnews.com/world/,cbsnews.com,P0,A,global_major_media,north_america,primary_crawl,strong general international coverage,manual_or_curated
+cctv_com,http://cctv.cntv.cn/NatureetScience/index.shtml,cctv.cntv.cn,P2,C,state_media,global,selective_crawl,unclear source value; manual review recommended,heuristic
+cdhowe_org,https://www.cdhowe.org/news,cdhowe.org,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+cei_org,https://cei.org/issues/capitalism/,cei.org,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+centerforsecuritypolicy_org,http://www.centerforsecuritypolicy.org/category/homeland-security-and-counterterrorism/foodsecurity/,centerforsecuritypolicy.org,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+ceps_eu,https://www.ceps.eu/ceps-topics/,ceps.eu,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+changiairport_com,http://www.changiairport.com/en/fly/flight-information.html,changiairport.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+channelionline_com,https://www.channelionline.com/latest/,channelionline.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+channelnewsasia_com,http://www.channelnewsasia.com/latest-news,channelnewsasia.com,P0,A,regional_major_media,asia,primary_crawl,excellent Southeast Asia and China coverage,manual_or_curated
+china_com,http://military.china.com/refer/,military.china.com,P2,C,state_media,asia,selective_crawl,unclear source value; manual review recommended,heuristic
+chinapress_com_my,http://www.chinapress.com.my/category/%e5%9b%bd%e9%99%85/,chinapress.com.my,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+chinatimes_com,https://www.chinatimes.com/realtimenews/,chinatimes.com,P1,B,national_major_media,asia,secondary_crawl,important Taiwan source,manual_or_curated
+cigionline_org,https://www.cigionline.org/opinions/,cigionline.org,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+cips_cepi_ca,https://www.cips-cepi.ca/category/news/,cips-cepi.ca,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+cis_mit_edu,https://cis.mit.edu/news-media,cis.mit.edu,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+clingendael_org,https://www.clingendael.org/training-courses,clingendael.org,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+cnnews_chosun_com,https://cnnews.chosun.com/client/news/lst.asp?cate=C01&mcate=M1003,cnnews.chosun.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+cnnturk_com,https://www.cnnturk.com/dunya-haberleri/,cnnturk.com,P2,C,regional_media_candidate,middle_east,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+coconuts_co,https://coconuts.co/bangkok/,coconuts.co,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+conferenceboard_ca,https://www.signal49.ca/news-room,signal49.ca,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+connexionfrance_com,https://www.connexionfrance.com/tag/news,connexionfrance.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+cpd_org_au,https://cpd.org.au/news-media/,cpd.org.au,P2,C,regional_media_candidate,asia_pacific,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+cpps_org_my,http://cpps.org.my/national-competitiveness/,cpps.org.my,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+csis_org,https://www.csis.org/analysis,csis.org,P3,C,think_tank_context,global,context_only,analysis source not news backbone,manual_or_curated
+csmonitor_com,http://www.csmonitor.com/The-Culture/Faith-Religion,csmonitor.com,P1,B,global_major_media,global,secondary_crawl,use domain but replace weak section URL,manual_or_curated
+csps_org_bn,http://www.csps.org.bn/press/events-organised/forums/,csps.org.bn,Drop,D,noise,global,drop,"non-news, utility, forum, lifestyle, or commerce source",heuristic
+cuba_cu,http://www.cuba.cu/sites/politica,cuba.cu,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+culturaitalia_it,http://www.culturaitalia.it/blog/category/news/,culturaitalia.it,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+cumrapostasi_com,https://cumrapostasi.com/kat/gundem/,cumrapostasi.com,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+dailyexpress_com_my,http://www.dailyexpress.com.my/world/,dailyexpress.com.my,P2,C,national_major_media,asia,selective_crawl,regional supplement source,manual_or_curated
+dailyibrat_com,https://www.dailyibrat.com/news/category/latest-news/,dailyibrat.com,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+dailyinqilab_com,https://www.dailyinqilab.com/national,dailyinqilab.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+dailynayadiganta_com,https://www.dailynayadiganta.com/latest/,dailynayadiganta.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+dailynews_co_th,http://www.dailynews.co.th/news/,dailynews.co.th,P2,C,national_major_media,asia,selective_crawl,high volume Thai source,manual_or_curated
+dailyqudrat_pk,https://dailyqudrat.pk/world/,dailyqudrat.pk,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+dailysabah_com,https://www.dailysabah.com/politics,dailysabah.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+dailythepatriot_com,https://dailythepatriot.com/category/latest-news/,dailythepatriot.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+dainiknavajyoti_com,http://www.dainiknavajyoti.com/world/category-1,dainiknavajyoti.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+dantri_com_vn,http://dantri.com.vn/the-gioi.htm,dantri.com.vn,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+darendehaber_com,https://darendehaber.com/haber/kategori/liste-22,darendehaber.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+data_blog,https://data.blog/category/data-engineering/,data.blog,Drop,D,noise,global,drop,blog platform,manual_or_curated
+dawnnews_tv,https://www.dawnnews.tv/pakistan,dawnnews.tv,P0,A,national_major_media,south_asia,primary_crawl,important Pakistan source,manual_or_curated
+dcinside_com,https://gall.dcinside.com,dcinside.com,Drop,D,noise,asia,drop,forum platform not news,manual_or_curated
+de_hujiang_com,https://de.hujiang.com/new/xinwen/,de.hujiang.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+degisimmedya_com,http://www.degisimmedya.com/hkategori/41-guncel.html,degisimmedya.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+desh_co_in,https://www.desh.co.in/latest-news,desh.co.in,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+desh_tv,https://desh.tv/national,desh.tv,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+desidozz_com,https://desidozz.com/news/,desidozz.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+detik_com,https://news.detik.com/,detik.com,P1,B,national_major_media,asia,secondary_crawl,major Indonesia source,manual_or_curated
+detiknews_com,https://news.detik.com/berita,detik.com,P1,B,national_major_media,asia,secondary_crawl,major Indonesia news section,manual_or_curated
+deutschlandfunkkultur_de,https://www.deutschlandfunkkultur.de/politik-114.html,deutschlandfunkkultur.de,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+deutschlernerblog_de,https://deutschlernerblog.de/category/sprachniveaus/,deutschlernerblog.de,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+deutschwortschatz_de,https://deutschwortschatz.de/wortschatzbilder-zum-geniessen/blog/,deutschwortschatz.de,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+devbhoomimedia_com,https://www.devbhoomimedia.com/uttrakhand/national/,devbhoomimedia.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+dex_com,http://dex.com/global_locations.jsp,dex.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+dhakatimes24_com,https://www.dhakatimes24.com/national,dhakatimes24.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+diariodechimbote_com,https://diariodechimbote.com/,diariodechimbote.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+dict_com,https://www.dict.com/,dict.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+dictionary_cambridge_org,https://www.dictionary.cambridge.org/dictionary/,dictionary.cambridge.org,Drop,D,noise,global,drop,dictionary not news,manual_or_curated
+diis_dk,https://www.diis.dk/en/region/arctic,diis.dk,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+diyarbakirsoz_com,https://www.diyarbakirsoz.com/resmi-ilanlar,diyarbakirsoz.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+dizionari_repubblica_it,https://www.repubblica.it/politica/,repubblica.it,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+dizionario_internazionale_it,https://dizionario.internazionale.it/abbreviazioni/opinioni,dizionario.internazionale.it,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+dmpnews_org,https://dmpnews.org/category/%e0%a6%9c%e0%a6%be%e0%a6%a4%e0%a7%80%e0%a7%9f/,dmpnews.org,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+dn_pt,https://www.dn.pt/%C3%BAltimas,dn.pt,P1,B,national_major_media,europe,secondary_crawl,good Portugal supplement,manual_or_curated
+dohamagazine_qa,https://www.dohamagazine.qa/ar/article-list,dohamagazine.qa,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+doonhorizon_in,https://doonhorizon.in/latest-news/,doonhorizon.in,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+dpa_com,https://www.dpa.com/en/about-dpa/ownership-management,dpa.com,P1,B,wire_service,europe,secondary_crawl,major wire; use English international news service rather than corporate pages,manual_override
+dropbox_com,https://www.dropbox.com/business/solutions/marketing,dropbox.com,Drop,D,noise,global,drop,enterprise software site,manual_or_curated
+dunya_com,https://www.dunya.com/rss,dunya.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+dwiz882am_com,https://www.dwiz882am.com/index.php/category/headlines/,dwiz882am.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+ebanglalibrary_com,https://www.ebanglalibrary.com/genres/editors-choice/,ebanglalibrary.com,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+ecentral_my,https://ecentral.my/kewangan/,ecentral.my,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+echoroukonline_com,https://www.echoroukonline.com/world,echoroukonline.com,P2,C,national_major_media,middle_east,selective_crawl,useful Algeria source,manual_or_curated
+efe_com,https://www.efe.com/efe/espana/1/inicio-america/,efe.com,P1,B,wire_service,latin_america,secondary_crawl,valuable wire but path should be tuned,manual_or_curated
+ekushey_tv_com,https://www.ekushey-tv.com/1/national/,ekushey-tv.com,P2,C,national_major_media,south_asia,selective_crawl,useful Bangladesh TV source,manual_or_curated
+el_carabobeno_com,https://www.el-carabobeno.com/secciones/noticias/nacional/,el-carabobeno.com,P2,C,regional_media_candidate,middle_east,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+el_nacional_com,http://www.el-nacional.com/politica/,el-nacional.com,P2,C,national_major_media,latin_america,selective_crawl,useful but country scope limited,manual_or_curated
+elbistaninsesi_com,https://www.elbistaninsesi.com/politika,elbistaninsesi.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+elbyan_com,https://www.elbyan.com/category/%d8%a3%d8%ae%d8%a8%d8%a7%d8%b1-%d9%85%d8%b5%d8%b1/,elbyan.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+elcomercioperu_com_pe,http://www.elcomercioperu.com.pe/politica/,elcomercioperu.com.pe,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+elhadeth_mr,http://elhadeth.mr/inter,elhadeth.mr,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+elikhbaria_com,https://www.elikhbaria.com/,elikhbaria.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+elmundo_es,https://www.elmundo.es/internacional.html,elmundo.es,P0,A,national_major_media,europe,primary_crawl,major Spanish daily,manual_or_curated
+elpais_com,https://elpais.com/internacional/,elpais.com,P0,A,national_major_media,europe,primary_crawl,major Spanish global desk,manual_or_curated
+elperiodico_com,https://www.elperiodico.com/es/ultimas-noticias/,elperiodico.com,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+eltiempo_pe,https://eltiempo.pe/categoria/ultimas-noticias/,eltiempo.pe,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+elwatannews_com,https://www.elwatannews.com/section/19,elwatannews.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+emaratalyoum_com,https://www.emaratalyoum.com/politics/news,emaratalyoum.com,P2,C,national_major_media,middle_east,selective_crawl,valuable UAE source,manual_or_curated
+ensonhaber_com,https://www.ensonhaber.com/gundem,ensonhaber.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+epaper_pknewspapers_com,http://epaper.pknewspapers.com/indian.html,epaper.pknewspapers.com,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+escambray_cu,http://www.escambray.cu/category/mundo/,escambray.cu,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+esdm_go_id,http://www.esdm.go.id/id/reformasi-birokrasi/rubrik-berita,esdm.go.id,P2,C,official_government,asia,selective_crawl,official ministry site with narrow policy scope,manual_override
+express_pk,https://www.express.pk/world,express.pk,P1,B,national_major_media,south_asia,secondary_crawl,major Pakistan source,manual_or_curated
+f5haber_com,https://www.f5haber.com/dunya,f5haber.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+fairchildtv_com,https://www.fairchildtv.com/ch/news_archive_list.php,fairchildtv.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+faz_com,http://www.faz.com/aktuell/politik/,faz.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+faz_net,https://www.faz.net/aktuell/politik/,faz.net,P0,A,national_major_media,europe,primary_crawl,major German paper,manual_or_curated
+fc2_com,https://video.fc2.com/en/,fc2.com,Drop,D,noise,global,drop,video platform not news,manual_or_curated
+fcpp_org,https://frontiercentre.org/news/,frontiercentre.org,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+felesteen_ps,https://felesteen.ps/post/category/3/%D8%B9%D8%B1%D8%A8%D9%8A-%D9%88%D8%AF%D9%88%D9%84%D9%8A,felesteen.ps,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+femmeactuelle_fr,https://www.femmeactuelle.fr/actu,femmeactuelle.fr,Drop,D,noise,europe,drop,lifestyle and celebrity site,manual_or_curated
+fesdc_org,https://www.fesdc.org/about/friedrich-ebert-stiftung/topics.html,fesdc.org,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+fiia_fi,https://www.fiia.fi/en/en/news,fiia.fi,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+forbes_com,http://www.forbes.com/news/,forbes.com,P2,C,business_media,europe,selective_crawl,unclear source value; manual review recommended,heuristic
+foreignaffairs_org,http://www.foreignaffairs.org/topics/geopolitics,foreignaffairs.org,P3,C,think_tank_context,global,context_only,magazine analysis not raw news,manual_or_curated
+fortune_com,http://www.fortune.com/section/latest/,fortune.com,P2,C,business_media,global,selective_crawl,unclear source value; manual review recommended,heuristic
+forum_donanimhaber_com,https://forum.donanimhaber.com/anasayfa-haberleri--f189,forum.donanimhaber.com,Drop,D,noise,global,drop,"non-news, utility, forum, lifestyle, or commerce source",heuristic
+fotospor_com,https://www.fotospor.com/spor-haberleri/,fotospor.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+foxnews_com,https://www.foxbusiness.com/,foxbusiness.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+france_air_com,https://www.france-air.com/construire-votre-projet/industrie/automobile/,france-air.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+francebleu_fr,https://www.francebleu.fr/infos,francebleu.fr,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+fraserinstitute_org,https://www.fraserinstitute.org/categories/health-care,fraserinstitute.org,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+freemalaysiatoday_com,http://www.freemalaysiatoday.com/news,freemalaysiatoday.com,P0,A,national_major_media,asia,primary_crawl,high update frequency,manual_or_curated
+french_xinhuanet_com,http://french.xinhuanet.com/monde/index.htm,french.xinhuanet.com,P2,C,state_media,asia,selective_crawl,state source useful for multilingual China framing,manual_or_curated
+fril_jp,https://fril.jp/category/10001,fril.jp,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+frontiermyanmar_com,https://www.frontiermyanmar.com/updates,frontiermyanmar.com,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+futbolsayfasi_net,https://futbolsayfasi.net/futbol,futbolsayfasi.net,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+gala_fr,https://www.gala.fr/l_actu,gala.fr,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+gapgundemi_com,https://www.gapgundemi.com/urfa-haber,gapgundemi.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+gatra_com,http://www.gatra.com/category-234-Nasional.html,gatra.com,P2,C,national_major_media,asia,selective_crawl,useful Indonesia supplement,manual_or_curated
+gazetevatan_com,https://www.gazetevatan.com/gundem/,gazetevatan.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+gazzetta_it,https://www.gazzetta.it/Sport-Usa/,gazzetta.it,Drop,D,noise,europe,drop,"non-news, utility, forum, lifestyle, or commerce source",heuristic
+generaccion_com,http://www.generaccion.com/,generaccion.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+geo_tv,https://www.geo.tv/latest-news,geo.tv,P0,A,national_major_media,south_asia,primary_crawl,high volume Pakistan source,manual_or_curated
+gercekgundem_com,https://www.gercekgundem.com/gazete-mansetleri,gercekgundem.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+germany_travel,https://www.germany.travel/de/startseite.html/de/inspiring-germany/uebersicht.html,germany.travel,Drop,D,noise,europe,drop,tourism site,manual_or_curated
+giornali_it,https://giornali.it/quotidiani-nazionali/,giornali.it,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+gnnhd_tv,https://gnnhd.tv/latest,gnnhd.tv,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+googlynews_tv,https://googlynews.tv/section/latest-report-news-in-urdu/,googlynews.tv,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+guerrillero_cu,http://www.guerrillero.cu/category/cuba/,guerrillero.cu,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+gunes_com,https://www.gunes.com/dunya,gunes.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+haaretz_com,https://www.haaretz.com/israel-news/israel-security,haaretz.com,P0,A,national_major_media,middle_east,primary_crawl,high value for Israel coverage,manual_or_curated
+haaretzdaily_com,https://www.haaretzdaily.info/category/tie-world/tie-games/,haaretzdaily.info,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+haber3_com,https://www.haber3.com/yerel,haber3.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+haber7_com,https://www.haber7.com/gazete-mansetleri/dunya,haber7.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+haberler_com,https://www.haberler.com/dunya/,haberler.com,P2,C,national_major_media,middle_east,selective_crawl,high volume Turkey source,manual_or_curated
+haberturk_com,https://www.haberturk.com/gundem,haberturk.com,P1,B,national_major_media,middle_east,secondary_crawl,important Turkey source,manual_or_curated
+hakimiyet_com,https://www.hakimiyet.com/haberler/dunya/,hakimiyet.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+hariansinggalang_co_id,https://www.hariansinggalang.co.id/berita,hariansinggalang.co.id,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+hatawtabloid_com,https://www.hatawtabloid.com/,hatawtabloid.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+hataygazetesi_com,https://www.hataygazetesi.com/saglik,hataygazetesi.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+heritage_org,https://www.heritage.org/global-politics,heritage.org,P3,C,think_tank_context,north_america,context_only,policy advocacy source not news backbone,manual_or_curated
+hindi_apnlive_com,https://hindi.apnlive.com/top-news/,hindi.apnlive.com,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+hindi_digpu_com,https://hindi.digpu.com/category/politics-news,hindi.digpu.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+hindi_liveatnews_com,https://hindi.liveatnews.com/,hindi.liveatnews.com,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+hindi_nyoooz_com,https://www.hindi.nyoooz.com/news/lucknow/,hindi.nyoooz.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+hindi_thequint_com,https://hindi.thequint.com/opinion,hindi.thequint.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+hindi_webdunia_com,https://hindi.webdunia.com/latest-hindi-news,hindi.webdunia.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+hindustantimes_com,https://www.hindustantimes.com/world-news,hindustantimes.com,P0,A,national_major_media,south_asia,primary_crawl,major India source,manual_or_curated
+hitachi_co_jp,https://www.hitachi.co.jp/products/,hitachi.co.jp,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+hojemacau_com_mo,https://hojemacau.com.mo/seccao/entrevista/,hojemacau.com.mo,P2,C,regional_media_candidate,asia_pacific,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+hoover_org,https://www.hoover.org/publications/defining-ideas,hoover.org,P3,C,think_tank_context,north_america,context_only,analysis source not news backbone,manual_or_curated
+hudson_org,http://www.hudson.org/foreign-policy,hudson.org,P3,C,think_tank_context,north_america,context_only,analysis source not news backbone,manual_or_curated
+hudutgazetesi_com,http://www.hudutgazetesi.com/kategori/guncel/,hudutgazetesi.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+hurriyet_com_tr,https://www.hurriyet.com.tr/gundem/,hurriyet.com.tr,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+hurriyetdailynews_com,https://www.hurriyetdailynews.com/world/,hurriyetdailynews.com,P0,A,national_major_media,middle_east,primary_crawl,English Turkey source,manual_or_curated
+id_mofcom_gov_cn,https://id.mofcom.gov.cn/mytz/index.html,id.mofcom.gov.cn,P1,B,official_government,asia,secondary_crawl,official commerce and investment news source useful for China policy framing,manual_override
+id_wikipedia_org,https://id.wikipedia.org/wiki/Kategori:Penelitian,id.wikipedia.org,P2,C,noise,latin_america,selective_crawl,unclear source value; manual review recommended,heuristic
+iedm_org,https://www.iedm.org/685-research-areas/,iedm.org,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+ifri_org,https://www.ifri.org/en/thematiques/economy,ifri.org,P3,C,think_tank_context,europe,context_only,"analysis source; useful for context, not raw news backbone",heuristic
+iiea_com,https://www.iiea.com/economics,iiea.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+iisd_org,https://www.iisd.org/articles/insights,iisd.org,P3,C,think_tank_context,global,context_only,"analysis source; useful for context, not raw news backbone",heuristic
+ilmanifesto_it,https://ilmanifesto.it/sezioni/internazionale,ilmanifesto.it,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+ilmattino_it,https://www.ilmattino.it/primopiano/,ilmattino.it,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+ilmessaggero_it,https://www.ilmessaggero.it/politica/,ilmessaggero.it,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+ilsole24ore_com,http://www.ilsole24ore.com/sez/mondo,ilsole24ore.com,P2,C,business_media,global,selective_crawl,unclear source value; manual review recommended,heuristic
+indonesian_cri_cn,http://indonesian.cri.cn/world,indonesian.cri.cn,P2,C,state_media,asia,selective_crawl,unclear source value; manual review recommended,heuristic
+inextlive_com,https://www.inextlive.com/latest-news-hindi.html,inextlive.com,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+infukuoka_info,http://www.infukuoka.info/,infukuoka.info,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+inkhabar_com,https://www.inkhabar.com/world/,inkhabar.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+inquirer_net,https://newsinfo.inquirer.net/,inquirer.net,P0,A,national_major_media,asia,primary_crawl,major Philippines source,manual_or_curated
+insideindonesia_org,http://www.insideindonesia.org/archive,insideindonesia.org,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+interfax_com,https://interfax.com/newsroom/top-stories/,interfax.com,P0,A,wire_service,europe,primary_crawl,important regional wire,manual_or_curated
+internationalaffairs_org_au,https://www.internationalaffairs.org.au/blog-post-type/analysis/,internationalaffairs.org.au,P2,C,regional_media_candidate,asia_pacific,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+intimes_com_my,http://intimes.com.my/news2a/index.php/2018-07-09-11-40-04,intimes.com.my,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+io_gov_mo,https://www.bo.dsaj.gov.mo/pt/home/,bo.dsaj.gov.mo,P2,C,official_government,asia,selective_crawl,official Macau public administration source with limited newsroom relevance,manual_override
+ips_ubd_edu_bn,https://ips.ubd.edu.bn/category/news/,ips.ubd.edu.bn,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+irna_ir,https://www.irna.ir/rss,irna.ir,P0,A,state_media,middle_east,primary_crawl,official Iranian news agency,manual_or_curated
+irpp_org,https://irpp.org/media/?media_type=op-ed&display=grid,irpp.org,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+ispmyanmar_com,https://www.ispmyanmar.com/category/state-of-myanmar,ispmyanmar.com,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+israel21c_org,https://www.israel21c.org/latest/,israel21c.org,P2,C,regional_media_candidate,middle_east,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+israelhayom_co_il,https://www.israelhayom.co.il/news,israelhayom.co.il,P1,B,national_major_media,middle_east,secondary_crawl,high relevance but paywall risk,manual_or_curated
+istat_it,https://www.istat.it/statistiche-per-temi/economia/conti-nazionali/,istat.it,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+istikbalgazetesi_com,http://www.istikbalgazetesi.com/guncel,istikbalgazetesi.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+iwanami_co_jp,https://www.iwanami.co.jp/magazine/,iwanami.co.jp,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+jagran_com,https://www.jagran.com/world-news-hindi.html,jagran.com,P2,C,national_major_media,south_asia,selective_crawl,major Hindi source,manual_or_curated
+janes_com,http://www.janes.com/defence-intelligence/who-we-help,janes.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+janoduniya_tv,http://janoduniya.tv/%e0%a4%a4%e0%a4%95%e0%a4%a8%e0%a5%80%e0%a4%95/,janoduniya.tv,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+janokti_com,https://www.janokti.com/,janokti.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+japan_guide_com,https://www.japan-guide.com/news/,japan-guide.com,Drop,D,noise,asia,drop,tourism site,manual_or_curated
+jasarat_com,https://www.jasarat.com/urdu/latest-news/,jasarat.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+jianhuadaily_com,http://www.jianhuadaily.com/index.php/international,jianhuadaily.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+jnocnews_co_jp,http://www.jnocnews.co.jp/c/comment,jnocnews.co.jp,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+jobkorea_co_kr,https://www.jobkorea.co.kr/recruit/joblist?menucode=local&localorder=1,jobkorea.co.kr,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+jp_bank_japanpost_jp,https://www.jp-bank.japanpost.jp/news/2026/news_2026.html,jp-bank.japanpost.jp,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+jpfbj_cn,https://www.jpfbj.cn/mp/culture/,jpfbj.cn,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+jpost_com,https://www.jpost.com/israel-news,jpost.com,P0,A,national_major_media,middle_east,primary_crawl,major English Israel source,manual_or_curated
+jugantor_com,https://www.jugantor.com/latest,jugantor.com,P2,C,national_major_media,south_asia,selective_crawl,major Bangladesh source,manual_or_curated
+kadikoygazetesi_com,https://kadikoygazetesi.com/politika,kadikoygazetesi.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+kaliokalam_com,https://www.kaliokalam.com/category/%e0%a6%ac%e0%a6%bf%e0%a6%a6%e0%a7%87%e0%a6%b6%e0%a6%bf-%e0%a6%b8%e0%a6%be%e0%a6%b9%e0%a6%bf%e0%a6%a4%e0%a7%8d%e0%a6%af/,kaliokalam.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+kampucheathmey_com,https://www.kampucheathmey.com/category/local-news/,kampucheathmey.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+kaowao_org,http://www.kaowao.org/category/%e0%b8%aa%e0%b8%a5%e0%b9%87%e0%b8%ad%e0%b8%95/,kaowao.org,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+karar_com,https://www.karar.com/guncel-haberler,karar.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+karennews_org,http://karennews.org/category/hotnews/,karennews.org,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+karrierebibel_de,https://karrierebibel.de/ausbildung-ohne-schulabschluss/,karrierebibel.de,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+kbn_news,https://kbn.news/archives/category/%e1%9e%82%e1%9f%92%e1%9e%9a%e1%9f%84%e1%9f%87%e1%9e%90%e1%9f%92%e1%9e%93%e1%9e%b6%e1%9e%80%e1%9f%8b%e1%9e%85%e1%9e%9a%e1%9e%b6%e1%9e%85%e1%9e%9a,kbn.news,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+kddi_com,https://newsroom.kddi.com/news/index?category=newsrelease,newsroom.kddi.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+kemenkopmk_go_id,http://www.kemenkopmk.go.id/index.php/berita-dan-artikel,kemenkopmk.go.id,P2,C,official_government,asia,selective_crawl,official ministry site; useful selectively rather than in the main crawl,manual_override
+kemenpora_go_id,http://www.kemenpora.go.id/berita,kemenpora.go.id,P2,C,official_government,asia,selective_crawl,official but sports ministry focus,manual_or_curated
+kemergozcu_com,https://www.kemergozcu.com/haberler/gundem/,kemergozcu.com,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+kemhan_go_id,http://www.kemhan.go.id/category/foto,kemhan.go.id,P2,C,official_government,asia,selective_crawl,defense ministry source with limited structured text,manual_or_curated
+kentgazetesi_com,http://www.kentgazetesi.com/gundem/,kentgazetesi.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+khabreapki_com,https://khabreapki.com/category/news/,khabreapki.com,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+khamsablao_com,https://khamsablao.com/laostolaoswords/%e0%ba%9a%e0%ba%bb%e0%ba%94%e0%ba%84%e0%ba%a7%e0%ba%b2%e0%ba%A1/,khamsablao.com,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+khmer7news_com,https://khmer7news.com/archives/category/%e1%9e%96%e1%9f%90%e1%9e%8f%e1%9f%8c%e1%9e%98%e1%9e%b6%e1%9e%93%e1%9e%87%e1%9e%b6%e1%9e%8f%e1%9e%B7,khmer7news.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+khonumthung_org,https://khonumthung.org/category/headline/,khonumthung.org,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+kicnews_org,http://kicnews.org/category/%e1%81%82%e1%81%80%e1%81%82%e1%81%80-%e1%80%9b%e1%80%bd%e1%80%B1%E1%80%B8%E1%80%80%E1%80%B1%E1%80%AC%E1%80%80%E1%80%BA%E1%80%95%E1%80%BD%E1%80%B2/%e1%80%9b%e1%80%BD%e1%80%B1%E1%80%B8%E1%80%80%E1%80%B1%E1%80%AC%E1%80%80%E1%80%BA%E1%80%95%E1%80%BD%E1%80%B2%E1%80%9E%E1%80%90%E1%80%84%E1%80%BA%E1%80%B8/,kicnews.org,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+kilispostasi_com,https://www.kilispostasi.com/dunya/,kilispostasi.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+kirsehirgundem_com,http://www.kirsehirgundem.com/category/gundem/,kirsehirgundem.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+kishoralo_com,https://www.kishoralo.com/golpo,kishoralo.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+kkp_go_id,http://www.kkp.go.id/news.html,kkp.go.id,P2,C,official_government,asia,selective_crawl,official agency with partial policy relevance,manual_or_curated
+kohsantepheapdaily_com_kh,http://kohsantepheapdaily.com.kh/category/politic,kohsantepheapdaily.com.kh,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+komchadluek_net,http://www.komchadluek.net/category/news,komchadluek.net,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+komisiyudisial_go_id,http://www.komisiyudisial.go.id/frontend/news,komisiyudisial.go.id,P2,C,official_government,asia,selective_crawl,official judiciary source not core geopolitics,manual_or_curated
+kompas_com,https://news.kompas.com?source=navbar,kompas.com,P1,B,national_major_media,asia,secondary_crawl,major Indonesia source,manual_or_curated
+kosmo_com_my,http://www.kosmo.com.my/category/terkini/,kosmo.com.my,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+kuzeyanadolugazetesi_com,http://www.kuzeyanadolugazetesi.com/category/gundem/,kuzeyanadolugazetesi.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+kuzeyhaber_com,http://www.kuzeyhaber.com/kategori/guncel/1,kuzeyhaber.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+kyodo_co_jp,http://www.kyodo.co.jp/news/,kyodo.co.jp,P0,A,wire_service,asia,primary_crawl,top Japanese wire,manual_or_curated
+lacuarta_com,https://www.lacuarta.com/mundo/,lacuarta.com,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+lademajagua_cu,https://lademajagua.cu/category/nacionales/,lademajagua.cu,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+ladepeche_fr,https://www.ladepeche.fr/rss.xml,ladepeche.fr,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+lahora_cl,http://www.lahora.cl/categoria/internacional/,lahora.cl,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+lalonsain_wordpress_com,https://lalonsain.wordpress.com/,lalonsain.wordpress.com,Drop,D,noise,europe,drop,"non-news, utility, forum, lifestyle, or commerce source",heuristic
+lanacion_com_ar,http://www.lanacion.com.ar/politica/,lanacion.com.ar,P0,A,national_major_media,latin_america,primary_crawl,major Argentina source,manual_or_curated
+laoembassy_com,https://laoembassy.com/category/embassy/,laoembassy.com,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+laopost_com,https://laopost.com/politics,laopost.com,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+lapatilla_com,https://www.lapatilla.com/secciones/politica/,lapatilla.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+larousse_fr,https://www.larousse.fr/encyclopedie,larousse.fr,Drop,D,noise,europe,drop,"non-news, utility, forum, lifestyle, or commerce source",heuristic
+lastampa_it,http://www.lastampa.it/politica/,lastampa.it,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+latercera_com,http://www.latercera.com/canal/politica/,latercera.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+latimes_com,https://www.latimes.com/politics,latimes.com,P0,A,national_major_media,north_america,primary_crawl,major US paper,manual_or_curated
+lavanguardia_com,http://www.lavanguardia.com/politica,lavanguardia.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+lechinois_com,http://www.lechinois.com/coursnet/coursnettitre.html/oracles/oracles-liste.php,lechinois.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+ledauphine_com,https://www.ledauphine.com/france-monde,ledauphine.com,P2,C,regional_media_candidate,asia_pacific,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+lefigaro_fr,https://www.lefigaro.fr/international,lefigaro.fr,P0,A,national_major_media,europe,primary_crawl,major French daily,manual_or_curated
+lepoint_fr,https://www.lepoint.fr/politique/,lepoint.fr,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+lercio_it,https://www.lercio.it/category/cultura/,lercio.it,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+library_metro_tokyo_lg_jp,https://www.library.metro.tokyo.lg.jp/search/research_guide/health_medical/,library.metro.tokyo.lg.jp,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+linternaute_com,https://www.linternaute.com/actualite/,linternaute.com,P2,C,regional_media_candidate,asia_pacific,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+liputan6_com,https://www.liputan6.com/news,liputan6.com,P1,B,national_major_media,asia,secondary_crawl,major Indonesia source,manual_or_curated
+livehindustan_com,https://www.livehindustan.com/international/,livehindustan.com,P2,C,regional_media_candidate,north_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+lowyinstitute_org,https://www.lowyinstitute.org/publications,lowyinstitute.org,P3,C,think_tank_context,asia_pacific,context_only,analysis source not news backbone,manual_or_curated
+macaupostdaily_com,https://www.macaupostdaily.com/news/list?tab=CORPORATE,macaupostdaily.com,P2,C,regional_media_candidate,asia_pacific,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+macdonaldlaurier_ca,https://www.macdonaldlaurier.ca/category/issues/,macdonaldlaurier.ca,P2,C,regional_media_candidate,asia_pacific,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+magtheweekly_com,https://magtheweekly.com/category/fashion,magtheweekly.com,Drop,D,noise,global,drop,"non-news, utility, forum, lifestyle, or commerce source",heuristic
+make_it_in_germany_com,https://www.make-it-in-germany.com/de/arbeiten-in-deutschland/,make-it-in-germany.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+malatyahaber_com,https://malatyahaber.com/kategori/son-dakika,malatyahaber.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+manilatimes_net,https://www.manilatimes.net/world/feed,manilatimes.net,P1,B,national_major_media,asia,secondary_crawl,good Philippines supplement source,manual_or_curated
+marca_com,https://www.marca.com/futbol.html,marca.com,Drop,D,noise,europe,drop,sports site,manual_or_curated
+mb_com_ph,https://mb.com.ph/category/philippines,mb.com.ph,P2,C,national_major_media,asia,selective_crawl,useful Philippines supplement,manual_or_curated
+medicitalia_it,https://www.medicitalia.it/dizionario-medico/salute-benessere/emorroidi/,medicitalia.it,Drop,D,noise,europe,drop,medical reference site,manual_or_curated
+meridiano_com_ve,http://meridiano.com.ve/beisbol,meridiano.com.ve,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+midilibre_fr,https://www.midilibre.fr/actu/politique/,midilibre.fr,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+ministryofrailtransportation_com,http://www.ministryofrailtransportation.com/category/environment,ministryofrailtransportation.com,Drop,D,noise,europe,drop,"non-news, utility, forum, lifestyle, or commerce source",heuristic
+mm_kunming_cn,https://mm.kunming.cn/yw/,mm.kunming.cn,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+mmpeacemonitor_org,https://www.mmpeacemonitor.org/en/eng-eros-profile/chin-national-front-cnf-cna/,mmpeacemonitor.org,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+mot_go_th,https://ops.mot.go.th/,ops.mot.go.th,P2,C,official_government,asia,selective_crawl,transport ministry source,manual_or_curated
+motsavec_fr,https://www.motsavec.fr/a,motsavec.fr,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+msnbc_com,http://www.msnbc.com/world,msnbc.com,P2,C,regional_media_candidate,north_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+myanmar_com,https://myanmar.com/news/,myanmar.com,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+myanmar_yunnangateway_com,http://myanmar.yunnangateway.com/cityMini/site/en/News,myanmar.yunnangateway.com,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+myanmarcnn_com,http://www.myanmarcnn.com/search/label/International%20News,myanmarcnn.com,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+myanmarisis_org,http://www.myanmarisis.org/news/,myanmarisis.org,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+myanmartravel_org,http://myanmartravel.org/history.html,myanmartravel.org,Drop,D,noise,asia,drop,"non-news, utility, forum, lifestyle, or commerce source",heuristic
+myitkyinanewsjournal_com,https://www.myitkyinanewsjournal.com/category/politics-news/,myitkyinanewsjournal.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+mynet_com,https://www.mynet.com/spor/turkiye-super-lig-puan-durumu,mynet.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+mypaper_sg,http://mypaper.sg/category/top-stories/,mypaper.sg,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+mzamin_com,https://mzamin.com/category/%E0%A6%AC%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%AC%E0%A6%9C%E0%A6%AE%E0%A6%BF%E0%A6%A8,mzamin.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+na_gov_la,http://na.gov.la/%e0%ba%99%e0%ba%b4%e0%ba%95%e0%ba%b4%e0%ba%81%e0%ba%b3/%e0%ba%9a%e0%ba%b1%e0%ba%99%e0%ba%94%e0%ba%b2%e0%ba%81%e0%ba%bb%e0%ba%94%e0%bb%9d%e0%ba%b2%e0%ba%8d/,na.gov.la,P2,C,official_government,asia,selective_crawl,official but narrow parliamentary focus,manual_or_curated
+nationaljournal_com,http://nationaljournal.com/latest/news/,nationaljournal.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+nationthailand_com,https://www.nationthailand.com/news/world,nationthailand.com,P1,B,national_major_media,asia,secondary_crawl,strong Thailand and region coverage,manual_or_curated
+nationtv_tv,http://www.nationtv.tv/news/foreign,nationtv.tv,P2,C,national_major_media,asia,selective_crawl,useful Thailand supplement,manual_or_curated
+nayalook_com,http://www.nayalook.com/category/international/,nayalook.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+nazrulgeeti_org,https://www.nazrulgeeti.org/index.php/all-song-list,nazrulgeeti.org,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+nbcnews_com,https://www.nbcnews.com/science,nbcnews.com,P1,B,global_major_media,north_america,secondary_crawl,use domain but replace weak section URL,manual_or_curated
+netra_news,https://netra.news/tags/netra-report/,netra.news,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+new_chinese_org,http://www.new-chinese.org/chinesische-nachrichten.html,new-chinese.org,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+news_eleven_com,https://news-eleven.com/world,news-eleven.com,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+news_thaipbs_or_th,https://news.thaipbs.or.th/news/world,news.thaipbs.or.th,P1,B,public_broadcaster,asia,secondary_crawl,high quality Thai public broadcaster,manual_or_curated
+newsarawaktribune_com,http://www.newsarawaktribune.com/category/law/,newsarawaktribune.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+newsnationtv_com,https://www.newsnationtv.com/india,newsnationtv.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+newspost_in,https://www.newspost.in/india-news,newspost.in,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+newstracklive_com,https://www.newstracklive.com/latest-news/,newstracklive.com,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+newsweek_com,http://www.newsweek.com/world,newsweek.com,P1,B,global_major_media,north_america,secondary_crawl,good archive and world desk,manual_or_curated
+newyorker_com,http://www.newyorker.com/news,newyorker.com,P2,C,regional_media_candidate,north_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+ngoisao_net,http://ngoisao.net/showbiz,ngoisao.net,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+nikkei_com,https://www.nikkei.com/business/column/,nikkei.com,P0,A,national_major_media,asia,primary_crawl,use politics and Asia sections rather than current URL,manual_or_curated
+nintendo_co_jp,https://www.nintendo.com/jp/topics/,nintendo.com,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+nixonfoundation_org,https://www.nixonfoundation.org/category/news/,nixonfoundation.org,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+nld_com_vn,http://nld.com.vn/thoi-su.htm,nld.com.vn,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+noticiasargentinas_com,https://noticiasargentinas.com/politica,noticiasargentinas.com,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+npr_org,http://www.npr.org/sections/news/,npr.org,P0,A,public_broadcaster,north_america,primary_crawl,strong international reporting,manual_or_curated
+nst_com_my,http://www.nst.com.my/newssummary,nst.com.my,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+nybooks_com,https://www.nybooks.com/politics/,nybooks.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+nydailynews_com,https://www.nydailynews.com/news/,nydailynews.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+nzherald_co_nz,http://www.nzherald.co.nz/latest-news/,nzherald.co.nz,P1,B,national_major_media,asia_pacific,secondary_crawl,good regional supplement,manual_or_curated
+observer_co_uk,http://www.observer.co.uk/sport,observer.co.uk,Drop,D,noise,europe,drop,"non-news, utility, forum, lifestyle, or commerce source",heuristic
+okaz_com_sa,https://www.okaz.com.sa/culture,okaz.com.sa,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+okezone_com,https://news.okezone.com/,okezone.com,P2,C,national_major_media,asia,selective_crawl,high volume and noisy,manual_or_curated
+onedio_com,https://onedio.com/gundem,onedio.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+onepakistan_com_pk,https://onepakistan.com.pk/blog/,onepakistan.com.pk,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+orientaldaily_com_my,http://www.orientaldaily.com.my/news/nation,orientaldaily.com.my,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+ortadogugazetesi_com,https://www.ortadogugazetesi.com/gundem,ortadogugazetesi.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+owmpinternational_com,https://owmpinternational.com/sultan-haji-hassanal-bolkiah-institute-of-defence-and-strategic-studies-2/news/,owmpinternational.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+padangekspres_co_id,http://www.padangekspres.co.id/category/teknologi/,padangekspres.co.id,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+paktodayinfo_com,https://paktodayinfo.com/category/national/,paktodayinfo.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+panasonic_jp,https://panasonic.jp/store/limited/refurbished/,panasonic.jp,Drop,D,noise,asia,drop,"non-news, utility, forum, lifestyle, or commerce source",heuristic
+pasteur_la,https://www.pasteur.la/activities-4/lao-japan-lab-parasitology-2024/,pasteur.la,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+patrika_com,https://www.patrika.com/world-news,patrika.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+pattayamail_com,https://www.pattayamail.com/news,pattayamail.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+pealim_com,https://www.pealim.com/dict/prepositions/,pealim.com,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+perfil_com,https://www.perfil.com/seccion/politica/,perfil.com,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+periodico26_cu,http://www.periodico26.cu/index.php/es/del-mundo,periodico26.cu,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+pertanian_go_id,http://www.pertanian.go.id/?show=news&act=view_all,pertanian.go.id,P2,C,official_government,asia,selective_crawl,official agriculture source,manual_or_curated
+peugeot_fr,https://www.peugeot.fr/nos-vehicules/gamme/vehicules-electriques.html,peugeot.fr,Drop,D,noise,europe,drop,brand site,manual_or_curated
+pewresearch_org,https://www.pewresearch.org/topic/politics-policy/,pewresearch.org,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+philippinestoday_net,https://philippinestoday.net/archives/category/current-issues/charter-change,philippinestoday.net,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+phnompenhpost_com,http://www.phnompenhpost.com/category/national/,phnompenhpost.com,P1,B,national_major_media,asia,secondary_crawl,good Cambodia source,manual_or_curated
+piie_com,https://www.piie.com/research,piie.com,P3,C,think_tank_context,global,context_only,"analysis source; useful for context, not raw news backbone",heuristic
+pikiran_rakyat_com,http://www.pikiran-rakyat.com/news,pikiran-rakyat.com,P2,C,regional_media_candidate,middle_east,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+pinoyparazzi_com,https://www.pinoyparazzi.com/category/career-life/,pinoyparazzi.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+poesie_francaise_fr,https://www.poesie-francaise.fr/poemes-alfred-de-musset/,poesie-francaise.fr,Drop,D,noise,europe,drop,"non-news, utility, forum, lifestyle, or commerce source",heuristic
+poorvanchalmedia_com,https://www.poorvanchalmedia.com/latest-news-hindi/,poorvanchalmedia.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+popcouncil_org,https://www.popcouncil.org/country/egypt/,popcouncil.org,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+portalangop_co_ao,http://www.portalangop.co.ao/,portalangop.co.ao,P2,C,state_media,global,selective_crawl,unclear source value; manual review recommended,heuristic
+poskotanews_com,http://www.poskotanews.com/kanal/megapolitan/,poskotanews.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+postkhmer_com,http://www.postkhmer.com/category/international,postkhmer.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+posttoday_com,https://www.posttoday.com/category/latest-news,posttoday.com,P2,C,national_major_media,asia,selective_crawl,useful but broad scope,manual_or_curated
+prachachat_net,https://www.prachachat.net/politics,prachachat.net,P1,B,national_major_media,asia,secondary_crawl,strong politics coverage,manual_or_curated
+probashirdiganta_com,https://www.probashirdiganta.com/news,probashirdiganta.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+progressive_org,http://www.progressive.org/latest,progressive.org,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+projet_voltaire_fr,https://www.projet-voltaire.fr/nos-solutions/entreprises/,projet-voltaire.fr,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+prothomalo_com,https://www.prothomalo.com/world,prothomalo.com,P0,A,national_major_media,south_asia,primary_crawl,major Bangladesh source,manual_or_curated
+prsgroup_com,https://www.prsgroup.com/explore-our-products/,prsgroup.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+ptvnews_ph,https://ptvnews.ph/category/nation/,ptvnews.ph,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+publico_pt,https://www.publico.pt/politica,publico.pt,P1,B,national_major_media,europe,secondary_crawl,good Portugal source,manual_or_curated
+qiandaoribao_com,http://qiandaoribao.com/category/%e5%9b%bd%e5%86%85%e6%96%b0%e9%97%bb/,qiandaoribao.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+quotidiani_net,https://www.quotidiani.net/giornali_di_partito.htm,quotidiani.net,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+rab_co_jp,http://www.rab.co.jp/tv/,rab.co.jp,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+rainews_it,https://www.rainews.it/rss/cronaca,rainews.it,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+rakyatkalbar_com,http://rakyatkalbar.com/berita/kategori/nasional,rakyatkalbar.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+rand_org,https://www.rand.org/topics/international-affairs.html,rand.org,P3,C,think_tank_context,global,context_only,analysis source not news backbone,manual_or_curated
+rashtrakundalininews_com,http://www.rashtrakundalininews.com/search,rashtrakundalininews.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+rasmeinews_com,http://www.rasmeinews.com/angka-main-guangzhou,rasmeinews.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+raya_com,https://www.raya.com/%D8%B3%D9%8A%D8%A7%D8%B3%D8%A9,raya.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+regionalsecurity_org_au,https://regionalsecurity.org.au/research-and-thought-leadership/occasional-papers/,regionalsecurity.org.au,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+republika_co_id,https://news.republika.co.id/,republika.co.id,P1,B,national_major_media,asia,secondary_crawl,major Indonesia source,manual_or_curated
+rimnow_net,https://rimnow.net/w/w/?q=ar/news,rimnow.net,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+riotimesonline_com,https://riotimesonline.com/feed,riotimesonline.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+risingbd_com,https://www.risingbd.com/national/,risingbd.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+rnz_co_nz,https://www.rnz.co.nz/news/world,rnz.co.nz,P0,A,public_broadcaster,asia_pacific,primary_crawl,high quality New Zealand source,manual_or_curated
+roma_corriere_it,https://roma.corriere.it/politica/,roma.corriere.it,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+rsis_edu_sg,https://www.rsis.edu.sg/research/idss/research-programmes/indonesia-programme/,rsis.edu.sg,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+rtl_de,https://www.rtl.de/news/,rtl.de,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+rtve_es,http://www.rtve.es/noticias/ultimas-noticias/,rtve.es,P0,A,public_broadcaster,europe,primary_crawl,public broadcaster with broad coverage,manual_or_curated
+sabanew_net,https://www.sabanew.net/category/ar/1/,sabanew.net,P2,C,state_media,middle_east,selective_crawl,state source for Yemen coverage,manual_or_curated
+sachalayatan_com,http://www.sachalayatan.com/%E0%A6%B2%E0%A7%87%E0%A6%96%E0%A6%BE%E0%A6%B0_%E0%A6%A7%E0%A6%B0%E0%A6%A8/%E0%A6%96%E0%A6%AC%E0%A6%B0/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A6%BF,sachalayatan.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+salon_com,http://www.salon.com/category/news-and-politics,salon.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+samaykhabar_com,https://www.samaykhabar.com/search/label/BREAKING%20NEWS,samaykhabar.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+sana_sy,https://sana.sy/syria-news/,sana.sy,P2,C,state_media,middle_east,selective_crawl,state source with relevance for Syria coverage,manual_or_curated
+sananda_in,https://www.sananda.in/latest-news,sananda.in,P2,C,state_media,global,selective_crawl,unclear source value; manual review recommended,heuristic
+sangbadpratidin_in,https://www.sangbadpratidin.in/category/kolkata/,sangbadpratidin.in,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+sarabangla_net,https://sarabangla.net/news/,sarabangla.net,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+scmp_com,http://www.scmp.com/news/china/military,scmp.com,P0,A,regional_major_media,asia,primary_crawl,top source for China and region,manual_or_curated
+sederet_com,http://sederet.com/tutorial/c/,sederet.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+seehua_com,http://www.seehua.com/post/category/international,seehua.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+seslisozluk_net,https://www.seslisozluk.net/programlar/,seslisozluk.net,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+sg_yahoo_com,https://sg.news.yahoo.com/sports/,sg.news.yahoo.com,Drop,D,noise,global,drop,"non-news, utility, forum, lifestyle, or commerce source",heuristic
+sggp_org_vn,http://www.sggp.org.vn/chinhtri/,sggp.org.vn,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+shangbao_com_ph,http://www.shangbao.com.ph/more/scroll.html,shangbao.com.ph,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+shangbaoindonesia_com,http://www.shangbaoindonesia.com/political,shangbaoindonesia.com,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+shueisha_co_jp,https://www.shueisha.co.jp/news/,shueisha.co.jp,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+siamrath_co_th,http://www.siamrath.co.th/variety/entertainment,siamrath.co.th,Drop,D,noise,global,drop,"non-news, utility, forum, lifestyle, or commerce source",heuristic
+siamsport_co_th,http://www.siamsport.co.th/football-international,siamsport.co.th,Drop,D,noise,asia,drop,sports site,manual_or_curated
+sindonews_com,https://www.sindonews.com/nasional,sindonews.com,P2,C,national_major_media,asia,selective_crawl,large but noisy Indonesia source,manual_or_curated
+sinonimi_contrari_it,https://www.sinonimi-contrari.it/pesante,sinonimi-contrari.it,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+sipri_org,https://www.sipri.org/news,sipri.org,P3,C,think_tank_context,europe,context_only,defense research context source,manual_or_curated
+smbc_co_jp,https://www.smbc.co.jp/kojin/open-account/,smbc.co.jp,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+smh_com_au,https://www.smh.com.au/world/north-america,smh.com.au,P0,A,national_major_media,asia_pacific,primary_crawl,major Australia paper,manual_or_curated
+snuac_snu_ac_kr,http://snuac.snu.ac.kr/?page_id=44088,snuac.snu.ac.kr,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+softbank_jp,https://www.softbank.jp/sbnews/archive/category/%E7%A4%BE%E4%BC%9A%E8%AA%B2%E9%A1%8C%E3%81%AB%E3%80%81%E3%82%A2%E3%83%B3%E3%82%B5%E3%83%BC%E3%82%92%E3%80%82,softbank.jp,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+soha_vn,http://soha.vn/tin-moi-nhat.htm,soha.vn,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+somaliatoday_net,https://somaliatoday.net/category/news/%d8%a3%d8%ae%d8%a8%d8%a7%d8%b1%d8%a7%d9%84%d8%b9%d8%a7%d9%84%d9%85/,somaliatoday.net,P2,C,regional_media_candidate,africa,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+sondakika_com,https://www.sondakika.com/guncel/,sondakika.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+sporx_com,https://www.sporx.com/futbol-superlig,sporx.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+sri_com,https://www.sri.com/research/,sri.com,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+starmometer_com,https://starmometer.com/category/headline/,starmometer.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+stimson_org,https://www.stimson.org/research/trade-tech/,stimson.org,P3,C,think_tank_context,global,context_only,"analysis source; useful for context, not raw news backbone",heuristic
+straitstimes_com,http://www.straitstimes.com/world,straitstimes.com,P0,A,national_major_media,asia,primary_crawl,top Singapore source,manual_or_curated
+suarakarya_online_com,http://www.suarakarya-online.com/category/kosmetik/,suarakarya-online.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+sudouest_fr,https://www.sudouest.fr/international/,sudouest.fr,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+sudsapda_com,http://www.sudsapda.com/pr-news,sudsapda.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+swa_co_id,http://swa.co.id/swa,swa.co.id,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+tabla_com_sg,http://www.tabla.com.sg/culture/music,tabla.com.sg,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+tag24_de,https://www.tag24.de/nachrichten/politik/deutschland,tag24.de,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+targetlaos_com,https://targetlaos.com/category/news/,targetlaos.com,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+tarimdanhaber_com,https://www.tarimdanhaber.com/guncel,tarimdanhaber.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+tass_com,https://tass.com/middle-east-conflict,tass.com,P0,A,state_media,europe,primary_crawl,major state news agency with strong geopolitical coverage,manual_or_curated
+tatilcenneti_com,http://www.tatilcenneti.com/,tatilcenneti.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+tatsachen_ueber_deutschland_de,https://www.tatsachen-ueber-deutschland.de/de/politik-deutschland,tatsachen-ueber-deutschland.de,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+technobaboy_com,https://www.technobaboy.com/category/news/,technobaboy.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+ted_com,https://www.ted.com/watch/ted-ed,ted.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+telecom_paris_fr,https://www.telecom-paris.fr/news/newsroom?l=en,telecom-paris.fr,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+terra_com_pe,http://www.terra.com.pe/noticias/tendencias/,terra.com.pe,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+teznews_com,http://teznews.com/category/latest-news/,teznews.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+tg24_sky_it,https://tg24.sky.it/spettacolo,tg24.sky.it,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+th_news_cn,http://th.news.cn/ssyw.htm,th.news.cn,P2,C,state_media,asia,selective_crawl,state source useful for Thai language China framing,manual_or_curated
+thaipost_net,http://www.thaipost.net/politics/,thaipost.net,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+thairath_co_th,http://www.thairath.co.th/news,thairath.co.th,P2,C,national_major_media,asia,selective_crawl,major Thai outlet with broad noise,manual_or_curated
+thanhnien_vn,https://thanhnien.vn/bien-dong/thoi-su.htm,thanhnien.vn,P1,B,national_major_media,asia,secondary_crawl,strong Vietnam and South China Sea coverage,manual_or_curated
+thansettakij_com,http://www.thansettakij.com/category/latest-news,thansettakij.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+thawra_sy,http://thawra.sy/local_category/%d8%b3%d9%8a%d8%a7%d8%b3%d9%8a/,thawra.sy,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+theage_com_au,http://www.theage.com.au/world/north-america,theage.com.au,P0,A,national_major_media,asia_pacific,primary_crawl,major Australia paper,manual_or_curated
+theatlantic_com,http://www.theatlantic.com/politics/,theatlantic.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+thebalitimes_com,http://www.thebalitimes.com/category/national/,thebalitimes.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+theborneopost_com,https://www.theborneopost.com/news/nation/,theborneopost.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+thecic_org,https://thecic.org/cic-in-the-news/,thecic.org,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+thedailystar_net,https://www.thedailystar.net/news,thedailystar.net,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+thediliweekly_com,http://thediliweekly.com/category/headline-news/,thediliweekly.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+theedgemalaysia_com,http://www.theedgemalaysia.com/categories/world,theedgemalaysia.com,P1,B,business_media,asia,secondary_crawl,strong economic policy lens,manual_or_curated
+thefridaytimes_com,https://www.thefridaytimes.com/latest,thefridaytimes.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+theglobalist_com,http://www.theglobalist.com/global-issues/global-economy/,theglobalist.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+theglobeandmail_com,http://www.theglobeandmail.com/world/,theglobeandmail.com,P0,A,national_major_media,north_america,primary_crawl,major Canada source,manual_or_curated
+theguardian_com,https://www.theguardian.com/world,theguardian.com,P0,A,global_major_media,europe,primary_crawl,major global coverage,manual_or_curated
+theindiagram_com,https://theindiagram.com/category/travel-guides/,theindiagram.com,Drop,D,noise,asia,drop,"non-news, utility, forum, lifestyle, or commerce source",heuristic
+thejakartapost_com,http://www.thejakartapost.com/world,thejakartapost.com,P0,A,national_major_media,asia,primary_crawl,top Indonesia English source,manual_or_curated
+thejanmat_com,https://thejanmat.com/category/tie-world/,thejanmat.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+thelocal_fr,https://www.thelocal.fr/category/france-news,thelocal.fr,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+thenation_com,http://www.thenation.com/latest/,thenation.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+thenewscolumns_blogspot_com,https://thenewscolumns.blogspot.com/,thenewscolumns.blogspot.com,Drop,D,noise,global,drop,"non-news, utility, forum, lifestyle, or commerce source",heuristic
+thenewskhazana_com,https://thenewskhazana.com/news/,thenewskhazana.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+theportugalnews_com,https://www.theportugalnews.com/latest,theportugalnews.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+therocket_com_my,http://www.therocket.com.my/cn/category/%e6%9e%97%e5%90%89%e7%a5%a5/,therocket.com.my,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+thesaigontimes_vn,https://thesaigontimes.vn/noi-bat-2/,thesaigontimes.vn,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+thestar_com,http://www.thestar.com/news/world/,thestar.com,P1,B,national_major_media,north_america,secondary_crawl,good Canada supplement,manual_or_curated
+thestar_com_my,http://www.thestar.com.my/education/news,thestar.com.my,P1,B,national_major_media,asia,secondary_crawl,use domain but replace weak section URL,manual_or_curated
+thethaiger_com,https://thethaiger.com/news,thethaiger.com,P2,C,national_major_media,asia,selective_crawl,useful English Thailand supplement,manual_or_curated
+thevoiceofmp_com,https://www.thevoiceofmp.com/search/label/Madhyapradesh,thevoiceofmp.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+timesofindia_indiatimes_com,https://timesofindia.indiatimes.com/world/rest-of-world,timesofindia.indiatimes.com,P0,A,national_major_media,south_asia,primary_crawl,high volume India source,manual_or_curated
+timesofmalwa_in,https://www.timesofmalwa.in/search/label/%E0%A4%B0%E0%A4%BE%E0%A4%B7%E0%A5%8D%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A5%80%E0%A4%AF,timesofmalwa.in,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+timeturk_com,https://www.timeturk.com/politika,timeturk.com,P2,C,regional_media_candidate,middle_east,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+timorpost_com,https://timorpost.com/relijiaun/,timorpost.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+tnp_sg,http://www.tnp.sg/sports,tnp.sg,Drop,D,noise,global,drop,"non-news, utility, forum, lifestyle, or commerce source",heuristic
+todayonline_com,http://www.todayonline.com/watch,todayonline.com,P1,B,national_major_media,asia,secondary_crawl,use domain but replace weak section URL,manual_or_curated
+tonite_abante_com_ph,https://tonite.abante.com.ph/category/news/,tonite.abante.com.ph,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+tourismcambodia_com,http://www.tourismcambodia.com/directory/business-services/,tourismcambodia.com,Drop,D,noise,asia,drop,tourism directory,manual_or_curated
+trabajadores_cu,https://www.trabajadores.cu/seccion/lenguaje-preciso/,trabajadores.cu,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+trendyol_com,https://www.trendyol.com/butik/liste/2/erkek,trendyol.com,Drop,D,noise,global,drop,e-commerce site,manual_or_curated
+tribuna_cu,http://www.tribuna.cu/cuba,tribuna.cu,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+tuoitre_vn,http://tuoitre.vn/video/moi-nhat.htm,tuoitre.vn,P1,B,national_major_media,asia,secondary_crawl,use domain but replace video URL,manual_or_curated
+turkgun_com,https://www.turkgun.com/gundem,turkgun.com,P2,C,regional_media_candidate,middle_east,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+tv9hindi_com,https://www.tv9hindi.com/world,tv9hindi.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+tvn_cl,http://www.tvn.cl/noticias/deportes,tvn.cl,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+ujjawalprabhat_com,https://ujjawalprabhat.com/breaking-news-hindi/,ujjawalprabhat.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+ummat_net,https://ummat.net/topnews/,ummat.net,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+un_org,https://news.un.org/en/news,un.org,P0,A,official_io,global,primary_crawl,official multilateral news source,manual_or_curated
+unb_com_bd,https://unb.com.bd/latestnews,unb.com.bd,P1,B,wire_service,south_asia,secondary_crawl,useful Bangladesh wire,manual_or_curated
+uol_com_br,http://www.uol.com.br/esporte/,uol.com.br,Drop,D,noise,latin_america,drop,"non-news, utility, forum, lifestyle, or commerce source",heuristic
+urban_org,https://www.urban.org/,urban.org,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+usatoday_com,https://www.usatoday.com/sports/mlb/,usatoday.com,Drop,D,noise,north_america,drop,"non-news, utility, forum, lifestyle, or commerce source",heuristic
+usdp_org_mm,http://www.usdp.org.mm/category/%e1%80%bb%e1%80%95%e1%80%8a%e1%80%B9%E1%80%90%E1%80%BC%E1%80%84%E1%80%B9%E1%80%B8%E1%80%9E%E1%80%90%E1%80%84%E1%80%B9%E1%80%B8%E1%80%99%E1%80%BA%E1%80%AC%E1%80%B8/%e1%80%80%e1%80%9A%e1%80%AC%E1%80%B8%E1%80%BB%E1%80%95%E1%80%8A%E1%80%B9%E1%80%94%E1%80%9A%E1%80%B9/,usdp.org.mm,P2,C,regional_media_candidate,north_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+utusan_com_my,https://www.utusan.com.my/nasional/,utusan.com.my,P2,C,regional_media_candidate,north_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+vanguardia_cu,http://www.vanguardia.cu/,vanguardia.cu,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+vayofm_com,https://www.vayofm.com/index.php?option=list&id=77,vayofm.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+venceremos_cu,http://www.venceremos.cu/guantanamo-noticias-internacionales,venceremos.cu,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+versionfinal_com_ve,https://diarioversionfinal.com/categoria/politica-dinero/,diarioversionfinal.com,P2,C,regional_media_candidate,latin_america,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+vientianetimes_org_la,http://www.vientianetimes.org.la/Region_world/Reworld_Index.php,vientianetimes.org.la,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+vientianetimeslao_la,https://www.vientianetimeslao.la/category/public/,vientianetimeslao.la,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+viet_net,http://www.viet.net/news/,viet.net,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+vietnamnet_vn,http://vietnamnet.vn/chinh-tri,vietnamnet.vn,P1,B,national_major_media,asia,secondary_crawl,major Vietnam source,manual_or_curated
+vietnamonline_com,http://www.vietnamonline.com/destination.html,vietnamonline.com,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+vishvasnews_com,https://www.vishvasnews.com/world/,vishvasnews.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+vnexpress_net,http://vnexpress.net/tin-tuc-24h,vnexpress.net,P0,A,national_major_media,asia,primary_crawl,top Vietnam source,manual_or_curated
+voaindonesia_com,https://www.voaindonesia.com/BeritaDunia,voaindonesia.com,P2,C,public_broadcaster,asia,selective_crawl,valuable government funded external broadcaster,manual_or_curated
+voaportugues_com,http://www.voaportugues.com/z/2629,voaportugues.com,P2,C,public_broadcaster,europe,selective_crawl,unclear source value; manual review recommended,heuristic
+voh_com_vn,http://www.voh.com.vn/news/default.aspx/kien-thuc-01230804000000001.html,voh.com.vn,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+voici_fr,https://www.voici.fr/celebrites,voici.fr,Drop,D,noise,europe,drop,"non-news, utility, forum, lifestyle, or commerce source",heuristic
+vov_vn,http://vov.vn/chinh-tri,vov.vn,P1,B,public_broadcaster,asia,secondary_crawl,strong Vietnam public broadcaster,manual_or_curated
+wafa_ps,https://wafa.ps/Pages/LastNews,wafa.ps,P0,A,state_media,middle_east,primary_crawl,official Palestinian news agency,manual_or_curated
+wanbao_com_sg,http://www.wanbao.com.sg/news,wanbao.com.sg,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+watson_ch,https://www.watson.ch/deutschland/,watson.ch,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+webbangladesh_com,https://www.webbangladesh.com/category/1,webbangladesh.com,P2,C,regional_media_candidate,asia,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+wgtn_ac_nz,https://www.wgtn.ac.nz/strategic-studies/publications-and-research/publications-archive/discussion-papers,wgtn.ac.nz,P2,C,regional_media_candidate,asia_pacific,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+who_int,https://www.who.int/myanmar/news,who.int,P1,B,official_io,global,secondary_crawl,official but health focused,manual_or_curated
+wikisource_org,https://www.wikisource.org/wiki/Wikisource:News,wikisource.org,Drop,D,noise,global,drop,library project not live news,manual_or_curated
+wiktionary_org,https://ru.wiktionary.org/,wiktionary.org,Drop,D,noise,global,drop,wiki dictionary not news,manual_or_curated
+wilsoncenter_org,https://www.wilsoncenter.org/press-room,wilsoncenter.org,P3,C,think_tank_context,north_america,context_only,analysis source not news backbone,manual_or_curated
+wissen_de,https://www.wissen.de/technik-mobilitaet,wissen.de,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+wordreference_com,https://forum.wordreference.com,wordreference.com,Drop,D,noise,global,drop,forum and language site,manual_or_curated
+xinhuamyanmar_com,https://xinhuamyanmar.com/news/,xinhuamyanmar.com,P2,C,state_media,asia,selective_crawl,state source useful for Myanmar language China framing,manual_or_curated
+yan_sg,https://www.yan.sg/news/,yan.sg,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+yemnews_net,https://yemnews.net/index.php/news,yemnews.net,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+yenisafak_com,https://www.yenisafak.com/son-dakika,yenisafak.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+ynetnews_com,https://www.ynetnews.com/category/9733,ynetnews.com,P0,A,national_major_media,middle_east,primary_crawl,major Israel English source,manual_or_curated
+yomiuri_co_jp,http://www.yomiuri.co.jp/politics/,yomiuri.co.jp,P0,A,national_major_media,asia,primary_crawl,top Japanese daily,manual_or_curated
+youm7_com,http://www.youm7.com/Section/%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1-%D8%B9%D8%A7%D8%AC%D9%84%D8%A9/65/1,youm7.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+yugatech_com,http://www.yugatech.com/category/news/,yugatech.com,P2,C,regional_media_candidate,global,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+yupptv_com,https://www.yupptv.com/livetv/sections/popular-channel,yupptv.com,P2,C,regional_media_candidate,europe,selective_crawl,possible news publisher; needs manual review before large-scale crawl,heuristic
+zaobao_com,http://www.zaobao.com/news,zaobao.com,P0,A,regional_major_media,asia,primary_crawl,key Chinese language regional source,manual_or_curated

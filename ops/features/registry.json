@@ -1,0 +1,2366 @@
+{
+  "schema_version": 2,
+  "registry_id": "globemind-v1-feature-ownership",
+  "scope": "v1-core-web-feature-facades",
+  "owners": [
+    {
+      "id": "assistant-experience",
+      "name": "Assistant Experience",
+      "kind": "accountability_role",
+      "scope": "Assistant interaction, schedules, workspaces, reports, and assistant-facing UI contracts."
+    },
+    {
+      "id": "search-discovery",
+      "name": "Search and Discovery",
+      "kind": "accountability_role",
+      "scope": "Search queries, discovery result contracts, filters, and search-facing pages."
+    },
+    {
+      "id": "runtime-operations",
+      "name": "Runtime Operations",
+      "kind": "accountability_role",
+      "scope": "Operations monitoring, runtime visibility, and legacy endpoint retirement policy."
+    },
+    {
+      "id": "financial-intelligence",
+      "name": "Financial Intelligence",
+      "kind": "accountability_role",
+      "scope": "Financial dashboard, market data presentation, alert rules, and alert history."
+    },
+    {
+      "id": "opinion-intelligence",
+      "name": "Opinion Intelligence",
+      "kind": "accountability_role",
+      "scope": "Opinion analytics, sentiment models, quality signals, and sentiment-facing UI."
+    },
+    {
+      "id": "model-governance",
+      "name": "Model Risk and Assurance",
+      "kind": "accountability_role",
+      "scope": "Versioned model evaluation evidence, calibration, drift gates, and rollback recommendations."
+    },
+    {
+      "id": "knowledge-graph",
+      "name": "Knowledge Graph",
+      "kind": "accountability_role",
+      "scope": "Graph briefing, story graph contracts, hierarchy traversal, and graph UI."
+    },
+    {
+      "id": "news-intelligence",
+      "name": "News Intelligence",
+      "kind": "accountability_role",
+      "scope": "Ground News discovery, source and topic views, timelines, and editorial presentation."
+    },
+    {
+      "id": "identity-security",
+      "name": "Identity and Access",
+      "kind": "accountability_role",
+      "scope": "Authentication, account identity, authorization boundaries, and credential lifecycle."
+    },
+    {
+      "id": "dashboard-experience",
+      "name": "Dashboard Experience",
+      "kind": "accountability_role",
+      "scope": "Dashboard aggregates, article presentation, deploy identity, and home data contracts."
+    }
+  ],
+  "managed_facades": {
+    "backend": {
+      "root": "backend/api/features",
+      "entrypoint": "__init__.py"
+    },
+    "frontend": {
+      "root": "frontend/vue_project/src/features",
+      "entrypoint": "index.js"
+    }
+  },
+  "coverage_gaps": [],
+  "features": [
+    {
+      "id": "identity",
+      "title": "Authentication and Identity",
+      "owner_id": "identity-security",
+      "boundary_status": "verified",
+      "public_entries": [
+        {
+          "surface": "backend",
+          "kind": "backend_facade",
+          "path": "backend/api/features/identity/__init__.py"
+        },
+        {
+          "surface": "frontend",
+          "kind": "frontend_facade",
+          "path": "frontend/vue_project/src/features/collections/index.js"
+        }
+      ],
+      "routes": [
+        {
+          "namespace": "/api/auth",
+          "kind": "prefix",
+          "references": [
+            {
+              "path": "backend/api/routes/auth.py",
+              "locator": "@router.post(\"/api/auth/login\""
+            }
+          ]
+        },
+        {
+          "namespace": "/api/user",
+          "kind": "prefix",
+          "references": [
+            {
+              "path": "backend/api/routes/auth.py",
+              "locator": "@router.get(\"/api/user/profile\""
+            }
+          ]
+        }
+      ],
+      "pages": [
+        {
+          "route": "/login",
+          "component": "frontend/vue_project/src/views/Login.vue",
+          "references": [
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "path: '/login'"
+            },
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "component: () => import('@/views/Login.vue')"
+            }
+          ]
+        },
+        {
+          "route": "/register",
+          "component": "frontend/vue_project/src/views/Register.vue",
+          "references": [
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "path: '/register'"
+            },
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "component: () => import('@/views/Register.vue')"
+            }
+          ]
+        },
+        {
+          "route": "/forgot-password",
+          "component": "frontend/vue_project/src/views/ForgotPassword.vue",
+          "references": [
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "path: '/forgot-password'"
+            },
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "component: () => import('@/views/ForgotPassword.vue')"
+            }
+          ]
+        },
+        {
+          "route": "/reset-password",
+          "component": "frontend/vue_project/src/views/ResetPassword.vue",
+          "references": [
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "path: '/reset-password'"
+            },
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "component: () => import('@/views/ResetPassword.vue')"
+            }
+          ]
+        },
+        {
+          "route": "/user-center",
+          "component": "frontend/vue_project/src/views/UserCenter.vue",
+          "references": [
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "path: '/user-center'"
+            },
+            {
+              "path": "frontend/vue_project/src/router/routePreloaders.js",
+              "locator": "userCenter: () => import('@/views/UserCenter.vue')"
+            }
+          ]
+        },
+        {
+          "route": "/user-center/my-collections",
+          "component": "frontend/vue_project/src/views/user/MyCollections.vue",
+          "references": [
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "path: 'my-collections'"
+            },
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "component: () => import('@/views/user/MyCollections.vue')"
+            }
+          ]
+        }
+      ],
+      "dependencies": [
+        {
+          "feature_id": "assistant",
+          "evidence": {
+            "path": "backend/api/routes/auth.py",
+            "locator": "from api.features.assistant import configured_assistant_privacy_export_reader"
+          }
+        },
+        {
+          "feature_id": "research-workflow",
+          "evidence": {
+            "path": "backend/api/routes/auth.py",
+            "locator": "from api.features.research_workflow import ("
+          }
+        }
+      ],
+      "contract_tests": [
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_identity_feature.py"
+        },
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_auth_identity_security.py"
+        },
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_identity_privacy_rights.py"
+        },
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_identity_mfa_sessions.py"
+        },
+        {
+          "runner": "node_test",
+          "path": "frontend/vue_project/tests/identity-privacy-feature.test.mjs"
+        },
+        {
+          "runner": "node_test",
+          "path": "frontend/vue_project/tests/identity-mfa-session-feature.test.mjs"
+        },
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_favorites_batch_contract.py"
+        },
+        {
+          "runner": "node_test",
+          "path": "frontend/vue_project/tests/user-collections-accessibility-feature.test.mjs"
+        }
+      ],
+      "health_signal": {
+        "status": "verified",
+        "description": "The unified feature health endpoint proves the Web database role can read identity and account relations.",
+        "references": [
+          {
+            "path": "backend/api/features/identity/health.py",
+            "locator": "def probe_identity_health(db: Session) -> FeatureHealthCheck:"
+          },
+          {
+            "path": "backend/api/routes/dashboard.py",
+            "locator": "@router.get(\"/api/health/features\""
+          },
+          {
+            "path": "deploy/candidate_smoke.py",
+            "locator": "\"health_features\""
+          }
+        ],
+        "blockers": []
+      },
+      "candidate_smoke": {
+        "status": "verified",
+        "description": "The browser gate loads the login shell; the authenticated HTTP gate also verifies read-only MFA enrollment capability, release-external storage semantics, and redacted security-audit output without requiring the candidate account to enable MFA.",
+        "references": [
+          {
+            "path": "deploy/browser_smoke.py",
+            "locator": "PageSpec(\"login\", \"/login\", \".login-page\", expected_path=\"/login\")"
+          },
+          {
+            "path": "deploy/candidate_smoke.py",
+            "locator": "def _run_identity_assurance_check(self) -> None:"
+          }
+        ],
+        "blockers": []
+      },
+      "rollback": {
+        "status": "verified",
+        "strategy": "whole_release",
+        "procedure": "Do not hot-swap identity files or rewrite account data. Verify and select the previous immutable Web release and its matching Python runtime.",
+        "references": [
+          {
+            "path": "deploy/verify_release.py",
+            "locator": "Verify a GlobeMind immutable release without starting any service."
+          },
+          {
+            "path": "deploy/start_web_prod.sh",
+            "locator": "stop_verified_process() {"
+          }
+        ],
+        "blockers": []
+      },
+      "blockers": []
+    },
+    {
+      "id": "dashboard",
+      "title": "Dashboard Data",
+      "owner_id": "dashboard-experience",
+      "boundary_status": "verified",
+      "public_entries": [
+        {
+          "surface": "backend",
+          "kind": "backend_facade",
+          "path": "backend/api/features/dashboard/__init__.py"
+        },
+        {
+          "surface": "frontend",
+          "kind": "frontend_facade",
+          "path": "frontend/vue_project/src/features/translation/index.js"
+        }
+      ],
+      "routes": [
+        {
+          "namespace": "/api/dashboard/stats",
+          "kind": "exact",
+          "references": [
+            {
+              "path": "backend/api/routes/dashboard.py",
+              "locator": "@router.get(\"/api/dashboard/stats\""
+            }
+          ]
+        },
+        {
+          "namespace": "/api/dashboard/news",
+          "kind": "prefix",
+          "references": [
+            {
+              "path": "backend/api/routes/dashboard.py",
+              "locator": "@router.get(\"/api/dashboard/news\""
+            }
+          ]
+        },
+        {
+          "namespace": "/api/dashboard/news-rank",
+          "kind": "exact",
+          "references": [
+            {
+              "path": "backend/api/routes/dashboard.py",
+              "locator": "@router.get(\"/api/dashboard/news-rank\""
+            }
+          ]
+        },
+        {
+          "namespace": "/api/dashboard/language-ratio",
+          "kind": "exact",
+          "references": [
+            {
+              "path": "backend/api/routes/dashboard.py",
+              "locator": "@router.get(\"/api/dashboard/language-ratio\""
+            }
+          ]
+        },
+        {
+          "namespace": "/api/dashboard/media-source",
+          "kind": "exact",
+          "references": [
+            {
+              "path": "backend/api/routes/dashboard.py",
+              "locator": "@router.get(\"/api/dashboard/media-source\""
+            }
+          ]
+        },
+        {
+          "namespace": "/api/dashboard/source-type",
+          "kind": "exact",
+          "references": [
+            {
+              "path": "backend/api/routes/dashboard.py",
+              "locator": "@router.get(\"/api/dashboard/source-type\""
+            }
+          ]
+        },
+        {
+          "namespace": "/api/article",
+          "kind": "prefix",
+          "references": [
+            {
+              "path": "backend/api/routes/dashboard.py",
+              "locator": "@router.get(\"/api/article/{news_id}\""
+            }
+          ]
+        },
+        {
+          "namespace": "/api/health",
+          "kind": "prefix",
+          "references": [
+            {
+              "path": "backend/api/routes/dashboard.py",
+              "locator": "@router.get(\"/api/health/features\""
+            }
+          ]
+        },
+        {
+          "namespace": "/api/deploy-version",
+          "kind": "exact",
+          "references": [
+            {
+              "path": "backend/api/routes/dashboard.py",
+              "locator": "@router.get(\"/api/deploy-version\""
+            }
+          ]
+        }
+      ],
+      "pages": [
+        {
+          "route": "/",
+          "component": "frontend/vue_project/src/views/appHome.vue",
+          "references": [
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "path: '/'"
+            },
+            {
+              "path": "frontend/vue_project/src/router/routePreloaders.js",
+              "locator": "appHome: () => import('@/views/appHome.vue')"
+            }
+          ]
+        }
+      ],
+      "dependencies": [
+        {
+          "feature_id": "search",
+          "evidence": {
+            "path": "backend/api/routes/dashboard.py",
+            "locator": "from api.services.news_search_v2 import ("
+          }
+        },
+        {
+          "feature_id": "evidence-chain",
+          "evidence": {
+            "path": "backend/api/routes/dashboard.py",
+            "locator": "from api.features.evidence import build_article_evidence_chain"
+          }
+        },
+        {
+          "feature_id": "service-level",
+          "evidence": {
+            "path": "backend/api/routes/dashboard.py",
+            "locator": "from api.features.service_level import ("
+          }
+        }
+      ],
+      "contract_tests": [
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_dashboard_feature.py"
+        },
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_feature_health.py"
+        },
+        {
+          "runner": "node_test",
+          "path": "frontend/vue_project/tests/translation-provenance-feature.test.mjs"
+        }
+      ],
+      "health_signal": {
+        "status": "verified",
+        "description": "The unified feature health endpoint proves the Web database role can read the dashboard news contract.",
+        "references": [
+          {
+            "path": "backend/api/features/dashboard/repository.py",
+            "locator": "def probe_dashboard_health(db: Session) -> FeatureHealthCheck:"
+          },
+          {
+            "path": "backend/api/routes/dashboard.py",
+            "locator": "@router.get(\"/api/health/features\""
+          },
+          {
+            "path": "deploy/candidate_smoke.py",
+            "locator": "\"health_features\""
+          }
+        ],
+        "blockers": []
+      },
+      "candidate_smoke": {
+        "status": "verified",
+        "description": "The candidate gate validates the dashboard stats contract.",
+        "references": [
+          {
+            "path": "deploy/candidate_smoke.py",
+            "locator": "\"dashboard_stats\""
+          }
+        ],
+        "blockers": []
+      },
+      "rollback": {
+        "status": "verified",
+        "strategy": "whole_release",
+        "procedure": "Do not hot-swap dashboard files. Verify and select the previous immutable Web release and matching runtime; dashboard data is not rewritten during code rollback.",
+        "references": [
+          {
+            "path": "deploy/verify_release.py",
+            "locator": "Verify a GlobeMind immutable release without starting any service."
+          },
+          {
+            "path": "deploy/start_web_prod.sh",
+            "locator": "stop_verified_process() {"
+          }
+        ],
+        "blockers": []
+      },
+      "blockers": []
+    },
+    {
+      "id": "assistant",
+      "title": "Data Assistant",
+      "owner_id": "assistant-experience",
+      "boundary_status": "verified",
+      "public_entries": [
+        {
+          "surface": "backend",
+          "kind": "backend_facade",
+          "path": "backend/api/features/assistant/__init__.py"
+        },
+        {
+          "surface": "frontend",
+          "kind": "frontend_facade",
+          "path": "frontend/vue_project/src/features/assistant/index.js"
+        }
+      ],
+      "routes": [
+        {
+          "namespace": "/api/assistant",
+          "kind": "prefix",
+          "references": [
+            {
+              "path": "backend/api/routes/assistant.py",
+              "locator": "@router.post(\"/api/assistant/chat\""
+            },
+            {
+              "path": "backend/api/routes/assistant_schedules.py",
+              "locator": "router = APIRouter(prefix=\"/api/assistant\""
+            }
+          ]
+        },
+        {
+          "namespace": "/api/workspaces",
+          "kind": "prefix",
+          "references": [
+            {
+              "path": "backend/api/routes/assistant_data.py",
+              "locator": "@router.get(\"/workspaces\""
+            }
+          ]
+        },
+        {
+          "namespace": "/api/kb2",
+          "kind": "prefix",
+          "references": [
+            {
+              "path": "backend/api/routes/assistant_data.py",
+              "locator": "@router.get(\"/kb2/categories\""
+            }
+          ]
+        },
+        {
+          "namespace": "/api/sites",
+          "kind": "exact",
+          "references": [
+            {
+              "path": "backend/api/routes/assistant_data.py",
+              "locator": "@router.get(\"/sites\""
+            }
+          ]
+        },
+        {
+          "namespace": "/api/members",
+          "kind": "exact",
+          "references": [
+            {
+              "path": "backend/api/routes/assistant_data.py",
+              "locator": "@router.get(\"/members\""
+            }
+          ]
+        }
+      ],
+      "pages": [
+        {
+          "route": "/data-assistant",
+          "component": "frontend/vue_project/src/views/DataAssistant.vue",
+          "references": [
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "path: '/data-assistant'"
+            },
+            {
+              "path": "frontend/vue_project/src/router/routePreloaders.js",
+              "locator": "dataAssistant: () => import('@/views/DataAssistant.vue')"
+            }
+          ]
+        }
+      ],
+      "dependencies": [],
+      "contract_tests": [
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_assistant_schedule_feature.py"
+        },
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_assistant_report_assurance.py"
+        },
+        {
+          "runner": "node_test",
+          "path": "frontend/vue_project/tests/assistant-feature.test.mjs"
+        }
+      ],
+      "health_signal": {
+        "status": "verified",
+        "description": "The unified feature health endpoint checks assistant workspace mutability and the live scheduler state.",
+        "references": [
+          {
+            "path": "backend/api/features/assistant/health.py",
+            "locator": "def probe_assistant_health("
+          },
+          {
+            "path": "backend/api/routes/dashboard.py",
+            "locator": "@router.get(\"/api/health/features\""
+          },
+          {
+            "path": "deploy/candidate_smoke.py",
+            "locator": "\"health_features\""
+          }
+        ],
+        "blockers": []
+      },
+      "candidate_smoke": {
+        "status": "verified",
+        "description": "The browser candidate gate loads the assistant route and verifies its page shell.",
+        "references": [
+          {
+            "path": "deploy/browser_smoke.py",
+            "locator": "PageSpec(\"assistant\", \"/data-assistant\", \".yisight-shell\", authenticated=True)"
+          }
+        ],
+        "blockers": []
+      },
+      "rollback": {
+        "status": "verified",
+        "strategy": "whole_release",
+        "procedure": "Do not hot-swap assistant files. Verify and select the previous immutable Web release and its matching Python runtime, then stop only the strongly identified Web instance before starting the rollback release.",
+        "references": [
+          {
+            "path": "deploy/verify_release.py",
+            "locator": "Verify a GlobeMind immutable release without starting any service."
+          },
+          {
+            "path": "deploy/start_web_prod.sh",
+            "locator": "stop_verified_process() {"
+          }
+        ],
+        "blockers": []
+      },
+      "blockers": []
+    },
+    {
+      "id": "search",
+      "title": "Data Search",
+      "owner_id": "search-discovery",
+      "boundary_status": "verified",
+      "public_entries": [
+        {
+          "surface": "backend",
+          "kind": "backend_facade",
+          "path": "backend/api/features/search/__init__.py"
+        },
+        {
+          "surface": "frontend",
+          "kind": "frontend_facade",
+          "path": "frontend/vue_project/src/features/search/index.js"
+        }
+      ],
+      "routes": [
+        {
+          "namespace": "/api/dashboard/search",
+          "kind": "prefix",
+          "references": [
+            {
+              "path": "backend/api/routes/search.py",
+              "locator": "@router.post(\"/api/dashboard/search\""
+            },
+            {
+              "path": "backend/api/routes/dashboard.py",
+              "locator": "@router.get(\"/api/dashboard/search/options\""
+            }
+          ]
+        },
+        {
+          "namespace": "/api/search-snapshots",
+          "kind": "prefix",
+          "references": [
+            {
+              "path": "backend/api/routes/search.py",
+              "locator": "@router.post(\"/api/search-snapshots\""
+            },
+            {
+              "path": "backend/api/routes/search.py",
+              "locator": "@router.get(\"/api/search-snapshots\""
+            }
+          ]
+        }
+      ],
+      "pages": [
+        {
+          "route": "/data-service/data-search",
+          "component": "frontend/vue_project/src/views/DataService/data-search.vue",
+          "references": [
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "path: 'data-search'"
+            },
+            {
+              "path": "frontend/vue_project/src/router/routePreloaders.js",
+              "locator": "dataSearch: () => import('@/views/DataService/data-search.vue')"
+            }
+          ]
+        }
+      ],
+      "dependencies": [
+        {
+          "feature_id": "assistant",
+          "evidence": {
+            "path": "frontend/vue_project/src/views/DataService/data-search.vue",
+            "locator": "@/features/assistant/index.js"
+          }
+        }
+      ],
+      "contract_tests": [
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_search_application_feature.py"
+        },
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_v11_search_feature.py"
+        },
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_search_receipts_snapshots.py"
+        },
+        {
+          "runner": "node_test",
+          "path": "frontend/vue_project/tests/search-feature.test.mjs"
+        }
+      ],
+      "health_signal": {
+        "status": "verified",
+        "description": "The unified feature health endpoint proves the Web role can read current search hierarchy relations.",
+        "references": [
+          {
+            "path": "backend/api/features/search/health.py",
+            "locator": "def probe_search_health(db: Session) -> FeatureHealthCheck:"
+          },
+          {
+            "path": "backend/api/routes/dashboard.py",
+            "locator": "@router.get(\"/api/health/features\""
+          },
+          {
+            "path": "deploy/candidate_smoke.py",
+            "locator": "\"health_features\""
+          }
+        ],
+        "blockers": []
+      },
+      "candidate_smoke": {
+        "status": "verified",
+        "description": "The candidate gate executes the current-table V11 search and hierarchy child contracts.",
+        "references": [
+          {
+            "path": "deploy/candidate_smoke.py",
+            "locator": "\"v11_search_current\""
+          }
+        ],
+        "blockers": []
+      },
+      "rollback": {
+        "status": "verified",
+        "strategy": "whole_release",
+        "procedure": "Do not hot-swap search files. Verify and select the previous immutable Web release and its matching Python runtime; do not rewrite indexed data during a code rollback.",
+        "references": [
+          {
+            "path": "deploy/verify_release.py",
+            "locator": "Verify a GlobeMind immutable release without starting any service."
+          },
+          {
+            "path": "deploy/start_web_prod.sh",
+            "locator": "stop_verified_process() {"
+          }
+        ],
+        "blockers": []
+      },
+      "blockers": []
+    },
+    {
+      "id": "entity-governance",
+      "title": "Temporal Entity Governance",
+      "owner_id": "knowledge-graph",
+      "boundary_status": "verified",
+      "public_entries": [
+        {
+          "surface": "backend",
+          "kind": "backend_facade",
+          "path": "backend/api/features/entity_governance/__init__.py"
+        },
+        {
+          "surface": "frontend",
+          "kind": "frontend_facade",
+          "path": "frontend/vue_project/src/features/entity-governance/index.js"
+        }
+      ],
+      "routes": [
+        {
+          "namespace": "/api/entity-governance",
+          "kind": "prefix",
+          "references": [
+            {
+              "path": "backend/api/routes/entity_governance.py",
+              "locator": "router = APIRouter(prefix=\"/api/entity-governance\""
+            }
+          ]
+        }
+      ],
+      "pages": [
+        {
+          "route": "/entity-governance",
+          "component": "frontend/vue_project/src/views/EntityGovernance.vue",
+          "references": [
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "path: '/entity-governance'"
+            },
+            {
+              "path": "frontend/vue_project/src/router/routePreloaders.js",
+              "locator": "entityGovernance: () => import('@/views/EntityGovernance.vue')"
+            }
+          ]
+        }
+      ],
+      "dependencies": [
+        {
+          "feature_id": "search",
+          "evidence": {
+            "path": "backend/api/features/entity_governance/seeds.py",
+            "locator": "from api.features.search import ("
+          }
+        },
+        {
+          "feature_id": "evidence-chain",
+          "evidence": {
+            "path": "backend/api/routes/entity_governance.py",
+            "locator": "from api.features.evidence import EvidenceLedgerUnavailable, EvidenceSnapshotLedger"
+          }
+        }
+      ],
+      "contract_tests": [
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_entity_governance_feature.py"
+        },
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_entity_governance_ledger_security.py"
+        },
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_entity_governance_routes.py"
+        },
+        {
+          "runner": "node_test",
+          "path": "frontend/vue_project/tests/entity-governance-feature.test.mjs"
+        }
+      ],
+      "health_signal": {
+        "status": "verified",
+        "description": "The authenticated status endpoint verifies the local SHA-256/HMAC chain, release-external storage, evidence-reader mutation capability, and explicit absence of WORM, signature, directory, and measured-accuracy claims.",
+        "references": [
+          {
+            "path": "backend/api/routes/entity_governance.py",
+            "locator": "@router.get(\"/status\""
+          }
+        ],
+        "blockers": []
+      },
+      "candidate_smoke": {
+        "status": "verified",
+        "description": "The offline candidate validator performs authenticated read-only status and catalog checks, requires verified storage and mutation evidence capability, and accepts an all-review-required seed catalog without claiming measured accuracy or approved entities.",
+        "references": [
+          {
+            "path": "deploy/candidate_smoke.py",
+            "locator": "def _run_entity_governance_check(self) -> None:"
+          },
+          {
+            "path": "deploy/browser_smoke.py",
+            "locator": "\"entity-governance\","
+          }
+        ],
+        "blockers": []
+      },
+      "rollback": {
+        "status": "verified",
+        "strategy": "whole_release",
+        "procedure": "Do not rewrite the release-external governance chain during code rollback or rotate its HMAC key in place. Verify and select the previous immutable Web release and matching runtime; retain the ledger for controlled migration and integrity review.",
+        "references": [
+          {
+            "path": "deploy/verify_release.py",
+            "locator": "Verify a GlobeMind immutable release without starting any service."
+          },
+          {
+            "path": "deploy/start_web_prod.sh",
+            "locator": "stop_verified_process() {"
+          }
+        ],
+        "blockers": []
+      },
+      "blockers": []
+    },
+    {
+      "id": "service-level",
+      "title": "Service-level Measurement",
+      "owner_id": "runtime-operations",
+      "boundary_status": "verified",
+      "public_entries": [
+        {
+          "surface": "backend",
+          "kind": "backend_facade",
+          "path": "backend/api/features/service_level/__init__.py"
+        }
+      ],
+      "routes": [
+        {
+          "namespace": "/api/service-level",
+          "kind": "prefix",
+          "references": [
+            {
+              "path": "backend/api/routes/service_level.py",
+              "locator": "router = APIRouter(prefix=\"/api/service-level\""
+            }
+          ]
+        }
+      ],
+      "pages": [],
+      "dependencies": [],
+      "contract_tests": [
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_service_level_feature.py"
+        }
+      ],
+      "health_signal": {
+        "status": "verified",
+        "description": "Authenticated status and summary endpoints verify the append-only observation chains and publish only bounded aggregate measurements; target approval remains explicitly unavailable.",
+        "references": [
+          {
+            "path": "backend/api/routes/service_level.py",
+            "locator": "@router.get(\"/status\""
+          },
+          {
+            "path": "backend/api/routes/service_level.py",
+            "locator": "@router.get(\"/summary\""
+          }
+        ],
+        "blockers": []
+      },
+      "candidate_smoke": {
+        "status": "verified",
+        "description": "The offline candidate validator requires authenticated read-only status and summary contracts, verified integrity, privacy-minimal aggregates, and an explicit not-approved/not-computable target state; it does not treat this as SLO attainment.",
+        "references": [
+          {
+            "path": "deploy/candidate_smoke.py",
+            "locator": "def _run_service_level_check(self) -> None:"
+          }
+        ],
+        "blockers": []
+      },
+      "rollback": {
+        "status": "verified",
+        "strategy": "whole_release",
+        "procedure": "Do not rewrite or delete the release-external observation ledger during code rollback. Verify and select the previous immutable Web release and matching runtime; retain the ledger for integrity review.",
+        "references": [
+          {
+            "path": "deploy/verify_release.py",
+            "locator": "Verify a GlobeMind immutable release without starting any service."
+          },
+          {
+            "path": "deploy/start_web_prod.sh",
+            "locator": "stop_verified_process() {"
+          }
+        ],
+        "blockers": []
+      },
+      "blockers": []
+    },
+    {
+      "id": "operations",
+      "title": "Operations Monitor",
+      "owner_id": "runtime-operations",
+      "boundary_status": "verified",
+      "public_entries": [
+        {
+          "surface": "backend",
+          "kind": "backend_facade",
+          "path": "backend/api/features/operations/__init__.py"
+        },
+        {
+          "surface": "frontend",
+          "kind": "frontend_facade",
+          "path": "frontend/vue_project/src/features/operations/index.js"
+        }
+      ],
+      "routes": [
+        {
+          "namespace": "/api/ops",
+          "kind": "prefix",
+          "references": [
+            {
+              "path": "backend/api/routes/ops_monitor.py",
+              "locator": "router = APIRouter(prefix=\"/api/ops\""
+            }
+          ]
+        },
+        {
+          "namespace": "/api/status",
+          "kind": "exact",
+          "references": [
+            {
+              "path": "backend/api/routes/dashboard.py",
+              "locator": "@router.get(\"/api/status\""
+            }
+          ]
+        },
+        {
+          "namespace": "/api/governance",
+          "kind": "prefix",
+          "references": [
+            {
+              "path": "backend/api/routes/governance_inventory.py",
+              "locator": "router = APIRouter(prefix=\"/api/governance\""
+            }
+          ]
+        }
+      ],
+      "pages": [
+        {
+          "route": "/data-service/pipeline-monitor",
+          "component": "frontend/vue_project/src/views/PipelineMonitor.vue",
+          "references": [
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "path: 'pipeline-monitor'"
+            },
+            {
+              "path": "frontend/vue_project/src/router/routePreloaders.js",
+              "locator": "pipelineMonitor: () => import('@/views/PipelineMonitor.vue')"
+            }
+          ]
+        }
+      ],
+      "dependencies": [
+        {
+          "feature_id": "service-level",
+          "evidence": {
+            "path": "backend/api/routes/dashboard.py",
+            "locator": "from api.features.service_level import ("
+          }
+        }
+      ],
+      "contract_tests": [
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_operations_heartbeat_feature.py"
+        },
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_ops_monitor_security.py"
+        },
+        {
+          "runner": "node_test",
+          "path": "frontend/vue_project/tests/operations-feature.test.mjs"
+        },
+        {
+          "runner": "node_test",
+          "path": "frontend/vue_project/tests/pipeline-monitor-feature.test.mjs"
+        },
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_request_observability.py"
+        },
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_v1_asset_inventory.py"
+        },
+        {
+          "runner": "node_test",
+          "path": "frontend/vue_project/tests/system-status-feature.test.mjs"
+        }
+      ],
+      "health_signal": {
+        "status": "verified",
+        "description": "The authenticated fast pipeline snapshot is the registered operations signal.",
+        "references": [
+          {
+            "path": "backend/api/routes/ops_monitor.py",
+            "locator": "@router.get(\"/pipeline-monitor/fast\")"
+          }
+        ],
+        "blockers": []
+      },
+      "candidate_smoke": {
+        "status": "verified",
+        "description": "The browser candidate gate loads the authenticated operations page and verifies its shell.",
+        "references": [
+          {
+            "path": "deploy/browser_smoke.py",
+            "locator": "\"/data-service/pipeline-monitor\","
+          }
+        ],
+        "blockers": []
+      },
+      "rollback": {
+        "status": "verified",
+        "strategy": "whole_release",
+        "procedure": "Do not hot-swap operations files or signal managed pipelines. Roll back only the strongly identified Web release and matching runtime; pipeline lifecycle remains under its own controllers.",
+        "references": [
+          {
+            "path": "deploy/verify_release.py",
+            "locator": "Verify a GlobeMind immutable release without starting any service."
+          },
+          {
+            "path": "deploy/start_web_prod.sh",
+            "locator": "stop_verified_process() {"
+          }
+        ],
+        "blockers": []
+      },
+      "blockers": []
+    },
+    {
+      "id": "financial-alerts",
+      "title": "Financial Alerts",
+      "owner_id": "financial-intelligence",
+      "boundary_status": "verified",
+      "public_entries": [
+        {
+          "surface": "backend",
+          "kind": "backend_facade",
+          "path": "backend/api/features/financial/__init__.py"
+        }
+      ],
+      "routes": [
+        {
+          "namespace": "/api/financial",
+          "kind": "prefix",
+          "references": [
+            {
+              "path": "backend/api/routes/financial.py",
+              "locator": "router = APIRouter(prefix=\"/api/financial\""
+            }
+          ]
+        }
+      ],
+      "pages": [
+        {
+          "route": "/financial-terminal",
+          "component": "frontend/vue_project/src/views/FinancialTerminal.vue",
+          "references": [
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "path: '/financial-terminal'"
+            },
+            {
+              "path": "frontend/vue_project/src/router/routePreloaders.js",
+              "locator": "financialTerminal: () => import('@/views/FinancialTerminal.vue')"
+            }
+          ]
+        }
+      ],
+      "dependencies": [],
+      "contract_tests": [
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_financial_alert_feature.py"
+        },
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_financial_store_concurrency.py"
+        },
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_financial_alert_triage.py"
+        }
+      ],
+      "health_signal": {
+        "status": "verified",
+        "description": "The unified feature health endpoint checks financial alert store mutability and strict JSON readability.",
+        "references": [
+          {
+            "path": "backend/api/features/financial/health.py",
+            "locator": "def probe_financial_health() -> FeatureHealthCheck:"
+          },
+          {
+            "path": "backend/api/routes/dashboard.py",
+            "locator": "@router.get(\"/api/health/features\""
+          },
+          {
+            "path": "deploy/candidate_smoke.py",
+            "locator": "\"health_features\""
+          }
+        ],
+        "blockers": []
+      },
+      "candidate_smoke": {
+        "status": "verified",
+        "description": "The candidate gate validates the public financial dashboard and privacy-minimal alert-triage aggregate contracts without performing mutations.",
+        "references": [
+          {
+            "path": "deploy/candidate_smoke.py",
+            "locator": "\"financial_dashboard\""
+          },
+          {
+            "path": "deploy/candidate_smoke.py",
+            "locator": "\"financial_alert_triage\""
+          }
+        ],
+        "blockers": []
+      },
+      "rollback": {
+        "status": "verified",
+        "strategy": "whole_release",
+        "procedure": "Do not hot-swap financial files or rewrite alert state. Verify and select the previous immutable Web release and its matching Python runtime.",
+        "references": [
+          {
+            "path": "deploy/verify_release.py",
+            "locator": "Verify a GlobeMind immutable release without starting any service."
+          },
+          {
+            "path": "deploy/start_web_prod.sh",
+            "locator": "stop_verified_process() {"
+          }
+        ],
+        "blockers": []
+      },
+      "blockers": []
+    },
+    {
+      "id": "opinion-analysis",
+      "title": "Opinion and Sentiment Analysis",
+      "owner_id": "opinion-intelligence",
+      "boundary_status": "verified",
+      "public_entries": [
+        {
+          "surface": "backend",
+          "kind": "backend_facade",
+          "path": "backend/api/features/opinion/__init__.py"
+        },
+        {
+          "surface": "frontend",
+          "kind": "frontend_facade",
+          "path": "frontend/vue_project/src/features/sentiment/index.js"
+        }
+      ],
+      "routes": [
+        {
+          "namespace": "/api/opinion",
+          "kind": "prefix",
+          "references": [
+            {
+              "path": "backend/api/routes/opinion_v2.py",
+              "locator": "@router.get(\"/opinion/health\""
+            },
+            {
+              "path": "backend/api/routes/opinion.py",
+              "locator": "router = APIRouter()"
+            }
+          ]
+        }
+      ],
+      "pages": [
+        {
+          "route": "/sentiment-analysis",
+          "component": "frontend/vue_project/src/views/sentimentAnalysis.vue",
+          "references": [
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "path: '/sentiment-analysis'"
+            },
+            {
+              "path": "frontend/vue_project/src/router/routePreloaders.js",
+              "locator": "sentimentAnalysis: () => import('@/views/sentimentAnalysis.vue')"
+            }
+          ]
+        }
+      ],
+      "dependencies": [
+        {
+          "feature_id": "assistant",
+          "evidence": {
+            "path": "frontend/vue_project/src/views/sentimentAnalysis.vue",
+            "locator": "@/features/assistant/index.js"
+          }
+        }
+      ],
+      "contract_tests": [
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_opinion_feature.py"
+        },
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_opinion_api.py"
+        },
+        {
+          "runner": "node_test",
+          "path": "frontend/vue_project/tests/sentiment-feature.test.mjs"
+        }
+      ],
+      "health_signal": {
+        "status": "verified",
+        "description": "The opinion health endpoint exposes feature freshness and status.",
+        "references": [
+          {
+            "path": "backend/api/routes/opinion_v2.py",
+            "locator": "@router.get(\"/opinion/health\""
+          }
+        ],
+        "blockers": []
+      },
+      "candidate_smoke": {
+        "status": "verified",
+        "description": "The candidate gate validates opinion quality status, method version, and freshness.",
+        "references": [
+          {
+            "path": "deploy/candidate_smoke.py",
+            "locator": "\"opinion_quality\""
+          }
+        ],
+        "blockers": []
+      },
+      "rollback": {
+        "status": "verified",
+        "strategy": "whole_release",
+        "procedure": "Do not hot-swap opinion or sentiment files. Verify and select the previous immutable Web release and matching runtime; do not rewrite feedback data as part of code rollback.",
+        "references": [
+          {
+            "path": "deploy/verify_release.py",
+            "locator": "Verify a GlobeMind immutable release without starting any service."
+          },
+          {
+            "path": "deploy/start_web_prod.sh",
+            "locator": "stop_verified_process() {"
+          }
+        ],
+        "blockers": []
+      },
+      "blockers": []
+    },
+    {
+      "id": "graph-briefing",
+      "title": "Graph Briefing",
+      "owner_id": "knowledge-graph",
+      "boundary_status": "verified",
+      "public_entries": [
+        {
+          "surface": "backend",
+          "kind": "backend_facade",
+          "path": "backend/api/features/graph_briefing/__init__.py"
+        }
+      ],
+      "routes": [
+        {
+          "namespace": "/api/graph",
+          "kind": "prefix",
+          "references": [
+            {
+              "path": "backend/api/routes/briefing.py",
+              "locator": "@router.get(\"/universe\""
+            }
+          ]
+        }
+      ],
+      "pages": [],
+      "dependencies": [],
+      "contract_tests": [
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_graph_briefing_feature.py"
+        }
+      ],
+      "health_signal": {
+        "status": "verified",
+        "description": "The unified feature health endpoint proves the Web role can read graph briefing hierarchy relations.",
+        "references": [
+          {
+            "path": "backend/api/features/graph_briefing/health.py",
+            "locator": "def probe_graph_briefing_health(db: Session) -> FeatureHealthCheck:"
+          },
+          {
+            "path": "backend/api/routes/dashboard.py",
+            "locator": "@router.get(\"/api/health/features\""
+          },
+          {
+            "path": "deploy/candidate_smoke.py",
+            "locator": "\"health_features\""
+          }
+        ],
+        "blockers": []
+      },
+      "candidate_smoke": {
+        "status": "verified",
+        "description": "The candidate gate validates graph universe availability and representative macro and micro briefing contracts.",
+        "references": [
+          {
+            "path": "deploy/candidate_smoke.py",
+            "locator": "\"graph_universe\""
+          },
+          {
+            "path": "deploy/candidate_smoke.py",
+            "locator": "\"graph_macro_briefing\""
+          }
+        ],
+        "blockers": []
+      },
+      "rollback": {
+        "status": "verified",
+        "strategy": "whole_release",
+        "procedure": "Do not hot-swap graph briefing files. Verify and select the previous immutable Web release and matching runtime; graph data is not rewritten during code rollback.",
+        "references": [
+          {
+            "path": "deploy/verify_release.py",
+            "locator": "Verify a GlobeMind immutable release without starting any service."
+          },
+          {
+            "path": "deploy/start_web_prod.sh",
+            "locator": "stop_verified_process() {"
+          }
+        ],
+        "blockers": []
+      },
+      "blockers": []
+    },
+    {
+      "id": "story-graph",
+      "title": "Story Graph",
+      "owner_id": "knowledge-graph",
+      "boundary_status": "verified",
+      "public_entries": [
+        {
+          "surface": "backend",
+          "kind": "backend_facade",
+          "path": "backend/api/features/story_graph/__init__.py"
+        },
+        {
+          "surface": "frontend",
+          "kind": "frontend_facade",
+          "path": "frontend/vue_project/src/features/story-graph/index.js"
+        }
+      ],
+      "routes": [
+        {
+          "namespace": "/api/story-graph/l2-chain",
+          "kind": "prefix",
+          "references": [
+            {
+              "path": "backend/api/routes/story_graph.py",
+              "locator": "@router.get(\"/api/story-graph/l2-chain/list\")"
+            }
+          ]
+        },
+        {
+          "namespace": "/api/story-graph/l3-macro",
+          "kind": "prefix",
+          "references": [
+            {
+              "path": "backend/api/routes/story_graph.py",
+              "locator": "@router.get(\"/api/story-graph/l3-macro/list\")"
+            }
+          ]
+        },
+        {
+          "namespace": "/api/story-graph/evidence",
+          "kind": "exact",
+          "references": [
+            {
+              "path": "backend/api/routes/story_graph.py",
+              "locator": "@router.get(\"/api/story-graph/evidence\")"
+            }
+          ]
+        },
+        {
+          "namespace": "/api/story-graph/list",
+          "kind": "exact",
+          "references": [
+            {
+              "path": "backend/api/routes/story_graph.py",
+              "locator": "@router.get(\"/api/story-graph/list\")"
+            }
+          ]
+        },
+        {
+          "namespace": "/api/story-graph/cluster",
+          "kind": "prefix",
+          "references": [
+            {
+              "path": "backend/api/routes/story_graph.py",
+              "locator": "@router.get(\"/api/story-graph/cluster/{cluster_id}\")"
+            }
+          ]
+        }
+      ],
+      "pages": [
+        {
+          "route": "/data-service/story-graph",
+          "component": "frontend/vue_project/src/views/StoryGraphView.vue",
+          "references": [
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "path: 'story-graph'"
+            },
+            {
+              "path": "frontend/vue_project/src/router/routePreloaders.js",
+              "locator": "storyGraph: () => import('@/views/StoryGraphView.vue')"
+            }
+          ]
+        }
+      ],
+      "dependencies": [
+        {
+          "feature_id": "assistant",
+          "evidence": {
+            "path": "frontend/vue_project/src/views/StoryGraphView.vue",
+            "locator": "@/features/assistant/index.js"
+          }
+        }
+      ],
+      "contract_tests": [
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_story_graph_feature_boundary.py"
+        },
+        {
+          "runner": "node_test",
+          "path": "frontend/vue_project/tests/story-graph-feature.test.mjs"
+        }
+      ],
+      "health_signal": {
+        "status": "verified",
+        "description": "The unified feature health endpoint proves the Web role can read the current L2, L3, evidence, membership, and news relations used by StoryGraphView; the candidate HTTP gate requires this check to remain up.",
+        "references": [
+          {
+            "path": "backend/api/features/story_graph/health.py",
+            "locator": "def probe_story_graph_health("
+          },
+          {
+            "path": "backend/api/routes/dashboard.py",
+            "locator": "@router.get(\"/api/health/features\""
+          },
+          {
+            "path": "deploy/candidate_smoke.py",
+            "locator": "\"health_features\""
+          }
+        ],
+        "blockers": []
+      },
+      "candidate_smoke": {
+        "status": "verified",
+        "description": "The HTTP candidate gate requires all V1 feature capability checks, including Story Graph, to be up; the browser gate also loads the Story Graph route and verifies the graph page shell.",
+        "references": [
+          {
+            "path": "deploy/candidate_smoke.py",
+            "locator": "\"health_features\""
+          },
+          {
+            "path": "deploy/browser_smoke.py",
+            "locator": "\"/data-service/story-graph\","
+          }
+        ],
+        "blockers": []
+      },
+      "rollback": {
+        "status": "verified",
+        "strategy": "whole_release",
+        "procedure": "Do not hot-swap Story Graph files. Verify and select the previous immutable Web release and matching runtime; graph data is not rewritten during code rollback.",
+        "references": [
+          {
+            "path": "deploy/verify_release.py",
+            "locator": "Verify a GlobeMind immutable release without starting any service."
+          },
+          {
+            "path": "deploy/start_web_prod.sh",
+            "locator": "stop_verified_process() {"
+          }
+        ],
+        "blockers": []
+      },
+      "blockers": []
+    },
+    {
+      "id": "ground-news",
+      "title": "Ground News",
+      "owner_id": "news-intelligence",
+      "boundary_status": "verified",
+      "public_entries": [
+        {
+          "surface": "backend",
+          "kind": "backend_facade",
+          "path": "backend/api/features/ground_news/__init__.py"
+        },
+        {
+          "surface": "frontend",
+          "kind": "frontend_facade",
+          "path": "frontend/vue_project/src/features/ground-news/index.js"
+        }
+      ],
+      "routes": [
+        {
+          "namespace": "/api/story-graph/ground-news",
+          "kind": "prefix",
+          "references": [
+            {
+              "path": "backend/api/routes/story_graph.py",
+              "locator": "@router.get(\"/api/story-graph/ground-news/list\")"
+            }
+          ]
+        }
+      ],
+      "pages": [
+        {
+          "route": "/data-service/ground-news",
+          "component": "frontend/vue_project/src/views/GroundNewsHome.vue",
+          "references": [
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "path: 'ground-news'"
+            },
+            {
+              "path": "frontend/vue_project/src/router/routePreloaders.js",
+              "locator": "groundNewsHome: () => import('@/views/GroundNewsHome.vue')"
+            }
+          ]
+        },
+        {
+          "route": "/data-service/ground-news-desk",
+          "component": "frontend/vue_project/src/views/GroundNewsDesk.vue",
+          "references": [
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "path: 'ground-news-desk'"
+            },
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "component: () => import('@/views/GroundNewsDesk.vue')"
+            }
+          ]
+        },
+        {
+          "route": "/data-service/ground-news-topic/:topic",
+          "component": "frontend/vue_project/src/views/GroundNewsFeed.vue",
+          "references": [
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "path: 'ground-news-topic/:topic'"
+            },
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "component: () => import('@/views/GroundNewsFeed.vue')"
+            }
+          ]
+        },
+        {
+          "route": "/data-service/ground-news-source/:domain",
+          "component": "frontend/vue_project/src/views/GroundNewsSource.vue",
+          "references": [
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "path: 'ground-news-source/:domain'"
+            },
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "component: () => import('@/views/GroundNewsSource.vue')"
+            }
+          ]
+        },
+        {
+          "route": "/data-service/ground-news-timeline/:chain_id",
+          "component": "frontend/vue_project/src/views/GroundNewsTimeline.vue",
+          "references": [
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "path: 'ground-news-timeline/:chain_id'"
+            },
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "component: () => import('@/views/GroundNewsTimeline.vue')"
+            }
+          ]
+        }
+      ],
+      "dependencies": [
+        {
+          "feature_id": "assistant",
+          "evidence": {
+            "path": "frontend/vue_project/src/views/GroundNewsDesk.vue",
+            "locator": "@/features/assistant/index.js"
+          }
+        }
+      ],
+      "contract_tests": [
+        {
+          "runner": "node_test",
+          "path": "frontend/vue_project/tests/ground-news-feature.test.mjs"
+        }
+      ],
+      "health_signal": {
+        "status": "verified",
+        "description": "The unified feature health endpoint proves the Web role can read Ground News cluster, segment, article, and source-profile relations.",
+        "references": [
+          {
+            "path": "backend/api/features/ground_news/health.py",
+            "locator": "def probe_ground_news_health(db: Session) -> FeatureHealthCheck:"
+          },
+          {
+            "path": "backend/api/routes/dashboard.py",
+            "locator": "@router.get(\"/api/health/features\""
+          },
+          {
+            "path": "deploy/candidate_smoke.py",
+            "locator": "\"health_features\""
+          }
+        ],
+        "blockers": []
+      },
+      "candidate_smoke": {
+        "status": "verified",
+        "description": "The candidate gate validates the public Ground News list contract.",
+        "references": [
+          {
+            "path": "deploy/candidate_smoke.py",
+            "locator": "\"ground_news_list\""
+          }
+        ],
+        "blockers": []
+      },
+      "rollback": {
+        "status": "verified",
+        "strategy": "whole_release",
+        "procedure": "Do not hot-swap Ground News files. Verify and select the previous immutable Web release and matching runtime; article and source data are not rewritten during code rollback.",
+        "references": [
+          {
+            "path": "deploy/verify_release.py",
+            "locator": "Verify a GlobeMind immutable release without starting any service."
+          },
+          {
+            "path": "deploy/start_web_prod.sh",
+            "locator": "stop_verified_process() {"
+          }
+        ],
+        "blockers": []
+      },
+      "blockers": []
+    },
+    {
+      "id": "research-workflow",
+      "title": "Versioned Research Workflow",
+      "owner_id": "assistant-experience",
+      "boundary_status": "verified",
+      "public_entries": [
+        {
+          "surface": "backend",
+          "kind": "backend_facade",
+          "path": "backend/api/features/research_workflow/__init__.py"
+        },
+        {
+          "surface": "frontend",
+          "kind": "frontend_facade",
+          "path": "frontend/vue_project/src/features/research-workflow/index.js"
+        }
+      ],
+      "routes": [
+        {
+          "namespace": "/api/research",
+          "kind": "prefix",
+          "references": [
+            {
+              "path": "backend/api/routes/research_workflow.py",
+              "locator": "router = APIRouter(prefix=\"/api/research\""
+            }
+          ]
+        }
+      ],
+      "pages": [
+        {
+          "route": "/research-workspace",
+          "component": "frontend/vue_project/src/views/ResearchWorkspace.vue",
+          "references": [
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "path: '/research-workspace'"
+            },
+            {
+              "path": "frontend/vue_project/src/router/routePreloaders.js",
+              "locator": "researchWorkspace: () => import('@/views/ResearchWorkspace.vue')"
+            }
+          ]
+        }
+      ],
+      "dependencies": [
+        {
+          "feature_id": "evidence-chain",
+          "evidence": {
+            "path": "backend/api/routes/research_workflow.py",
+            "locator": "from api.features.evidence import EvidenceLedgerUnavailable, EvidenceSnapshotLedger"
+          }
+        },
+        {
+          "feature_id": "search",
+          "evidence": {
+            "path": "backend/api/routes/research_workflow.py",
+            "locator": "from api.features.search import SearchSnapshotLedger, SearchSnapshotUnavailable"
+          }
+        }
+      ],
+      "contract_tests": [
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_research_workflow_feature.py"
+        },
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_research_search_snapshot_link.py"
+        },
+        {
+          "runner": "node_test",
+          "path": "frontend/vue_project/tests/research-workflow-feature.test.mjs"
+        }
+      ],
+      "health_signal": {
+        "status": "verified",
+        "description": "The authenticated storage-status contract verifies the release-external atomic repository without creating a project or claiming immutable audit storage.",
+        "references": [
+          {
+            "path": "backend/api/routes/research_workflow.py",
+            "locator": "@router.get(\"/storage-status\")"
+          },
+          {
+            "path": "backend/tests/test_research_workflow_feature.py",
+            "locator": "def test_constructor_first_list_and_status_are_read_only("
+          }
+        ],
+        "blockers": []
+      },
+      "candidate_smoke": {
+        "status": "verified",
+        "description": "The candidate gate performs an authenticated read-only durability check; it does not create project data or substitute for a real researcher workflow acceptance.",
+        "references": [
+          {
+            "path": "deploy/candidate_smoke.py",
+            "locator": "def _run_research_storage_check(self) -> None:"
+          }
+        ],
+        "blockers": []
+      },
+      "rollback": {
+        "status": "verified",
+        "strategy": "whole_release",
+        "procedure": "Do not hot-swap workflow contracts or rewrite persisted project histories. Verify and select the previous immutable Web release; preserve the release-external workspace repository for explicit migration review.",
+        "references": [
+          {
+            "path": "deploy/verify_release.py",
+            "locator": "Verify a GlobeMind immutable release without starting any service."
+          },
+          {
+            "path": "deploy/start_web_prod.sh",
+            "locator": "stop_verified_process() {"
+          }
+        ],
+        "blockers": []
+      },
+      "blockers": []
+    },
+    {
+      "id": "model-assurance",
+      "title": "Model Evaluation and Release Assurance",
+      "owner_id": "model-governance",
+      "boundary_status": "verified",
+      "public_entries": [
+        {
+          "surface": "backend",
+          "kind": "backend_facade",
+          "path": "backend/api/features/model_assurance/__init__.py"
+        },
+        {
+          "surface": "frontend",
+          "kind": "frontend_facade",
+          "path": "frontend/vue_project/src/features/model-assurance/index.js"
+        }
+      ],
+      "routes": [
+        {
+          "namespace": "/api/model-assurance",
+          "kind": "prefix",
+          "references": [
+            {
+              "path": "backend/api/routes/model_assurance.py",
+              "locator": "router = APIRouter(prefix=\"/api/model-assurance\""
+            }
+          ]
+        }
+      ],
+      "pages": [
+        {
+          "route": "/model-assurance",
+          "component": "frontend/vue_project/src/views/ModelAssurance.vue",
+          "references": [
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "path: '/model-assurance'"
+            },
+            {
+              "path": "frontend/vue_project/src/router/routePreloaders.js",
+              "locator": "modelAssurance: () => import('@/views/ModelAssurance.vue')"
+            }
+          ]
+        }
+      ],
+      "dependencies": [],
+      "contract_tests": [
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_model_assurance.py"
+        },
+        {
+          "runner": "node_test",
+          "path": "frontend/vue_project/tests/model-assurance-feature.test.mjs"
+        }
+      ],
+      "health_signal": {
+        "status": "verified",
+        "description": "Authenticated status reads verify the complete append-only hash chain and deterministically recompute every stored metric; an empty ledger remains blocked and does not create storage.",
+        "references": [
+          {
+            "path": "backend/api/features/model_assurance/service.py",
+            "locator": "def status(self) -> ModelAssuranceStatus:"
+          },
+          {
+            "path": "backend/tests/test_model_assurance.py",
+            "locator": "def test_default_status_is_blocked_not_observed_and_get_does_not_create_storage("
+          }
+        ],
+        "blockers": []
+      },
+      "candidate_smoke": {
+        "status": "verified",
+        "description": "The candidate gate requires baseline and current manifest evidence, an eligible latest result, attested gold-standard review metadata, within-threshold drift, and a proceed recommendation; it does not claim external artifact verification.",
+        "references": [
+          {
+            "path": "deploy/candidate_smoke.py",
+            "locator": "def _run_model_assurance_check(self) -> None:"
+          }
+        ],
+        "blockers": []
+      },
+      "rollback": {
+        "status": "verified",
+        "strategy": "whole_release",
+        "procedure": "Do not hot-swap evaluator contracts or rewrite assurance entries. Verify and select the previous immutable Web release while preserving the release-external assurance ledger; model rollback still requires an explicitly qualified baseline.",
+        "references": [
+          {
+            "path": "deploy/verify_release.py",
+            "locator": "Verify a GlobeMind immutable release without starting any service."
+          },
+          {
+            "path": "deploy/start_web_prod.sh",
+            "locator": "stop_verified_process() {"
+          }
+        ],
+        "blockers": []
+      },
+      "blockers": []
+    },
+    {
+      "id": "authoritative-data",
+      "title": "Bounded Authoritative Data Connectors",
+      "owner_id": "runtime-operations",
+      "boundary_status": "verified",
+      "public_entries": [
+        {
+          "surface": "backend",
+          "kind": "backend_facade",
+          "path": "backend/api/features/authoritative_data/__init__.py"
+        },
+        {
+          "surface": "frontend",
+          "kind": "frontend_facade",
+          "path": "frontend/vue_project/src/features/country-profiles/index.js"
+        }
+      ],
+      "routes": [
+        {
+          "namespace": "/api/authoritative-data",
+          "kind": "prefix",
+          "references": [
+            {
+              "path": "backend/api/routes/authoritative_data.py",
+              "locator": "router = APIRouter("
+            }
+          ]
+        }
+      ],
+      "pages": [
+        {
+          "route": "/country-profiles",
+          "component": "frontend/vue_project/src/views/CountryProfileCatalog.vue",
+          "references": [
+            {
+              "path": "frontend/vue_project/src/router/index.js",
+              "locator": "path: '/country-profiles'"
+            },
+            {
+              "path": "frontend/vue_project/src/router/routePreloaders.js",
+              "locator": "countryProfileCatalog: () => import('@/views/CountryProfileCatalog.vue')"
+            }
+          ]
+        }
+      ],
+      "dependencies": [],
+      "contract_tests": [
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_authoritative_data_connectors.py"
+        },
+        {
+          "runner": "node_test",
+          "path": "frontend/vue_project/tests/country-profile-catalog-feature.test.mjs"
+        }
+      ],
+      "health_signal": {
+        "status": "verified",
+        "description": "The public registration catalog is explicitly not_observed, while every authenticated query returns bounded source, cutoff, coverage, license, version, cache, and availability evidence and fails closed on refresh errors. The public country-profile page strictly exposes only the fixed schema_catalog_only, not_configured, live_checked=false, profiles=[] contract and contains no country facts.",
+        "references": [
+          {
+            "path": "backend/api/features/authoritative_data/service.py",
+            "locator": "class AuthoritativeDataService:"
+          },
+          {
+            "path": "backend/tests/test_authoritative_data_connectors.py",
+            "locator": "def test_catalog_is_static_not_a_live_success_claim_and_inputs_are_safe("
+          },
+          {
+            "path": "frontend/vue_project/tests/country-profile-catalog-feature.test.mjs",
+            "locator": "test('strict catalog sanitizer accepts only the schema-only empty-state contract'"
+          }
+        ],
+        "blockers": []
+      },
+      "candidate_smoke": {
+        "status": "verified",
+        "description": "The unified data-governance candidate gate includes each connector as a formally blocked source record until ownership, license, coverage, quality, freshness, and provenance evidence are complete; configuration is never accepted as a live probe.",
+        "references": [
+          {
+            "path": "deploy/candidate_smoke.py",
+            "locator": "\"data_governance_catalog\""
+          },
+          {
+            "path": "backend/api/features/data_governance/application.py",
+            "locator": "def _authoritative_source_drafts("
+          }
+        ],
+        "blockers": []
+      },
+      "rollback": {
+        "status": "verified",
+        "strategy": "whole_release",
+        "procedure": "Do not hot-swap connector, adapter, or catalog code. Verify and select the previous immutable Web release and its matching runtime; process-local connector caches are disposable and never promoted as source evidence.",
+        "references": [
+          {
+            "path": "deploy/verify_release.py",
+            "locator": "Verify a GlobeMind immutable release without starting any service."
+          },
+          {
+            "path": "deploy/start_web_prod.sh",
+            "locator": "stop_verified_process() {"
+          }
+        ],
+        "blockers": []
+      },
+      "blockers": []
+    },
+    {
+      "id": "data-governance",
+      "title": "Data and Model Governance Catalog",
+      "owner_id": "runtime-operations",
+      "boundary_status": "verified",
+      "public_entries": [
+        {
+          "surface": "backend",
+          "kind": "backend_facade",
+          "path": "backend/api/features/data_governance/__init__.py"
+        }
+      ],
+      "routes": [
+        {
+          "namespace": "/api/data-governance",
+          "kind": "prefix",
+          "references": [
+            {
+              "path": "backend/api/routes/data_governance.py",
+              "locator": "router = APIRouter(prefix=\"/api/data-governance\""
+            }
+          ]
+        }
+      ],
+      "pages": [],
+      "dependencies": [
+        {
+          "feature_id": "authoritative-data",
+          "evidence": {
+            "path": "backend/api/features/data_governance/application.py",
+            "locator": "from api.features.authoritative_data import connector_descriptors"
+          }
+        },
+        {
+          "feature_id": "ground-news",
+          "evidence": {
+            "path": "backend/api/features/data_governance/application.py",
+            "locator": "from api.features.ground_news import probe_ground_news_health"
+          }
+        },
+        {
+          "feature_id": "opinion-analysis",
+          "evidence": {
+            "path": "backend/api/features/data_governance/application.py",
+            "locator": "from api.features.opinion import ("
+          }
+        },
+        {
+          "feature_id": "model-assurance",
+          "evidence": {
+            "path": "backend/api/features/data_governance/application.py",
+            "locator": "def _opinion_model_assurance_quality(root: Path) -> QualityRegistration:"
+          }
+        },
+        {
+          "feature_id": "story-graph",
+          "evidence": {
+            "path": "backend/api/features/data_governance/application.py",
+            "locator": "from api.features.story_graph import ("
+          }
+        }
+      ],
+      "contract_tests": [
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_data_governance_catalog.py"
+        },
+        {
+          "runner": "node_test",
+          "path": "frontend/vue_project/tests/data-governance-feature.test.mjs"
+        }
+      ],
+      "health_signal": {
+        "status": "verified",
+        "description": "The catalog recomputes bounded technical and freshness evidence from registered feature probes and fails closed when evidence is unavailable.",
+        "references": [
+          {
+            "path": "backend/api/features/data_governance/application.py",
+            "locator": "def collect_catalog_health(db: Session) -> dict[str, FeatureHealthCheck]:"
+          },
+          {
+            "path": "backend/tests/test_data_governance_catalog.py",
+            "locator": "def test_health_mapping_uses_one_fail_closed_freshness_state_model("
+          }
+        ],
+        "blockers": []
+      },
+      "candidate_smoke": {
+        "status": "verified",
+        "description": "The candidate gate rejects unavailable, incomplete, empty, or formally blocked data and model registrations.",
+        "references": [
+          {
+            "path": "deploy/candidate_smoke.py",
+            "locator": "\"data_governance_catalog\""
+          }
+        ],
+        "blockers": []
+      },
+      "rollback": {
+        "status": "verified",
+        "strategy": "whole_release",
+        "procedure": "Do not hot-swap catalog code or rewrite source evidence. Verify and select the previous immutable Web release and its matching Python runtime.",
+        "references": [
+          {
+            "path": "deploy/verify_release.py",
+            "locator": "Verify a GlobeMind immutable release without starting any service."
+          },
+          {
+            "path": "deploy/start_web_prod.sh",
+            "locator": "stop_verified_process() {"
+          }
+        ],
+        "blockers": []
+      },
+      "blockers": []
+    },
+    {
+      "id": "evidence-chain",
+      "title": "Article Claim Evidence Chain",
+      "owner_id": "dashboard-experience",
+      "boundary_status": "verified",
+      "public_entries": [
+        {
+          "surface": "backend",
+          "kind": "backend_facade",
+          "path": "backend/api/features/evidence/__init__.py"
+        },
+        {
+          "surface": "frontend",
+          "kind": "frontend_facade",
+          "path": "frontend/vue_project/src/features/evidence/index.js"
+        }
+      ],
+      "routes": [
+        {
+          "namespace": "/api/evidence-ledger",
+          "kind": "prefix",
+          "references": [
+            {
+              "path": "backend/api/routes/evidence_ledger.py",
+              "locator": "router = APIRouter(prefix=\"/api/evidence-ledger\""
+            }
+          ]
+        }
+      ],
+      "pages": [],
+      "dependencies": [],
+      "contract_tests": [
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_evidence_chain.py"
+        },
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_evidence_snapshot_ledger.py"
+        },
+        {
+          "runner": "node_test",
+          "path": "frontend/vue_project/tests/evidence-chain-feature.test.mjs"
+        }
+      ],
+      "health_signal": {
+        "status": "verified",
+        "description": "Article analysis and reader contracts deterministically build claim types, body hashes, and paragraph anchors while preserving unavailable evidence states.",
+        "references": [
+          {
+            "path": "backend/api/features/evidence/application.py",
+            "locator": "def build_article_evidence_chain("
+          },
+          {
+            "path": "backend/tests/test_evidence_chain.py",
+            "locator": "def test_article_reader_contract_includes_the_same_evidence_chain("
+          }
+        ],
+        "blockers": []
+      },
+      "candidate_smoke": {
+        "status": "verified",
+        "description": "The candidate gate requires a linked article sample with at least one paragraph-backed judgment and bounded body provenance.",
+        "references": [
+          {
+            "path": "deploy/candidate_smoke.py",
+            "locator": "\"article_evidence_chain\""
+          }
+        ],
+        "blockers": []
+      },
+      "rollback": {
+        "status": "verified",
+        "strategy": "whole_release",
+        "procedure": "Do not hot-swap evidence contracts or rewrite article bodies. Verify and select the previous immutable Web release and its matching Python runtime.",
+        "references": [
+          {
+            "path": "deploy/verify_release.py",
+            "locator": "Verify a GlobeMind immutable release without starting any service."
+          },
+          {
+            "path": "deploy/start_web_prod.sh",
+            "locator": "stop_verified_process() {"
+          }
+        ],
+        "blockers": []
+      },
+      "blockers": []
+    },
+    {
+      "id": "legacy-endpoint-retirement",
+      "title": "Legacy Endpoint Retirement",
+      "owner_id": "runtime-operations",
+      "boundary_status": "verified",
+      "public_entries": [
+        {
+          "surface": "backend",
+          "kind": "backend_facade",
+          "path": "backend/api/features/legacy_retirement/__init__.py"
+        }
+      ],
+      "routes": [],
+      "pages": [],
+      "dependencies": [],
+      "contract_tests": [
+        {
+          "runner": "pytest",
+          "path": "backend/tests/test_legacy_endpoint_retirement.py"
+        }
+      ],
+      "health_signal": {
+        "status": "verified",
+        "description": "The stable 410 contract test is the retirement-policy health signal.",
+        "references": [
+          {
+            "path": "backend/tests/test_legacy_endpoint_retirement.py",
+            "locator": "def test_retired_opinion_endpoint_always_returns_stable_410_contract("
+          }
+        ],
+        "blockers": []
+      },
+      "candidate_smoke": {
+        "status": "verified",
+        "description": "The candidate gate checks every registered retired endpoint for the stable 410 contract.",
+        "references": [
+          {
+            "path": "deploy/candidate_smoke.py",
+            "locator": "\"legacy_retirement\""
+          }
+        ],
+        "blockers": []
+      },
+      "rollback": {
+        "status": "verified",
+        "strategy": "whole_release",
+        "procedure": "Retired endpoints are not re-enabled independently. Verify and select the previous immutable Web release and matching runtime only when the complete release must be rolled back.",
+        "references": [
+          {
+            "path": "deploy/verify_release.py",
+            "locator": "Verify a GlobeMind immutable release without starting any service."
+          },
+          {
+            "path": "deploy/start_web_prod.sh",
+            "locator": "stop_verified_process() {"
+          }
+        ],
+        "blockers": []
+      },
+      "blockers": []
+    }
+  ]
+}

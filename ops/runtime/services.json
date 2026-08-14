@@ -1,0 +1,878 @@
+{
+  "schema_version": 2,
+  "inventory_version": "1.0.0",
+  "project": "globemind",
+  "description": "Authoritative read-only management catalog for GlobeMind long-running services and pipelines.",
+  "variables": {
+    "PROJECT_ROOT": "/root/data/globemind",
+    "DATA_ROOT": "/root/data"
+  },
+  "control_policy": {
+    "mode": "read_only",
+    "destructive_commands_enabled": false,
+    "allowed_commands": [
+      "catalog",
+      "list",
+      "status",
+      "doctor"
+    ],
+    "adoption_note": "V1 catalog metadata does not grant lifecycle authority; every production service remains observe-only until its audited maintenance window."
+  },
+  "probes": [
+    {
+      "id": "web-postgres-readiness",
+      "type": "postgres-application-readiness",
+      "host": "127.0.0.1",
+      "port": 18089,
+      "path": "/api/health/ready",
+      "timeout_seconds": 5,
+      "evidence_ttl_seconds": 30,
+      "bind_service": "web"
+    },
+    {
+      "id": "tunnel-edge-readiness",
+      "type": "cloudflare-tunnel-ready",
+      "host": "127.0.0.1",
+      "port": 20242,
+      "path": "/ready",
+      "timeout_seconds": 3,
+      "evidence_ttl_seconds": 30,
+      "bind_service": "tunnel"
+    },
+    {
+      "id": "vllm-local-health",
+      "type": "model-http-health",
+      "host": "127.0.0.1",
+      "port": 8004,
+      "path": "/health",
+      "timeout_seconds": 5,
+      "evidence_ttl_seconds": 60,
+      "bind_service": "vllm"
+    }
+  ],
+  "services": [
+    {
+      "id": "web",
+      "name": "GlobeMind production web",
+      "kind": "service",
+      "owner": "platform",
+      "criticality": "critical",
+      "check_interval_seconds": 30,
+      "dependencies": [
+        {"service": "vllm", "required": false}
+      ],
+      "external_dependencies": [
+        {
+          "name": "postgres-news",
+          "required": true,
+          "verification": "probe",
+          "via_probe": "web-postgres-readiness"
+        }
+      ],
+      "controller": {
+        "type": "shell-script",
+        "path": "${PROJECT_ROOT}/deploy/start_web_prod.sh",
+        "interface": "start|stop|restart",
+        "adoption": "observe-only"
+      },
+      "pid": {
+        "kind": "single",
+        "path": "${DATA_ROOT}/web/pids/globemind_web_prod.pid",
+        "meta_path": "${DATA_ROOT}/web/pids/globemind_web_prod.pid.meta",
+        "meta": {"pid_index": 0, "starttime_ticks_index": 1},
+        "cmdline_contains": ["backend/serve_prod.py"],
+        "expected": "running"
+      },
+      "port": [
+        {
+          "id": "http",
+          "host": "127.0.0.1",
+          "number": {
+            "pid_meta": {
+              "path": "${DATA_ROOT}/web/pids/globemind_web_prod.pid.meta",
+              "token_index": 2
+            },
+            "fallback": 18089
+          },
+          "required": true
+        }
+      ],
+      "log": [
+        {"path": "${DATA_ROOT}/web/logs/globemind_web_prod.log", "required": true}
+      ],
+      "health": [
+        {"type": "http", "port_ref": "http", "path": "/api/health/live", "expect_status": [200], "timeout_seconds": 3, "required": true},
+        {"type": "http", "port_ref": "http", "path": "/api/health/ready", "expect_status": [200], "timeout_seconds": 5, "required": true}
+      ],
+      "health_policy": {
+        "mode": "active-probe",
+        "signals": [
+          {"source": "pid", "required": true},
+          {"source": "port", "index": 0, "required": true},
+          {"source": "health", "index": 0, "required": true},
+          {"source": "health", "index": 1, "required": true}
+        ]
+      },
+      "state": [],
+      "checkpoint": {"mode": "not-applicable", "state_refs": [], "takeover_ready": false},
+      "replay": {"mode": "not-applicable", "assurance": "not-applicable", "evidence": []},
+      "secret_policy": {
+        "argv": "forbid-sensitive-values",
+        "environment": "secret-file-or-process-environment-only",
+        "files": [
+          {"path": "${PROJECT_ROOT}/backend/api/.env", "required": true, "max_permissions": "0600"}
+        ],
+        "redact_diagnostics": true
+      },
+      "secret_refs": [{"name": "web-environment", "file_index": 0}],
+      "lifecycle_authorization": {
+        "state": "not-authorized",
+        "authorized_operations": [],
+        "change_request_required": true,
+        "maintenance_window_required": true,
+        "required_approvals": ["service-owner", "platform-operations"]
+      },
+      "runbook": {"path": "${PROJECT_ROOT}/docs/operations/RUNTIME_SERVICE_CATALOG.md", "section": "web"}
+    },
+    {
+      "id": "tunnel",
+      "name": "Cloudflare production tunnel",
+      "kind": "service",
+      "owner": "platform",
+      "criticality": "critical",
+      "check_interval_seconds": 30,
+      "dependencies": [
+        {"service": "web", "required": true}
+      ],
+      "external_dependencies": [
+        {
+          "name": "cloudflare-edge",
+          "required": true,
+          "verification": "probe",
+          "via_probe": "tunnel-edge-readiness"
+        }
+      ],
+      "controller": {
+        "type": "shell-script",
+        "path": "${PROJECT_ROOT}/deploy/start_cloudflared.sh",
+        "interface": "direct-exec",
+        "adoption": "observe-only"
+      },
+      "pid": {
+        "kind": "single",
+        "path": "${DATA_ROOT}/cloudflared/cloudflared-v092.pid",
+        "meta_path": "${DATA_ROOT}/cloudflared/cloudflared-v092.pid.meta",
+        "meta": {"pid_index": 0, "starttime_ticks_index": 1},
+        "cmdline_contains": ["cloudflared", "tunnel", "run"],
+        "expected": "running"
+      },
+      "port": [
+        {"id": "metrics", "host": "127.0.0.1", "number": 20242, "required": true}
+      ],
+      "log": [
+        {"path": "${DATA_ROOT}/cloudflared/tunnel-v092.log", "required": true}
+      ],
+      "health": [
+        {"type": "http", "port_ref": "metrics", "path": "/ready", "expect_status": [200], "timeout_seconds": 3, "required": true}
+      ],
+      "health_policy": {
+        "mode": "active-probe",
+        "signals": [
+          {"source": "pid", "required": true},
+          {"source": "port", "index": 0, "required": true},
+          {"source": "health", "index": 0, "required": true}
+        ]
+      },
+      "state": [],
+      "checkpoint": {"mode": "not-applicable", "state_refs": [], "takeover_ready": false},
+      "replay": {"mode": "not-applicable", "assurance": "not-applicable", "evidence": []},
+      "secret_policy": {
+        "argv": "forbid-sensitive-values",
+        "environment": "credential-file-only",
+        "files": [
+          {"path": "${DATA_ROOT}/cloudflared/config.yml", "required": true, "max_permissions": "0600"},
+          {"path": "${DATA_ROOT}/cloudflared/credentials.json", "required": true, "max_permissions": "0600"}
+        ],
+        "redact_diagnostics": true
+      },
+      "secret_refs": [
+        {"name": "tunnel-config", "file_index": 0},
+        {"name": "tunnel-credentials", "file_index": 1}
+      ],
+      "lifecycle_authorization": {
+        "state": "not-authorized",
+        "authorized_operations": [],
+        "change_request_required": true,
+        "maintenance_window_required": true,
+        "required_approvals": ["service-owner", "platform-operations"]
+      },
+      "runbook": {"path": "${PROJECT_ROOT}/docs/operations/RUNTIME_SERVICE_CATALOG.md", "section": "tunnel"}
+    },
+    {
+      "id": "vllm",
+      "name": "Local vLLM OpenAI-compatible API",
+      "kind": "service",
+      "owner": "ml-platform",
+      "criticality": "high",
+      "check_interval_seconds": 60,
+      "dependencies": [],
+      "external_dependencies": [
+        "gpu-0",
+        {
+          "name": "qwen2.5-7b-awq-model",
+          "required": true,
+          "verification": "probe",
+          "via_probe": "vllm-local-health"
+        }
+      ],
+      "controller": {
+        "type": "shell-script",
+        "path": "${PROJECT_ROOT}/deploy/vllm_service_ctl.sh",
+        "entrypoint": "${PROJECT_ROOT}/deploy/start_llm.sh",
+        "interface": "start|stop|restart|status",
+        "adoption": "observe-only"
+      },
+      "pid": {
+        "kind": "single",
+        "path": "${PROJECT_ROOT}/logs/vllm_service_supervisor.pid",
+        "cmdline_contains": ["deploy/start_llm.sh"],
+        "expected": "running"
+      },
+      "port": [
+        {"id": "openai", "host": "127.0.0.1", "number": 8004, "required": true}
+      ],
+      "log": [
+        {"path": "${PROJECT_ROOT}/logs/vllm.log", "required": true, "max_age_seconds": 86400, "stale_severity": "warning"},
+        {"path": "${PROJECT_ROOT}/logs/vllm_service_supervisor.log", "required": true}
+      ],
+      "health": [
+        {"type": "http", "port_ref": "openai", "path": "/health", "expect_status": [200], "timeout_seconds": 5, "required": true}
+      ],
+      "health_policy": {
+        "mode": "active-probe",
+        "signals": [
+          {"source": "pid", "required": true},
+          {"source": "port", "index": 0, "required": true},
+          {"source": "health", "index": 0, "required": true}
+        ]
+      },
+      "state": [],
+      "checkpoint": {"mode": "not-applicable", "state_refs": [], "takeover_ready": false},
+      "replay": {"mode": "not-applicable", "assurance": "not-applicable", "evidence": []},
+      "secret_policy": {
+        "argv": "forbid-sensitive-values",
+        "environment": "process-environment-only",
+        "files": [],
+        "redact_diagnostics": true
+      },
+      "secret_refs": [],
+      "lifecycle_authorization": {
+        "state": "not-authorized",
+        "authorized_operations": [],
+        "change_request_required": true,
+        "maintenance_window_required": true,
+        "required_approvals": ["service-owner", "platform-operations"]
+      },
+      "runbook": {"path": "${PROJECT_ROOT}/docs/operations/RUNTIME_SERVICE_CATALOG.md", "section": "vllm"}
+    },
+    {
+      "id": "proxy_pool",
+      "name": "Local sing-box proxy pool",
+      "kind": "service-pool",
+      "owner": "data-platform",
+      "criticality": "high",
+      "check_interval_seconds": 60,
+      "dependencies": [],
+      "external_dependencies": [
+        {
+          "name": "proxy-provider",
+          "required": true,
+          "verification": "unverified",
+          "reason": "pool members lack PID start-ticks identity; local TCP listeners cannot prove provider reachability"
+        }
+      ],
+      "controller": {
+        "type": "python-script",
+        "path": "${PROJECT_ROOT}/scripts/start_singbox_proxy_pool.py",
+        "interface": "start-missing-only",
+        "adoption": "observe-only"
+      },
+      "pid": {
+        "kind": "directory",
+        "glob": "${PROJECT_ROOT}/data/proxy_pool/pids/*.pid",
+        "cmdline_contains": ["sing-box", "run", "-c"],
+        "port_from_filename": true,
+        "minimum_running": 8,
+        "expected": "running"
+      },
+      "port": [],
+      "log": [
+        {"glob": "${PROJECT_ROOT}/data/proxy_pool/logs/*.log", "required": false}
+      ],
+      "health": [
+        {"type": "tcp-members", "host": "127.0.0.1", "timeout_seconds": 1, "required": true}
+      ],
+      "health_policy": {
+        "mode": "composite",
+        "signals": [
+          {"source": "pid", "required": true},
+          {"source": "health", "index": 0, "required": true},
+          {"source": "state", "index": 0, "required": true}
+        ]
+      },
+      "state": [
+        {
+          "path": "${PROJECT_ROOT}/data/proxy_pool/proxy_pool_manifest_optimized_20260621.json",
+          "required": true,
+          "format": "json"
+        }
+      ],
+      "checkpoint": {"mode": "not-applicable", "state_refs": [], "takeover_ready": false},
+      "replay": {"mode": "not-applicable", "assurance": "not-applicable", "evidence": []},
+      "secret_policy": {
+        "argv": "forbid-sensitive-values",
+        "environment": "config-path-reference-only",
+        "files": [],
+        "redact_diagnostics": true
+      },
+      "secret_refs": [],
+      "lifecycle_authorization": {
+        "state": "not-authorized",
+        "authorized_operations": [],
+        "change_request_required": true,
+        "maintenance_window_required": true,
+        "required_approvals": ["service-owner", "platform-operations"]
+      },
+      "runbook": {"path": "${PROJECT_ROOT}/docs/operations/RUNTIME_SERVICE_CATALOG.md", "section": "proxy_pool"}
+    },
+    {
+      "id": "wave1_extractor",
+      "name": "Wave1 historical adaptive extractor",
+      "kind": "pipeline",
+      "owner": "data-ingestion",
+      "criticality": "high",
+      "check_interval_seconds": 60,
+      "dependencies": [
+        {"service": "proxy_pool", "required": true}
+      ],
+      "external_dependencies": ["historical-source-websites"],
+      "controller": {
+        "type": "shell-script",
+        "path": "${PROJECT_ROOT}/deploy/wave1_remaining_extract_ctl.sh",
+        "interface": "start|stop|restart|status|logs",
+        "adoption": "observe-only"
+      },
+      "pid": {
+        "kind": "single",
+        "path": "${PROJECT_ROOT}/logs/wave1_remaining_extract.pid",
+        "cmdline_contains": ["deploy/wave1_remaining_extract_loop.sh"],
+        "expected": "running-or-complete"
+      },
+      "port": [],
+      "log": [
+        {"path": "${PROJECT_ROOT}/logs/wave1_remaining_extract.log", "required": true}
+      ],
+      "health": [],
+      "health_policy": {
+        "mode": "state-freshness",
+        "signals": [
+          {"source": "pid", "required": true},
+          {"source": "state", "index": 0, "required": true},
+          {"source": "state", "index": 1, "required": true}
+        ]
+      },
+      "state": [
+        {
+          "path": "${PROJECT_ROOT}/logs/wave1_remaining_extract_supervisor.json",
+          "required": true,
+          "format": "json",
+          "timestamp_field": "updated_at",
+          "status_field": "status",
+          "complete_values": ["completed"],
+          "authoritative": false,
+          "summary_fields": ["updated_at", "status", "attempt", "last_exit_code", "note"]
+        },
+        {
+          "path": "${PROJECT_ROOT}/data/historical_news/jobs/wave1_1y_prod_20260621/wave1_articles_merged_progress.json",
+          "required": true,
+          "format": "json",
+          "timestamp_field": "updated_at",
+          "max_age_seconds": 600,
+          "stale_severity": "error",
+          "authoritative": true,
+          "summary_fields": ["updated_at", "rows", "processed", "successes", "failures", "rows_remaining", "completion_rate", "running", "active_tasks"]
+        }
+      ],
+      "checkpoint": {"mode": "progress-only", "state_refs": [1], "takeover_ready": false},
+      "replay": {
+        "mode": "checkpoint-resume",
+        "assurance": "verified",
+        "evidence": [
+          {"path": "${PROJECT_ROOT}/backend/tests/test_adaptive_extractor_resume.py", "selector": "test_resume_counts_only_current_input_keys"}
+        ]
+      },
+      "secret_policy": {
+        "argv": "forbid-sensitive-values",
+        "environment": "secret-file-or-process-environment-only",
+        "files": [],
+        "redact_diagnostics": true
+      },
+      "secret_refs": [],
+      "lifecycle_authorization": {
+        "state": "not-authorized",
+        "authorized_operations": [],
+        "change_request_required": true,
+        "maintenance_window_required": true,
+        "required_approvals": ["service-owner", "platform-operations"]
+      },
+      "runbook": {"path": "${PROJECT_ROOT}/docs/operations/RUNTIME_SERVICE_CATALOG.md", "section": "wave1_extractor"}
+    },
+    {
+      "id": "wave1_loader",
+      "name": "Wave1 PostgreSQL stream loader",
+      "kind": "pipeline",
+      "owner": "data-ingestion",
+      "criticality": "high",
+      "check_interval_seconds": 60,
+      "dependencies": [
+        {"service": "wave1_extractor", "required": false}
+      ],
+      "external_dependencies": ["postgres-news"],
+      "controller": {
+        "type": "shell-script",
+        "path": "${PROJECT_ROOT}/deploy/wave1_loader_ctl.sh",
+        "interface": "start|stop|restart|status|logs",
+        "adoption": "observe-only"
+      },
+      "pid": {
+        "kind": "single",
+        "path": "${DATA_ROOT}/runtime/globemind/wave1_loader/wave1_loader.pid",
+        "meta_path": "${DATA_ROOT}/runtime/globemind/wave1_loader/wave1_loader.pid.meta",
+        "meta": {
+          "format": "json",
+          "schema_version": 2,
+          "pid_path": "identity.pid",
+          "starttime_ticks_path": "identity.start_ticks"
+        },
+        "cmdline_contains": ["scripts/stream_load_news_to_postgres.py", "wave1_articles_merged.jsonl"],
+        "expected": "running"
+      },
+      "port": [],
+      "log": [
+        {"path": "${DATA_ROOT}/runtime/globemind/logs/wave1_loader.log", "required": true}
+      ],
+      "health": [
+        {
+          "type": "unix-control-status",
+          "path": "${DATA_ROOT}/runtime/globemind/wave1_loader/wave1_loader.pid.sock",
+          "expect_status": ["running"],
+          "timeout_seconds": 2,
+          "required": true
+        }
+      ],
+      "health_policy": {
+        "mode": "composite",
+        "signals": [
+          {"source": "pid", "required": true},
+          {"source": "health", "index": 0, "required": true},
+          {"source": "state", "index": 0, "required": true},
+          {"source": "state", "index": 1, "required": true}
+        ]
+      },
+      "state": [
+        {
+          "path": "${DATA_ROOT}/runtime/globemind/wave1_loader/wave1_loader.pid.heartbeat",
+          "required": true,
+          "format": "json",
+          "timestamp_field": "heartbeat_at",
+          "max_age_seconds": 180,
+          "stale_severity": "error",
+          "status_field": "status",
+          "authoritative": true,
+          "summary_fields": ["heartbeat_at", "last_progress_at", "status", "checkpoint_key", "offset", "seen"]
+        },
+        {
+          "path": "${PROJECT_ROOT}/data/historical_news/jobs/wave1_1y_prod_20260621/news_loader_state.json",
+          "required": true,
+          "format": "json",
+          "timestamp_field": "updated_at",
+          "max_age_seconds": 180,
+          "stale_severity": "error",
+          "authoritative": true,
+          "summary_fields": ["updated_at", "last_progress_at", "completed"]
+        }
+      ],
+      "checkpoint": {"mode": "durable", "state_refs": [0, 1], "takeover_ready": false},
+      "replay": {
+        "mode": "checkpoint-resume",
+        "assurance": "verified",
+        "evidence": [
+          {"path": "${PROJECT_ROOT}/backend/tests/test_wave1_loader_safety.py", "selector": "test_database_checkpoint_survives_commit_to_json_crash_gap"},
+          {"path": "${PROJECT_ROOT}/backend/tests/test_wave1_loader_safety.py", "selector": "test_full_offline_flow_initializes_db_checkpoint_then_completes_exact_seal"}
+        ]
+      },
+      "secret_policy": {
+        "argv": "forbid-sensitive-values",
+        "environment": "secret-file-or-process-environment-only",
+        "files": [
+          {"path": "${DATA_ROOT}/runtime/globemind/wave1_loader/wave1_loader.pid.db-secret", "required": true, "max_permissions": "0600"}
+        ],
+        "redact_diagnostics": true
+      },
+      "secret_refs": [{"name": "loader-database-credential", "file_index": 0}],
+      "lifecycle_authorization": {
+        "state": "not-authorized",
+        "authorized_operations": [],
+        "change_request_required": true,
+        "maintenance_window_required": true,
+        "required_approvals": ["service-owner", "platform-operations"]
+      },
+      "runbook": {"path": "${PROJECT_ROOT}/docs/operations/RUNTIME_SERVICE_CATALOG.md", "section": "wave1_loader"}
+    },
+    {
+      "id": "l1_prep",
+      "name": "L1 event feature preparation stream",
+      "kind": "pipeline",
+      "owner": "news-intelligence",
+      "criticality": "high",
+      "check_interval_seconds": 120,
+      "dependencies": [],
+      "external_dependencies": ["postgres-news"],
+      "controller": {
+        "type": "shell-script",
+        "path": "${PROJECT_ROOT}/deploy/l1_stream_workers_ctl.sh",
+        "interface": "start|stop|restart|status|logs",
+        "adoption": "observe-only"
+      },
+      "pid": {
+        "kind": "single",
+        "path": "${PROJECT_ROOT}/logs/l1_prep_worker.pid",
+        "cmdline_contains": ["bash"],
+        "expected": "running"
+      },
+      "port": [],
+      "log": [
+        {"path": "${PROJECT_ROOT}/logs/l1_prep_worker.log", "required": true, "max_age_seconds": 2400, "stale_severity": "error"}
+      ],
+      "health": [],
+      "health_policy": {
+        "mode": "log-freshness",
+        "signals": [
+          {"source": "pid", "required": true},
+          {"source": "log", "index": 0, "required": true}
+        ]
+      },
+      "state": [],
+      "checkpoint": {"mode": "not-evidenced", "state_refs": [], "takeover_ready": false},
+      "replay": {"mode": "unknown", "assurance": "not-evidenced", "evidence": []},
+      "secret_policy": {
+        "argv": "forbid-sensitive-values",
+        "environment": "secret-file-or-process-environment-only",
+        "files": [],
+        "redact_diagnostics": true
+      },
+      "secret_refs": [],
+      "lifecycle_authorization": {
+        "state": "not-authorized",
+        "authorized_operations": [],
+        "change_request_required": true,
+        "maintenance_window_required": true,
+        "required_approvals": ["service-owner", "platform-operations"]
+      },
+      "runbook": {"path": "${PROJECT_ROOT}/docs/operations/RUNTIME_SERVICE_CATALOG.md", "section": "l1_prep"}
+    },
+    {
+      "id": "l1_extract",
+      "name": "L1 event feature extraction stream",
+      "kind": "pipeline",
+      "owner": "news-intelligence",
+      "criticality": "high",
+      "check_interval_seconds": 120,
+      "dependencies": [
+        {"service": "l1_prep", "required": false},
+        {"service": "vllm", "required": true}
+      ],
+      "external_dependencies": ["postgres-news"],
+      "controller": {
+        "type": "shell-script",
+        "path": "${PROJECT_ROOT}/deploy/l1_stream_workers_ctl.sh",
+        "interface": "start|stop|restart|status|logs",
+        "adoption": "observe-only"
+      },
+      "pid": {
+        "kind": "single",
+        "path": "${PROJECT_ROOT}/logs/l1_extract_worker.pid",
+        "cmdline_contains": ["bash"],
+        "expected": "running"
+      },
+      "port": [],
+      "log": [
+        {"path": "${PROJECT_ROOT}/logs/l1_extract_worker.log", "required": true, "max_age_seconds": 2400, "stale_severity": "error"}
+      ],
+      "health": [],
+      "health_policy": {
+        "mode": "log-freshness",
+        "signals": [
+          {"source": "pid", "required": true},
+          {"source": "log", "index": 0, "required": true}
+        ]
+      },
+      "state": [],
+      "checkpoint": {"mode": "not-evidenced", "state_refs": [], "takeover_ready": false},
+      "replay": {"mode": "unknown", "assurance": "not-evidenced", "evidence": []},
+      "secret_policy": {
+        "argv": "forbid-sensitive-values",
+        "environment": "secret-file-or-process-environment-only",
+        "files": [],
+        "redact_diagnostics": true
+      },
+      "secret_refs": [],
+      "lifecycle_authorization": {
+        "state": "not-authorized",
+        "authorized_operations": [],
+        "change_request_required": true,
+        "maintenance_window_required": true,
+        "required_approvals": ["service-owner", "platform-operations"]
+      },
+      "runbook": {"path": "${PROJECT_ROOT}/docs/operations/RUNTIME_SERVICE_CATALOG.md", "section": "l1_extract"}
+    },
+    {
+      "id": "daily_ingest",
+      "name": "Daily news discovery/extract/load loop",
+      "kind": "pipeline",
+      "owner": "data-ingestion",
+      "criticality": "high",
+      "check_interval_seconds": 300,
+      "dependencies": [
+        {"service": "proxy_pool", "required": false}
+      ],
+      "external_dependencies": ["historical-source-websites", "postgres-news"],
+      "controller": {
+        "type": "shell-script",
+        "path": "${PROJECT_ROOT}/deploy/daily_news_ingest_ctl.sh",
+        "interface": "start|stop|restart|status|logs|follow",
+        "adoption": "observe-only"
+      },
+      "pid": {
+        "kind": "single",
+        "path": "${PROJECT_ROOT}/logs/daily_news_ingest_loop.pid",
+        "cmdline_contains": ["deploy/daily_news_ingest_loop.sh"],
+        "expected": "running"
+      },
+      "port": [],
+      "log": [
+        {"path": "${PROJECT_ROOT}/logs/daily_news_ingest_loop.log", "required": true, "max_age_seconds": 93600, "stale_severity": "error"}
+      ],
+      "health": [],
+      "health_policy": {
+        "mode": "composite",
+        "signals": [
+          {"source": "pid", "required": true},
+          {"source": "log", "index": 0, "required": true},
+          {"source": "state", "index": 0, "required": false}
+        ]
+      },
+      "state": [
+        {
+          "glob": "${PROJECT_ROOT}/data/historical_news/daily/daily_*/load_state.json",
+          "select": "newest",
+          "required": false,
+          "format": "json",
+          "timestamp_field": "updated_at",
+          "max_age_seconds": 172800,
+          "stale_severity": "warning",
+          "summary_fields": ["updated_at", "seen", "inserted", "skipped"]
+        }
+      ],
+      "checkpoint": {"mode": "progress-only", "state_refs": [0], "takeover_ready": false},
+      "replay": {"mode": "unknown", "assurance": "not-evidenced", "evidence": []},
+      "secret_policy": {
+        "argv": "forbid-sensitive-values",
+        "environment": "secret-file-or-process-environment-only",
+        "files": [],
+        "redact_diagnostics": true
+      },
+      "secret_refs": [],
+      "lifecycle_authorization": {
+        "state": "not-authorized",
+        "authorized_operations": [],
+        "change_request_required": true,
+        "maintenance_window_required": true,
+        "required_approvals": ["service-owner", "platform-operations"]
+      },
+      "runbook": {"path": "${PROJECT_ROOT}/docs/operations/RUNTIME_SERVICE_CATALOG.md", "section": "daily_ingest"}
+    },
+    {
+      "id": "quality_labels",
+      "name": "News quality label maintenance loop",
+      "kind": "pipeline",
+      "owner": "data-quality",
+      "criticality": "medium",
+      "check_interval_seconds": 300,
+      "dependencies": [],
+      "external_dependencies": ["postgres-news"],
+      "controller": {
+        "type": "shell-script",
+        "path": "${PROJECT_ROOT}/deploy/news_quality_labels_ctl.sh",
+        "interface": "start|stop|restart|status|logs|follow",
+        "adoption": "observe-only"
+      },
+      "pid": {
+        "kind": "single",
+        "path": "${PROJECT_ROOT}/logs/news_quality_labels_loop.pid",
+        "meta_path": "${PROJECT_ROOT}/logs/news_quality_labels_loop.pid.meta",
+        "meta": {"pid_index": 0, "starttime_ticks_index": 1},
+        "cmdline_contains": ["deploy/news_quality_labels_loop.sh"],
+        "expected": "running"
+      },
+      "port": [],
+      "log": [
+        {"path": "${PROJECT_ROOT}/logs/news_quality_labels_loop.log", "required": true, "max_age_seconds": 1200, "stale_severity": "error"}
+      ],
+      "health": [],
+      "health_policy": {
+        "mode": "log-freshness",
+        "signals": [
+          {"source": "pid", "required": true},
+          {"source": "log", "index": 0, "required": true}
+        ]
+      },
+      "state": [],
+      "checkpoint": {"mode": "not-evidenced", "state_refs": [], "takeover_ready": false},
+      "replay": {"mode": "unknown", "assurance": "not-evidenced", "evidence": []},
+      "secret_policy": {
+        "argv": "forbid-sensitive-values",
+        "environment": "secret-file-or-process-environment-only",
+        "files": [],
+        "redact_diagnostics": true
+      },
+      "secret_refs": [],
+      "lifecycle_authorization": {
+        "state": "not-authorized",
+        "authorized_operations": [],
+        "change_request_required": true,
+        "maintenance_window_required": true,
+        "required_approvals": ["service-owner", "platform-operations"]
+      },
+      "runbook": {"path": "${PROJECT_ROOT}/docs/operations/RUNTIME_SERVICE_CATALOG.md", "section": "quality_labels"}
+    },
+    {
+      "id": "ground_refresh",
+      "name": "Ground news realtime refresh loop",
+      "kind": "pipeline",
+      "owner": "news-intelligence",
+      "criticality": "high",
+      "check_interval_seconds": 120,
+      "dependencies": [
+        {"service": "l1_extract", "required": false}
+      ],
+      "external_dependencies": ["postgres-news", "l15-segments", "l2-storylines"],
+      "controller": {
+        "type": "shell-loop",
+        "path": "${PROJECT_ROOT}/deploy/ground_news_realtime_refresh_loop.sh",
+        "interface": "direct-loop",
+        "adoption": "observe-only"
+      },
+      "pid": {
+        "kind": "single",
+        "path": "${PROJECT_ROOT}/logs/ground_news_realtime_refresh_loop.pid",
+        "cmdline_contains": ["deploy/ground_news_realtime_refresh_loop.sh"],
+        "expected": "running"
+      },
+      "port": [],
+      "log": [
+        {"path": "${PROJECT_ROOT}/logs/ground_news_realtime_refresh_loop.log", "required": true, "max_age_seconds": 2700, "stale_severity": "error"}
+      ],
+      "health": [],
+      "health_policy": {
+        "mode": "log-freshness",
+        "signals": [
+          {"source": "pid", "required": true},
+          {"source": "log", "index": 0, "required": true}
+        ]
+      },
+      "state": [],
+      "checkpoint": {"mode": "not-evidenced", "state_refs": [], "takeover_ready": false},
+      "replay": {"mode": "unknown", "assurance": "not-evidenced", "evidence": []},
+      "secret_policy": {
+        "argv": "forbid-sensitive-values",
+        "environment": "secret-file-or-process-environment-only",
+        "files": [],
+        "redact_diagnostics": true
+      },
+      "secret_refs": [],
+      "lifecycle_authorization": {
+        "state": "not-authorized",
+        "authorized_operations": [],
+        "change_request_required": true,
+        "maintenance_window_required": true,
+        "required_approvals": ["service-owner", "platform-operations"]
+      },
+      "runbook": {"path": "${PROJECT_ROOT}/docs/operations/RUNTIME_SERVICE_CATALOG.md", "section": "ground_refresh"}
+    },
+    {
+      "id": "ground_images",
+      "name": "Ground news story image backfill loop",
+      "kind": "pipeline",
+      "owner": "news-intelligence",
+      "criticality": "medium",
+      "check_interval_seconds": 300,
+      "dependencies": [
+        {"service": "ground_refresh", "required": false}
+      ],
+      "external_dependencies": ["postgres-news", "publisher-image-hosts"],
+      "controller": {
+        "type": "shell-loop",
+        "path": "${PROJECT_ROOT}/deploy/ground_news_image_backfill_loop.sh",
+        "interface": "direct-loop",
+        "adoption": "observe-only"
+      },
+      "pid": {
+        "kind": "single",
+        "path": "${PROJECT_ROOT}/logs/ground_news_image_backfill_loop.pid",
+        "cmdline_contains": ["deploy/ground_news_image_backfill_loop.sh"],
+        "expected": "running"
+      },
+      "port": [],
+      "log": [
+        {"path": "${PROJECT_ROOT}/logs/ground_news_image_backfill_loop.log", "required": true}
+      ],
+      "health": [],
+      "health_policy": {
+        "mode": "composite",
+        "signals": [
+          {"source": "pid", "required": true},
+          {"source": "log", "index": 0, "required": true},
+          {"source": "output", "index": 0, "required": false}
+        ]
+      },
+      "state": [],
+      "output": [
+        {
+          "path": "${PROJECT_ROOT}/logs/ground_news_image_backfill_loop.log",
+          "required": false,
+          "max_age_seconds": 5400,
+          "stale_severity": "warning",
+          "authoritative": false
+        }
+      ],
+      "checkpoint": {"mode": "not-evidenced", "state_refs": [], "takeover_ready": false},
+      "replay": {"mode": "unknown", "assurance": "not-evidenced", "evidence": []},
+      "secret_policy": {
+        "argv": "forbid-sensitive-values",
+        "environment": "secret-file-or-process-environment-only",
+        "files": [],
+        "redact_diagnostics": true
+      },
+      "secret_refs": [],
+      "lifecycle_authorization": {
+        "state": "not-authorized",
+        "authorized_operations": [],
+        "change_request_required": true,
+        "maintenance_window_required": true,
+        "required_approvals": ["service-owner", "platform-operations"]
+      },
+      "runbook": {"path": "${PROJECT_ROOT}/docs/operations/RUNTIME_SERVICE_CATALOG.md", "section": "ground_images"}
+    }
+  ]
+}

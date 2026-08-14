@@ -1,0 +1,60 @@
+# Agentic RAG MVP - Minimal Dependencies
+# Phase 1: Data Ingestion & Hybrid Index
+numpy>=1.26.0
+sentence-transformers>=3.0.0
+# sqlite-vec is bundled via pip
+sqlite-vec>=0.1.6
+
+# Phase 2: Knowledge Extraction
+# (uses built-in clustering, no heavy deps)
+
+# Phase 3: Agent & MCP
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+httpx>=0.27.0
+openai>=1.50.0
+anthropic>=0.34.0
+
+# Utilities
+orjson>=3.10.0
+aiohttp>=3.9.0
+pydantic>=2.7.0
+rich>=13.7.0
+tqdm>=4.66.0
+tiktoken>=0.7.0
+python-dotenv>=1.0.0
+pyyaml>=6.0.0
+aiofiles>=24.1.0
+
+# Incremental stack extras
+# P1: Milvus
+pymilvus>=2.4.0
+
+# P2: UMAP
+umap-learn>=0.5.6
+
+# P3: incremental clustering
+hdbscan>=0.8.38
+
+# PostgreSQL driver
+psycopg2-binary>=2.9.9
+
+# Stage 5 macro graph: igraph (Louvain / multilayer modularity)
+python-igraph>=0.11.0
+
+# Stage 1a: MinHash LSH near-dup filter (pre-write)
+datasketch>=1.6.0
+
+# Stage 1c: FlashText entity dict (non-China path)
+flashtext>=2.7
+
+# Ollama client (Phase 2/4 LLM)
+ollama>=0.3.0
+
+# GLiNER NER (Phase 3)
+gliner>=0.2.8
+
+# HF trust import (tools/import_hf_trust_data.py)
+datasets>=2.14.0
+duckdb>=1.0.0
+huggingface_hub>=0.20.0

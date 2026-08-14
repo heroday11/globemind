@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "bundles": [
+    {
+      "id": "expert-skills",
+      "version": "2026-07-08-expanded-real-skills",
+      "source_path": "frontend/vue_project/public/datasets/expert-skills",
+      "stage_path": "frontend/vue_project/public/datasets/expert-skills",
+      "artifact_path": "datasets/expert-skills",
+      "sha256": "1e83120f73e7cc3a6e4a12b64a553e32759a61f8c61160bb3b2e66bce16f5119",
+      "file_count": 13754,
+      "total_bytes": 86563838,
+      "evidence": [
+        "catalog.json",
+        "selection-report.json",
+        "sources/selection-policy.md"
+      ]
+    }
+  ]
+}

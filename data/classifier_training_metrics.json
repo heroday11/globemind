@@ -1,0 +1,12 @@
+{
+  "algorithm": "LogisticRegression",
+  "n_samples": 17822,
+  "positive_ratio": 0.7193356525642465,
+  "n_features": 3,
+  "accuracy": 0.7382448658960835,
+  "f1": 0.7956904480357377,
+  "auc": 0.842417728696353,
+  "cv_auc_mean": 0.8424271144612019,
+  "cv_auc_std": 0.004409297129804523,
+  "quality_gate_passed": true
+}

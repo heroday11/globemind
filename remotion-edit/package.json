@@ -1,0 +1,22 @@
+{
+  "name": "globemind-remotion-edit",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "render": "remotion render src/index.tsx GlobemindDemo out/globemind-demo-annotated.mp4 --codec=h264 --pixel-format=yuv420p",
+    "preview": "remotion preview src/index.tsx"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.370",
+    "@remotion/media-utils": "^4.0.370",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "remotion": "^4.0.370"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^5.9.3"
+  }
+}

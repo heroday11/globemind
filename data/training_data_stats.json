@@ -1,0 +1,42 @@
+{
+  "total_pairs": 31348,
+  "positive_count": 15674,
+  "negative_count": 15674,
+  "positive_negative_ratio": 1.0,
+  "positive_time_delta_distribution": {
+    "min": 0,
+    "max": 7,
+    "mean": 1.21,
+    "median": 0.0,
+    "histogram": {
+      "0": 8994,
+      "1": 2387,
+      "2": 1368,
+      "3": 820,
+      "4": 665,
+      "5": 478,
+      "6": 407,
+      "7": 555
+    }
+  },
+  "entity_pairs_with_both_pos_and_neg": 100,
+  "entity_pairs_with_positives": 869,
+  "entity_pairs_with_negatives": 780,
+  "total_entity_pairs_with_2plus_articles": 1931,
+  "negative_type_distribution": {
+    "time_event_mismatch": 15674
+  },
+  "event_type_distribution": {
+    "military": 28924,
+    "diplomacy": 13867,
+    "trade_conflict": 12948,
+    "protest_repression": 3654,
+    "policy_legal": 988,
+    "terrorism_espionage": 929,
+    "human_rights_migration": 794,
+    "aid_disaster": 350,
+    "appointment_leadership": 242
+  },
+  "articles_used": 32624,
+  "articles_with_embeddings": 32624
+}

@@ -1,0 +1,50 @@
+site_id,domain,layer,priority_tier,region,source_type,preferred_entry,signal_role,origin,notes
+china_mfa,mfa.gov.cn,official_direct,P0,asia,foreign_ministry,https://www.mfa.gov.cn/eng/xw/,official_position,official_expansion,official China foreign ministry news
+japan_mofa,mofa.go.jp,official_direct,P0,asia,foreign_ministry,https://www.mofa.go.jp/press/release/index.html,official_position,official_expansion,official Japan foreign ministry releases
+eeas_europa,eeas.europa.eu,official_direct,P0,europe,foreign_service,https://www.eeas.europa.eu/eeas/press-material_en,official_position,official_expansion,official EU diplomatic service press material
+eu_commission_press,ec.europa.eu,official_direct,P0,europe,supranational_executive,https://ec.europa.eu/commission/presscorner/home/en,official_position,official_expansion,official European Commission press corner
+fcdo_gov_uk,gov.uk,official_direct,P0,europe,foreign_ministry,https://www.gov.uk/government/organisations/foreign-commonwealth-development-office,official_position,official_expansion,official UK foreign office news and communications
+nato_news,nato.int,official_direct,P0,europe,international_security_org,https://www.nato.int/cps/en/natohq/news.htm,official_position,strategic_addition,official alliance security statements and briefings
+un_org,un.org,official_direct,P0,global,international_organization,https://news.un.org/en/news,official_position,official_expansion,official UN news and statements
+state_gov,state.gov,official_direct,P0,north_america,foreign_ministry,https://www.state.gov/press-releases,official_position,official_expansion,official US State Department releases
+whitehouse_gov,whitehouse.gov,official_direct,P0,north_america,executive_government,https://www.whitehouse.gov/news/,official_position,official_expansion,official White House releases and briefings
+india_mea,mea.gov.in,official_direct,P0,south_asia,foreign_ministry,https://www.mea.gov.in/press-releases,official_position,official_expansion,official India external affairs releases
+african_union,au.int,official_direct,P1,africa,international_organization,https://au.int/en/happening,official_position,official_expansion,official African Union news and press releases
+ecowas_news,ecowas.int,official_direct,P1,africa,international_organization,https://www.ecowas.int/,official_position,strategic_addition_v2,official West African regional organization news and communiques
+ethiopia_mfa,mfa.gov.et,official_direct,P1,africa,foreign_ministry,https://mfa.gov.et/news,official_position,strategic_addition_v2,official Ethiopia foreign ministry news
+kenya_mfa,mfa.go.ke,official_direct,P1,africa,foreign_ministry,https://mfa.go.ke/allnews,official_position,strategic_addition_v2,official Kenya foreign affairs news and diplomacy updates
+nigeria_mfa,foreignaffairs.gov.ng,official_direct,P1,africa,foreign_ministry,https://foreignaffairs.gov.ng/news/latest-news/,official_position,strategic_addition_v2,official Nigeria foreign ministry news and press releases
+southafrica_dirco,dirco.gov.za,official_direct,P1,africa,foreign_ministry,https://dirco.gov.za/media-statements/,official_position,official_expansion,official South Africa foreign policy statements
+asean_news,asean.org,official_direct,P1,asia,international_organization,https://asean.org/news/,official_position,strategic_addition,official ASEAN institutional and summit signals
+id_mofcom_gov_cn,id.mofcom.gov.cn,official_direct,P1,asia,economic_ministry,https://fdi.mofcom.gov.cn/EN/come-zonghe-list.html,official_position,official_expansion,official China commerce and investment policy signal
+indonesia_kemlu,kemlu.go.id,official_direct,P1,asia,foreign_ministry,https://kemlu.go.id/portal/en,official_position,strategic_addition,official Indonesia foreign ministry portal
+malaysia_mfa,kln.gov.my,official_direct,P1,asia,foreign_ministry,https://www.kln.gov.my/web/guest/press-releases,official_position,strategic_addition_v3,official Malaysia foreign ministry press releases
+singapore_mfa,mfa.gov.sg,official_direct,P1,asia,foreign_ministry,https://www.mfa.gov.sg/newsroom/press-statements-transcripts-and-photos/,official_position,strategic_addition_v2,official Singapore foreign ministry press statements
+southkorea_mofa,mofa.go.kr,official_direct,P1,asia,foreign_ministry,https://www.mofa.go.kr/eng/index.do,official_position,strategic_addition,official Korea foreign ministry portal
+taiwan_mofa,en.mofa.gov.tw,official_direct,P1,asia,foreign_ministry,https://en.mofa.gov.tw/News.aspx?n=1328&sms=273,official_position,strategic_addition_v2,official Taiwan foreign ministry news and responses
+vietnam_mofa,mofa.gov.vn,official_direct,P1,asia,foreign_ministry,https://mofa.gov.vn/en/web/ministry-of-foreign-affairs,official_position,strategic_addition_v2,official Vietnam foreign ministry portal with spokesperson and press release sections
+australia_dfat,dfat.gov.au,official_direct,P1,asia_pacific,foreign_ministry,https://www.dfat.gov.au/news-speeches-and-media,official_position,strategic_addition,official Australian foreign ministry signal
+newzealand_mfat,mfat.govt.nz,official_direct,P1,asia_pacific,foreign_ministry,https://www.mfat.govt.nz/en/media-and-resources,official_position,strategic_addition_v3,official New Zealand foreign affairs and trade statements and resources
+bundesregierung_de,bundesregierung.de,official_direct,P1,europe,executive_government,https://www.bundesregierung.de/breg-de/bundesregierung,official_position,official_expansion,official German government newsroom
+france_diplomatie,diplomatie.gouv.fr,official_direct,P1,europe,foreign_ministry,https://www.diplomatie.gouv.fr/en/press/news,official_position,official_expansion,official France foreign ministry news
+osce_press,osce.org,official_direct,P1,europe,international_organization,https://www.osce.org/press-releases,official_position,strategic_addition,official European security and election monitoring statements
+russia_mfa,mid.ru,official_direct,P1,europe,foreign_ministry,https://mid.ru/en/press_service/,official_position,strategic_addition_v2,official Russian foreign ministry statements and briefings
+ukraine_mfa,mfa.gov.ua,official_direct,P1,europe,foreign_ministry,https://mfa.gov.ua/en/news,official_position,strategic_addition_v2,official Ukraine foreign ministry statements and news
+who_int,who.int,official_direct,P1,global,international_organization,https://www.who.int/news-room,official_position,official_expansion,official institutional and emergency updates with lower direct political density
+argentina_cancilleria,cancilleria.gob.ar,official_direct,P1,latin_america,foreign_ministry,https://www.cancilleria.gob.ar/en/news,official_position,strategic_addition,official Argentina foreign ministry news
+brazil_mre,gov.br/mre,official_direct,P1,latin_america,foreign_ministry,https://www.gov.br/mre/en/contact-us/press-area/press-releases,official_position,official_expansion,official Brazil foreign ministry press area
+chile_minrel,minrel.gob.cl,official_direct,P1,latin_america,foreign_ministry,https://www.minrel.gob.cl/minrel/sala-de-prensa/p/1,official_position,strategic_addition_v2,official Chile foreign ministry press room
+colombia_cancilleria,cancilleria.gov.co,official_direct,P1,latin_america,foreign_ministry,https://www.cancilleria.gov.co/sala-de-prensa/noticias,official_position,strategic_addition_v2,official Colombia foreign ministry newsroom
+mexico_sre,gob.mx,official_direct,P1,latin_america,foreign_ministry,https://www.gob.mx/sre/en/archivo/prensa,official_position,strategic_addition,official Mexico foreign ministry press archive
+oas_news,oas.org,official_direct,P1,latin_america,international_organization,https://www.oas.org/en/media_center/default.asp,official_position,strategic_addition,official Americas multilateral organization statements
+peru_rree,gob.pe,official_direct,P1,latin_america,foreign_ministry,https://www.gob.pe/institucion/rree/noticias,official_position,strategic_addition_v3,official Peru foreign ministry news and press releases
+egypt_mfa,mfa.gov.eg,official_direct,P1,middle_east,foreign_ministry,https://www.mfa.gov.eg/,official_position,strategic_addition,official Egypt foreign ministry signal source
+israel_mfa,gov.il,official_direct,P1,middle_east,foreign_ministry,https://www.gov.il/en/departments/ministry_of_foreign_affairs,official_position,strategic_addition_v2,official Israeli foreign ministry news and statements
+qatar_mofa,mofa.gov.qa,official_direct,P1,middle_east,foreign_ministry,https://mofa.gov.qa/en/all-mofa-news,official_position,strategic_addition,official Qatar foreign ministry statements and ministry news
+saudi_mofa,mofa.gov.sa,official_direct,P1,middle_east,foreign_ministry,https://www.mofa.gov.sa/en/ministry/news/Pages/default.aspx,official_position,strategic_addition,official Saudi foreign ministry news
+turkiye_mfa,mfa.gov.tr,official_direct,P1,middle_east,foreign_ministry,https://www.mfa.gov.tr/press-information.en.mfa,official_position,strategic_addition,official Türkiye foreign ministry statements
+uae_mofa,mofaic.gov.ae,official_direct,P1,middle_east,foreign_ministry,https://www.mofaic.gov.ae/en/,official_position,strategic_addition,official UAE foreign ministry statements and releases
+canada_gac,international.gc.ca,official_direct,P1,north_america,foreign_ministry,https://www.international.gc.ca/global-affairs-affaires-mondiales/news-nouvelles/index.aspx?lang=eng,official_position,strategic_addition,official Canadian foreign affairs signal
+bangladesh_mofa,mofa.gov.bd,official_direct,P1,south_asia,foreign_ministry,https://mofa.gov.bd/pages/press-releases,official_position,strategic_addition_v2,official Bangladesh foreign ministry press releases
+pakistan_mofa,mofa.gov.pk,official_direct,P1,south_asia,foreign_ministry,https://mofa.gov.pk/press-releases,official_position,strategic_addition_v2,official Pakistan foreign ministry press releases
+sri_lanka_mfa,mfa.gov.lk,official_direct,P1,south_asia,foreign_ministry,https://www.mfa.gov.lk/en/news/ministry-news,official_position,strategic_addition_v2,official Sri Lanka foreign ministry news

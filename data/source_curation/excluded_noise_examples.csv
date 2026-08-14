@@ -1,0 +1,13 @@
+site_id,url,reason
+dropbox_com,https://www.dropbox.com/business/solutions/marketing,enterprise site not suitable as news corpus
+dictionary_cambridge_org,https://www.dictionary.cambridge.org/dictionary/,dictionary reference not a news source
+wiktionary_org,https://ru.wiktionary.org/,dictionary/wiki project not a news source
+wikisource_org,https://www.wikisource.org/wiki/Wikisource:News,library project not a live news source
+fc2_com,https://video.fc2.com/en/,video platform not a curated news publisher
+dcinside_com,https://gall.dcinside.com,forum/community platform not a news source
+trendyol_com,https://www.trendyol.com/butik/liste/2/erkek,e-commerce site not a news source
+marca_com,https://www.marca.com/futbol.html,sports vertical not suitable for geopolitics backbone
+siamsport_co_th,http://www.siamsport.co.th/football-international,sports site not suitable for geopolitics backbone
+femmeactuelle_fr,https://www.femmeactuelle.fr/actu,lifestyle and entertainment focus not suitable for core news corpus
+wordreference_com,https://forum.wordreference.com,forum and language reference site not a news source
+awesome_blog,https://awesome.blog/browse,blog platform not a reliable news source

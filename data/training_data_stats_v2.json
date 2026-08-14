@@ -1,0 +1,26 @@
+{
+  "total_pairs": 12130,
+  "positive_count": 6065,
+  "negative_count": 6065,
+  "positive_negative_ratio": 1.0,
+  "positive_same_event_type": 6065,
+  "negative_same_event_type": 3898,
+  "positive_same_day": 4467,
+  "negative_same_day": 1917,
+  "negative_type_distribution": {
+    "same_entity_diff_type": 1516,
+    "same_entity_same_type_far": 2124,
+    "semantic_neighbor_same_type": 1516,
+    "random_background": 909
+  },
+  "positive_time_delta_distribution": {
+    "min": 0,
+    "max": 7,
+    "mean": 0.4984
+  },
+  "negative_time_delta_distribution": {
+    "min": 0,
+    "max": 137,
+    "mean": 32.0798
+  }
+}

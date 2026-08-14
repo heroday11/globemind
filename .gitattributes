@@ -1,0 +1,2 @@
+# Bash 在 CRLF 下会把续行弄断，曾导致 `--enforce-eager` 变成 `ce-eager: command not found`
+*.sh text eol=lf

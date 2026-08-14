@@ -1,0 +1,13 @@
+{
+  "name": "datasearch-frontend",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix vue_project",
+    "dev:main": "npm run dev:main --prefix vue_project",
+    "dev:financial": "npm run dev --prefix financial-terminal",
+    "dev:kg": "npm run dev:knowledge-graph --prefix vue_project",
+    "build": "npm run build --prefix vue_project",
+    "build:financial": "npm run build --prefix financial-terminal",
+    "install:all": "npm install --prefix vue_project && npm install --prefix financial-terminal"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "knowledge-graph-backup",
+  "private": true,
+  "scripts": {
+    "build": "node -e \"require('node:fs').mkdirSync('dist', { recursive: true })\""
+  }
+}

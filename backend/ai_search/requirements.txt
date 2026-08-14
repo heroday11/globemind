@@ -1,0 +1,8 @@
+# 本地联网搜索 Agent 相关依赖
+crawl4ai
+requests
+pydantic
+
+# Google Agent Development Kit (ADK)
+google-adk
+

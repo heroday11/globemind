@@ -1,0 +1,71 @@
+/**
+ * 用户中心与设计站一致的视觉 token（与 AcademicData / App 主色对齐）
+ */
+.uc-theme {
+  --uc-bg: #f6f8ff;
+  --uc-bg-soft: linear-gradient(180deg, #f6f8ff 0%, #eef2ff 100%);
+  --uc-surface: #ffffff;
+  --uc-border: #dbe3ff;
+  --uc-border-soft: #e6ebff;
+  --uc-text: #1f2a44;
+  --uc-muted: #60709b;
+  --uc-accent: #5b72df;
+  --uc-accent-soft: #667eea;
+  --uc-radius: 12px;
+  --uc-radius-sm: 10px;
+  --uc-shadow: 0 8px 24px rgba(91, 114, 223, 0.1);
+  --uc-shadow-sm: 0 2px 12px rgba(91, 114, 223, 0.08);
+  --uc-font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Element Plus 主色与壳内组件对齐 */
+  --el-color-primary: #5b72df;
+  --el-color-primary-light-3: #7c8fe8;
+  --el-color-primary-light-5: #9dacf0;
+  --el-color-primary-light-7: #bec9f7;
+  --el-color-primary-light-8: #d2daf9;
+  --el-color-primary-light-9: #e8ecfc;
+  --el-color-primary-dark-2: #4f66d4;
+
+  font-family: var(--uc-font);
+  color: var(--uc-text);
+  background: var(--uc-bg-soft);
+}
+
+/* 各子页顶部「主题区」：加大留白与字号，减少空洞感 */
+.uc-theme .uc-page {
+  width: 100%;
+  max-width: min(1100px, 100%);
+  margin: 0 auto;
+}
+
+.uc-theme .uc-page-head {
+  margin-bottom: clamp(22px, 3.2vw, 40px);
+  padding: clamp(22px, 3.8vw, 38px) clamp(20px, 3.5vw, 36px);
+  border-radius: var(--uc-radius);
+  background: linear-gradient(
+    135deg,
+    rgba(91, 114, 223, 0.14) 0%,
+    rgba(255, 255, 255, 0.95) 48%,
+    #f0f4ff 100%
+  );
+  border: 1px solid var(--uc-border);
+  box-shadow: var(--uc-shadow-sm);
+}
+
+.uc-theme .uc-page-title {
+  margin: 0 0 clamp(8px, 1.2vw, 14px);
+  font-size: clamp(1.75rem, 4.2vw, 2.35rem);
+  font-weight: 800;
+  color: var(--uc-text);
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.uc-theme .uc-page-desc {
+  margin: 0;
+  font-size: clamp(0.98rem, 2.1vw, 1.12rem);
+  font-weight: 500;
+  color: var(--uc-muted);
+  line-height: 1.6;
+  max-width: min(56ch, 100%);
+}

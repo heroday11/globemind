@@ -1,0 +1,290 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">GlobeMind 全球动态认知与世界模型推演系统流程图</title>
+  <desc id="desc">展示 GlobeMind 从一手全球数据获取、结构化处理、新闻事件理解、涉华舆情与全球态势、世界模型 Z_world 到推演与规划支撑的完整流程。</desc>
+  <defs>
+    <linearGradient id="headerGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#08255c"/>
+      <stop offset="55%" stop-color="#0a5fa8"/>
+      <stop offset="100%" stop-color="#0aa6b8"/>
+    </linearGradient>
+    <linearGradient id="cardHead" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0b2c68"/>
+      <stop offset="100%" stop-color="#0b84b6"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c48b16"/>
+      <stop offset="100%" stop-color="#f0c45b"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#08255c" flood-opacity="0.15"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0b4d93"/>
+    </marker>
+    <marker id="arrowGold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#c48b16"/>
+    </marker>
+    <style>
+      .font { font-family: "Noto Sans CJK SC", "Noto Sans SC", "Source Han Sans SC", sans-serif; }
+      .title { font-size: 58px; font-weight: 800; fill: #08255c; letter-spacing: 0; }
+      .subtitle { font-size: 25px; font-weight: 500; fill: #31527a; letter-spacing: 0; }
+      .small { font-size: 19px; fill: #36577c; letter-spacing: 0; }
+      .cardTitle { font-size: 22px; font-weight: 800; fill: #ffffff; letter-spacing: 0; }
+      .cardBody { font-size: 23px; font-weight: 650; fill: #102f5f; letter-spacing: 0; }
+      .cardSub { font-size: 18px; font-weight: 500; fill: #46617f; letter-spacing: 0; }
+      .number { font-size: 26px; font-weight: 800; fill: #ffffff; letter-spacing: 0; }
+      .valueTitle { font-size: 28px; font-weight: 800; fill: #08255c; letter-spacing: 0; }
+      .valueText { font-size: 25px; font-weight: 760; fill: #08255c; letter-spacing: 0; }
+      .tag { font-size: 20px; font-weight: 650; fill: #ffffff; letter-spacing: 0; }
+      .callout { font-size: 22px; font-weight: 700; fill: #08255c; letter-spacing: 0; }
+    </style>
+  </defs>
+
+  <rect width="1920" height="1080" fill="#f7fbff"/>
+
+  <!-- background grid -->
+  <g opacity="0.32">
+    <path d="M0 890 H1920 M0 945 H1920 M0 1000 H1920" stroke="#b9d6ef" stroke-width="1"/>
+    <path d="M110 850 L20 1080 M370 850 L300 1080 M630 850 L580 1080 M890 850 L870 1080 M1150 850 L1170 1080 M1410 850 L1460 1080 M1670 850 L1760 1080" stroke="#b9d6ef" stroke-width="1"/>
+  </g>
+  <g opacity="0.22" fill="#9fc6e8">
+    <circle cx="1390" cy="62" r="3"/><circle cx="1410" cy="62" r="3"/><circle cx="1430" cy="62" r="3"/><circle cx="1450" cy="62" r="3"/>
+    <circle cx="1370" cy="82" r="3"/><circle cx="1390" cy="82" r="3"/><circle cx="1410" cy="82" r="3"/><circle cx="1430" cy="82" r="3"/><circle cx="1450" cy="82" r="3"/><circle cx="1470" cy="82" r="3"/>
+    <circle cx="1350" cy="102" r="3"/><circle cx="1370" cy="102" r="3"/><circle cx="1390" cy="102" r="3"/><circle cx="1410" cy="102" r="3"/><circle cx="1430" cy="102" r="3"/><circle cx="1450" cy="102" r="3"/><circle cx="1470" cy="102" r="3"/>
+    <circle cx="1540" cy="86" r="3"/><circle cx="1560" cy="86" r="3"/><circle cx="1580" cy="86" r="3"/><circle cx="1600" cy="86" r="3"/>
+    <circle cx="1520" cy="106" r="3"/><circle cx="1540" cy="106" r="3"/><circle cx="1560" cy="106" r="3"/><circle cx="1580" cy="106" r="3"/><circle cx="1600" cy="106" r="3"/><circle cx="1620" cy="106" r="3"/>
+    <circle cx="1510" cy="126" r="3"/><circle cx="1530" cy="126" r="3"/><circle cx="1550" cy="126" r="3"/><circle cx="1570" cy="126" r="3"/><circle cx="1590" cy="126" r="3"/>
+  </g>
+
+  <!-- header -->
+  <text class="font title" x="960" y="86" text-anchor="middle">GlobeMind 全球动态认知与世界模型推演系统</text>
+  <text class="font subtitle" x="960" y="133" text-anchor="middle">一手全球数据获取 · 新闻特化事件图谱 · 涉华舆情态势 · 世界模型推演 · 政策与业务规划支撑</text>
+  <line x1="170" y1="170" x2="1750" y2="170" stroke="url(#headerGrad)" stroke-width="4"/>
+  <rect x="810" y="151" width="300" height="38" rx="19" fill="url(#goldGrad)"/>
+  <text class="font tag" x="960" y="177" text-anchor="middle">从“看见世界”到“推演世界”</text>
+
+  <!-- arrows between cards -->
+  <g stroke="#0b4d93" stroke-width="7" marker-end="url(#arrow)">
+    <line x1="325" y1="455" x2="360" y2="455"/>
+    <line x1="605" y1="455" x2="640" y2="455"/>
+    <line x1="885" y1="455" x2="920" y2="455"/>
+    <line x1="1165" y1="455" x2="1200" y2="455"/>
+    <line x1="1445" y1="455" x2="1480" y2="455"/>
+  </g>
+
+  <!-- card template instances -->
+  <g filter="url(#softShadow)">
+    <!-- 1 -->
+    <g transform="translate(80 230)">
+      <rect width="245" height="430" rx="18" fill="#ffffff" stroke="#b5d1eb" stroke-width="2"/>
+      <rect width="245" height="74" rx="18" fill="url(#cardHead)"/>
+      <path d="M0 56 H245 V74 H0 Z" fill="url(#cardHead)"/>
+      <circle cx="28" cy="-2" r="25" fill="#0f60b8" stroke="#ffffff" stroke-width="4"/>
+      <text class="font number" x="28" y="8" text-anchor="middle">1</text>
+      <text class="font cardTitle" x="155" y="47" text-anchor="middle">一手全球数据获取</text>
+      <g transform="translate(55 115)" stroke="#0d5fb1" stroke-width="3" fill="none">
+        <circle cx="68" cy="70" r="62" fill="#eaf5ff"/>
+        <ellipse cx="68" cy="70" rx="62" ry="25"/>
+        <ellipse cx="68" cy="70" rx="25" ry="62"/>
+        <path d="M10 70 H126 M68 8 V132"/>
+        <path d="M122 28 h52 v42 h-52 z M132 40 h28 M132 54 h20"/>
+        <path d="M-38 105 h50 v42 h-50 z M-28 118 h28 M-28 132 h20"/>
+        <path d="M10 132 q58 34 116 0" stroke="#c48b16"/>
+      </g>
+      <line x1="25" y1="286" x2="220" y2="286" stroke="#8ec3eb" stroke-width="2" stroke-dasharray="4 7"/>
+      <text class="font cardBody" x="122" y="327" text-anchor="middle">智能爬虫</text>
+      <text class="font cardBody" x="122" y="362" text-anchor="middle">100+权威站点</text>
+      <text class="font cardSub" x="122" y="397" text-anchor="middle">多语种实时监控</text>
+    </g>
+
+    <!-- 2 -->
+    <g transform="translate(360 230)">
+      <rect width="245" height="430" rx="18" fill="#ffffff" stroke="#b5d1eb" stroke-width="2"/>
+      <rect width="245" height="74" rx="18" fill="url(#cardHead)"/>
+      <path d="M0 56 H245 V74 H0 Z" fill="url(#cardHead)"/>
+      <circle cx="28" cy="-2" r="25" fill="#0f60b8" stroke="#ffffff" stroke-width="4"/>
+      <text class="font number" x="28" y="8" text-anchor="middle">2</text>
+      <text class="font cardTitle" x="155" y="47" text-anchor="middle">数据清洗与结构化</text>
+      <g transform="translate(44 115)" stroke="#0d5fb1" stroke-width="3" fill="none">
+        <rect x="68" y="40" width="74" height="92" rx="14" fill="#eaf5ff"/>
+        <ellipse cx="105" cy="40" rx="37" ry="12" fill="#cfe9ff"/>
+        <path d="M68 70 q37 22 74 0 M68 100 q37 22 74 0"/>
+        <path d="M6 12 h50 v70 h-50 z M16 30 h26 M16 47 h18" fill="#ffffff"/>
+        <path d="M154 12 h50 v70 h-50 z M164 30 h26 M164 47 h18" fill="#ffffff"/>
+        <path d="M105 146 l40 40 h-80 z" fill="#c48b16" stroke="#c48b16"/>
+        <path d="M105 132 v38" stroke="#c48b16"/>
+      </g>
+      <line x1="25" y1="286" x2="220" y2="286" stroke="#8ec3eb" stroke-width="2" stroke-dasharray="4 7"/>
+      <text class="font cardBody" x="122" y="327" text-anchor="middle">正文抽取</text>
+      <text class="font cardBody" x="122" y="362" text-anchor="middle">来源追踪</text>
+      <text class="font cardSub" x="122" y="397" text-anchor="middle">时间地点规范化</text>
+    </g>
+
+    <!-- 3 -->
+    <g transform="translate(640 230)">
+      <rect width="245" height="430" rx="18" fill="#ffffff" stroke="#b5d1eb" stroke-width="2"/>
+      <rect width="245" height="74" rx="18" fill="url(#cardHead)"/>
+      <path d="M0 56 H245 V74 H0 Z" fill="url(#cardHead)"/>
+      <circle cx="28" cy="-2" r="25" fill="#0f60b8" stroke="#ffffff" stroke-width="4"/>
+      <text class="font number" x="28" y="8" text-anchor="middle">3</text>
+      <text class="font cardTitle" x="155" y="47" text-anchor="middle">新闻特化事件理解</text>
+      <g transform="translate(45 112)" stroke="#0d5fb1" stroke-width="3" fill="none">
+        <circle cx="76" cy="86" r="23" fill="#0d5fb1"/>
+        <circle cx="26" cy="54" r="14" fill="#cfe9ff"/>
+        <circle cx="132" cy="43" r="16" fill="#cfe9ff"/>
+        <circle cx="156" cy="116" r="16" fill="#cfe9ff"/>
+        <circle cx="55" cy="153" r="15" fill="#cfe9ff"/>
+        <line x1="40" y1="62" x2="56" y2="75"/>
+        <line x1="117" y1="51" x2="94" y2="72"/>
+        <line x1="142" y1="106" x2="99" y2="92"/>
+        <line x1="65" y1="139" x2="73" y2="109"/>
+        <rect x="63" y="72" width="28" height="34" rx="3" fill="#ffffff"/>
+        <path d="M69 82 h15 M69 91 h12 M69 100 h16" stroke="#0d5fb1" stroke-width="2"/>
+        <path d="M178 45 h38 M178 87 h38 M178 129 h38 M178 171 h38" stroke="#7896b6" stroke-dasharray="4 5"/>
+      </g>
+      <text class="font cardSub" x="196" y="165">L1</text>
+      <text class="font cardSub" x="196" y="207">L1.5</text>
+      <text class="font cardSub" x="196" y="249">L2</text>
+      <text class="font cardSub" x="196" y="291">L3</text>
+      <line x1="25" y1="286" x2="220" y2="286" stroke="#8ec3eb" stroke-width="2" stroke-dasharray="4 7"/>
+      <text class="font cardBody" x="122" y="325" text-anchor="middle">同一事件聚类</text>
+      <text class="font cardBody" x="122" y="360" text-anchor="middle">报道角度分解</text>
+      <text class="font cardSub" x="122" y="397" text-anchor="middle">故事线与宏观态势</text>
+    </g>
+
+    <!-- 4 -->
+    <g transform="translate(920 230)">
+      <rect width="245" height="430" rx="18" fill="#ffffff" stroke="#b5d1eb" stroke-width="2"/>
+      <rect width="245" height="74" rx="18" fill="url(#cardHead)"/>
+      <path d="M0 56 H245 V74 H0 Z" fill="url(#cardHead)"/>
+      <circle cx="28" cy="-2" r="25" fill="#0f60b8" stroke="#ffffff" stroke-width="4"/>
+      <text class="font number" x="28" y="8" text-anchor="middle">4</text>
+      <text class="font cardTitle" x="155" y="47" text-anchor="middle">涉华舆情与全球态势</text>
+      <g transform="translate(45 112)" stroke="#0d5fb1" stroke-width="3" fill="none">
+        <rect x="0" y="0" width="82" height="50" rx="9" fill="#ffffff"/>
+        <circle cx="22" cy="25" r="11" fill="#22a866" stroke="none"/>
+        <circle cx="42" cy="25" r="11" fill="#f2bd3f" stroke="none"/>
+        <circle cx="62" cy="25" r="11" fill="#ce4c4c" stroke="none"/>
+        <circle cx="96" cy="100" r="62" fill="#eaf5ff"/>
+        <ellipse cx="96" cy="100" rx="62" ry="25"/>
+        <ellipse cx="96" cy="100" rx="25" ry="62"/>
+        <path d="M34 100 H158 M96 38 V162"/>
+        <rect x="140" y="16" width="74" height="58" rx="8" fill="#ffffff"/>
+        <path d="M153 31 h44 M153 45 h33 M153 59 h39" stroke="#0d5fb1" stroke-width="2"/>
+        <path d="M18 166 h34 v-42 h22 v42 h22 v-68 h22 v68 h22" stroke="#0d5fb1" stroke-width="5"/>
+        <path d="M119 183 a55 55 0 0 1 77 0" stroke="#22a866" stroke-width="12"/>
+        <path d="M119 183 a55 55 0 0 0 -77 0" stroke="#f2bd3f" stroke-width="12"/>
+      </g>
+      <text class="font cardSub" x="128" y="310" text-anchor="middle">CCI</text>
+      <line x1="25" y1="286" x2="220" y2="286" stroke="#8ec3eb" stroke-width="2" stroke-dasharray="4 7"/>
+      <text class="font cardBody" x="122" y="327" text-anchor="middle">情绪 · 主题 · 框架</text>
+      <text class="font cardBody" x="122" y="362" text-anchor="middle">关注指数 CCI</text>
+      <text class="font cardSub" x="122" y="397" text-anchor="middle">叙事差异与风险识别</text>
+    </g>
+
+    <!-- 5 -->
+    <g transform="translate(1200 230)">
+      <rect width="245" height="430" rx="18" fill="#ffffff" stroke="#b5d1eb" stroke-width="2"/>
+      <rect width="245" height="74" rx="18" fill="url(#cardHead)"/>
+      <path d="M0 56 H245 V74 H0 Z" fill="url(#cardHead)"/>
+      <circle cx="28" cy="-2" r="25" fill="#0f60b8" stroke="#ffffff" stroke-width="4"/>
+      <text class="font number" x="28" y="8" text-anchor="middle">5</text>
+      <text class="font cardTitle" x="155" y="47" text-anchor="middle">世界模型 Z_world</text>
+      <g transform="translate(50 105)" stroke="#0d5fb1" stroke-width="3" fill="none">
+        <circle cx="72" cy="100" r="72" fill="#eaf5ff"/>
+        <circle cx="72" cy="100" r="49" fill="#0d5fb1" opacity="0.15"/>
+        <path d="M72 28 V172 M0 100 H144 M22 50 C56 72 88 72 122 50 M22 150 C56 128 88 128 122 150"/>
+        <g fill="#0d5fb1" stroke="none">
+          <circle cx="72" cy="52" r="5"/><circle cx="38" cy="84" r="5"/><circle cx="105" cy="82" r="5"/>
+          <circle cx="54" cy="124" r="5"/><circle cx="95" cy="132" r="5"/><circle cx="72" cy="100" r="5"/>
+        </g>
+        <path d="M72 52 L38 84 L72 100 L105 82 L95 132 L54 124 L72 52" opacity="0.7"/>
+        <rect x="168" y="24" width="34" height="42" rx="6" fill="#ffffff"/>
+        <rect x="168" y="84" width="34" height="42" rx="6" fill="#ffffff"/>
+        <rect x="168" y="144" width="34" height="42" rx="6" fill="#ffffff"/>
+        <path d="M144 64 h24 M144 104 h24 M144 164 h24" stroke="#7896b6" stroke-dasharray="4 5"/>
+      </g>
+      <line x1="25" y1="286" x2="220" y2="286" stroke="#8ec3eb" stroke-width="2" stroke-dasharray="4 7"/>
+      <text class="font cardBody" x="122" y="327" text-anchor="middle">EvidencePacket</text>
+      <text class="font cardBody" x="122" y="362" text-anchor="middle">持久状态更新</text>
+      <text class="font cardSub" x="122" y="397" text-anchor="middle">不确定性与来源记忆</text>
+    </g>
+
+    <!-- 6 -->
+    <g transform="translate(1480 230)">
+      <rect width="245" height="430" rx="18" fill="#ffffff" stroke="#b5d1eb" stroke-width="2"/>
+      <rect width="245" height="74" rx="18" fill="url(#cardHead)"/>
+      <path d="M0 56 H245 V74 H0 Z" fill="url(#cardHead)"/>
+      <circle cx="28" cy="-2" r="25" fill="#0f60b8" stroke="#ffffff" stroke-width="4"/>
+      <text class="font number" x="28" y="8" text-anchor="middle">6</text>
+      <text class="font cardTitle" x="155" y="47" text-anchor="middle">推演与规划支撑</text>
+      <g transform="translate(40 105)" stroke="#0d5fb1" stroke-width="3" fill="none">
+        <rect x="0" y="0" width="165" height="178" rx="16" fill="#eaf5ff"/>
+        <path d="M22 78 L50 55 L78 68 L108 36 L142 44" stroke="#0d5fb1" stroke-width="5"/>
+        <path d="M142 44 l-13 -2 M142 44 l-7 12"/>
+        <rect x="24" y="104" width="52" height="38" rx="5" fill="#ffffff"/>
+        <rect x="90" y="104" width="52" height="38" rx="5" fill="#ffffff"/>
+        <path d="M30 154 h108" stroke="#7896b6"/>
+        <path d="M30 166 h72" stroke="#7896b6"/>
+        <circle cx="174" cy="32" r="22" fill="#ce4c4c" stroke="none"/>
+        <path d="M174 20 v19 M164 51 h20" stroke="#ffffff" stroke-width="5"/>
+      </g>
+      <line x1="25" y1="286" x2="220" y2="286" stroke="#8ec3eb" stroke-width="2" stroke-dasharray="4 7"/>
+      <text class="font cardBody" x="122" y="327" text-anchor="middle">趋势预测 · 风险预警</text>
+      <text class="font cardBody" x="122" y="362" text-anchor="middle">反事实推演</text>
+      <text class="font cardSub" x="122" y="397" text-anchor="middle">策略辅助与规划支撑</text>
+    </g>
+  </g>
+
+  <!-- feedback loop -->
+  <path d="M1602 690 C1602 765 1354 765 1323 690" fill="none" stroke="#c48b16" stroke-width="7" marker-end="url(#arrowGold)"/>
+  <rect x="1318" y="724" width="292" height="40" rx="20" fill="#fff6df" stroke="#e3b24a" stroke-width="2"/>
+  <text class="font small" x="1464" y="751" text-anchor="middle" fill="#7a560c">预测结果与新观测闭环校准</text>
+
+  <!-- comparison callout -->
+  <g transform="translate(190 705)">
+    <rect x="0" y="0" width="1540" height="78" rx="20" fill="#e9f5ff" stroke="#b5d1eb" stroke-width="2"/>
+    <text class="font callout" x="770" y="32" text-anchor="middle">创新优势：自主一手数据获取 + 新闻特化多级事件聚类 + 持久世界状态建模</text>
+    <text class="font small" x="770" y="61" text-anchor="middle">区别于第三方数据依赖、普通文本聚类和一次性 Agent 报告，支持可验证的长期态势跟踪、风险推演与规划辅助</text>
+  </g>
+
+  <!-- bottom value row -->
+  <text class="font valueTitle" x="960" y="850" text-anchor="middle">应用价值</text>
+  <g filter="url(#softShadow)" transform="translate(130 884)">
+    <g>
+      <rect x="0" y="0" width="245" height="82" rx="16" fill="#ffffff" stroke="#0b4d93" stroke-width="3"/>
+      <path d="M42 26 L74 10 L106 26 M48 26 V58 M64 26 V58 M80 26 V58 M96 26 V58 M38 58 H110" stroke="#0b4d93" stroke-width="5" fill="none"/>
+      <text class="font valueText" x="168" y="52" text-anchor="middle">政府决策</text>
+    </g>
+    <g transform="translate(275 0)">
+      <rect x="0" y="0" width="245" height="82" rx="16" fill="#ffffff" stroke="#0b4d93" stroke-width="3"/>
+      <circle cx="67" cy="41" r="30" fill="none" stroke="#0b4d93" stroke-width="5"/>
+      <path d="M37 41 H97 M67 11 C50 29 50 53 67 71 M67 11 C84 29 84 53 67 71" stroke="#0b4d93" stroke-width="3" fill="none"/>
+      <text class="font valueText" x="168" y="52" text-anchor="middle">国别研究</text>
+    </g>
+    <g transform="translate(550 0)">
+      <rect x="0" y="0" width="245" height="82" rx="16" fill="#ffffff" stroke="#0b4d93" stroke-width="3"/>
+      <circle cx="48" cy="32" r="16" fill="#0b4d93"/>
+      <circle cx="82" cy="32" r="16" fill="#0b4d93"/>
+      <circle cx="65" cy="56" r="20" fill="#0b4d93"/>
+      <text class="font valueText" x="168" y="52" text-anchor="middle">舆情研判</text>
+    </g>
+    <g transform="translate(825 0)">
+      <rect x="0" y="0" width="245" height="82" rx="16" fill="#ffffff" stroke="#0b4d93" stroke-width="3"/>
+      <path d="M67 11 L103 27 V53 L67 71 L31 53 V27 Z" stroke="#0b4d93" stroke-width="5" fill="none"/>
+      <text class="font valueText" x="168" y="52" text-anchor="middle">外贸风控</text>
+    </g>
+    <g transform="translate(1100 0)">
+      <rect x="0" y="0" width="245" height="82" rx="16" fill="#ffffff" stroke="#0b4d93" stroke-width="3"/>
+      <path d="M40 48 L84 26 V58 Z M84 26 q20 10 20 32 M35 48 h-12" stroke="#0b4d93" stroke-width="5" fill="none"/>
+      <text class="font valueText" x="168" y="52" text-anchor="middle">国际传播</text>
+    </g>
+    <g transform="translate(1375 0)">
+      <rect x="0" y="0" width="245" height="82" rx="16" fill="#ffffff" stroke="#0b4d93" stroke-width="3"/>
+      <path d="M40 62 V38 M66 62 V24 M92 62 V14 M32 62 H108 M42 34 L64 22 L88 14" stroke="#0b4d93" stroke-width="6" fill="none"/>
+      <text class="font valueText" x="168" y="52" text-anchor="middle">企业战略</text>
+    </g>
+  </g>
+
+  <text class="font small" x="960" y="1030" text-anchor="middle">核心价值：加强使用者对世界政治态势当前位置与未来预期的判断能力，为预测、预警和规划提供技术支撑</text>
+</svg>

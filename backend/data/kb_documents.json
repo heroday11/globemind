@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "2026年Q1亚太安全态势综述",
+    "category": "geo",
+    "author": "张研究",
+    "time": "2026-04-28",
+    "size": "2.4 MB"
+  },
+  {
+    "id": 2,
+    "title": "南海岛礁建设跟踪报告 v3",
+    "category": "geo",
+    "author": "李分析",
+    "time": "2026-04-27",
+    "size": "5.1 MB"
+  },
+  {
+    "id": 3,
+    "title": "台海军事平衡年度评估",
+    "category": "mil",
+    "author": "王研判",
+    "time": "2026-04-26",
+    "size": "3.8 MB"
+  },
+  {
+    "id": 4,
+    "title": "一带一路沿线国家风险指数",
+    "category": "econ",
+    "author": "赵研究",
+    "time": "2026-04-25",
+    "size": "1.9 MB"
+  },
+  {
+    "id": 5,
+    "title": "全球半导体供应链脆弱性分析",
+    "category": "tech",
+    "author": "孙分析",
+    "time": "2026-04-24",
+    "size": "4.2 MB"
+  }
+]

@@ -1,0 +1,25 @@
+# =============================================================================
+# 统一环境：数据流水线 (agentic_rag) + 主站 FastAPI (uvicorn api.main:app)
+# =============================================================================
+# 在仓库根目录执行（推荐用解释器调用 pip，避免 venv 迁移后 pip.exe 路径失效）：
+#
+#   python -m venv .venv
+#   .\.venv\Scripts\python.exe -m pip install -U pip
+#   .\.venv\Scripts\python.exe -m pip install -r requirements.txt
+#
+# 若已激活 .venv 且 pip 报错 “Unable to create process … Desktop\datasearch”：
+#   说明虚拟环境是在旧路径创建的，请删除 .venv 后按上面三行重建，
+#   或始终使用：python -m pip install …
+# =============================================================================
+
+-r agentic_rag/requirements.txt
+
+# ---------------------------------------------------------------------------
+# api/ FastAPI 应用额外依赖（与 agentic_rag 不重复部分已并入 api/requirements.txt 清单）
+# ---------------------------------------------------------------------------
+-r api/requirements.txt
+
+# ---------------------------------------------------------------------------
+# ai_search/ 本地联网搜索 Agent 依赖
+# ---------------------------------------------------------------------------
+-r ai_search/requirements.txt

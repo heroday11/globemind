@@ -1,0 +1,67 @@
+{
+  "created_at": "2026-06-30 04:31:10",
+  "database": "news",
+  "news": {
+    "total": 1701176,
+    "media_source_ids": 100,
+    "domains": 100,
+    "last_30d": 169998
+  },
+  "l1_fast_l1_v2": {
+    "clusters": 270476,
+    "merged_clusters": 7880,
+    "article_refs": 281410,
+    "avg_articles": 1.04,
+    "max_articles": 64,
+    "p95_articles": 1.0
+  },
+  "l15_fast_l15_v1": {
+    "segments": 274560,
+    "merged_segments": 5363,
+    "article_refs": 281410,
+    "avg_articles": 1.025,
+    "max_articles": 22
+  },
+  "l2_fast_l2_v1": {
+    "chains": 10154,
+    "segment_refs": 24190,
+    "article_refs": 26122,
+    "avg_segments": 2.382,
+    "max_segments": 12,
+    "avg_quality": 0.664
+  },
+  "l3_fast_l3_v1": {
+    "macro_events": 58,
+    "chain_refs": 3911,
+    "segment_refs": 10600,
+    "article_refs": 12140,
+    "avg_quality": 0.557,
+    "max_articles": 3465
+  },
+  "l2_family_breakdown": [
+    {
+      "family_group": "security",
+      "chains": 5054,
+      "segment_refs": 11899,
+      "article_refs": 12691
+    },
+    {
+      "family_group": "political_diplomacy",
+      "chains": 3542,
+      "segment_refs": 8485,
+      "article_refs": 9312
+    },
+    {
+      "family_group": "economic_security",
+      "chains": 1369,
+      "segment_refs": 3383,
+      "article_refs": 3669
+    },
+    {
+      "family_group": "humanitarian_public",
+      "chains": 189,
+      "segment_refs": 423,
+      "article_refs": 450
+    }
+  ]
+}

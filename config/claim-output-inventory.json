@@ -1,0 +1,485 @@
+{
+  "schema_version": "globemind.claim-output-inventory.v1",
+  "automation": {
+    "state": "configured",
+    "scheduler_locator": ".github/workflows/quality-gate.yml",
+    "artifact_retention_locator": ".github/workflows/quality-gate.yml",
+    "reason_code": "AUTOMATED_STATIC_DISCOVERY_NO_HUMAN_TRIAGE"
+  },
+  "scope": {
+    "allowed_roots": [
+      "backend/api",
+      "frontend/vue_project/src/views",
+      "frontend/financial-terminal/src/pages"
+    ],
+    "allowed_suffixes": [".py", ".vue", ".tsx"],
+    "max_entries": 16,
+    "max_locators": 64,
+    "max_file_bytes": 262144,
+    "max_total_bytes": 4194304
+  },
+  "required_capabilities": [
+    "claim_id",
+    "citation_locator",
+    "reason_code",
+    "unknown_gate"
+  ],
+  "entries": [
+    {
+      "id": "article-paragraph-evidence",
+      "output_kind": "article_analysis_api",
+      "public_routes": [
+        {
+          "method": "GET",
+          "public_path": "/api/article/{news_id}/reader",
+          "locator": "backend/api/routes/dashboard.py",
+          "function": "get_article_reader"
+        },
+        {
+          "method": "GET",
+          "public_path": "/api/dashboard/news/{news_id}/analysis",
+          "locator": "backend/api/routes/dashboard.py",
+          "function": "get_news_analysis"
+        }
+      ],
+      "public_pages": [
+        "frontend/vue_project/src/views/DataService/news-detail.vue"
+      ],
+      "capabilities": {
+        "claim_id": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_class_fields",
+              "locator": "backend/api/features/evidence/contracts.py",
+              "symbol": "EvidenceClaim",
+              "fields": ["id"]
+            }
+          ]
+        },
+        "citation_locator": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_class_fields",
+              "locator": "backend/api/features/evidence/contracts.py",
+              "symbol": "ParagraphCitation",
+              "fields": ["anchor_id", "article_id", "paragraph_number", "source_url"]
+            }
+          ]
+        },
+        "reason_code": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_class_fields",
+              "locator": "backend/api/features/evidence/contracts.py",
+              "symbol": "EvidenceClaim",
+              "fields": ["evidence_status", "unavailable_reason"]
+            }
+          ]
+        },
+        "unknown_gate": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_class_literals",
+              "locator": "backend/api/features/evidence/contracts.py",
+              "symbol": "ClaimType",
+              "literals": ["unknown"]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "assistant-interactive",
+      "output_kind": "interactive_generated_api",
+      "public_routes": [
+        {
+          "method": "POST",
+          "public_path": "/api/assistant/chat",
+          "locator": "backend/api/routes/assistant.py",
+          "function": "assistant_chat"
+        },
+        {
+          "method": "POST",
+          "public_path": "/api/assistant/cc/stream",
+          "locator": "backend/api/routes/assistant.py",
+          "function": "assistant_cc_stream"
+        }
+      ],
+      "public_pages": [
+        "frontend/vue_project/src/views/DataAssistant.vue"
+      ],
+      "capabilities": {
+        "claim_id": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_function_literals",
+              "locator": "backend/api/features/assistant/structured_claims.py",
+              "symbol": "_claim_id",
+              "literals": ["GM-C-"]
+            }
+          ]
+        },
+        "citation_locator": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_class_fields",
+              "locator": "backend/api/features/assistant/interactive_citations.py",
+              "symbol": "InteractiveSourceRecord",
+              "fields": ["source_id", "binding_sha256"]
+            }
+          ]
+        },
+        "reason_code": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_function_literals",
+              "locator": "backend/api/features/assistant/interactive_citations.py",
+              "symbol": "_safe_unknown_output",
+              "literals": ["reason_codes"]
+            }
+          ]
+        },
+        "unknown_gate": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_function_literals",
+              "locator": "backend/api/features/assistant/interactive_citations.py",
+              "symbol": "_safe_unknown_output",
+              "literals": ["blocked_replaced_unknown", "explicit_unknown"]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "assistant-scheduled-report",
+      "output_kind": "scheduled_generated_report",
+      "public_routes": [
+        {
+          "method": "POST",
+          "public_path": "/api/assistant/schedules/{schedule_id}/run",
+          "locator": "backend/api/routes/assistant_schedules.py",
+          "function": "assistant_schedule_run"
+        }
+      ],
+      "public_pages": [
+        "frontend/vue_project/src/views/DataAssistant.vue"
+      ],
+      "capabilities": {
+        "claim_id": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_function_literals",
+              "locator": "backend/api/features/assistant/structured_claims.py",
+              "symbol": "_claim_id",
+              "literals": ["GM-C-"]
+            }
+          ]
+        },
+        "citation_locator": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_class_fields",
+              "locator": "backend/api/features/assistant/report_assurance.py",
+              "symbol": "ReportSourceRecord",
+              "fields": ["token", "locator", "record_sha256"]
+            }
+          ]
+        },
+        "reason_code": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_function_literals",
+              "locator": "backend/api/features/assistant/report_assurance.py",
+              "symbol": "assure_generated_report",
+              "literals": ["reason_codes"]
+            }
+          ]
+        },
+        "unknown_gate": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_function_literals",
+              "locator": "backend/api/features/assistant/report_assurance.py",
+              "symbol": "assure_generated_report",
+              "literals": ["substantive_blocks_explicit_unknown", "SUBSTANTIVE_BLOCK_WITHOUT_SOURCE_OR_UNKNOWN_MARKER"]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "research-reviewed-draft-export",
+      "output_kind": "research_artifact_download",
+      "public_routes": [
+        {
+          "method": "GET",
+          "public_path": "/api/research/projects/{project_id}/exports/{export_version}/artifact",
+          "locator": "backend/api/routes/research_workflow.py",
+          "function": "download_export_artifact"
+        }
+      ],
+      "public_pages": [
+        "frontend/vue_project/src/views/ResearchWorkspace.vue"
+      ],
+      "capabilities": {
+        "claim_id": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_function_literals",
+              "locator": "backend/api/features/research_workflow/artifacts.py",
+              "symbol": "_citation_export",
+              "literals": ["claim_id", "judgment_id", "statement_sha256"]
+            }
+          ]
+        },
+        "citation_locator": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_function_literals",
+              "locator": "backend/api/features/research_workflow/artifacts.py",
+              "symbol": "_citation_export",
+              "literals": ["citation_id", "locator", "url", "permanence"]
+            }
+          ]
+        },
+        "reason_code": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_function_literals",
+              "locator": "backend/api/features/research_workflow/artifacts.py",
+              "symbol": "_citation_export",
+              "literals": ["reason_code", "SOURCE_LOCATOR_UNSAFE"]
+            }
+          ]
+        },
+        "unknown_gate": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_function_literals",
+              "locator": "backend/api/features/research_workflow/artifacts.py",
+              "symbol": "_citation_export",
+              "literals": [
+                "unknown_disposition",
+                "explicit_unresolved_information_gaps",
+                "CLAIM_HAS_LINKED_INFORMATION_GAPS",
+                "fact_verification",
+                "not_verified"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "story-graph-derived",
+      "output_kind": "derived_graph_api",
+      "public_routes": [
+        {
+          "method": "GET",
+          "public_path": "/api/story-graph/{story_id}",
+          "locator": "backend/api/routes/story_graph.py",
+          "function": "get_story_graph"
+        }
+      ],
+      "public_pages": [
+        "frontend/vue_project/src/views/StoryGraphView.vue"
+      ],
+      "capabilities": {
+        "claim_id": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_class_fields",
+              "locator": "backend/api/features/story_graph/contracts.py",
+              "symbol": "StoryDerivedClaim",
+              "fields": ["claim_id"]
+            }
+          ]
+        },
+        "citation_locator": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_class_fields",
+              "locator": "backend/api/features/story_graph/contracts.py",
+              "symbol": "StoryDerivedClaim",
+              "fields": ["citation_locator", "citation_status"]
+            }
+          ]
+        },
+        "reason_code": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_class_literals",
+              "locator": "backend/api/features/story_graph/contracts.py",
+              "symbol": "StoryDerivedClaim",
+              "literals": [
+                "GRAPH_RELATION_SOURCE_LOCATOR_UNAVAILABLE",
+                "GRAPH_LAYOUT_EDGE_NOT_EVIDENCE"
+              ]
+            }
+          ]
+        },
+        "unknown_gate": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_class_literals",
+              "locator": "backend/api/features/story_graph/contracts.py",
+              "symbol": "StoryDerivedClaim",
+              "literals": ["explicit_unknown"]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "financial-derived-dashboard",
+      "output_kind": "derived_metric_api",
+      "public_routes": [
+        {
+          "method": "GET",
+          "public_path": "/api/financial/dashboard",
+          "locator": "backend/api/routes/financial.py",
+          "function": "financial_dashboard"
+        }
+      ],
+      "public_pages": [
+        "frontend/vue_project/src/views/FinancialTerminal.vue",
+        "frontend/financial-terminal/src/pages/TerminalDashboard.tsx"
+      ],
+      "capabilities": {
+        "claim_id": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_function_literals",
+              "locator": "backend/api/features/financial/trust.py",
+              "symbol": "_derived_metric_claim",
+              "literals": ["claim_id", "claim_identity", "semantic_metric_id"]
+            }
+          ]
+        },
+        "citation_locator": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_function_literals",
+              "locator": "backend/api/features/financial/trust.py",
+              "symbol": "_derived_metric_claim",
+              "literals": [
+                "citation_locator",
+                "citation_locator_state",
+                "VERIFIED_NUMERIC_EVIDENCE_LOCATOR_NOT_ESTABLISHED"
+              ]
+            }
+          ]
+        },
+        "reason_code": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_function_literals",
+              "locator": "backend/api/features/financial/trust.py",
+              "symbol": "assess_dashboard_trust",
+              "literals": ["unavailable_reasons"]
+            }
+          ]
+        },
+        "unknown_gate": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_function_literals",
+              "locator": "backend/api/features/financial/trust.py",
+              "symbol": "assess_dashboard_trust",
+              "literals": ["computable", "not_computable"]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "opinion-derived-overview",
+      "output_kind": "derived_metric_api",
+      "public_routes": [
+        {
+          "method": "GET",
+          "public_path": "/api/opinion/overview",
+          "locator": "backend/api/routes/opinion_v2.py",
+          "function": "get_opinion_overview",
+          "mount_prefix": "/api",
+          "mount_locator": "backend/api/application.py",
+          "mount_router": "opinion_v2_router"
+        }
+      ],
+      "public_pages": [
+        "frontend/vue_project/src/views/sentimentAnalysis.vue"
+      ],
+      "capabilities": {
+        "claim_id": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_class_fields",
+              "locator": "backend/api/features/opinion/claims.py",
+              "symbol": "OpinionDerivedClaim",
+              "fields": ["claim_id", "metric", "output_paths", "identity"]
+            }
+          ]
+        },
+        "citation_locator": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_class_fields",
+              "locator": "backend/api/features/opinion/claims.py",
+              "symbol": "OpinionDerivedClaim",
+              "fields": ["citation_locator", "citation_status", "citation_reason_code"]
+            }
+          ]
+        },
+        "reason_code": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_function_literals",
+              "locator": "backend/api/features/opinion/trust.py",
+              "symbol": "evaluate_opinion_trust",
+              "literals": ["reason_codes"]
+            }
+          ]
+        },
+        "unknown_gate": {
+          "state": "present",
+          "probes": [
+            {
+              "kind": "python_function_literals",
+              "locator": "backend/api/features/opinion/trust.py",
+              "symbol": "evaluate_opinion_trust",
+              "literals": ["is_computable", "not_computable", "unavailable"]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

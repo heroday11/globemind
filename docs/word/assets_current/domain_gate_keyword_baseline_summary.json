@@ -1,0 +1,29 @@
+{
+  "sample_n": 80000,
+  "positive": 8394,
+  "baselines": [
+    {
+      "baseline": "narrow_security",
+      "precision": 0.47939743021710235,
+      "recall": 0.257803192756731,
+      "f1": 0.3352959405020143,
+      "tp": 2164,
+      "fp": 2350,
+      "tn": 69256,
+      "fn": 6230,
+      "candidate_rate": 0.056425
+    },
+    {
+      "baseline": "broad_geopolitical",
+      "precision": 0.34787178139779296,
+      "recall": 0.31546342625685014,
+      "f1": 0.33087592152942646,
+      "tp": 2648,
+      "fp": 4964,
+      "tn": 66642,
+      "fn": 5746,
+      "candidate_rate": 0.09515
+    }
+  ],
+  "keyword_note": "English keyword rules on title + first 500 body chars, same stratified sample as LR evaluation."
+}
