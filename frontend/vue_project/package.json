@@ -55,7 +55,7 @@
     "abortcontroller-polyfill": "^1.7.8",
     "autoprefixer": "^10.4.21",
     "eslint": "^9.33.0",
-    "eslint-plugin-vue": "~10.4.0",
+    "eslint-plugin-vue": "~10.10.0",
     "globals": "^16.3.0",
     "less": "^4.4.2",
     "less-loader": "^12.3.0",
